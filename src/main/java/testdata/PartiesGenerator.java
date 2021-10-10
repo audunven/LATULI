@@ -28,23 +28,33 @@ import owlprocessing.OntologyOperations;
  */
 public class PartiesGenerator {
 
+	String additionalPartyIdentification;
 	String partiesHashCode;
 	String partyName;
 	String country;
 	String city;
 	String postalCode;
 	String coordinates;
+	boolean isHub;
+	boolean isShipper;
+	boolean isCarrier;
+	boolean isConsignor;
 	
 	
 
-	public PartiesGenerator(String partiesHashCode, String partyName, String country, String city, String postalCode,
-			String coordinates) {
+	public PartiesGenerator(String additionalPartyIdentification, String partiesHashCode, String partyName, String country, String city, String postalCode,
+			String coordinates, boolean isHub, boolean isShipper, boolean isCarrier, boolean isConsignor) {
+		this.additionalPartyIdentification = additionalPartyIdentification;
 		this.partiesHashCode = partiesHashCode;
 		this.partyName = partyName;
 		this.country = country;
 		this.city = city;
 		this.postalCode = postalCode;
 		this.coordinates = coordinates;
+		this.isHub = isHub;
+		this.isShipper = isShipper;
+		this.isCarrier = isCarrier;
+		this.isConsignor = isConsignor;
 
 	}
 
@@ -216,6 +226,56 @@ public class PartiesGenerator {
 
 	public void setCoordinates(String coordinates) {
 		this.coordinates = coordinates;
+	}
+
+
+	public String getAdditionalPartyIdentification() {
+		return additionalPartyIdentification;
+	}
+
+
+	public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
+		this.additionalPartyIdentification = additionalPartyIdentification;
+	}
+
+
+	public boolean isHub() {
+		return isHub;
+	}
+
+
+	public void setHub(boolean isHub) {
+		this.isHub = isHub;
+	}
+
+
+	public boolean isShipper() {
+		return isShipper;
+	}
+
+
+	public void setShipper(boolean isShipper) {
+		this.isShipper = isShipper;
+	}
+
+
+	public boolean isCarrier() {
+		return isCarrier;
+	}
+
+
+	public void setCarrier(boolean isCarrier) {
+		this.isCarrier = isCarrier;
+	}
+
+
+	public boolean isConsignor() {
+		return isConsignor;
+	}
+
+
+	public void setConsignor(boolean isConsignor) {
+		this.isConsignor = isConsignor;
 	}
 
 	

@@ -66,10 +66,11 @@ public class OntologyOperations {
 	   Apr 19, 2021
 	 */
 	public static OWLLiteral convertToDateTime(OWLOntologyManager manager, String input) {	
-				
-		if (input.equals("NULL")) {
+						
+		if (input.equals("NULL") || !input.startsWith("20")) {
 			input = "0000-00-00 00:00:00.0000000";
 		}
+		
 		String dateTime = input.substring(0, input.lastIndexOf("."));
 		
 		//String dateTime = input.replaceAll(".0000000", "");

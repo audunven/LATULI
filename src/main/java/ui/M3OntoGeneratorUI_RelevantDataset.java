@@ -38,7 +38,7 @@ public class M3OntoGeneratorUI_RelevantDataset {
 	public static void main(String[] args) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
 		
 		String csvFolder = "./files/CSV/Last_10000";
-		String m3Onto = "./files/ONTOLOGIES/M3Onto.owl";
+		String m3Onto = "./files/ONTOLOGIES/M3Onto_TBox.owl";
 		//String numRows = "";
 		
 		//import manusquare ontology
@@ -211,25 +211,25 @@ public class M3OntoGeneratorUI_RelevantDataset {
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-//					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperGLN", onto), shipmentInd, td.getShipperGLN());
-//					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-//					manager.applyChange(addAxiomChange);
-//
-//					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperHashCode", onto), shipmentInd, td.getShipperHashCode());
-//					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-//					manager.applyChange(addAxiomChange);
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperGLN", onto), shipmentInd, td.getShipperGLN());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperHashCode", onto), shipmentInd, td.getShipperHashCode());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
 					
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverAdditionalPartyIdentification", onto), shipmentInd, td.getReceiverAdditionalPartyIdentification());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-//					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverGLN", onto), shipmentInd, td.getReceiverGLN());
-//					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-//					manager.applyChange(addAxiomChange);
-//					
-//					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverHashCode", onto), shipmentInd, td.getReceiverHashCode());
-//					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-//					manager.applyChange(addAxiomChange);
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverGLN", onto), shipmentInd, td.getReceiverGLN());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverHashCode", onto), shipmentInd, td.getReceiverHashCode());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
 					
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxesInShipment", onto), shipmentInd, td.getQttBoxesInShipment());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);

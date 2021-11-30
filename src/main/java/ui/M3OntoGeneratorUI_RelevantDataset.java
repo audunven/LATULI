@@ -161,11 +161,7 @@ public class M3OntoGeneratorUI_RelevantDataset {
 					data.setShippedOn(OntologyOperations.convertToDateTime(manager, params[3]));
 					data.setExpectedDeliveryOn(OntologyOperations.convertToDateTime(manager, params[4]));
 					data.setShipperAdditionalPartyIdentification(params[6]);
-					data.setShipperGLN(params[7]);
-					data.setShipperHashCode(params[8]);
 					data.setReceiverAdditionalPartyIdentification(params[9]);
-					data.setReceiverGLN(params[10]);
-					data.setReceiverHashCode(params[11]);
 					data.setQttBoxesInShipment(OntologyOperations.convertToInt(manager, params[18]));
 					data.setQttPalletsInShipment(OntologyOperations.convertToInt(manager, params[19]));
 					
@@ -178,12 +174,9 @@ public class M3OntoGeneratorUI_RelevantDataset {
 				
 				OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
 
-				//OWLDataFactory df = manager.getOWLDataFactory();
-
 				OWLIndividual shipmentInd = null;
 				
 				OWLAxiom classAssertionAxiom = null; 
-				//OWLAxiom OPAssertionAxiom = null; 
 				OWLAxiom DPAssertionAxiom = null; 
 
 				AddAxiom addAxiomChange = null;
@@ -211,23 +204,7 @@ public class M3OntoGeneratorUI_RelevantDataset {
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperGLN", onto), shipmentInd, td.getShipperGLN());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperHashCode", onto), shipmentInd, td.getShipperHashCode());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverAdditionalPartyIdentification", onto), shipmentInd, td.getReceiverAdditionalPartyIdentification());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverGLN", onto), shipmentInd, td.getReceiverGLN());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverHashCode", onto), shipmentInd, td.getReceiverHashCode());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					

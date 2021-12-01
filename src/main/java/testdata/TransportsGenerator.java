@@ -14,7 +14,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -30,16 +29,14 @@ import owlprocessing.OntologyOperations;
 public class TransportsGenerator {
 		
 	String transportId;
-	OWLLiteral expectedArrival;
-	String transportName;
 	String transportType;
+	String originalDataSource;
 
 
-	public TransportsGenerator(String transportId, OWLLiteral expectedArrival, String transportName, String transportType) {
+	public TransportsGenerator(String transportId, String transportType, String originalDataSource) {
 		this.transportId = transportId;
-		this.expectedArrival = expectedArrival;
-		this.transportName = transportName;
 		this.transportType = transportType;
+		this.originalDataSource = originalDataSource;
 
 	}
 
@@ -50,7 +47,7 @@ public class TransportsGenerator {
 
 		TransportsGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/Transports_last_10000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Transports_multi_last_100000.csv"));
 
 		String line = br.readLine();
 
@@ -59,22 +56,22 @@ public class TransportsGenerator {
 		Set<TransportsGenerator> dataset = new HashSet<TransportsGenerator>();
 		
 		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new TransportsGenerator();
 			
-			if (!params[0].equals("0") && !params[0].equalsIgnoreCase("TransportId")) {
+			if (!params[1].equals("0") && !params[1].equalsIgnoreCase("TransportId")) {
 			
-			data.setTransportId(params[0]);
-			data.setExpectedArrival(OntologyOperations.convertToDateTime(manager, params[2]));
-			data.setTransportName(params[9]);
-			data.setTransportType(params[11]);
+			data.setTransportId(params[1]);
+			data.setTransportType(params[2]);
+			data.setOriginalDataSource(params[3]);
+			
 			}
 
 			dataset.add(data);
@@ -100,36 +97,30 @@ public class TransportsGenerator {
 		OWLIndividual transportInd = null;
 		
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
 
 		int iterator = 0;
 
-		//adding process chain
+
 		for (TransportsGenerator td : dataset) {
 			iterator+=1;	
 
-			//adding process chain individual
 			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportId", onto), transportInd, td.getTransportId());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
 
-			//DP for expressing process chain name and id
-			if (!td.getExpectedArrival().getLiteral().equals("0000-00-00T00:00:00")) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("expectedArrival", onto), transportInd, td.getExpectedArrival());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportName", onto), transportInd, df.getOWLLiteral(td.getTransportName().replaceAll(",", "_")));
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportType", onto), transportInd, td.getTransportType());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportType", onto), transportInd, df.getOWLLiteral(td.getTransportType().replaceAll(",", "_")));
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), transportInd, td.getOriginalDataSource());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 
@@ -150,41 +141,24 @@ public class TransportsGenerator {
 		this.transportId = transportId;
 	}
 
-
-
-	public OWLLiteral getExpectedArrival() {
-		return expectedArrival;
-	}
-
-
-
-	public void setExpectedArrival(OWLLiteral owlLiteral) {
-		this.expectedArrival = owlLiteral;
-	}
-
-
-
-	public String getTransportName() {
-		return transportName;
-	}
-
-
-
-	public void setTransportName(String transportName) {
-		this.transportName = transportName;
-	}
-
-
-
 	public String getTransportType() {
 		return transportType;
 	}
 
 
-
 	public void setTransportType(String transportType) {
 		this.transportType = transportType;
 	}
+
+	public String getOriginalDataSource() {
+		return originalDataSource;
+	}
+
+	public void setOriginalDataSource(String originalDataSource) {
+		this.originalDataSource = originalDataSource;
+	}
+	
+	
 
 	
 

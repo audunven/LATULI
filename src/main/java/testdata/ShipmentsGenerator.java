@@ -35,8 +35,8 @@ public class ShipmentsGenerator {
 	String shipperAdditionalPartyIdentification;	
 	String receiverAdditionalPartyIdentification;
 	OWLLiteral plannedDeliveryDate;
-	OWLLiteral qttBoxesInShipment;
-	OWLLiteral qttPalletsInShipment;
+	OWLLiteral qttBoxes;
+	OWLLiteral qttPallets;
 	String originalDataSource;
 	OWLLiteral year;
 	OWLLiteral season;
@@ -45,7 +45,7 @@ public class ShipmentsGenerator {
 	public ShipmentsGenerator(String shipmentId, String shipperGLN, String receiverGLN,
 			String shipperAdditionalPartyIdentification, String shipperHashCode,
 			String receiverAdditionalPartyIdentification, String receiverHashCode, OWLLiteral shippedOn,
-			OWLLiteral expectedDeliveryOn, OWLLiteral plannedDeliveryDate, OWLLiteral qttBoxesInShipment, OWLLiteral qttPalletsInShipment,
+			OWLLiteral expectedDeliveryOn, OWLLiteral plannedDeliveryDate, OWLLiteral qttBoxes, OWLLiteral qttPallets,
 			String originalDataSource, OWLLiteral year, OWLLiteral season, OWLLiteral weekDay) {
 
 		this.shipmentId = shipmentId;
@@ -54,8 +54,8 @@ public class ShipmentsGenerator {
 		this.shippedOn = shippedOn;
 		this.expectedDeliveryOn = expectedDeliveryOn;
 		this.plannedDeliveryDate = plannedDeliveryDate;
-		this.qttBoxesInShipment = qttBoxesInShipment;
-		this.qttPalletsInShipment = qttPalletsInShipment;
+		this.qttBoxes = qttBoxes;
+		this.qttPallets = qttPallets;
 		this.originalDataSource = originalDataSource;
 		this.year = year;
 		this.season = season;
@@ -117,13 +117,17 @@ public class ShipmentsGenerator {
 		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
 
 		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
+		OWLClass shipperClass = OntologyOperations.getClass("Shipper", onto);
+		OWLClass receiverClass = OntologyOperations.getClass("Receiver", onto);
 
 		OWLDataFactory df = manager.getOWLDataFactory();
 
 		OWLIndividual shipmentInd = null;
+		OWLIndividual shipperInd = null;
+		OWLIndividual receiverInd = null;
 		
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
+		OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
@@ -142,6 +146,34 @@ public class ShipmentsGenerator {
 		  addAxiomChange = new AddAxiom(onto, classAssertionAxiom); 
 		  manager.applyChange(addAxiomChange);
 		  
+		  	//adding shipper individual
+			if (!td.getShipperAdditionalPartyIdentification().equals("NULL")) {
+			shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_party"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipperClass, shipperInd);			
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			//OP waveId from shipmentInd to shipperInd
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasShipperParty", onto), shipmentInd, shipperInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);			
+			}
+			
+		  	//adding receiver individual
+			if (!td.getReceiverAdditionalPartyIdentification().equals("NULL")) {
+			receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_party"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(receiverClass, receiverInd);			
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+					
+			//OP waveId from shipmentInd to receiverInd
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasReceiverParty", onto), shipmentInd, receiverInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);			
+			}
+		  
+		  
+		  
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipmentId", onto), shipmentInd, td.getShipmentId()); 
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
 		  manager.applyChange(addAxiomChange);
@@ -156,13 +188,13 @@ public class ShipmentsGenerator {
 		  manager.applyChange(addAxiomChange); 
 		  }
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperAdditionalPartyIdentification", onto), shipmentInd,
-		  td.getShipperAdditionalPartyIdentification()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverAdditionalPartyIdentification", onto), shipmentInd,
-		  td.getReceiverAdditionalPartyIdentification()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
+//		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperAdditionalPartyIdentification", onto), shipmentInd,
+//		  td.getShipperAdditionalPartyIdentification()); 
+//		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
+//		  
+//		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverAdditionalPartyIdentification", onto), shipmentInd,
+//		  td.getReceiverAdditionalPartyIdentification()); 
+//		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
 		  
 		  if (!td.getPlannedDeliveryDate().getLiteral().startsWith("0000")) {
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("plannedDeliveryDate", onto), shipmentInd, td.getPlannedDeliveryDate());
@@ -170,21 +202,21 @@ public class ShipmentsGenerator {
 		  manager.applyChange(addAxiomChange); 
 		  }
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxesInShipment", onto), shipmentInd, td.getQttBoxesInShipment());
+		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxes", onto), shipmentInd, td.getQttBoxesInShipment());
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 		  manager.applyChange(addAxiomChange);
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttPalletsInShipment", onto), shipmentInd, td.getQttPalletsInShipment());
+		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttPallets", onto), shipmentInd, td.getQttPalletsInShipment());
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 		  manager.applyChange(addAxiomChange);
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hasYear", onto), shipmentInd, td.getYear()); 
+		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), shipmentInd, td.getYear()); 
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hasSeason", onto), shipmentInd, td.getSeason()); 
+		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), shipmentInd, td.getSeason()); 
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
 		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hasWeekDay", onto), shipmentInd, td.getWeekDay()); 
+		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), shipmentInd, td.getWeekDay()); 
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
 		  
 		  
@@ -215,22 +247,22 @@ public class ShipmentsGenerator {
 
 
 	public OWLLiteral getQttBoxesInShipment() {
-		return qttBoxesInShipment;
+		return qttBoxes;
 	}
 
 
 	public void setQttBoxesInShipment(OWLLiteral qttBoxesInShipment) {
-		this.qttBoxesInShipment = qttBoxesInShipment;
+		this.qttBoxes = qttBoxesInShipment;
 	}
 
 
 	public OWLLiteral getQttPalletsInShipment() {
-		return qttPalletsInShipment;
+		return qttPallets;
 	}
 
 
 	public void setQttPalletsInShipment(OWLLiteral qttPalletsInShipment) {
-		this.qttPalletsInShipment = qttPalletsInShipment;
+		this.qttPallets = qttPalletsInShipment;
 	}
 
 
@@ -316,7 +348,7 @@ public class ShipmentsGenerator {
 	
 	public String toString() {
 		
-		return shipmentId+""+shippedOn+""+expectedDeliveryOn+""+shipperAdditionalPartyIdentification+""+receiverAdditionalPartyIdentification+""+plannedDeliveryDate+""+qttBoxesInShipment+""+qttPalletsInShipment+""+
+		return shipmentId+""+shippedOn+""+expectedDeliveryOn+""+shipperAdditionalPartyIdentification+""+receiverAdditionalPartyIdentification+""+plannedDeliveryDate+""+qttBoxes+""+qttPallets+""+
 				originalDataSource+""+year+""+season+""+weekDay;
 	}
 

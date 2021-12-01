@@ -188,14 +188,6 @@ public class ShipmentsGenerator {
 		  manager.applyChange(addAxiomChange); 
 		  }
 		  
-//		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipperAdditionalPartyIdentification", onto), shipmentInd,
-//		  td.getShipperAdditionalPartyIdentification()); 
-//		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-//		  
-//		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("receiverAdditionalPartyIdentification", onto), shipmentInd,
-//		  td.getReceiverAdditionalPartyIdentification()); 
-//		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-		  
 		  if (!td.getPlannedDeliveryDate().getLiteral().startsWith("0000")) {
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("plannedDeliveryDate", onto), shipmentInd, td.getPlannedDeliveryDate());
 		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -211,13 +203,16 @@ public class ShipmentsGenerator {
 		  manager.applyChange(addAxiomChange);
 		  
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), shipmentInd, td.getYear()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
+		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+		  manager.applyChange(addAxiomChange);
 		  
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), shipmentInd, td.getSeason()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
+		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+		  manager.applyChange(addAxiomChange);
 		  
 		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), shipmentInd, td.getWeekDay()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
+		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+		  manager.applyChange(addAxiomChange);
 		  
 		  
 		  }

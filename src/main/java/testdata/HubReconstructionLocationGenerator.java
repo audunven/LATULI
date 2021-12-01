@@ -29,17 +29,13 @@ import owlprocessing.OntologyOperations;
 public class HubReconstructionLocationGenerator
 {
 
-	String hubReconstructionLocationId;
-	String hubReconstructionLocationAdditionalPartyIdentification;
-	String hubReconstructionLocationHashCode;
-	String hubReconstructionLocationLaneId;
+	String additionalPartyIdentification;
+	String laneId;
 
 
-	public HubReconstructionLocationGenerator(String hubReconstructionLocationId, String hubReconstructionLocationAdditionalPartyIdentification, String hubReconstructionLocationHashCode, String hubReconstructionLocationLaneId) {
-		this.hubReconstructionLocationId = hubReconstructionLocationId;
-		this.hubReconstructionLocationAdditionalPartyIdentification = hubReconstructionLocationAdditionalPartyIdentification;
-		this.hubReconstructionLocationHashCode = hubReconstructionLocationHashCode;
-		this.hubReconstructionLocationLaneId = hubReconstructionLocationLaneId;
+	public HubReconstructionLocationGenerator(String hubReconstructionLocationAdditionalPartyIdentification, String hubReconstructionLocationLaneId) {
+		this.additionalPartyIdentification = hubReconstructionLocationAdditionalPartyIdentification;
+		this.laneId = hubReconstructionLocationLaneId;
 	}
 
 	public HubReconstructionLocationGenerator() {}
@@ -49,7 +45,7 @@ public class HubReconstructionLocationGenerator
 
 		HubReconstructionLocationGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/HubReconstructionLocations_last_10000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/HubReconstructionLocations_multi_last_100000.csv"));
 
 		String line = br.readLine();
 
@@ -58,20 +54,18 @@ public class HubReconstructionLocationGenerator
 		Set<HubReconstructionLocationGenerator> dataset = new HashSet<HubReconstructionLocationGenerator>();
 		
 		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new HubReconstructionLocationGenerator();
 						
-			data.setHubReconstructionLocationId(params[0]);
-			data.setHubReconstructionLocationAdditionalPartyIdentification(params[1]);
-			data.setHubReconstructionLocationHashCode(params[3]);
-			data.setHubReconstructionLocationLaneId(params[4]);
+			data.setAdditionalPartyIdentification(params[1]);
+			data.setLaneId(params[2]);
 
 
 			dataset.add(data);
@@ -91,14 +85,16 @@ public class HubReconstructionLocationGenerator
 		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
 
 		OWLClass hubReconstructionLocationClass = OntologyOperations.getClass("HubReconstructionLocation", onto);
+		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
 
 		OWLDataFactory df = manager.getOWLDataFactory();
 
 		OWLIndividual hubReconstructionLocationInd = null;
+		OWLIndividual partyInd = null;
 
 		
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
+		OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
@@ -109,22 +105,28 @@ public class HubReconstructionLocationGenerator
 			iterator+=1;	
 
 			//individuals and association to classes
-			hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubReconstructionLocationHashCode() + "_hubReconstructionLocation"));
+			hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_hubReconstructionLocation"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 			
+			//object properties
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_Party");
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasParty", onto), hubReconstructionLocationInd, partyInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
 
 			//data properties
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hubReconstructionLocationAdditionalPartyIdentification", onto), hubReconstructionLocationInd, td.getHubReconstructionLocationAdditionalPartyIdentification());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), hubReconstructionLocationInd, td.getAdditionalPartyIdentification());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hubReconstructionLocationId", onto), hubReconstructionLocationInd, td.getHubReconstructionLocationId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hubReconstructionLocationLaneId", onto), hubReconstructionLocationInd, td.getHubReconstructionLocationLaneId());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionLane", onto), hubReconstructionLocationInd, td.getLaneId());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
@@ -135,39 +137,23 @@ public class HubReconstructionLocationGenerator
 		manager.saveOntology(onto);
 	}
 
-
-	public String getHubReconstructionLocationId() {
-		return hubReconstructionLocationId;
-	}
-
-	public void setHubReconstructionLocationId(String shipmentItemId) {
-		this.hubReconstructionLocationId = shipmentItemId;
-	}
 	
 
-	public String getHubReconstructionLocationAdditionalPartyIdentification() {
-		return hubReconstructionLocationAdditionalPartyIdentification;
+	public String getAdditionalPartyIdentification() {
+		return additionalPartyIdentification;
 	}
 
-	public void setHubReconstructionLocationAdditionalPartyIdentification(String loadingUnitId) {
-		this.hubReconstructionLocationAdditionalPartyIdentification = loadingUnitId;
+	public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
+		this.additionalPartyIdentification = additionalPartyIdentification;
 	}
 
 
-	public String getHubReconstructionLocationHashCode() {
-		return hubReconstructionLocationHashCode;
+	public String getLaneId() {
+		return laneId;
 	}
 
-	public void setHubReconstructionLocationHashCode(String hashCode) {
-		this.hubReconstructionLocationHashCode = hashCode;
-	}
-
-	public String getHubReconstructionLocationLaneId() {
-		return hubReconstructionLocationLaneId;
-	}
-
-	public void setHubReconstructionLocationLaneId(String laneId) {
-		this.hubReconstructionLocationLaneId = laneId;
+	public void setLaneId(String laneId) {
+		this.laneId = laneId;
 	}
 
 }

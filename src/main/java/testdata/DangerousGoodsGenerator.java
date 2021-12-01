@@ -27,38 +27,35 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class ShipmentItemGenerator
+public class DangerousGoodsGenerator
 {
-
-	String shipmentId;
 	String loadingUnitId;
-	OWLLiteral quantity;
-	String originalDataSource;
+	String gtin;
+	String shipmentId;
+	OWLLiteral modifiedOn;
 
 
-
-	public ShipmentItemGenerator(String shipmentId, String loadingUnitId, OWLLiteral quantity, String originalDataSource) {
-		this.shipmentId = shipmentId;
+	public DangerousGoodsGenerator(String loadingUnitId, String gtin, String shipmentId, OWLLiteral modifiedOn) {
 		this.loadingUnitId = loadingUnitId;
-		this.quantity = quantity;
-		this.originalDataSource = originalDataSource;
-
+		this.gtin = gtin;
+		this.shipmentId = shipmentId;
+		this.modifiedOn = modifiedOn;
 	}
-
-	public ShipmentItemGenerator() {}
+	
+	public DangerousGoodsGenerator() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		ShipmentItemGenerator data;
+		TradeItemGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/ShipmentItems_multi_last_100000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/DRGs_last_100000_Audun.csv"));
 
 		String line = br.readLine();
 
 		String[] params = null;
 
-		Set<ShipmentItemGenerator> dataset = new HashSet<ShipmentItemGenerator>();
+		Set<TradeItemGenerator> dataset = new HashSet<TradeItemGenerator>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -67,17 +64,17 @@ public class ShipmentItemGenerator
 		
 
 		while (line != null) {
-			params = line.split(",");
+			params = line.split(";");
 
-			data = new ShipmentItemGenerator();
-						
-			data.setShipmentId(params[1]);
-			data.setLoadingUnitId(params[2]);
-			data.setQuantity(OntologyOperations.convertToDecimal(manager, params[3]));
-			data.setOriginalDataSource(params[4]);
-
+			data = new TradeItemGenerator();
+			
+			data.setLoadingUnitId(params[0]);	
+			data.setGtin(params[1]);
+			data.setShipmentId(params[2]);
+			data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[3]));
 
 			dataset.add(data);
+			
 			line = br.readLine();
 
 		}
@@ -93,13 +90,15 @@ public class ShipmentItemGenerator
 		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
 		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
 
-		OWLClass shipmentItemClass = OntologyOperations.getClass("ShipmentItem", onto);
+		OWLClass dangerousGoodsClass = OntologyOperations.getClass("DangerousGoods", onto);
+		OWLClass tradeItemClass = OntologyOperations.getClass("TradeItem", onto);
 		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
 		OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
 
 		OWLDataFactory df = manager.getOWLDataFactory();
 
-		OWLIndividual shipmentItemInd = null;
+		OWLIndividual dangerousGoodsInd = null;
+		OWLIndividual tradeItemInd = null;
 		OWLIndividual shipmentInd = null;
 		OWLIndividual loadingUnitInd = null;
 		
@@ -111,23 +110,31 @@ public class ShipmentItemGenerator
 
 		int iterator = 0;
 
-		for (ShipmentItemGenerator td : dataset) {
+		for (TradeItemGenerator td : dataset) {
 			iterator+=1;	
 
-			//adding shipmentItem individual
-			shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_ShipmentItem"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentItemClass, shipmentItemInd);			
+			//adding dangerous goods individual
+			dangerousGoodsInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "-" + td.getLoadingUnitId() + "_DGR"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(dangerousGoodsClass, dangerousGoodsInd);			
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
+			manager.applyChange(addAxiomChange);
+
+			//object properties
+			tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "_TradeItem"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 			
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("relatesToTradeItem", onto), dangerousGoodsInd, tradeItemInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
 			
-			//object properties
 			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_Shipment");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), shipmentItemInd, shipmentInd);
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), dangerousGoodsInd, shipmentInd);
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
@@ -136,20 +143,16 @@ public class ShipmentItemGenerator
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), shipmentItemInd, loadingUnitInd);
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), dangerousGoodsInd, loadingUnitInd);
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 
 			//data properties
-
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), shipmentItemInd, td.getOriginalDataSource());
+			if (!td.getModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), dangerousGoodsInd, td.getModifiedOn());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("quantity", onto), shipmentItemInd, td.getQuantity());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
+			}
 
 		}
 		//save the ontology in each iteration
@@ -174,23 +177,20 @@ public class ShipmentItemGenerator
 		this.loadingUnitId = loadingUnitId;
 	}
 
-	public OWLLiteral getQuantity() {
-		return quantity;
+	public String getGtin() {
+		return gtin;
 	}
 
-	public void setQuantity(OWLLiteral quantity) {
-		this.quantity = quantity;
+	public void setGtin(String gtin) {
+		this.gtin = gtin;
 	}
 
-	public String getOriginalDataSource() {
-		return originalDataSource;
+	public OWLLiteral getModifiedOn() {
+		return modifiedOn;
 	}
 
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
+	public void setModifiedOn(OWLLiteral modifiedOn) {
+		this.modifiedOn = modifiedOn;
 	}
-	
-	
-
 
 }

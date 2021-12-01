@@ -110,7 +110,6 @@ public class ConsignmentsGenerator {
 
 		Set<ConsignmentsGenerator> dataset = new HashSet<ConsignmentsGenerator>();
 		
-		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -143,12 +142,15 @@ public class ConsignmentsGenerator {
 			data.setTaskDescription(params[20]);
 			data.setTotalConsignmentVolume(OntologyOperations.convertToDecimal(manager, params[21]));
 			data.setTotalConsignmentWeight(OntologyOperations.convertToDecimal(manager, params[22]));
-			/* FIXME: Omitting this for now due to missing content in some year, season, weekday columns in csv file
-			 * data.setYear(OntologyOperations.convertToDecimal(manager, params[23]));
-			 * data.setSeason(OntologyOperations.convertToDecimal(manager, params[24]));
-			 * data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[25]));
-			 */
 			
+			if (params.length == 26) {
+		
+			data.setYear(OntologyOperations.convertToDecimal(manager, params[23]));
+			data.setSeason(OntologyOperations.convertToDecimal(manager, params[24]));
+			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[25]));
+			 
+			
+			}
 			
 			dataset.add(data);
 			line = br.readLine();
@@ -191,35 +193,35 @@ public class ConsignmentsGenerator {
 			iterator+=1;	
 
 			//adding consignment individual
-			consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_consignment"));
+			consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_Consignment"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, consignmentInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
-			
+
 			//adding transport individual and OP			
 			if (!td.getTransportId().equals("NULL")) {
-			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			//OP transportId from consignmentInd to transportInd
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("includesTransport", onto), consignmentInd, transportInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);			
+				transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_Transport"));
+				classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
+				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+				manager.applyChange(addAxiomChange);
+
+				//OP transportId from consignmentInd to transportInd
+				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("includesTransport", onto), consignmentInd, transportInd);
+				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+				manager.applyChange(addAxiomChange);			
 			}
 
 			//adding wave individual
 			if (!td.getConsignmentWaveId().equals("NULL")) {
-			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_wave"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			//OP waveId from consignmentInd to waveInd
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("processedByWave", onto), consignmentInd, waveInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);			
+				waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_Wave"));
+				classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
+				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+				manager.applyChange(addAxiomChange);
+
+				//OP waveId from consignmentInd to waveInd
+				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("processedByWave", onto), consignmentInd, waveInd);
+				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+				manager.applyChange(addAxiomChange);			
 			}
 			
 			//adding carrier party individual
@@ -345,22 +347,19 @@ public class ConsignmentsGenerator {
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			/* FIXME: Omitting this for now due to missing content in some year, season, weekday columns in csv file
-			 * DPAssertionAxiom =
-			 * df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty(
-			 * "year", onto), consignmentInd, td.getYear()); addAxiomChange = new
-			 * AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-			 * 
-			 * DPAssertionAxiom =
-			 * df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty(
-			 * "season", onto), consignmentInd, td.getSeason()); addAxiomChange = new
-			 * AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-			 * 
-			 * DPAssertionAxiom =
-			 * df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty(
-			 * "weekDay", onto), consignmentInd, td.getWeekDay()); addAxiomChange = new
-			 * AddAxiom(onto, DPAssertionAxiom); manager.applyChange(addAxiomChange);
-			 */
+		
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), consignmentInd, td.getYear());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), consignmentInd, td.getSeason());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), consignmentInd, td.getWeekDay());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			 
 		}
 		//save the ontology in each iteration
 		manager.saveOntology(onto);

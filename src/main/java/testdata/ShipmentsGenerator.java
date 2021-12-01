@@ -141,14 +141,14 @@ public class ShipmentsGenerator {
 		  iterator+=1;
 		  
 		  //adding shipment individual 
-		  shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "_shipment")); 
+		  shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "_Shipment")); 
 		  classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd); 
 		  addAxiomChange = new AddAxiom(onto, classAssertionAxiom); 
 		  manager.applyChange(addAxiomChange);
 		  
 		  	//adding shipper individual
 			if (!td.getShipperAdditionalPartyIdentification().equals("NULL")) {
-			shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_party"));
+			shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_Party"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipperClass, shipperInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -161,7 +161,7 @@ public class ShipmentsGenerator {
 			
 		  	//adding receiver individual
 			if (!td.getReceiverAdditionalPartyIdentification().equals("NULL")) {
-			receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_party"));
+			receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_Party"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(receiverClass, receiverInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);

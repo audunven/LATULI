@@ -90,7 +90,6 @@ public class WaveGenerator {
 
 		Set<WaveGenerator> dataset = new HashSet<WaveGenerator>();
 		
-		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -100,8 +99,6 @@ public class WaveGenerator {
 			params = line.split(",");
 
 			data = new WaveGenerator();
-			
-			System.out.println("Number of params: " + params.length);
 						
 			data.setWaveId(params[1]);
 			data.setReleasedOn(OntologyOperations.convertToDateTime(manager, params[2]));
@@ -160,7 +157,7 @@ public class WaveGenerator {
 		for (WaveGenerator td : dataset) {
 			iterator+=1;	
 
-			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));
+			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_Wave"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);

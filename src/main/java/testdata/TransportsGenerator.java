@@ -107,7 +107,7 @@ public class TransportsGenerator {
 		for (TransportsGenerator td : dataset) {
 			iterator+=1;	
 
-			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
+			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_Transport"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);

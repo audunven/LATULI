@@ -30,31 +30,50 @@ import owlprocessing.OntologyOperations;
 public class WaveGenerator {
 
 	String waveId;
+	OWLLiteral releasedOn;
+	String hubAdditionalPartyIdentification;
+	OWLLiteral closedOn;
+	String status;
+	
 	OWLLiteral waveStartProcessingOn;
 	OWLLiteral waveEndProcessingOn;
 	OWLLiteral qttTrailers;
-	OWLLiteral qttBoxesInWave;
-	OWLLiteral qttPalletsInWave;
+	OWLLiteral qttBoxes;
 	OWLLiteral qttBoxesProcessed;
 	OWLLiteral qttPalletsBuilt;
 	OWLLiteral qttTasks;
 	OWLLiteral qttShipments;
+	
+	String originalDataSource;
+	OWLLiteral year;
+	OWLLiteral season;
+	OWLLiteral weekDay;
 
 
-	public WaveGenerator(String waveId, OWLLiteral waveStartProcessingOn, OWLLiteral waveEndProcessingOn,
-			OWLLiteral qttTrailers, OWLLiteral qttBoxesInWave, OWLLiteral qttPalletsInWave, OWLLiteral qttBoxesProcessed,
-			OWLLiteral qttPalletsBuilt, OWLLiteral qttTasks, OWLLiteral qttShipments) {
+	public WaveGenerator(String waveId, OWLLiteral releasedOn, String hubAdditionalPartyIdentification, OWLLiteral closedOn, String status,
+			OWLLiteral waveStartProcessingOn, OWLLiteral waveEndProcessingOn, OWLLiteral qttTrailers,
+			OWLLiteral qttBoxes, OWLLiteral qttBoxesProcessed, OWLLiteral qttPalletsBuilt,
+			OWLLiteral qttTasks, OWLLiteral qttShipments, String originalDataSource, OWLLiteral year, OWLLiteral season,
+			OWLLiteral weekDay) {
 		this.waveId = waveId;
+		this.releasedOn = releasedOn;
+		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
+		this.closedOn = closedOn;
+		this.status = status;
 		this.waveStartProcessingOn = waveStartProcessingOn;
 		this.waveEndProcessingOn = waveEndProcessingOn;
 		this.qttTrailers = qttTrailers;
-		this.qttBoxesInWave = qttBoxesInWave;
-		this.qttPalletsInWave = qttPalletsInWave;
+		this.qttBoxes = qttBoxes;
 		this.qttBoxesProcessed = qttBoxesProcessed;
 		this.qttPalletsBuilt = qttPalletsBuilt;
 		this.qttTasks = qttTasks;
 		this.qttShipments = qttShipments;
+		this.originalDataSource = originalDataSource;
+		this.year = year;
+		this.season = season;
+		this.weekDay = weekDay;
 	}
+
 
 	public WaveGenerator() {}
 
@@ -63,7 +82,7 @@ public class WaveGenerator {
 
 		WaveGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/Waves_last_10000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Waves_multi_last_100000.csv"));
 
 		String line = br.readLine();
 
@@ -72,27 +91,41 @@ public class WaveGenerator {
 		Set<WaveGenerator> dataset = new HashSet<WaveGenerator>();
 		
 		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new WaveGenerator();
+			
+			System.out.println("Number of params: " + params.length);
 						
-			data.setWaveId(params[0]);
-			data.setWaveStartProcessingOn(OntologyOperations.convertToDateTime(manager, params[13]));
-			data.setWaveEndProcessingOn(OntologyOperations.convertToDateTime(manager, params[14]));
-			data.setQttTrailers(OntologyOperations.convertToInt(manager, params[15]));
-			data.setQttBoxesInWave(OntologyOperations.convertToInt(manager, params[16]));
-			data.setQttPalletsInWave(OntologyOperations.convertToInt(manager, params[17]));
-			data.setQttBoxesProcessed(OntologyOperations.convertToInt(manager, params[18]));			
-			data.setQttPalletsBuilt(OntologyOperations.convertToInt(manager, params[19]));
-			data.setQttTasks(OntologyOperations.convertToInt(manager, params[20]));
-			data.setQttShipments(OntologyOperations.convertToInt(manager, params[21]));
+			data.setWaveId(params[1]);
+			data.setReleasedOn(OntologyOperations.convertToDateTime(manager, params[2]));
+			data.setHubAdditionalPartyIdentification(params[3]);
+			data.setClosedOn(OntologyOperations.convertToDateTime(manager, params[4]));
+			data.setStatus(params[5]);
+			data.setWaveStartProcessingOn(OntologyOperations.convertToDateTime(manager, params[6]));
+			data.setWaveEndProcessingOn(OntologyOperations.convertToDateTime(manager, params[7]));
+			data.setQttTrailers(OntologyOperations.convertToInt(manager, params[8]));
+			data.setQttBoxes(OntologyOperations.convertToInt(manager, params[9]));
+			data.setQttBoxesProcessed(OntologyOperations.convertToInt(manager, params[10]));			
+			data.setQttPalletsBuilt(OntologyOperations.convertToInt(manager, params[11]));
+			data.setQttTasks(OntologyOperations.convertToInt(manager, params[12]));
+			data.setQttShipments(OntologyOperations.convertToInt(manager, params[13]));
+			data.setOriginalDataSource(params[14]);
+			
+			if (params.length == 18) {
+			
+			data.setYear(OntologyOperations.convertToDecimal(manager, params[15]));
+			data.setSeason(OntologyOperations.convertToDecimal(manager, params[16]));
+			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[17]));
 
+			}
+			
 			dataset.add(data);
 			line = br.readLine();
 
@@ -108,31 +141,65 @@ public class WaveGenerator {
 		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
 
 		OWLClass waveClass = OntologyOperations.getClass("Wave", onto);
+		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
 
 		OWLDataFactory df = manager.getOWLDataFactory();
 
 		OWLIndividual waveInd = null;
+		OWLIndividual partyInd = null;
 		
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
+		OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
 
 		int iterator = 0;
 
-		//adding process chain
+		
 		for (WaveGenerator td : dataset) {
 			iterator+=1;	
 
-			//adding process chain individual
 			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
+			
+
+			//adding hubParty	
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyIdentification() + "_Party"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+				
+			//OP 
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubParty", onto), waveInd, partyInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);	
 
 
-			//DP for expressing process chain name and id
+
+			//DPs
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("waveId", onto), waveInd, td.getWaveId());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			if (!td.getReleasedOn().getLiteral().equals("0000-00-00T00:00:00")) {
+				DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("releasedOn", onto), waveInd, td.getReleasedOn());
+				addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+				manager.applyChange(addAxiomChange);
+				}
+			
+			if (!td.getClosedOn().getLiteral().equals("0000-00-00T00:00:00")) {
+				DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("closedOn", onto), waveInd, td.getClosedOn());
+				addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+				manager.applyChange(addAxiomChange);
+				}
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("status", onto), waveInd, td.getStatus());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
 			if (!td.getWaveStartProcessingOn().getLiteral().equals("0000-00-00T00:00:00")) {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("waveStartProcessingOn", onto), waveInd, td.getWaveStartProcessingOn());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -149,13 +216,10 @@ public class WaveGenerator {
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxesInWave", onto), waveInd, td.getQttBoxesInWave());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxes", onto), waveInd, td.getQttBoxes());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttPalletsInWave", onto), waveInd, td.getQttPalletsInWave());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+
 			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxesProcessed", onto), waveInd, td.getQttBoxesProcessed());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -172,6 +236,24 @@ public class WaveGenerator {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttShipments", onto), waveInd, td.getQttShipments());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
+			
+			if (td.getYear() != null) {
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), waveInd, td.getYear()); 
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+			manager.applyChange(addAxiomChange);
+			}
+			  
+			if (td.getSeason() != null) {
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), waveInd, td.getSeason()); 
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+			manager.applyChange(addAxiomChange);
+			}
+			  
+			if (td.getWeekDay() != null) {
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), waveInd, td.getWeekDay()); 
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
+			manager.applyChange(addAxiomChange);
+			} 
 
 
 		}
@@ -212,21 +294,14 @@ public class WaveGenerator {
 		this.qttTrailers = qttTrailers;
 	}
 
-	public OWLLiteral getQttBoxesInWave() {
-		return qttBoxesInWave;
+	public OWLLiteral getQttBoxes() {
+		return qttBoxes;
 	}
 
-	public void setQttBoxesInWave(OWLLiteral qttBoxes) {
-		this.qttBoxesInWave = qttBoxes;
+	public void setQttBoxes(OWLLiteral qttBoxes) {
+		this.qttBoxes = qttBoxes;
 	}
 
-	public OWLLiteral getQttPalletsInWave() {
-		return qttPalletsInWave;
-	}
-
-	public void setQttPalletsInWave(OWLLiteral qttPallets) {
-		this.qttPalletsInWave = qttPallets;
-	}
 
 	public OWLLiteral getQttBoxesProcessed() {
 		return qttBoxesProcessed;
@@ -259,5 +334,87 @@ public class WaveGenerator {
 	public void setQttShipments(OWLLiteral qttShipments) {
 		this.qttShipments = qttShipments;
 	}
+
+
+	public OWLLiteral getReleasedOn() {
+		return releasedOn;
+	}
+
+
+	public void setReleasedOn(OWLLiteral releasedOn) {
+		this.releasedOn = releasedOn;
+	}
+
+
+	public String getHubAdditionalPartyIdentification() {
+		return hubAdditionalPartyIdentification;
+	}
+
+
+	public void setHubAdditionalPartyIdentification(String hubAdditionalPartyIdentification) {
+		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
+	}
+
+
+	public OWLLiteral getClosedOn() {
+		return closedOn;
+	}
+
+
+	public void setClosedOn(OWLLiteral closedOn) {
+		this.closedOn = closedOn;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getOriginalDataSource() {
+		return originalDataSource;
+	}
+
+
+	public void setOriginalDataSource(String originalDataSource) {
+		this.originalDataSource = originalDataSource;
+	}
+
+
+	public OWLLiteral getYear() {
+		return year;
+	}
+
+
+	public void setYear(OWLLiteral year) {
+		this.year = year;
+	}
+
+
+	public OWLLiteral getSeason() {
+		return season;
+	}
+
+
+	public void setSeason(OWLLiteral season) {
+		this.season = season;
+	}
+
+
+	public OWLLiteral getWeekDay() {
+		return weekDay;
+	}
+
+
+	public void setWeekDay(OWLLiteral weekDay) {
+		this.weekDay = weekDay;
+	}
+	
+	
 
 }

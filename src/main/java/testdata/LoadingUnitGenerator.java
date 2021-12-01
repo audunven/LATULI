@@ -14,7 +14,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -30,9 +29,14 @@ import owlprocessing.OntologyOperations;
 public class LoadingUnitGenerator {
 		
 	String loadingUnitId;
-	String orderNumber;
-	OWLLiteral loadingUnitModifiedOn;
 	String packageTypeId;
+	String originalDataSource;
+
+	public LoadingUnitGenerator(String loadingUnitId, String packageTypeId, String originalDataSource) {
+		this.loadingUnitId = loadingUnitId;
+		this.packageTypeId = packageTypeId;
+		this.originalDataSource = originalDataSource;
+	}
 
 
 	public LoadingUnitGenerator() {}
@@ -42,7 +46,7 @@ public class LoadingUnitGenerator {
 
 		LoadingUnitGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/LoadingUnits_last_10000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/LoadingUnits_multi_last_100000.csv"));
 
 		String line = br.readLine();
 
@@ -51,20 +55,20 @@ public class LoadingUnitGenerator {
 		Set<LoadingUnitGenerator> dataset = new HashSet<LoadingUnitGenerator>();
 		
 		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new LoadingUnitGenerator();
 						
-			data.setLoadingUnitId(params[0]);
-			data.setPackageTypeId(params[1]);
-			data.setOrderNumber(params[2]);
-			data.setLoadingUnitModifiedOn(OntologyOperations.convertToDateTime(manager, params[3]));
+			data.setLoadingUnitId(params[1]);
+			data.setPackageTypeId(params[2]);
+			data.setOriginalDataSource(params[3]);
+			
 
 			dataset.add(data);
 			line = br.readLine();
@@ -107,20 +111,14 @@ public class LoadingUnitGenerator {
 			manager.applyChange(addAxiomChange);
 
 
-			//DP for expressing process chain name and id
-			if (!td.getLoadingUnitModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("loadingUnitModifiedOn", onto), loadingUnitInd, td.getLoadingUnitModifiedOn());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("packageTypeId", onto), loadingUnitInd, td.getPackageTypeId());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("orderNumber", onto), loadingUnitInd, td.getOrderNumber());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), loadingUnitInd, td.getOriginalDataSource());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
+
 
 
 		}
@@ -138,26 +136,6 @@ public class LoadingUnitGenerator {
 	}
 
 
-	public String getOrderNumber() {
-		return orderNumber;
-	}
-
-
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-
-
-	public OWLLiteral getLoadingUnitModifiedOn() {
-		return loadingUnitModifiedOn;
-	}
-
-
-	public void setLoadingUnitModifiedOn(OWLLiteral modifiedOn) {
-		this.loadingUnitModifiedOn = modifiedOn;
-	}
-
-
 	public String getPackageTypeId() {
 		return packageTypeId;
 	}
@@ -166,6 +144,18 @@ public class LoadingUnitGenerator {
 	public void setPackageTypeId(String packageTypeId) {
 		this.packageTypeId = packageTypeId;
 	}
+
+
+	public String getOriginalDataSource() {
+		return originalDataSource;
+	}
+
+
+	public void setOriginalDataSource(String originalDataSource) {
+		this.originalDataSource = originalDataSource;
+	}
+	
+	
 
 
 }

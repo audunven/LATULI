@@ -14,6 +14,7 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -29,33 +30,32 @@ import owlprocessing.OntologyOperations;
 public class PartiesGenerator {
 
 	String additionalPartyIdentification;
+	String gln;
 	String partiesHashCode;
 	String partyName;
-	String country;
-	String city;
+	String addressDetail;
+	String code3;
+	String code2;
+	String location;
 	String postalCode;
+	OWLLiteral modifiedOn;
 	String coordinates;
-	boolean isHub;
-	boolean isShipper;
-	boolean isCarrier;
-	boolean isConsignor;
-	
-	
 
-	public PartiesGenerator(String additionalPartyIdentification, String partiesHashCode, String partyName, String country, String city, String postalCode,
-			String coordinates, boolean isHub, boolean isShipper, boolean isCarrier, boolean isConsignor) {
+
+	public PartiesGenerator(String additionalPartyIdentification, String gln, String partiesHashCode, String partyName,
+			String addressDetail, String code3, String code2, String location, String postalCode, OWLLiteral modifiedOn,
+			String coordinates) {
 		this.additionalPartyIdentification = additionalPartyIdentification;
+		this.gln = gln;
 		this.partiesHashCode = partiesHashCode;
 		this.partyName = partyName;
-		this.country = country;
-		this.city = city;
+		this.addressDetail = addressDetail;
+		this.code3 = code3;
+		this.code2 = code2;
+		this.location = location;
 		this.postalCode = postalCode;
+		this.modifiedOn = modifiedOn;
 		this.coordinates = coordinates;
-		this.isHub = isHub;
-		this.isShipper = isShipper;
-		this.isCarrier = isCarrier;
-		this.isConsignor = isConsignor;
-
 	}
 
 
@@ -66,7 +66,7 @@ public class PartiesGenerator {
 
 		PartiesGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/Parties_last_10000.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Parties-filtered.csv"));
 
 		String line = br.readLine();
 
@@ -75,7 +75,7 @@ public class PartiesGenerator {
 		Set<PartiesGenerator> dataset = new HashSet<PartiesGenerator>();
 		
 		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
@@ -84,13 +84,18 @@ public class PartiesGenerator {
 			params = line.split(";");
 
 			data = new PartiesGenerator();
-						
+			
+			data.setAdditionalPartyIdentification(params[0]);
+			data.setGln(params[1]);
 			data.setPartiesHashCode(params[2]);
 			data.setPartyName(params[3]);
-			data.setCountry(params[6]);
-			data.setCity(params[8]);
-			data.setPostalCode(params[9]);
-			data.setCoordinates(params[19]);
+			data.setAddressDetail(params[4]);
+			data.setCode3(params[5]);
+			data.setCode2(params[6]);
+			data.setLocation(params[7]);
+			data.setPostalCode(params[8]);
+			data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[9]));
+			data.setCoordinates(params[10]);
 
 
 			dataset.add(data);
@@ -114,7 +119,6 @@ public class PartiesGenerator {
 		OWLIndividual partyInd = null;
 		
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
@@ -133,7 +137,7 @@ public class PartiesGenerator {
 
 
 			//DP for expressing party details
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("partyHashCode", onto), partyInd, td.getPartiesHashCode());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), partyInd, td.getPartiesHashCode());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 
@@ -142,17 +146,31 @@ public class PartiesGenerator {
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("country", onto), partyInd, td.getCountry());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("addressDetail", onto), partyInd, td.getAddressDetail());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("city", onto), partyInd, td.getCity());
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("code3", onto), partyInd, td.getCode3());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("code2", onto), partyInd, td.getCode2());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("location", onto), partyInd, td.getLocation());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("postalCode", onto), partyInd, td.getPostalCode());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
+			
+			if (!td.getModifiedOn().getLiteral().startsWith("0000")) {
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), partyInd, td.getModifiedOn());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange); 
+			}
 						
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("asWKT", onto), partyInd, formatCoordinates(td.getCoordinates()));
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -190,22 +208,7 @@ public class PartiesGenerator {
 
 
 	public String getCountry() {
-		return country;
-	}
-
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
+		return code3;
 	}
 
 
@@ -239,48 +242,65 @@ public class PartiesGenerator {
 	}
 
 
-	public boolean isHub() {
-		return isHub;
+	public String getGln() {
+		return gln;
 	}
 
 
-	public void setHub(boolean isHub) {
-		this.isHub = isHub;
+	public void setGln(String gln) {
+		this.gln = gln;
 	}
 
 
-	public boolean isShipper() {
-		return isShipper;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
 
 
-	public void setShipper(boolean isShipper) {
-		this.isShipper = isShipper;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 
 
-	public boolean isCarrier() {
-		return isCarrier;
+	public String getCode3() {
+		return code3;
 	}
 
 
-	public void setCarrier(boolean isCarrier) {
-		this.isCarrier = isCarrier;
+	public void setCode3(String code3) {
+		this.code3 = code3;
 	}
 
 
-	public boolean isConsignor() {
-		return isConsignor;
+	public String getCode2() {
+		return code2;
 	}
 
 
-	public void setConsignor(boolean isConsignor) {
-		this.isConsignor = isConsignor;
+	public void setCode2(String code2) {
+		this.code2 = code2;
 	}
 
-	
+
+	public String getLocation() {
+		return location;
+	}
 
 
-	
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	public OWLLiteral getModifiedOn() {
+		return modifiedOn;
+	}
+
+
+	public void setModifiedOn(OWLLiteral modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
+
 
 }

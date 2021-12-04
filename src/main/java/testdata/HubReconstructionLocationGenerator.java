@@ -21,6 +21,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -64,7 +65,7 @@ public class HubReconstructionLocationGenerator
 
 			data = new HubReconstructionLocationGenerator();
 						
-			data.setAdditionalPartyIdentification(params[1]);
+			data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[1]));
 			data.setLaneId(params[2]);
 
 
@@ -105,13 +106,13 @@ public class HubReconstructionLocationGenerator
 			iterator+=1;	
 
 			//individuals and association to classes
-			hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_HubReconstructionLocation"));
+			hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_hubreconstructionlocation"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 			
 			//object properties
-			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_Party");
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_party");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);

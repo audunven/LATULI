@@ -24,6 +24,17 @@ public class StringUtilities {
 	static OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 	static OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 	
+	
+	public static void main(String[] args) {
+		
+		String input = "TNT France Y";
+		String output = removeWhiteSpace(input);
+		
+		System.out.println(output);
+		
+		
+	}
+	
 	/**
 	 * Capitalises each word
 	 * @param str input string
@@ -512,6 +523,13 @@ public class StringUtilities {
 			return null;
 		}
 
+	}
+	
+	public static String removeWhiteSpace (String input) {
+		
+		String output = input.replaceAll("\\s+", "_");
+
+		return output;
 	}
 
 

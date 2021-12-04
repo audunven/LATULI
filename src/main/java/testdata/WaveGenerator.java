@@ -22,6 +22,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -102,7 +103,7 @@ public class WaveGenerator {
 						
 			data.setWaveId(params[1]);
 			data.setReleasedOn(OntologyOperations.convertToDateTime(manager, params[2]));
-			data.setHubAdditionalPartyIdentification(params[3]);
+			data.setHubAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[3]));
 			data.setClosedOn(OntologyOperations.convertToDateTime(manager, params[4]));
 			data.setStatus(params[5]);
 			data.setWaveStartProcessingOn(OntologyOperations.convertToDateTime(manager, params[6]));
@@ -157,14 +158,14 @@ public class WaveGenerator {
 		for (WaveGenerator td : dataset) {
 			iterator+=1;	
 
-			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_Wave"));
+			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 			
 
 			//adding hubParty	
-			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyIdentification() + "_Party"));
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyIdentification() + "_party"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);

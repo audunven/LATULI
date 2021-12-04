@@ -115,14 +115,14 @@ public class ShipmentItemGenerator
 			iterator+=1;	
 
 			//adding shipmentItem individual
-			shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_ShipmentItem"));
+			shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_shipmentitem"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentItemClass, shipmentItemInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 			
 			
 			//object properties
-			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_Shipment");
+			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -131,7 +131,7 @@ public class ShipmentItemGenerator
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_LoadingUnit");
+			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);

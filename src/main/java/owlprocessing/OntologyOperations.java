@@ -72,9 +72,7 @@ public class OntologyOperations {
 		}
 		
 		String dateTime = input.substring(0, input.lastIndexOf("."));
-		
-		//String dateTime = input.replaceAll(".0000000", "");
-		
+				
 		dateTime = dateTime.replaceAll(" ", "T");
 		
 		OWLDataFactory df = manager.getOWLDataFactory();
@@ -141,6 +139,11 @@ public class OntologyOperations {
 	   Apr 19, 2021
 	 */
 	public static OWLLiteral convertToDecimal (OWLOntologyManager manager, String input) {
+		
+		//avoid exponentials that will throw errors in RDF
+		if (input.contains("e") || input.contains("E")) {
+			input = "0.0";
+		}
 		
 		OWLDataFactory df = manager.getOWLDataFactory();
 		

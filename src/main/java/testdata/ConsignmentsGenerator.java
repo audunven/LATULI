@@ -22,6 +22,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -117,6 +118,8 @@ public class ConsignmentsGenerator {
 
 		while (line != null) {
 			params = line.split(",");
+			
+			System.out.println("Params size: " + params.length);
 
 			data = new ConsignmentsGenerator();
 						
@@ -125,11 +128,11 @@ public class ConsignmentsGenerator {
 			data.setConsignmentType(params[3]);			
 			data.setReconstructionLane(params[4]);
 			data.setReconstructionLocation(params[5]);
-			data.setCarrierAdditionalPartyIdentification(params[6]);
-			data.setConsignorAdditionalPartyIdentification(params[7]);
-			data.setConsigneeAdditionalPartyIdentification(params[8]);
+			data.setCarrierAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[6]));
+			data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[7]));
+			data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[8]));
 			data.setConsignmentWaveId(params[9]);
-			data.setHubAdditionalPartyidentification(params[10]);
+			data.setHubAdditionalPartyidentification(StringUtilities.removeWhiteSpace(params[10]));
 			data.setReconstructionType(params[11]);
 			data.setTaskClosedOn(OntologyOperations.convertToDateTime(manager, params[12]));
 			data.setFullPalletConsignment(params[13]);
@@ -193,14 +196,14 @@ public class ConsignmentsGenerator {
 			iterator+=1;	
 
 			//adding consignment individual
-			consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_Consignment"));
+			consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_consignment"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, consignmentInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 
 			//adding transport individual and OP			
 			if (!td.getTransportId().equals("NULL")) {
-				transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_Transport"));
+				transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -213,7 +216,7 @@ public class ConsignmentsGenerator {
 
 			//adding wave individual
 			if (!td.getConsignmentWaveId().equals("NULL")) {
-				waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_Wave"));
+				waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_wave"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -227,7 +230,7 @@ public class ConsignmentsGenerator {
 			//adding carrier party individual
 			if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_Party"));
+				carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, carrierInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -242,7 +245,7 @@ public class ConsignmentsGenerator {
 			//adding consignor party individual
 			if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_Party"));
+				consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consignorInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -257,7 +260,7 @@ public class ConsignmentsGenerator {
 			//adding consignee party individual
 			if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_Party"));
+				consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consigneeInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -272,7 +275,7 @@ public class ConsignmentsGenerator {
 			//adding hub party individual
 			if (!td.getHubAdditionalPartyidentification().equals("0") || !td.getHubAdditionalPartyidentification().equals("Hub internal movements")) {
 				
-				hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyidentification() + "_Party"));
+				hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyidentification() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -348,18 +351,22 @@ public class ConsignmentsGenerator {
 			manager.applyChange(addAxiomChange);
 			
 		
+			if (td.getYear() != null) {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), consignmentInd, td.getYear());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
+			}
 
+			if (td.getSeason() != null) {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), consignmentInd, td.getSeason());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-
+			}
+			if (td.getWeekDay() != null) {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), consignmentInd, td.getWeekDay());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			 
+			}
 		}
 		//save the ontology in each iteration
 		manager.saveOntology(onto);

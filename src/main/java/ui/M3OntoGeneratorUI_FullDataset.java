@@ -23,23 +23,27 @@ import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
 import testdata.ConsignmentsGenerator;
+import testdata.DangerousGoodsGenerator;
 import testdata.HubReconstructionLocationGenerator;
 import testdata.InboundTrucksGenerator;
 import testdata.LoadingUnitGenerator;
 import testdata.PartiesGenerator;
 import testdata.ShipmentItemGenerator;
 import testdata.ShipmentsGenerator;
+import testdata.TradeItemGenerator;
 import testdata.TransportsGenerator;
 import testdata.WaveGenerator;
 import testdata.XDocLoadingUnitGenerator;
+import utilities.StringUtilities;
 
 public class M3OntoGeneratorUI_FullDataset {
 	
 	public static void main(String[] args) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
 		
+		long startTime = System.nanoTime();
+		
 		String csvFolder = "./files/CSV/Truls/Tail_100000/";
 		String m3Onto = "./files/ONTOLOGIES/M3Onto_TBox.owl";
-		//String numRows = "";
 		
 		//import ontology
 		File ontoFile = new File(m3Onto);
@@ -77,16 +81,11 @@ public class M3OntoGeneratorUI_FullDataset {
 
 					data = new PartiesGenerator();
 					
-					data.setAdditionalPartyIdentification(params[0]);
+					data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[0]));
 					data.setGln(params[1]);
-					data.setPartiesHashCode(params[2]);
-					data.setPartyName(params[3]);
-					data.setAddressDetail(params[4]);
-					data.setCode3(params[5]);
 					data.setCode2(params[6]);
-					data.setLocation(params[7]);
-					data.setPostalCode(params[8]);
-					data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[9]));
+					data.setLocation(StringUtilities.removeWhiteSpace(params[7]));
+					data.setPostalCode(StringUtilities.removeWhiteSpace(params[8]));
 					data.setCoordinates(params[10]);
 
 
@@ -96,9 +95,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				}
 
 				br.close();
-				
-				//df = manager.getOWLDataFactory();
-				
+								
 				OWLClass partyClass = OntologyOperations.getClass("Party", onto);
 				OWLIndividual partyInd = null;
 				
@@ -109,11 +106,10 @@ public class M3OntoGeneratorUI_FullDataset {
 
 				//adding new parties
 				for (PartiesGenerator td : dataset) {
-					//iterator+=1;	
 
 					//adding party individual
 					if (!td.getAdditionalPartyIdentification().equals("nan")) {
-					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_Party"));
+					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_party"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
@@ -122,23 +118,13 @@ public class M3OntoGeneratorUI_FullDataset {
 
 					//DP for expressing party details
 					
+					if (td.getAdditionalPartyIdentification() != null) {
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), partyInd, td.getAdditionalPartyIdentification());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
+					}
 					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), partyInd, td.getPartiesHashCode());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("partyName", onto), partyInd, td.getPartyName());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("addressDetail", onto), partyInd, td.getAddressDetail());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("code3", onto), partyInd, td.getCode3());
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("gln", onto), partyInd, td.getGln());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
@@ -153,12 +139,6 @@ public class M3OntoGeneratorUI_FullDataset {
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("postalCode", onto), partyInd, td.getPostalCode());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
-					
-					if (!td.getModifiedOn().getLiteral().startsWith("0000")) {
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), partyInd, td.getModifiedOn());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange); 
-					}
 								
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("asWKT", onto), partyInd, formatCoordinates(td.getCoordinates()));
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -192,8 +172,8 @@ public class M3OntoGeneratorUI_FullDataset {
 					data.setShipmentId(params[1]);
 					data.setShippedOn(OntologyOperations.convertToDateTime(manager, params[2]));
 					data.setExpectedDeliveryOn(OntologyOperations.convertToDateTime(manager, params[3]));
-					data.setShipperAdditionalPartyIdentification(params[4]);
-					data.setReceiverAdditionalPartyIdentification(params[5]);
+					data.setShipperAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[4]));
+					data.setReceiverAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[5]));
 					data.setPlannedDeliveryDate(OntologyOperations.convertToDateTime(manager,params[6]));
 					data.setQttBoxesInShipment(OntologyOperations.convertToInt(manager, params[7]));
 					data.setQttPalletsInShipment(OntologyOperations.convertToInt(manager, params[8]));
@@ -226,14 +206,14 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (ShipmentsGenerator td : dataset) { 
 					  					  
 					  //adding shipment individual 
-					  shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "_Shipment")); 
+					  shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "_shipment")); 
 					  classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd); 
 					  addAxiomChange = new AddAxiom(onto, classAssertionAxiom); 
 					  manager.applyChange(addAxiomChange);
 					  
 					  	//adding shipper individual
 						if (!td.getShipperAdditionalPartyIdentification().equals("NULL")) {
-						shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_Party"));
+						shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(shipperClass, shipperInd);			
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -246,7 +226,7 @@ public class M3OntoGeneratorUI_FullDataset {
 						
 					  	//adding receiver individual
 						if (!td.getReceiverAdditionalPartyIdentification().equals("NULL")) {
-						receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_Party"));
+						receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(receiverClass, receiverInd);			
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -311,7 +291,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				
 				LoadingUnitGenerator data;
 
-				BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/LoadingUnits_last_10000.csv"));
+				BufferedReader br = new BufferedReader(new FileReader(file));
 
 				String line = br.readLine();
 
@@ -347,7 +327,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (LoadingUnitGenerator td : dataset) {
 
 					//adding loading unit individual
-					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getLoadingUnitId() + "_LoadingUnit"));
+					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getLoadingUnitId() + "_loadingunit"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
@@ -364,6 +344,210 @@ public class M3OntoGeneratorUI_FullDataset {
 				}
 				//save the ontology in each iteration
 				manager.saveOntology(onto);
+				
+				
+				
+				
+				
+			} else if (file.getName().startsWith("TradeItems")) {
+				
+				System.out.println("Getting trade item individuals from " + file.getName());
+				
+				TradeItemGenerator data;
+
+				BufferedReader br = new BufferedReader(new FileReader(file));
+
+				String line = br.readLine();
+
+				String[] params = null;
+
+				Set<TradeItemGenerator> dataset = new HashSet<TradeItemGenerator>();
+				
+				while (line != null) {
+					params = line.split(";");
+
+					data = new TradeItemGenerator();
+					
+					data.setShipmentId(params[0]);
+					data.setLoadingUnitId(params[1]);	
+					data.setGtin(params[2]);
+					data.setQuantity(OntologyOperations.convertToDecimal(manager, params[3]));
+					data.setMaterial(params[4]);
+					data.setDescription(params[5]);
+					data.setSupplierQuantity(OntologyOperations.convertToDecimal(manager, params[6]));
+					data.setCustomerQuantity(OntologyOperations.convertToDecimal(manager, params[7]));
+					data.setSupplierProductDescription(params[8]);
+					data.setCustomerProductDescription(params[9]);
+					data.setSupplierProductId(params[10]);
+					data.setCustomerProductId(params[11]);
+					data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[12]));
+					data.setLotNumber(params[13]);
+					data.setPurchaseOrder(params[14]);
+					data.setSalesOrder(params[15]);
+					data.setHandlingInstruction(params[16]);
+					data.setOriginalDataSource(params[17]);
+
+					dataset.add(data);
+					
+					line = br.readLine();
+
+				}
+
+				br.close();
+				
+				OWLClass tradeItemClass = OntologyOperations.getClass("TradeItem", onto);
+				OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
+				OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
+
+				OWLIndividual tradeItemInd = null;
+				OWLIndividual shipmentInd = null;
+				OWLIndividual loadingUnitInd = null;
+				
+				OWLAxiom classAssertionAxiom = null; 
+				OWLAxiom OPAssertionAxiom = null; 
+				OWLAxiom DPAssertionAxiom = null; 
+
+				AddAxiom addAxiomChange = null;
+				
+				
+				for (TradeItemGenerator td : dataset) {
+
+					//adding dangerous goods individual
+					tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_tradeitem"));
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
+					manager.applyChange(addAxiomChange);
+
+					//object properties			
+					shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), tradeItemInd, shipmentInd);
+					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), tradeItemInd, loadingUnitInd);
+					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+
+					//data properties
+					if (!td.getModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), tradeItemInd, td.getModifiedOn());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					}
+
+				}
+				//save the ontology in each iteration
+				manager.saveOntology(onto);
+				
+				
+				
+				
+			} else if (file.getName().startsWith("DRGs")) {
+				
+				System.out.println("Getting dangerous goods individuals from " + file.getName());
+				
+				DangerousGoodsGenerator data;
+
+				BufferedReader br = new BufferedReader(new FileReader(file));
+
+				String line = br.readLine();
+
+				String[] params = null;
+
+				Set<DangerousGoodsGenerator> dataset = new HashSet<DangerousGoodsGenerator>();
+				
+				
+				while (line != null) {
+					params = line.split(";");
+
+					data = new DangerousGoodsGenerator();
+					
+					data.setLoadingUnitId(params[0]);	
+					data.setGtin(params[1]);
+					data.setShipmentId(params[2]);
+					data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[3]));
+
+					dataset.add(data);
+					
+					line = br.readLine();
+
+				}
+
+				br.close();
+				
+				OWLClass dangerousGoodsClass = OntologyOperations.getClass("DangerousGoods", onto);
+				OWLClass tradeItemClass = OntologyOperations.getClass("TradeItem", onto);
+				OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
+				OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
+
+				OWLIndividual dangerousGoodsInd = null;
+				OWLIndividual tradeItemInd = null;
+				OWLIndividual shipmentInd = null;
+				OWLIndividual loadingUnitInd = null;
+				
+				OWLAxiom classAssertionAxiom = null; 
+				OWLAxiom OPAssertionAxiom = null; 
+				OWLAxiom DPAssertionAxiom = null; 
+
+				AddAxiom addAxiomChange = null;
+				
+				for (DangerousGoodsGenerator td : dataset) {
+
+					//adding dangerous goods individual
+					dangerousGoodsInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "-" + td.getLoadingUnitId() + "_dgr"));
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(dangerousGoodsClass, dangerousGoodsInd);			
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
+					manager.applyChange(addAxiomChange);
+
+					//object properties
+					tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "_tradeitem"));
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
+					manager.applyChange(addAxiomChange);
+					
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("relatesToTradeItem", onto), dangerousGoodsInd, tradeItemInd);
+					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), dangerousGoodsInd, shipmentInd);
+					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
+					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
+					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), dangerousGoodsInd, loadingUnitInd);
+					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+
+					//data properties
+					if (!td.getModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), dangerousGoodsInd, td.getModifiedOn());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					}
+
+				}
+				//save the ontology in each iteration
+				manager.saveOntology(onto);
+				
+				
 				
 			} else if (file.getName().startsWith("ShipmentItems")) {
 				
@@ -413,13 +597,13 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (ShipmentItemGenerator td : dataset) {
 
 					//adding shipmentItem individual
-					shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_ShipmentItem"));
+					shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_shipmentitem"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentItemClass, shipmentItemInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
 								
 					//object properties
-					shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_Shipment");
+					shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -428,7 +612,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_LoadingUnit");
+					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -458,7 +642,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				
 				TransportsGenerator data;
 
-				BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/Transports_last_10000.csv"));
+				BufferedReader br = new BufferedReader(new FileReader(file));
 
 				String line = br.readLine();
 
@@ -501,7 +685,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				//adding new transports
 				for (TransportsGenerator td : dataset) {
 
-					transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_Transport"));
+					transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
@@ -539,7 +723,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				
 				while (line != null) {
 					params = line.split(",");
-
+					
 					data = new ConsignmentsGenerator();
 								
 					data.setConsignmentId(params[1]);
@@ -547,11 +731,11 @@ public class M3OntoGeneratorUI_FullDataset {
 					data.setConsignmentType(params[3]);			
 					data.setReconstructionLane(params[4]);
 					data.setReconstructionLocation(params[5]);
-					data.setCarrierAdditionalPartyIdentification(params[6]);
-					data.setConsignorAdditionalPartyIdentification(params[7]);
-					data.setConsigneeAdditionalPartyIdentification(params[8]);
+					data.setCarrierAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[6]));
+					data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[7]));
+					data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[8]));
 					data.setConsignmentWaveId(params[9]);
-					data.setHubAdditionalPartyidentification(params[10]);
+					data.setHubAdditionalPartyidentification(StringUtilities.removeWhiteSpace(params[10]));
 					data.setReconstructionType(params[11]);
 					data.setTaskClosedOn(OntologyOperations.convertToDateTime(manager, params[12]));
 					data.setFullPalletConsignment(params[13]);
@@ -603,14 +787,14 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (ConsignmentsGenerator td : dataset) {
 
 					//adding consignment individual
-					consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_Consignment"));
+					consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_consignment"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, consignmentInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
 
 					//adding transport individual and OP			
 					if (!td.getTransportId().equals("NULL")) {
-						transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_Transport"));
+						transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -623,7 +807,7 @@ public class M3OntoGeneratorUI_FullDataset {
 
 					//adding wave individual
 					if (!td.getConsignmentWaveId().equals("NULL")) {
-						waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_Wave"));
+						waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_wave"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -637,7 +821,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding carrier party individual
 					if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_Party"));
+						carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, carrierInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -652,7 +836,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding consignor party individual
 					if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_Party"));
+						consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consignorInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -667,7 +851,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding consignee party individual
 					if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_Party"));
+						consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consigneeInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -682,7 +866,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding hub party individual
 					if (!td.getHubAdditionalPartyidentification().equals("0") || !td.getHubAdditionalPartyidentification().equals("Hub internal movements")) {
 						
-						hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyidentification() + "_Party"));
+						hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyidentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -758,17 +942,22 @@ public class M3OntoGeneratorUI_FullDataset {
 					manager.applyChange(addAxiomChange);
 					
 				
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), consignmentInd, td.getYear());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
+					if (td.getYear() != null) {
+						DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), consignmentInd, td.getYear());
+						addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+						manager.applyChange(addAxiomChange);
+						}
 
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), consignmentInd, td.getSeason());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), consignmentInd, td.getWeekDay());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
+						if (td.getSeason() != null) {
+						DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), consignmentInd, td.getSeason());
+						addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+						manager.applyChange(addAxiomChange);
+						}
+						if (td.getWeekDay() != null) {
+						DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), consignmentInd, td.getWeekDay());
+						addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+						manager.applyChange(addAxiomChange);
+						}
 					 
 				}
 				//save the ontology in each iteration
@@ -793,8 +982,9 @@ public class M3OntoGeneratorUI_FullDataset {
 
 					data = new HubReconstructionLocationGenerator();
 								
-					data.setAdditionalPartyIdentification(params[1]);
+					data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[1]));
 					data.setLaneId(params[2]);
+
 
 					dataset.add(data);
 					line = br.readLine();
@@ -818,13 +1008,13 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (HubReconstructionLocationGenerator td : dataset) {
 
 					//individuals and association to classes
-					hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_HubReconstructionLocation"));
+					hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_hubreconstructionlocation"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
 					
 					//object properties
-					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_Party");
+					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_party");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -868,7 +1058,7 @@ public class M3OntoGeneratorUI_FullDataset {
 								
 					data.setWaveId(params[1]);
 					data.setReleasedOn(OntologyOperations.convertToDateTime(manager, params[2]));
-					data.setHubAdditionalPartyIdentification(params[3]);
+					data.setHubAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[3]));
 					data.setClosedOn(OntologyOperations.convertToDateTime(manager, params[4]));
 					data.setStatus(params[5]);
 					data.setWaveStartProcessingOn(OntologyOperations.convertToDateTime(manager, params[6]));
@@ -911,14 +1101,14 @@ public class M3OntoGeneratorUI_FullDataset {
 				//adding new waves
 				for (WaveGenerator td : dataset) {
 
-					waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_Wave"));
+					waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
 					
 
 					//adding hubParty	
-					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyIdentification() + "_Party"));
+					partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyIdentification() + "_party"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -927,8 +1117,6 @@ public class M3OntoGeneratorUI_FullDataset {
 					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubParty", onto), waveInd, partyInd);
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);	
-
-
 
 					//DPs
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("waveId", onto), waveInd, td.getWaveId());
@@ -1030,7 +1218,6 @@ public class M3OntoGeneratorUI_FullDataset {
 
 					data = new XDocLoadingUnitGenerator();
 								
-					//TODO: add waveId
 					data.setInternalId(params[1]);
 					data.setPreSortScanOn(OntologyOperations.convertToDateTime(manager, params[2]));
 					data.setReconstructedScanOn(OntologyOperations.convertToDateTime(manager, params[3]));
@@ -1039,24 +1226,26 @@ public class M3OntoGeneratorUI_FullDataset {
 					data.setLoadingUnit(params[6]);
 					data.setInboundConsignmentId(params[7]);
 					data.setOutboundConsignmentId(params[8]);	
-					data.setAdditionalPartyIdentification(params[9]);
-					data.setHubReconstructionAdditionalPartyIdentification(params[10]);
-					data.setShipperAdditionalPartyIdentification(params[11]);
-					data.setReceiverAdditionalPartyIdentification(params[12]);
-					data.setCarrierAdditionalPartyIdentification(params[13]);
-					data.setConsignorAdditionalPartyIdentification(params[14]);
-					data.setConsigneeAdditionalPartyIdentification(params[15]);			
-					data.setReconstructionTypeId(params[16]);
-					data.setSplitShipment(OntologyOperations.convertToInt(manager, params[17]));
-					data.setInboundParentLoadingUnitId(params[18]);
-					data.setOutboundParentLoadingUnitId(params[19]);
-					data.setOriginalDataSource(params[20]);
+					data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[9]));
+					data.setHubReconstructionAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[10]));
+					data.setShipperAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[11]));
+					data.setReceiverAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[12]));
+					data.setCarrierAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[13]));
+					data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[14]));
+					data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[15]));		
+					data.setWaveId(params[16]);
+					data.setReconstructionTypeId(params[17]);
+					data.setSplitShipment(OntologyOperations.convertToInt(manager, params[18]));
+					data.setInboundParentLoadingUnitId(params[19]);
+					data.setOutboundParentLoadingUnitId(params[20]);
+					data.setOriginalDataSource(params[21]);
 					
-					if (params.length == 25) {
+					if (params.length == 26) {
 						
-					data.setYear(OntologyOperations.convertToDecimal(manager, params[23]));
-					data.setSeason(OntologyOperations.convertToDecimal(manager, params[24]));
-					data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[25]));
+					data.setYear(OntologyOperations.convertToDecimal(manager, params[22]));
+					data.setSeason(OntologyOperations.convertToDecimal(manager, params[23]));
+					data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[24]));
+					data.setDelta(OntologyOperations.convertToDecimal(manager, params[25]));
 					 
 					
 					}
@@ -1067,6 +1256,7 @@ public class M3OntoGeneratorUI_FullDataset {
 				}
 
 				br.close();
+
 				
 				OWLClass xDocLoadingUnitClass = OntologyOperations.getClass("XDocLoadingUnit", onto);
 				OWLClass consignmentClass = OntologyOperations.getClass("Consignment", onto);
@@ -1100,24 +1290,25 @@ public class M3OntoGeneratorUI_FullDataset {
 				for (XDocLoadingUnitGenerator td : dataset) {
 
 					//adding individual
-					xDocLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" +td.getInternalId() + "_XDocLoadingUnit"));
+					xDocLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" +td.getInternalId() + "_xdocloadingunit"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(xDocLoadingUnitClass, xDocLoadingUnitInd);			
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 					manager.applyChange(addAxiomChange);
 					
 					
 					//object properties
-					hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getHubReconstructionAdditionalPartyIdentification() + "_HubReconstructionLocation");
+					if (td.getHubReconstructionAdditionalPartyIdentification() != null) {
+					hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getHubReconstructionAdditionalPartyIdentification() + "_hubreconstructionlocation");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
-					
-					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasReconstructionLocation", onto), xDocLoadingUnitInd, hubReconstructionLocationInd);
+								
+					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubReconstructionParty", onto), xDocLoadingUnitInd, hubReconstructionLocationInd);
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
+					}
 					
-					
-					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitForXDocLoadingUnit() + "_LoadingUnit");
+					loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitForXDocLoadingUnit() + "_loadingunit");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1126,7 +1317,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-					inboundParentLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getInboundParentLoadingUnitId() + "_LoadingUnit");
+					inboundParentLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getInboundParentLoadingUnitId() + "_loadingunit");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, inboundParentLoadingUnitInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1135,7 +1326,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-					outboundParentLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getOutboundParentLoadingUnitId() + "_LoadingUnit");
+					outboundParentLoadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getOutboundParentLoadingUnitId() + "_loadingunit");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, outboundParentLoadingUnitInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1144,7 +1335,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 
-					inboundConsignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getInboundConsignmentId() + "_Consignment");
+					inboundConsignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getInboundConsignmentId() + "_consignment");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, inboundConsignmentInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1153,7 +1344,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
-					outboundConsignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getOutboundConsignmentId() + "_Consignment");
+					outboundConsignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getOutboundConsignmentId() + "_consignment");
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, outboundConsignmentInd);	
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1165,7 +1356,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					
 					if (!td.getAdditionalPartyIdentification().equals("0") || !td.getAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_Party"));
+						partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1180,7 +1371,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding hub reconstruction party
 					if (!td.getHubReconstructionAdditionalPartyIdentification().equals("0") || !td.getHubReconstructionAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						hubReconstructionInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubReconstructionAdditionalPartyIdentification() + "_Party"));
+						hubReconstructionInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubReconstructionAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubReconstructionInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1195,7 +1386,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding shipper party individual
 					if (!td.getShipperAdditionalPartyIdentification().equals("0") || !td.getShipperAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_Party"));
+						shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, shipperInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1210,7 +1401,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding receiver party individual
 					if (!td.getReceiverAdditionalPartyIdentification().equals("0") || !td.getReceiverAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_Party"));
+						receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, receiverInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1225,7 +1416,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding carrier party individual
 					if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_Party"));
+						carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, carrierInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1240,7 +1431,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding consignor party individual
 					if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_Party"));
+						consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consignorInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1255,7 +1446,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					//adding consignee party individual
 					if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
 						
-						consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_Party"));
+						consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_party"));
 						classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consigneeInd);
 						addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 						manager.applyChange(addAxiomChange);
@@ -1268,7 +1459,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					}
 					
 
-					waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_Wave"));
+					waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));
 					classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);
 					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 					manager.applyChange(addAxiomChange);
@@ -1287,7 +1478,7 @@ public class M3OntoGeneratorUI_FullDataset {
 					}
 					
 					if (!td.getReconstructedScanOn().getLiteral().equals("0000-00-00T00:00:00")) {
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionScanOn", onto), xDocLoadingUnitInd, td.getReconstructedScanOn());
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructedScanOn", onto), xDocLoadingUnitInd, td.getReconstructedScanOn());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					}
@@ -1312,138 +1503,39 @@ public class M3OntoGeneratorUI_FullDataset {
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
 					
+					if (td.getYear() != null) {
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), xDocLoadingUnitInd, td.getYear());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
-
+					}
+					if (td.getSeason() != null) {
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), xDocLoadingUnitInd, td.getSeason());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
-
+					}
+					if (td.getWeekDay() != null) {
 					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), xDocLoadingUnitInd, td.getWeekDay());
 					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 					manager.applyChange(addAxiomChange);
-
+					}
+					if (td.getDelta() != null) {
+					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("delta", onto), xDocLoadingUnitInd, td.getDelta());
+					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+					manager.applyChange(addAxiomChange);
+					}
 
 				}
 				//save the ontology in each iteration
 				manager.saveOntology(onto);
 				
-			} else if (file.getName().startsWith("InboundTruck")) {
-				
-				System.out.println("Getting inbound truck individuals from " + file.getName());
-				
-				InboundTrucksGenerator data;
-
-				BufferedReader br = new BufferedReader(new FileReader(file));
-
-				String line = br.readLine();
-
-				String[] params = null;
-
-				Set<InboundTrucksGenerator> dataset = new HashSet<InboundTrucksGenerator>();
-				
-				while (line != null) {
-					params = line.split(";");
-
-					data = new InboundTrucksGenerator();
-								
-					data.setTruckId(params[1]);
-					data.setTrailerIdentification(params[2]);
-					data.setFirstScan(OntologyOperations.convertToDateTime(manager, params[3]));
-					data.setNumberOfShipments(OntologyOperations.convertToInt(manager, params[4]));
-					data.setExpectedArrival(OntologyOperations.convertToDateTime(manager, params[5]));
-					data.setNumberOfLooseCartons(OntologyOperations.convertToInt(manager, params[6]));
-					data.setTotalVolume(OntologyOperations.convertToDecimal(manager, params[7]));
-					data.setTotalWeight(OntologyOperations.convertToDecimal(manager, params[8]));
-					data.setPalletNr(OntologyOperations.convertToInt(manager, params[9]));
-					data.setM3HubId(params[10]);
-
-					
-					dataset.add(data);
-					line = br.readLine();
-
-				}
-
-				br.close();
-				
-				OWLClass inboundTruckClass = OntologyOperations.getClass("InboundTruck", onto);
-				OWLClass m3HubClass = OntologyOperations.getClass("HubReconstructionLocation", onto);
-
-				//OWLDataFactory df = manager.getOWLDataFactory();
-
-				OWLIndividual inboundTruckInd = null;
-				OWLIndividual m3HubInd = null;
-				
-				OWLAxiom classAssertionAxiom = null; 
-				OWLAxiom OPAssertionAxiom = null; 
-				OWLAxiom DPAssertionAxiom = null; 
-
-				AddAxiom addAxiomChange = null;
-
-				//adding process chain
-				for (InboundTrucksGenerator td : dataset) {
-
-					//adding inbound truck individual
-					inboundTruckInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTruckId() + "_inboundTruck"));
-					classAssertionAxiom = df.getOWLClassAssertionAxiom(inboundTruckClass, inboundTruckInd);			
-					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-					manager.applyChange(addAxiomChange);
-					
-					if (!td.getM3HubId().equals("NULL")) {
-					m3HubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getM3HubId() + "m3HubId"));
-					classAssertionAxiom = df.getOWLClassAssertionAxiom(m3HubClass, m3HubInd);			
-					addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("m3HubId", onto), inboundTruckInd, m3HubInd);
-					addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-					manager.applyChange(addAxiomChange);				
-					}
-				
-					if (!td.getFirstScan().getLiteral().equals("0000-00-00T00:00:00")) {
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("firstScan", onto), inboundTruckInd, td.getFirstScan());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					}
-					
-					if (!td.getExpectedArrival().getLiteral().equals("0000-00-00T00:00:00")) {
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("inboundTruckExpectedArrival", onto), inboundTruckInd, td.getExpectedArrival());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					}
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("palletNr", onto), inboundTruckInd, td.getPalletNr());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("totalWeight", onto), inboundTruckInd, td.getTotalWeight());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("totalVolume", onto), inboundTruckInd, td.getTotalVolume());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("numberOfLooseCartons", onto), inboundTruckInd, td.getNumberOfLooseCartons());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("trailerIdentification", onto), inboundTruckInd, td.getTrailerIdentification());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("numberOfShipments", onto), inboundTruckInd, td.getNumberOfShipments());
-					addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-					manager.applyChange(addAxiomChange);
-					
-					
-
-				}
-				//save the ontology in each iteration
-				manager.saveOntology(onto);
-				
-			}
+			} 
+			
+			long endTime = System.nanoTime();
+			
+			long timeElapsed = endTime - startTime;
+			
+			System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+			
 		}
 		
 		

@@ -47,7 +47,7 @@ public class DangerousGoodsGenerator
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		TradeItemGenerator data;
+		DangerousGoodsGenerator data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/DRGs_last_100000_Audun.csv"));
 
@@ -55,7 +55,7 @@ public class DangerousGoodsGenerator
 
 		String[] params = null;
 
-		Set<TradeItemGenerator> dataset = new HashSet<TradeItemGenerator>();
+		Set<DangerousGoodsGenerator> dataset = new HashSet<DangerousGoodsGenerator>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -66,7 +66,7 @@ public class DangerousGoodsGenerator
 		while (line != null) {
 			params = line.split(";");
 
-			data = new TradeItemGenerator();
+			data = new DangerousGoodsGenerator();
 			
 			data.setLoadingUnitId(params[0]);	
 			data.setGtin(params[1]);
@@ -110,17 +110,17 @@ public class DangerousGoodsGenerator
 
 		int iterator = 0;
 
-		for (TradeItemGenerator td : dataset) {
+		for (DangerousGoodsGenerator td : dataset) {
 			iterator+=1;	
 
 			//adding dangerous goods individual
-			dangerousGoodsInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "-" + td.getLoadingUnitId() + "_DGR"));
+			dangerousGoodsInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "-" + td.getLoadingUnitId() + "_dgr"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(dangerousGoodsClass, dangerousGoodsInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
 
 			//object properties
-			tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "_TradeItem"));
+			tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "_tradeitem"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
@@ -129,7 +129,7 @@ public class DangerousGoodsGenerator
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_Shipment");
+			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -138,7 +138,7 @@ public class DangerousGoodsGenerator
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_LoadingUnit");
+			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);

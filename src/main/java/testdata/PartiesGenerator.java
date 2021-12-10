@@ -32,19 +32,29 @@ public class PartiesGenerator {
 
 	String additionalPartyIdentification;
 	String gln;
+	String hashCode;
 	String code2;
 	String location;
 	String postalCode;
+	OWLLiteral isHub;
+	OWLLiteral isShipper;
+	OWLLiteral isCarrier;
+	OWLLiteral isConsignor;
 	String coordinates;
 
 
-	public PartiesGenerator(String additionalPartyIdentification, String gln, String code2, String location, String postalCode, 
-			String coordinates) {
+	public PartiesGenerator(String additionalPartyIdentification, String gln, String hashCode, String code2, String location, String postalCode, 
+			OWLLiteral isHub, OWLLiteral isShipper, OWLLiteral isCarrier, OWLLiteral isConsignor, String coordinates) {
 		this.additionalPartyIdentification = additionalPartyIdentification;
 		this.gln = gln;
+		this.hashCode = hashCode;
 		this.code2 = code2;
 		this.location = location;
 		this.postalCode = postalCode;
+		this.isHub = isHub;
+		this.isShipper = isShipper;
+		this.isConsignor = isConsignor;
+		this.isCarrier = isCarrier;
 		this.coordinates = coordinates;
 	}
 
@@ -56,7 +66,7 @@ public class PartiesGenerator {
 
 		PartiesGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Parties-filtered.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/Parties_multi.csv"));
 
 		String line = br.readLine();
 
@@ -69,18 +79,29 @@ public class PartiesGenerator {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
+		String coordinates = null;
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new PartiesGenerator();
 			
-			data.setAdditionalPartyIdentification(params[0]);
-			data.setGln(params[1]);
-			data.setCode2(params[6]);
-			data.setLocation(StringUtilities.removeWhiteSpace(params[7]));
-			data.setPostalCode(StringUtilities.removeWhiteSpace(params[8]));
-			data.setCoordinates(params[10]);
+			data.setAdditionalPartyIdentification(params[1]);
+			data.setGln(params[2]);
+			data.setHashCode(params[3]);
+			data.setCode2(params[4]);
+			data.setLocation(StringUtilities.removeWhiteSpace(params[5]));
+			data.setPostalCode(StringUtilities.removeWhiteSpace(params[6]));
+			data.setIsHub(OntologyOperations.convertToBoolean(manager, params[7]));
+			data.setIsShipper(OntologyOperations.convertToBoolean(manager, params[8]));
+			data.setIsCarrier(OntologyOperations.convertToBoolean(manager, params[9]));
+			data.setIsConsignor(OntologyOperations.convertToBoolean(manager, params[10]));
+			
+			coordinates = params[11] + "," + params[12];
+			
+			System.out.println("Coordinates: " + coordinates);
+			
+			data.setCoordinates(coordinates);
 
 
 			dataset.add(data);
@@ -116,7 +137,7 @@ public class PartiesGenerator {
 
 			//adding party individual
 			if (!td.getAdditionalPartyIdentification().equals("nan")) {
-			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_party"));
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHashCode() + "_party"));
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
@@ -133,6 +154,10 @@ public class PartiesGenerator {
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), partyInd, td.getHashCode());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("code2", onto), partyInd, td.getCode2());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -142,6 +167,22 @@ public class PartiesGenerator {
 			manager.applyChange(addAxiomChange);
 			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("postalCode", onto), partyInd, td.getPostalCode());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("isHub", onto), partyInd, td.getIsHub());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("isShipper", onto), partyInd, td.getIsShipper());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("isCarrier", onto), partyInd, td.getIsCarrier());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("isConsignor", onto), partyInd, td.getIsConsignor());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 						
@@ -218,6 +259,58 @@ public class PartiesGenerator {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+
+	public String getHashCode() {
+		return hashCode;
+	}
+
+
+	public void setHashCode(String hashCode) {
+		this.hashCode = hashCode;
+	}
+
+
+	public OWLLiteral getIsHub() {
+		return isHub;
+	}
+
+
+	public void setIsHub(OWLLiteral isHub) {
+		this.isHub = isHub;
+	}
+
+
+	public OWLLiteral getIsShipper() {
+		return isShipper;
+	}
+
+
+	public void setIsShipper(OWLLiteral isShipper) {
+		this.isShipper = isShipper;
+	}
+
+
+	public OWLLiteral getIsCarrier() {
+		return isCarrier;
+	}
+
+
+	public void setIsCarrier(OWLLiteral isCarrier) {
+		this.isCarrier = isCarrier;
+	}
+
+
+	public OWLLiteral getIsConsignor() {
+		return isConsignor;
+	}
+
+
+	public void setIsConsignor(OWLLiteral isConsignor) {
+		this.isConsignor = isConsignor;
+	}
+	
+	
 
 
 }

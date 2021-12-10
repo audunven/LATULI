@@ -67,7 +67,7 @@ public class OntologyOperations {
 	 */
 	public static OWLLiteral convertToDateTime(OWLOntologyManager manager, String input) {	
 						
-		if (input.equals("NULL") || !input.startsWith("20")) {
+		if (input.equals("NULL") || input.length() != 27 || !input.startsWith("20")) {
 			input = "0000-00-00 00:00:00.0000000";
 		}
 		
@@ -127,6 +127,25 @@ public class OntologyOperations {
 				OWL2Datatype.XSD_INT);
 		
 		return intLiteral;
+		
+		
+	}
+	
+	/**
+	 * Converts from string to xsd:boolean which is required in OWL
+	 * @param manager
+	 * @param input
+	 * @return
+	   Apr 19, 2021
+	 */
+	public static OWLLiteral convertToBoolean (OWLOntologyManager manager, String input) {
+		
+		OWLDataFactory df = manager.getOWLDataFactory();
+		
+		OWLLiteral booleanLiteral = df.getOWLLiteral(input,
+				OWL2Datatype.XSD_BOOLEAN);
+		
+		return booleanLiteral;
 		
 		
 	}

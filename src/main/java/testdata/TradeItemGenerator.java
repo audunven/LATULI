@@ -21,8 +21,6 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
-import com.clarkparsia.sparqlowl.parser.antlr.SparqlOwlParser.dataPropertyIRI_return;
-
 import owlprocessing.OntologyOperations;
 
 /**
@@ -86,7 +84,7 @@ public class TradeItemGenerator
 
 		TradeItemGenerator data;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/TradeItems_last_100000_Audun.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/TradeItems_last_250000.csv"));
 
 		String line = br.readLine();
 
@@ -101,10 +99,10 @@ public class TradeItemGenerator
 		
 
 		while (line != null) {
-			params = line.split(";");
+			params = line.split(",");
 
 			data = new TradeItemGenerator();
-			
+						
 			data.setShipmentId(params[0]);
 			data.setLoadingUnitId(params[1]);	
 			data.setGtin(params[2]);
@@ -131,7 +129,6 @@ public class TradeItemGenerator
 		}
 
 		br.close();
-
 
 
 		//point to a local folder containing local copies of ontologies to sort out the imports

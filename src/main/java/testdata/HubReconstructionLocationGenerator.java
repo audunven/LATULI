@@ -31,11 +31,13 @@ public class HubReconstructionLocationGenerator
 {
 
 	String additionalPartyIdentification;
+	String hashCode;
 	String laneId;
 
 
-	public HubReconstructionLocationGenerator(String hubReconstructionLocationAdditionalPartyIdentification, String hubReconstructionLocationLaneId) {
+	public HubReconstructionLocationGenerator(String hubReconstructionLocationAdditionalPartyIdentification, String hashCode, String hubReconstructionLocationLaneId) {
 		this.additionalPartyIdentification = hubReconstructionLocationAdditionalPartyIdentification;
+		this.hashCode = hashCode;
 		this.laneId = hubReconstructionLocationLaneId;
 	}
 
@@ -66,6 +68,7 @@ public class HubReconstructionLocationGenerator
 			data = new HubReconstructionLocationGenerator();
 						
 			data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[1]));
+			data.setHashCode(params[1]);
 			data.setLaneId(params[2]);
 
 
@@ -112,7 +115,7 @@ public class HubReconstructionLocationGenerator
 			manager.applyChange(addAxiomChange);
 			
 			//object properties
-			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getAdditionalPartyIdentification() + "_party");
+			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getHashCode() + "_party");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -124,6 +127,10 @@ public class HubReconstructionLocationGenerator
 
 			//data properties
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), hubReconstructionLocationInd, td.getAdditionalPartyIdentification());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), hubReconstructionLocationInd, td.getHashCode());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 			
@@ -156,5 +163,15 @@ public class HubReconstructionLocationGenerator
 	public void setLaneId(String laneId) {
 		this.laneId = laneId;
 	}
+
+	public String getHashCode() {
+		return hashCode;
+	}
+
+	public void setHashCode(String hashCode) {
+		this.hashCode = hashCode;
+	}
+	
+	
 
 }

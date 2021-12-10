@@ -29,12 +29,14 @@ import owlprocessing.OntologyOperations;
 public class TransportsGenerator {
 		
 	String transportId;
+	String hubHashCode;
 	String transportType;
 	String originalDataSource;
 
 
-	public TransportsGenerator(String transportId, String transportType, String originalDataSource) {
+	public TransportsGenerator(String transportId, String hubHashCode, String transportType, String originalDataSource) {
 		this.transportId = transportId;
+		this.hubHashCode = hubHashCode;
 		this.transportType = transportType;
 		this.originalDataSource = originalDataSource;
 
@@ -69,8 +71,9 @@ public class TransportsGenerator {
 			if (!params[1].equals("0") && !params[1].equalsIgnoreCase("TransportId")) {
 			
 			data.setTransportId(params[1]);
-			data.setTransportType(params[2]);
-			data.setOriginalDataSource(params[3]);
+			data.setHubHashCode(params[2]);
+			data.setTransportType(params[3]);
+			data.setOriginalDataSource(params[4]);
 			
 			}
 
@@ -91,12 +94,15 @@ public class TransportsGenerator {
 		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
 
 		OWLClass transportClass = OntologyOperations.getClass("Transport", onto);
-
+		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
+		
 		OWLDataFactory df = manager.getOWLDataFactory();
 
 		OWLIndividual transportInd = null;
+		OWLIndividual hubInd = null;
 		
 		OWLAxiom classAssertionAxiom = null; 
+		OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
@@ -111,8 +117,23 @@ public class TransportsGenerator {
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
+			
+			//OP 
+			hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubHashCode() + "_party"));
+			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
+			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
+			manager.applyChange(addAxiomChange);			
+			
+			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubParty", onto), transportInd, hubInd);
+			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
+			manager.applyChange(addAxiomChange);	
 
+			//DP
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportId", onto), transportInd, td.getTransportId());
+			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
+			manager.applyChange(addAxiomChange);
+			
+			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hubHashCode", onto), transportInd, td.getHubHashCode());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
 
@@ -156,6 +177,14 @@ public class TransportsGenerator {
 
 	public void setOriginalDataSource(String originalDataSource) {
 		this.originalDataSource = originalDataSource;
+	}
+
+	public String getHubHashCode() {
+		return hubHashCode;
+	}
+
+	public void setHubHashCode(String hubHashCode) {
+		this.hubHashCode = hubHashCode;
 	}
 	
 	

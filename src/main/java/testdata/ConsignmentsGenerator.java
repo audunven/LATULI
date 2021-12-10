@@ -36,10 +36,14 @@ public class ConsignmentsGenerator {
 	String reconstructionLane;
 	String reconstructionLocation;
 	String carrierAdditionalPartyIdentification;
+	String carrierHashCode;
 	String consignorAdditionalPartyIdentification;
+	String consignorHashCode;
 	String consigneeAdditionalPartyIdentification;
+	String consigneeHashCode;
 	String consignmentWaveId;
 	String hubAdditionalPartyIdentification;
+	String hubHashCode;
 	String reconstructionType;
 	OWLLiteral taskClosedOn;
 	String fullPalletConsignment;
@@ -59,24 +63,27 @@ public class ConsignmentsGenerator {
 
 	public ConsignmentsGenerator(String consignmentId, String transportId, String consignmentType,
 			String reconstructionLane, String reconstructionLocation, String carrierAdditionalPartyIdentification,
-			String consignorAdditionalPartyIdentification, String consigneeAdditionalPartyIdentification,
-			String consignmentWaveId, String hubAdditionalPartyIdentification, String reconstructionType,
-			OWLLiteral taskClosedOn, String fullPalletConsignment, OWLLiteral qttBoxes,
-			OWLLiteral qttPallets, OWLLiteral qttReconstructedPallets,
-			OWLLiteral qttReconstructedParcels, String originalDataSource, String taskId,
-			String taskDescription, OWLLiteral totalConsignmentVolume, OWLLiteral totalConsignmentWeight,
+			String carrierHashCode, String consignorAdditionalPartyIdentification, String consignorHashCode,
+			String consigneeAdditionalPartyIdentification, String consigneeHashCode, String consignmentWaveId,
+			String hubAdditionalPartyIdentification, String hubHashCode, String reconstructionType,
+			OWLLiteral taskClosedOn, String fullPalletConsignment, OWLLiteral qttBoxes, OWLLiteral qttPallets,
+			OWLLiteral qttReconstructedPallets, OWLLiteral qttReconstructedParcels, String originalDataSource,
+			String taskId, String taskDescription, OWLLiteral totalConsignmentVolume, OWLLiteral totalConsignmentWeight,
 			OWLLiteral year, OWLLiteral season, OWLLiteral weekDay) {
-
 		this.consignmentId = consignmentId;
 		this.transportId = transportId;
 		this.consignmentType = consignmentType;
 		this.reconstructionLane = reconstructionLane;
 		this.reconstructionLocation = reconstructionLocation;
 		this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
+		this.carrierHashCode = carrierHashCode;
 		this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
+		this.consignorHashCode = consignorHashCode;
 		this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
+		this.consigneeHashCode = consigneeHashCode;
 		this.consignmentWaveId = consignmentWaveId;
 		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
+		this.hubHashCode = hubHashCode;
 		this.reconstructionType = reconstructionType;
 		this.taskClosedOn = taskClosedOn;
 		this.fullPalletConsignment = fullPalletConsignment;
@@ -93,7 +100,6 @@ public class ConsignmentsGenerator {
 		this.season = season;
 		this.weekDay = weekDay;
 	}
-
 
 
 	public ConsignmentsGenerator() {}
@@ -129,28 +135,32 @@ public class ConsignmentsGenerator {
 			data.setReconstructionLane(params[4]);
 			data.setReconstructionLocation(params[5]);
 			data.setCarrierAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[6]));
-			data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[7]));
-			data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[8]));
-			data.setConsignmentWaveId(params[9]);
-			data.setHubAdditionalPartyidentification(StringUtilities.removeWhiteSpace(params[10]));
-			data.setReconstructionType(params[11]);
-			data.setTaskClosedOn(OntologyOperations.convertToDateTime(manager, params[12]));
-			data.setFullPalletConsignment(params[13]);
-			data.setQttBoxes(OntologyOperations.convertToInt(manager, params[14]));
-			data.setQttPallets(OntologyOperations.convertToInt(manager, params[15]));
-			data.setQttReconstructedPallets(OntologyOperations.convertToInt(manager, params[16]));
-			data.setQttReconstructedParcels(OntologyOperations.convertToInt(manager, params[17]));
-			data.setOriginalDataSource(params[18]);
-			data.setTaskId(params[19]);
-			data.setTaskDescription(params[20]);
-			data.setTotalConsignmentVolume(OntologyOperations.convertToDecimal(manager, params[21]));
-			data.setTotalConsignmentWeight(OntologyOperations.convertToDecimal(manager, params[22]));
+			data.setCarrierHashCode(params[7]);
+			data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[8]));
+			data.setConsignorHashCode(params[9]);
+			data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[10]));
+			data.setConsigneeHashCode(params[11]);
+			data.setConsignmentWaveId(params[12]);
+			data.setHubAdditionalPartyidentification(StringUtilities.removeWhiteSpace(params[13]));
+			data.setHubHashCode(params[14]);
+			data.setReconstructionType(params[15]);
+			data.setTaskClosedOn(OntologyOperations.convertToDateTime(manager, params[16]));
+			data.setFullPalletConsignment(params[17]);
+			data.setQttBoxes(OntologyOperations.convertToInt(manager, params[18]));
+			data.setQttPallets(OntologyOperations.convertToInt(manager, params[19]));
+			data.setQttReconstructedPallets(OntologyOperations.convertToInt(manager, params[20]));
+			data.setQttReconstructedParcels(OntologyOperations.convertToInt(manager, params[21]));
+			data.setOriginalDataSource(params[22]);
+			data.setTaskId(params[23]);
+			data.setTaskDescription(params[24]);
+			data.setTotalConsignmentVolume(OntologyOperations.convertToDecimal(manager, params[25]));
+			data.setTotalConsignmentWeight(OntologyOperations.convertToDecimal(manager, params[26]));
 			
-			if (params.length == 26) {
+			if (params.length == 30) {
 		
-			data.setYear(OntologyOperations.convertToDecimal(manager, params[23]));
-			data.setSeason(OntologyOperations.convertToDecimal(manager, params[24]));
-			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[25]));
+			data.setYear(OntologyOperations.convertToDecimal(manager, params[27]));
+			data.setSeason(OntologyOperations.convertToDecimal(manager, params[28]));
+			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[29]));
 			 
 			
 			}
@@ -228,9 +238,9 @@ public class ConsignmentsGenerator {
 			}
 			
 			//adding carrier party individual
-			if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
+			//if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierAdditionalPartyIdentification() + "_party"));
+				carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierHashCode() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, carrierInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -240,12 +250,12 @@ public class ConsignmentsGenerator {
 				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 				manager.applyChange(addAxiomChange);	
 
-			}
+			//}
 			
 			//adding consignor party individual
-			if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
+			//if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorAdditionalPartyIdentification() + "_party"));
+				consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorHashCode() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consignorInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -255,12 +265,12 @@ public class ConsignmentsGenerator {
 				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 				manager.applyChange(addAxiomChange);	
 
-			}
+			//}
 			
 			//adding consignee party individual
-			if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
+			//if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
 				
-				consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeAdditionalPartyIdentification() + "_party"));
+				consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeHashCode() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consigneeInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -270,12 +280,12 @@ public class ConsignmentsGenerator {
 				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 				manager.applyChange(addAxiomChange);	
 
-			}
+			//}
 			
 			//adding hub party individual
-			if (!td.getHubAdditionalPartyidentification().equals("0") || !td.getHubAdditionalPartyidentification().equals("Hub internal movements")) {
+			//if (!td.getHubAdditionalPartyidentification().equals("0") || !td.getHubAdditionalPartyidentification().equals("Hub internal movements")) {
 				
-				hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubAdditionalPartyidentification() + "_party"));
+				hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubHashCode() + "_party"));
 				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
 				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 				manager.applyChange(addAxiomChange);
@@ -285,7 +295,7 @@ public class ConsignmentsGenerator {
 				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 				manager.applyChange(addAxiomChange);	
 
-			}
+			//}
 			
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("consignmentId", onto), consignmentInd, td.getConsignmentId());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
@@ -670,6 +680,56 @@ public class ConsignmentsGenerator {
 
 	public void setWeekDay(OWLLiteral weekDay) {
 		this.weekDay = weekDay;
+	}
+
+
+	public String getCarrierHashCode() {
+		return carrierHashCode;
+	}
+
+
+	public void setCarrierHashCode(String carrierHashCode) {
+		this.carrierHashCode = carrierHashCode;
+	}
+
+
+	public String getConsignorHashCode() {
+		return consignorHashCode;
+	}
+
+
+	public void setConsignorHashCode(String consignorHashCode) {
+		this.consignorHashCode = consignorHashCode;
+	}
+
+
+	public String getConsigneeHashCode() {
+		return consigneeHashCode;
+	}
+
+
+	public void setConsigneeHashCode(String consigneeHashCode) {
+		this.consigneeHashCode = consigneeHashCode;
+	}
+
+
+	public String getHubAdditionalPartyIdentification() {
+		return hubAdditionalPartyIdentification;
+	}
+
+
+	public void setHubAdditionalPartyIdentification(String hubAdditionalPartyIdentification) {
+		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
+	}
+
+
+	public String getHubHashCode() {
+		return hubHashCode;
+	}
+
+
+	public void setHubHashCode(String hubHashCode) {
+		this.hubHashCode = hubHashCode;
 	}
 
 

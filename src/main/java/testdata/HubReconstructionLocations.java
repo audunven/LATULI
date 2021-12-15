@@ -27,50 +27,54 @@ import utilities.StringUtilities;
  * @author audunvennesland
  *
  */
-public class HubReconstructionLocationGenerator
+public class HubReconstructionLocations
 {
 
-	String additionalPartyIdentification;
-	String hashCode;
-	String laneId;
+	private String additionalPartyIdentification;
+	private String hashCode;
+	private String laneId;
 
+	private HubReconstructionLocations(Builder builder) {
 
-	public HubReconstructionLocationGenerator(String hubReconstructionLocationAdditionalPartyIdentification, String hashCode, String hubReconstructionLocationLaneId) {
-		this.additionalPartyIdentification = hubReconstructionLocationAdditionalPartyIdentification;
-		this.hashCode = hashCode;
-		this.laneId = hubReconstructionLocationLaneId;
+		this.additionalPartyIdentification = builder.additionalPartyIdentification;
+		this.hashCode = builder.hashCode;
+		this.laneId = builder.laneId;
 	}
 
-	public HubReconstructionLocationGenerator() {}
+
+	public static class Builder {
+
+		private String additionalPartyIdentification;
+		private String hashCode;
+		private String laneId;
+
+		public Builder(String additionalPartyIdentification, String hashCode, String laneId) {		
+			this.additionalPartyIdentification = additionalPartyIdentification;
+			this.hashCode = hashCode;
+			this.laneId = laneId;							
+		}
+
+		public HubReconstructionLocations build() {
+			return new HubReconstructionLocations(this);
+		}
+
+	}
 
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
+	public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException, IOException {
 
-		HubReconstructionLocationGenerator data;
+		HubReconstructionLocations data;
+		Set<HubReconstructionLocations> dataset = new HashSet<HubReconstructionLocations>();
 
+		String[] params = null;
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/HubReconstructionLocations_multi_last_100000.csv"));
 
 		String line = br.readLine();
 
-		String[] params = null;
-
-		Set<HubReconstructionLocationGenerator> dataset = new HashSet<HubReconstructionLocationGenerator>();
-		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
-
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
-
 		while (line != null) {
 			params = line.split(",");
 
-			data = new HubReconstructionLocationGenerator();
-						
-			data.setAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[1]));
-			data.setHashCode(params[1]);
-			data.setLaneId(params[2]);
-
+			data = new HubReconstructionLocations.Builder(StringUtilities.removeWhiteSpace(params[1]), params[1], params[2]).build();
 
 			dataset.add(data);
 			line = br.readLine();
@@ -80,6 +84,8 @@ public class HubReconstructionLocationGenerator
 		br.close();
 
 
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		//point to a local folder containing local copies of ontologies to sort out the imports
 		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
@@ -96,7 +102,7 @@ public class HubReconstructionLocationGenerator
 		OWLIndividual hubReconstructionLocationInd = null;
 		OWLIndividual partyInd = null;
 
-		
+
 		OWLAxiom classAssertionAxiom = null; 
 		OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
@@ -105,7 +111,7 @@ public class HubReconstructionLocationGenerator
 
 		int iterator = 0;
 
-		for (HubReconstructionLocationGenerator td : dataset) {
+		for (HubReconstructionLocations td : dataset) {
 			iterator+=1;	
 
 			//individuals and association to classes
@@ -113,65 +119,48 @@ public class HubReconstructionLocationGenerator
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);			
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
 			manager.applyChange(addAxiomChange);
-			
+
 			//object properties
 			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getHashCode() + "_party");
 			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
 			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasParty", onto), hubReconstructionLocationInd, partyInd);
 			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 
 			//data properties
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), hubReconstructionLocationInd, td.getAdditionalPartyIdentification());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), hubReconstructionLocationInd, td.getHashCode());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionLane", onto), hubReconstructionLocationInd, td.getLaneId());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 
 
 		}
 		//save the ontology in each iteration
 		manager.saveOntology(onto);
 	}
-
 	
-
 	public String getAdditionalPartyIdentification() {
 		return additionalPartyIdentification;
-	}
-
-	public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
-		this.additionalPartyIdentification = additionalPartyIdentification;
-	}
-
-
-	public String getLaneId() {
-		return laneId;
-	}
-
-	public void setLaneId(String laneId) {
-		this.laneId = laneId;
 	}
 
 	public String getHashCode() {
 		return hashCode;
 	}
 
-	public void setHashCode(String hashCode) {
-		this.hashCode = hashCode;
+	public String getLaneId() {
+		return laneId;
 	}
-	
-	
 
 }

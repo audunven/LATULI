@@ -27,7 +27,7 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class TradeItemGenerator
+public class TradeItems
 {
 	
 	
@@ -50,7 +50,7 @@ public class TradeItemGenerator
 	String handlingInstruction;
 	String originalDataSource;
 
-	public TradeItemGenerator(String gtin, String loadingUnitId, String shipmentId, OWLLiteral quantity,
+	public TradeItems(String gtin, String loadingUnitId, String shipmentId, OWLLiteral quantity,
 			String material, String description, OWLLiteral supplierQuantity, OWLLiteral customerQuantity,
 			String supplierProductDescription, String customerProductDescription, String supplierProductId,
 			String customerProductId, OWLLiteral modifiedOn, String lotNumber, String purchaseOrder, String salesOrder,
@@ -77,12 +77,12 @@ public class TradeItemGenerator
 	}
 
 
-	public TradeItemGenerator() {}
+	public TradeItems() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		TradeItemGenerator data;
+		TradeItems data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/TradeItems_last_250000.csv"));
 
@@ -90,7 +90,7 @@ public class TradeItemGenerator
 
 		String[] params = null;
 
-		Set<TradeItemGenerator> dataset = new HashSet<TradeItemGenerator>();
+		Set<TradeItems> dataset = new HashSet<TradeItems>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -101,7 +101,7 @@ public class TradeItemGenerator
 		while (line != null) {
 			params = line.split(",");
 
-			data = new TradeItemGenerator();
+			data = new TradeItems();
 						
 			data.setShipmentId(params[0]);
 			data.setLoadingUnitId(params[1]);	
@@ -156,7 +156,7 @@ public class TradeItemGenerator
 
 		int iterator = 0;
 
-		for (TradeItemGenerator td : dataset) {
+		for (TradeItems td : dataset) {
 			iterator+=1;	
 
 			//adding dangerous goods individual

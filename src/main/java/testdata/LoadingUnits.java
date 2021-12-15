@@ -22,62 +22,95 @@ import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
 
-/**
- * @author audunvennesland
- *
- */
-public class LoadingUnitGenerator {
-		
-	String loadingUnitId;
-	String packageTypeId;
-	String originalDataSource;
 
-	public LoadingUnitGenerator(String loadingUnitId, String packageTypeId, String originalDataSource) {
-		this.loadingUnitId = loadingUnitId;
-		this.packageTypeId = packageTypeId;
-		this.originalDataSource = originalDataSource;
+public class LoadingUnits {
+
+	private String loadingUnitId;
+	private String packageTypeId;
+	private String originalDataSource;
+
+	public String getLoadingUnitId() {
+		return loadingUnitId;
+	}
+
+	public String getPackageTypeId() {
+		return packageTypeId;
+	}
+
+	public String getOriginalDataSource() {
+		return originalDataSource;
+	}
+
+	private LoadingUnits(Builder builder) {
+
+		this.loadingUnitId = builder.loadingUnitId;
+		this.packageTypeId = builder.packageTypeId;
+		this.originalDataSource = builder.originalDataSource;
+	}
+
+	public static class Builder {
+
+		private  String loadingUnitId;
+		private String packageTypeId;
+		private String originalDataSource;
+
+		public Builder(String loadingUnitId, String packageTypeId, String originalDataSource) {
+			this.loadingUnitId = loadingUnitId;
+			this.packageTypeId = packageTypeId;
+			this.originalDataSource = originalDataSource;
+		}
+
+		public LoadingUnits build() {
+			return new LoadingUnits(this);
+		}
 	}
 
 
-	public LoadingUnitGenerator() {}
+
+	public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException, IOException {
 
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
-
-		LoadingUnitGenerator data;
-
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/LoadingUnits_multi_last_100000.csv"));
-
-		String line = br.readLine();
+		LoadingUnits data;
 
 		String[] params = null;
-
-		Set<LoadingUnitGenerator> dataset = new HashSet<LoadingUnitGenerator>();
+		Set<LoadingUnits> dataset = new HashSet<LoadingUnits>();
 		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
-
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		String CSV_folder = "./files/CSV/Truls/LoadingUnits_split/";
 		
+		File folder = new File(CSV_folder);
+		File[] filesInDir = folder.listFiles();
+		
+		BufferedReader br;
 
-		while (line != null) {
-			params = line.split(",");
-
-			data = new LoadingUnitGenerator();
-						
-			data.setLoadingUnitId(params[1]);
-			data.setPackageTypeId(params[2]);
-			data.setOriginalDataSource(params[3]);
+		for (int i = 0; i < filesInDir.length; i++) {
 			
+			System.out.println("Reading file: " + filesInDir[i].getName());
+			
+			br = new BufferedReader(new FileReader(filesInDir[i]));
 
-			dataset.add(data);
-			line = br.readLine();
+			String line = br.readLine();
+
+			while (line != null) {
+				params = line.split(",");
+
+				data = new LoadingUnits.Builder(params[1], params[2], params[3])
+						.build();
+
+				dataset.add(data);
+				line = br.readLine();			
+			}
+
+			br.close();		
+			
+			System.out.println("Completed processing file: " + filesInDir[i].getName());
 
 		}
+		
+		System.out.println("Completed processing all CSV files in folder " + CSV_folder);
 
-		br.close();
 
-
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		//point to a local folder containing local copies of ontologies to sort out the imports
 		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
@@ -91,18 +124,13 @@ public class LoadingUnitGenerator {
 		OWLDataFactory df = manager.getOWLDataFactory();
 
 		OWLIndividual loadingUnitInd = null;
-		
+
 		OWLAxiom classAssertionAxiom = null; 
-		//OWLAxiom OPAssertionAxiom = null; 
 		OWLAxiom DPAssertionAxiom = null; 
 
 		AddAxiom addAxiomChange = null;
 
-		int iterator = 0;
-
-		//adding process chain
-		for (LoadingUnitGenerator td : dataset) {
-			iterator+=1;	
+		for (LoadingUnits td : dataset) {
 
 			//adding loading unit individual
 			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getLoadingUnitId() + "_loadingunit"));
@@ -114,11 +142,10 @@ public class LoadingUnitGenerator {
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("packageTypeId", onto), loadingUnitInd, td.getPackageTypeId());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-			
+
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), loadingUnitInd, td.getOriginalDataSource());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
-
 
 
 		}
@@ -126,36 +153,8 @@ public class LoadingUnitGenerator {
 		manager.saveOntology(onto);
 	}
 
-	public String getLoadingUnitId() {
-		return loadingUnitId;
-	}
-
-
-	public void setLoadingUnitId(String loadingUnitId) {
-		this.loadingUnitId = loadingUnitId;
-	}
-
-
-	public String getPackageTypeId() {
-		return packageTypeId;
-	}
-
-
-	public void setPackageTypeId(String packageTypeId) {
-		this.packageTypeId = packageTypeId;
-	}
-
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-	
-	
-
 
 }
+
+
+

@@ -27,7 +27,7 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class DangerousGoodsGenerator
+public class DangerousGoods
 {
 	String loadingUnitId;
 	String gtin;
@@ -35,19 +35,19 @@ public class DangerousGoodsGenerator
 	OWLLiteral modifiedOn;
 
 
-	public DangerousGoodsGenerator(String loadingUnitId, String gtin, String shipmentId, OWLLiteral modifiedOn) {
+	public DangerousGoods(String loadingUnitId, String gtin, String shipmentId, OWLLiteral modifiedOn) {
 		this.loadingUnitId = loadingUnitId;
 		this.gtin = gtin;
 		this.shipmentId = shipmentId;
 		this.modifiedOn = modifiedOn;
 	}
 	
-	public DangerousGoodsGenerator() {}
+	public DangerousGoods() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		DangerousGoodsGenerator data;
+		DangerousGoods data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/DRGs_last_100000_Audun.csv"));
 
@@ -55,7 +55,7 @@ public class DangerousGoodsGenerator
 
 		String[] params = null;
 
-		Set<DangerousGoodsGenerator> dataset = new HashSet<DangerousGoodsGenerator>();
+		Set<DangerousGoods> dataset = new HashSet<DangerousGoods>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -66,7 +66,7 @@ public class DangerousGoodsGenerator
 		while (line != null) {
 			params = line.split(";");
 
-			data = new DangerousGoodsGenerator();
+			data = new DangerousGoods();
 			
 			data.setLoadingUnitId(params[0]);	
 			data.setGtin(params[1]);
@@ -110,7 +110,7 @@ public class DangerousGoodsGenerator
 
 		int iterator = 0;
 
-		for (DangerousGoodsGenerator td : dataset) {
+		for (DangerousGoods td : dataset) {
 			iterator+=1;	
 
 			//adding dangerous goods individual

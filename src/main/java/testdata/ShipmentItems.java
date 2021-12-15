@@ -27,55 +27,81 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class ShipmentItemGenerator
+public class ShipmentItems
 {
 
-	String shipmentId;
-	String loadingUnitId;
-	OWLLiteral quantity;
-	String originalDataSource;
+	private String shipmentId;
+	private String loadingUnitId;
+	private OWLLiteral quantity;
+	private String originalDataSource;
 
-
-
-	public ShipmentItemGenerator(String shipmentId, String loadingUnitId, OWLLiteral quantity, String originalDataSource) {
-		this.shipmentId = shipmentId;
-		this.loadingUnitId = loadingUnitId;
-		this.quantity = quantity;
-		this.originalDataSource = originalDataSource;
-
+	private ShipmentItems(Builder builder) {
+		
+		this.shipmentId = builder.shipmentId;
+		this.loadingUnitId = builder.loadingUnitId;
+		this.quantity = builder.quantity;
+		this.originalDataSource = builder.originalDataSource;
 	}
 
-	public ShipmentItemGenerator() {}
+	public static class Builder {
+		
+		private String shipmentId;
+		private String loadingUnitId;
+		private OWLLiteral quantity;
+		private String originalDataSource;
+		
+		public Builder(String shipmentId, String loadingUnitId, OWLLiteral quantity, String originalDataSource) {
+			this.shipmentId = shipmentId;
+			this.loadingUnitId = loadingUnitId;
+			this.quantity = quantity;
+			this.originalDataSource = originalDataSource;
+
+		}
+		
+		public Builder setLoadingUnitId(String loadingUnitId) {
+			this.loadingUnitId = loadingUnitId;
+			return this;
+		}
+
+		public Builder setQuantity(OWLLiteral quantity) {
+			this.quantity = quantity;
+			return this;
+		}
+
+		public Builder setOriginalDataSource(String originalDataSource) {
+			this.originalDataSource = originalDataSource;
+			return this;
+		}
+		
+		public ShipmentItems build() {
+			return new ShipmentItems(this);
+		}
+		
+	}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
-
-		ShipmentItemGenerator data;
-
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/ShipmentItems_multi_last_100000.csv"));
-
-		String line = br.readLine();
-
-		String[] params = null;
-
-		Set<ShipmentItemGenerator> dataset = new HashSet<ShipmentItemGenerator>();
 		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+	    //measure memory footprint of ontology creation
+	    Runtime runtimeOntologyCreation = Runtime.getRuntime();
+	    long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+	    System.out.println("Used memory before running the program: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
+		ShipmentItems data;
+		Set<ShipmentItems> dataset = new HashSet<ShipmentItems>();
+		String[] params = null;
+		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/ShipmentItems_multi_last_250000.csv"));
+
+		//import ontology
+		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		
+		String line = br.readLine();
 
 		while (line != null) {
 			params = line.split(",");
 
-			data = new ShipmentItemGenerator();
-						
-			data.setShipmentId(params[1]);
-			data.setLoadingUnitId(params[2]);
-			data.setQuantity(OntologyOperations.convertToDecimal(manager, params[3]));
-			data.setOriginalDataSource(params[4]);
-
+			data = new ShipmentItems.Builder(params[1], params[2], OntologyOperations.convertToDecimal(manager, params[3]), params[4]).build();
 
 			dataset.add(data);
 			line = br.readLine();
@@ -83,7 +109,7 @@ public class ShipmentItemGenerator
 		}
 
 		br.close();
-
+		
 
 
 		//point to a local folder containing local copies of ontologies to sort out the imports
@@ -109,10 +135,7 @@ public class ShipmentItemGenerator
 
 		AddAxiom addAxiomChange = null;
 
-		int iterator = 0;
-
-		for (ShipmentItemGenerator td : dataset) {
-			iterator+=1;	
+		for (ShipmentItems td : dataset) {
 
 			//adding shipmentItem individual
 			shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_shipmentitem"));
@@ -154,43 +177,34 @@ public class ShipmentItemGenerator
 		}
 		//save the ontology in each iteration
 		manager.saveOntology(onto);
+		
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+	    System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+	    
+	    System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+        System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+        System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+        System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 	}
-
-
+	
 	public String getShipmentId() {
 		return shipmentId;
 	}
 
+	public String getLoadingUnitId() {
+		return loadingUnitId;
+	}
+	
+	public OWLLiteral getQuantity() {
+		return quantity;
+	}
+	
 	public void setShipmentId(String shipmentItemId) {
 		this.shipmentId = shipmentItemId;
 	}
 	
-
-	public String getLoadingUnitId() {
-		return loadingUnitId;
-	}
-
-	public void setLoadingUnitId(String loadingUnitId) {
-		this.loadingUnitId = loadingUnitId;
-	}
-
-	public OWLLiteral getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(OWLLiteral quantity) {
-		this.quantity = quantity;
-	}
-
 	public String getOriginalDataSource() {
 		return originalDataSource;
 	}
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-	
-	
-
 
 }

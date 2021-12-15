@@ -28,7 +28,7 @@ import utilities.StringUtilities;
  * @author audunvennesland
  *
  */
-public class ConsignmentsGenerator {
+public class Consignments {
 
 	String consignmentId;
 	String transportId;
@@ -61,7 +61,7 @@ public class ConsignmentsGenerator {
 	OWLLiteral weekDay;
 	
 
-	public ConsignmentsGenerator(String consignmentId, String transportId, String consignmentType,
+	public Consignments(String consignmentId, String transportId, String consignmentType,
 			String reconstructionLane, String reconstructionLocation, String carrierAdditionalPartyIdentification,
 			String carrierHashCode, String consignorAdditionalPartyIdentification, String consignorHashCode,
 			String consigneeAdditionalPartyIdentification, String consigneeHashCode, String consignmentWaveId,
@@ -102,12 +102,12 @@ public class ConsignmentsGenerator {
 	}
 
 
-	public ConsignmentsGenerator() {}
+	public Consignments() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		ConsignmentsGenerator data;
+		Consignments data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Consignments_multi_last_100000.csv"));
 
@@ -115,7 +115,7 @@ public class ConsignmentsGenerator {
 
 		String[] params = null;
 
-		Set<ConsignmentsGenerator> dataset = new HashSet<ConsignmentsGenerator>();
+		Set<Consignments> dataset = new HashSet<Consignments>();
 		
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
@@ -127,7 +127,7 @@ public class ConsignmentsGenerator {
 			
 			System.out.println("Params size: " + params.length);
 
-			data = new ConsignmentsGenerator();
+			data = new Consignments();
 						
 			data.setConsignmentId(params[1]);
 			data.setTransportId(params[2]);
@@ -202,7 +202,7 @@ public class ConsignmentsGenerator {
 
 		int iterator = 0;
 
-		for (ConsignmentsGenerator td : dataset) {
+		for (Consignments td : dataset) {
 			iterator+=1;	
 
 			//adding consignment individual

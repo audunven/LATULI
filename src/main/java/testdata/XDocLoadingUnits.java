@@ -22,53 +22,319 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import owlprocessing.OntologyOperations;
+import sparqlresult.BPSparqlResult;
+import sparqlresult.BPSparqlResult.Builder;
 import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
  *
  */
-public class XDocLoadingUnitGenerator
+public class XDocLoadingUnits
 {
 
-	String internalId;	
-	OWLLiteral preSortScanOn;
-	OWLLiteral reconstructedScanOn;	
-	OWLLiteral volume;
-	OWLLiteral weight;
-	String loadingUnit;	
-	String inboundConsignmentId;
-	String outboundConsignmentId;
-	String additionalPartyIdentification;
-	String hashCode;
-	String hubReconstructionAdditionalPartyIdentification;
-	String hubHashCode;
-	String shipperAdditionalPartyIdentification;
-	String shipperHashCode;
-	String receiverAdditionalPartyIdentification;
-	String receiverHashCode;
-	String carrierAdditionalPartyIdentification;
-	String carrierHashCode;
-	String consignorAdditionalPartyIdentification;
-	String consignorHashCode;
-	String consigneeAdditionalPartyIdentification;
-	String consigneeHashCode;
-	String reconstructionTypeId;
-	OWLLiteral splitShipment; 
+	private String internalId;	
+	private OWLLiteral preSortScanOn;
+	private OWLLiteral reconstructedScanOn;	
+	private OWLLiteral volume;
+	private OWLLiteral weight;
+	private String loadingUnit;	
+	private String inboundConsignmentId;
+	private String outboundConsignmentId;
+	private String additionalPartyIdentification;
+	private String hashCode;
+	private String hubReconstructionAdditionalPartyIdentification;
+	private String hubHashCode;
+	private String shipperAdditionalPartyIdentification;
+	private String shipperHashCode;
+	private String receiverAdditionalPartyIdentification;
+	private String receiverHashCode;
+	private String carrierAdditionalPartyIdentification;
+	private String carrierHashCode;
+	private String consignorAdditionalPartyIdentification;
+	private String consignorHashCode;
+	private String consigneeAdditionalPartyIdentification;
+	private String consigneeHashCode;
+	private String reconstructionTypeId;
+	private OWLLiteral splitShipment; 	
+	private String waveId;	
+	private String inboundParentLoadingUnitId;
+	private String outboundParentLoadingUnitId;	
+	private String originalDataSource;
+	private OWLLiteral year;
+	private OWLLiteral season;
+	private OWLLiteral weekDay;
+	private OWLLiteral delta;
 	
-	String waveId;
+	XDocLoadingUnits(Builder<?> builder) {
+		this.internalId = builder.internalId;
+		this.preSortScanOn = builder.preSortScanOn;
+		this.reconstructedScanOn = builder.reconstructedScanOn;
+		this.volume = builder.volume;
+		this.weight = builder.weight;
+		this.loadingUnit = builder.loadingUnit;
+		this.inboundConsignmentId = builder.inboundConsignmentId;
+		this.outboundConsignmentId = builder.outboundConsignmentId;
+		this.additionalPartyIdentification = builder.additionalPartyIdentification;
+		this.hashCode = builder.hashCode;
+		this.hubReconstructionAdditionalPartyIdentification = builder.hubReconstructionAdditionalPartyIdentification;
+		this.hubHashCode = builder.hubHashCode;
+		this.shipperAdditionalPartyIdentification = builder.shipperAdditionalPartyIdentification;
+		this.shipperHashCode = builder.shipperHashCode;
+		this.receiverAdditionalPartyIdentification = builder.receiverAdditionalPartyIdentification;
+		this.receiverHashCode = builder.receiverHashCode;
+		this.carrierAdditionalPartyIdentification = builder.carrierAdditionalPartyIdentification;
+		this.carrierHashCode = builder.carrierHashCode;
+		this.consignorAdditionalPartyIdentification = builder.consignorAdditionalPartyIdentification;
+		this.consignorHashCode = builder.consignorHashCode;
+		this.consigneeAdditionalPartyIdentification = builder.consigneeAdditionalPartyIdentification;
+		this.consigneeHashCode = builder.consigneeHashCode;
+		this.reconstructionTypeId = builder.reconstructionTypeId;
+		this.splitShipment = builder.splitShipment;
+		this.waveId = builder.waveId;
+		this.inboundParentLoadingUnitId = builder.inboundParentLoadingUnitId;
+		this.outboundParentLoadingUnitId = builder.outboundParentLoadingUnitId;
+		this.originalDataSource = builder.originalDataSource;
+		this.year = builder.year;
+		this.season = builder.season;
+		this.weekDay = builder.weekDay;
+		this.delta = builder.delta;
+	}
 	
-	String inboundParentLoadingUnitId;
-	String outboundParentLoadingUnitId;
-	
-	String originalDataSource;
-	OWLLiteral year;
-	OWLLiteral season;
-	OWLLiteral weekDay;
-	OWLLiteral delta;
+	public static class Builder extends Builder<T extends Builder> {
+		
+		private String internalId;	
+		private OWLLiteral preSortScanOn;
+		private OWLLiteral reconstructedScanOn;	
+		private OWLLiteral volume;
+		private OWLLiteral weight;
+		private String loadingUnit;	
+		private String inboundConsignmentId;
+		private String outboundConsignmentId;
+		private String additionalPartyIdentification;
+		private String hashCode;
+		private String hubReconstructionAdditionalPartyIdentification;
+		private String hubHashCode;
+		private String shipperAdditionalPartyIdentification;
+		private String shipperHashCode;
+		private String receiverAdditionalPartyIdentification;
+		private String receiverHashCode;
+		private String carrierAdditionalPartyIdentification;
+		private String carrierHashCode;
+		private String consignorAdditionalPartyIdentification;
+		private String consignorHashCode;
+		private String consigneeAdditionalPartyIdentification;
+		private String consigneeHashCode;
+		private String reconstructionTypeId;
+		private OWLLiteral splitShipment; 	
+		private String waveId;	
+		private String inboundParentLoadingUnitId;
+		private String outboundParentLoadingUnitId;	
+		private String originalDataSource;
+		
+		//optional
+		private OWLLiteral year;
+		private OWLLiteral season;
+		private OWLLiteral weekDay;
+		private OWLLiteral delta;
+		
+		public Builder(String internalId, OWLLiteral preSortScanOn, OWLLiteral reconstructedScanOn,
+				OWLLiteral volume, OWLLiteral weight, String loadingUnit, String inboundConsignmentId,
+				String outboundConsignmentId, String additionalPartyIdentification, String hashCode,
+				String hubReconstructionAdditionalPartyIdentification, String hubHashCode,
+				String shipperAdditionalPartyIdentification, String shipperHashCode,
+				String receiverAdditionalPartyIdentification, String receiverHashCode,
+				String carrierAdditionalPartyIdentification, String carrierHashCode,
+				String consignorAdditionalPartyIdentification, String consignorHashCode,
+				String consigneeAdditionalPartyIdentification, String consigneeHashCode, String reconstructionTypeId,
+				OWLLiteral splitShipment, String waveId, String inboundParentLoadingUnitId,
+				String outboundParentLoadingUnitId, String originalDataSource, OWLLiteral year, OWLLiteral season,
+				OWLLiteral weekDay, OWLLiteral delta) {
+			this.internalId = internalId;
+			this.preSortScanOn = preSortScanOn;
+			this.reconstructedScanOn = reconstructedScanOn;
+			this.volume = volume;
+			this.weight = weight;
+			this.loadingUnit = loadingUnit;
+			this.inboundConsignmentId = inboundConsignmentId;
+			this.outboundConsignmentId = outboundConsignmentId;
+			this.additionalPartyIdentification = additionalPartyIdentification;
+			this.hashCode = hashCode;
+			this.hubReconstructionAdditionalPartyIdentification = hubReconstructionAdditionalPartyIdentification;
+			this.hubHashCode = hubHashCode;
+			this.shipperAdditionalPartyIdentification = shipperAdditionalPartyIdentification;
+			this.shipperHashCode = shipperHashCode;
+			this.receiverAdditionalPartyIdentification = receiverAdditionalPartyIdentification;
+			this.receiverHashCode = receiverHashCode;
+			this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
+			this.carrierHashCode = carrierHashCode;
+			this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
+			this.consignorHashCode = consignorHashCode;
+			this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
+			this.consigneeHashCode = consigneeHashCode;
+			this.reconstructionTypeId = reconstructionTypeId;
+			this.splitShipment = splitShipment;
+			this.waveId = waveId;
+			this.inboundParentLoadingUnitId = inboundParentLoadingUnitId;
+			this.outboundParentLoadingUnitId = outboundParentLoadingUnitId;
+			this.originalDataSource = originalDataSource;
+			this.year = year;
+			this.season = season;
+			this.weekDay = weekDay;
+			this.delta = delta;	
+	}
+		
+		public T setYear(OWLLiteral year) {
+			this.year = year;f
+			return self();
+		}
+
+		public void setSeason(OWLLiteral season) {
+			this.season = season;
+		}
+
+		public void setWeekDay(OWLLiteral weekDay) {
+			this.weekDay = weekDay;
+		}
+
+		public void setDelta(OWLLiteral delta) {
+			this.delta = delta;
+		}
+		
+		
+
+		public void setInternalId(String internalId) {
+			this.internalId = internalId;
+		}
+
+		public void setPreSortScanOn(OWLLiteral preSortScanOn) {
+			this.preSortScanOn = preSortScanOn;
+		}
+
+		public void setReconstructedScanOn(OWLLiteral reconstructedScanOn) {
+			this.reconstructedScanOn = reconstructedScanOn;
+		}
+
+		public void setVolume(OWLLiteral volume) {
+			this.volume = volume;
+		}
+
+		public void setWeight(OWLLiteral weight) {
+			this.weight = weight;
+		}
+
+		public void setLoadingUnit(String loadingUnit) {
+			this.loadingUnit = loadingUnit;
+		}
+
+		public void setInboundConsignmentId(String inboundConsignmentId) {
+			this.inboundConsignmentId = inboundConsignmentId;
+		}
+
+		public void setOutboundConsignmentId(String outboundConsignmentId) {
+			this.outboundConsignmentId = outboundConsignmentId;
+		}
+
+		public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
+			this.additionalPartyIdentification = additionalPartyIdentification;
+		}
+
+		public void setHashCode(String hashCode) {
+			this.hashCode = hashCode;
+		}
+
+		public void setHubReconstructionAdditionalPartyIdentification(String hubReconstructionAdditionalPartyIdentification) {
+			this.hubReconstructionAdditionalPartyIdentification = hubReconstructionAdditionalPartyIdentification;
+		}
+
+		public void setHubHashCode(String hubHashCode) {
+			this.hubHashCode = hubHashCode;
+		}
+
+		public void setShipperAdditionalPartyIdentification(String shipperAdditionalPartyIdentification) {
+			this.shipperAdditionalPartyIdentification = shipperAdditionalPartyIdentification;
+		}
+
+		public void setShipperHashCode(String shipperHashCode) {
+			this.shipperHashCode = shipperHashCode;
+		}
+
+		public void setReceiverAdditionalPartyIdentification(String receiverAdditionalPartyIdentification) {
+			this.receiverAdditionalPartyIdentification = receiverAdditionalPartyIdentification;
+		}
+
+		public void setReceiverHashCode(String receiverHashCode) {
+			this.receiverHashCode = receiverHashCode;
+		}
+
+		public void setCarrierAdditionalPartyIdentification(String carrierAdditionalPartyIdentification) {
+			this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
+		}
+
+		public void setCarrierHashCode(String carrierHashCode) {
+			this.carrierHashCode = carrierHashCode;
+		}
+
+		public void setConsignorAdditionalPartyIdentification(String consignorAdditionalPartyIdentification) {
+			this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
+		}
+
+		public void setConsignorHashCode(String consignorHashCode) {
+			this.consignorHashCode = consignorHashCode;
+		}
+
+		public void setConsigneeAdditionalPartyIdentification(String consigneeAdditionalPartyIdentification) {
+			this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
+		}
+
+		public void setConsigneeHashCode(String consigneeHashCode) {
+			this.consigneeHashCode = consigneeHashCode;
+		}
+
+		public void setReconstructionTypeId(String reconstructionTypeId) {
+			this.reconstructionTypeId = reconstructionTypeId;
+		}
+
+		public void setSplitShipment(OWLLiteral splitShipment) {
+			this.splitShipment = splitShipment;
+		}
+
+		public void setWaveId(String waveId) {
+			this.waveId = waveId;
+		}
+
+		public void setInboundParentLoadingUnitId(String inboundParentLoadingUnitId) {
+			this.inboundParentLoadingUnitId = inboundParentLoadingUnitId;
+		}
+
+		public void setOutboundParentLoadingUnitId(String outboundParentLoadingUnitId) {
+			this.outboundParentLoadingUnitId = outboundParentLoadingUnitId;
+		}
+
+		public void setOriginalDataSource(String originalDataSource) {
+			this.originalDataSource = originalDataSource;
+		}
+
+
+		
+		@Override
+		public XDocLoadingUnitGenerator build() {
+			return new XDocLoadingUnitGenerator(this);
+		}
+
+		@Override
+		protected Builder self() {
+			return this;
+		}
+		
+		
+
+		
+		
+	}
 	
 
-	public XDocLoadingUnitGenerator(String internalId, OWLLiteral preSortScanOn, OWLLiteral reconstructedScanOn,
+	public XDocLoadingUnits(String internalId, OWLLiteral preSortScanOn, OWLLiteral reconstructedScanOn,
 			OWLLiteral volume, OWLLiteral weight, String loadingUnit, String inboundConsignmentId,
 			String outboundConsignmentId, String additionalPartyIdentification, String hashCode,
 			String hubReconstructionAdditionalPartyIdentification, String hubHashCode,
@@ -115,7 +381,7 @@ public class XDocLoadingUnitGenerator
 	}
 
 
-	public XDocLoadingUnitGenerator() {}
+	public XDocLoadingUnits() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
@@ -457,384 +723,6 @@ public class XDocLoadingUnitGenerator
 		manager.saveOntology(onto);
 	}
 
-
-	
-
-
-	public String getReconstructionTypeId() {
-		return reconstructionTypeId;
-	}
-
-
-	public void setReconstructionTypeId(String reconstructionTypeId) {
-		this.reconstructionTypeId = reconstructionTypeId;
-	}
-
-
-	public String getInternalId() {
-		return internalId;
-	}
-
-
-	public void setInternalId(String internalId) {
-		this.internalId = internalId;
-	}
-
-
-	public OWLLiteral getPreSortScanOn() {
-		return preSortScanOn;
-	}
-
-
-	public void setPreSortScanOn(OWLLiteral preSortScanOn) {
-		this.preSortScanOn = preSortScanOn;
-	}
-
-
-	public OWLLiteral getReconstructedScanOn() {
-		return reconstructedScanOn;
-	}
-
-
-	public void setReconstructedScanOn(OWLLiteral reconstructedScanOn) {
-		this.reconstructedScanOn = reconstructedScanOn;
-	}
-
-
-
-
-
-	public String getInboundConsignmentId() {
-		return inboundConsignmentId;
-	}
-
-
-	public void setInboundConsignmentId(String inboundConsignmentId) {
-		this.inboundConsignmentId = inboundConsignmentId;
-	}
-
-
-	public String getOutboundConsignmentId() {
-		return outboundConsignmentId;
-	}
-
-
-	public void setOutboundConsignmentId(String outboundConsignmentId) {
-		this.outboundConsignmentId = outboundConsignmentId;
-	}
-
-
-
-
-	public String getLoadingUnitForXDocLoadingUnit() {
-		return loadingUnit;
-	}
-
-
-	public void setLoadingUnitForXDocLoadingUnit(String loadingUnitForXDocLoadingUnit) {
-		this.loadingUnit = loadingUnitForXDocLoadingUnit;
-	}
-
-
-
-	public OWLLiteral getxDocLoadingUnitVolume() {
-		return volume;
-	}
-
-
-	public void setxDocLoadingUnitVolume(OWLLiteral xDocLoadingUnitVolume) {
-		this.volume = xDocLoadingUnitVolume;
-	}
-
-
-	public OWLLiteral getxDocLoadingUnitWeight() {
-		return weight;
-	}
-
-
-	public void setxDocLoadingUnitWeight(OWLLiteral xDocLoadingUnitWeight) {
-		this.weight = xDocLoadingUnitWeight;
-	}
-
-
-	public String getInboundParentLoadingUnitForXDocLoadingUnit() {
-		return inboundParentLoadingUnitId;
-	}
-
-
-	public void setInboundParentLoadingUnitForXDocLoadingUnit(String inboundParentLoadingUnitForXDocLoadingUnit) {
-		this.inboundParentLoadingUnitId = inboundParentLoadingUnitForXDocLoadingUnit;
-	}
-
-
-	public String getOutboundParentLoadingUnitForXDocLoadingUnit() {
-		return outboundParentLoadingUnitId;
-	}
-
-
-	public void setOutboundParentLoadingUnitForXDocLoadingUnit(String outboundParentLoadingUnitForXDocLoadingUnit) {
-		this.outboundParentLoadingUnitId = outboundParentLoadingUnitForXDocLoadingUnit;
-	}
-
-
-	public OWLLiteral getVolume() {
-		return volume;
-	}
-
-
-	public void setVolume(OWLLiteral volume) {
-		this.volume = volume;
-	}
-
-
-	public OWLLiteral getWeight() {
-		return weight;
-	}
-
-
-	public void setWeight(OWLLiteral weight) {
-		this.weight = weight;
-	}
-
-
-	public String getLoadingUnit() {
-		return loadingUnit;
-	}
-
-
-	public void setLoadingUnit(String loadingUnit) {
-		this.loadingUnit = loadingUnit;
-	}
-
-
-	public String getAdditionalPartyIdentification() {
-		return additionalPartyIdentification;
-	}
-
-
-	public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
-		this.additionalPartyIdentification = additionalPartyIdentification;
-	}
-
-
-	public String getHubReconstructionAdditionalPartyIdentification() {
-		return hubReconstructionAdditionalPartyIdentification;
-	}
-
-
-	public void setHubReconstructionAdditionalPartyIdentification(String hubReconstructionAdditionalPartyIdentification) {
-		this.hubReconstructionAdditionalPartyIdentification = hubReconstructionAdditionalPartyIdentification;
-	}
-
-
-	public String getShipperAdditionalPartyIdentification() {
-		return shipperAdditionalPartyIdentification;
-	}
-
-
-	public void setShipperAdditionalPartyIdentification(String shipperAdditionalPartyIdentification) {
-		this.shipperAdditionalPartyIdentification = shipperAdditionalPartyIdentification;
-	}
-
-
-	public String getReceiverAdditionalPartyIdentification() {
-		return receiverAdditionalPartyIdentification;
-	}
-
-
-	public void setReceiverAdditionalPartyIdentification(String receiverAdditionalPartyIdentification) {
-		this.receiverAdditionalPartyIdentification = receiverAdditionalPartyIdentification;
-	}
-
-
-	public String getCarrierAdditionalPartyIdentification() {
-		return carrierAdditionalPartyIdentification;
-	}
-
-
-	public void setCarrierAdditionalPartyIdentification(String carrierAdditionalPartyIdentification) {
-		this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
-	}
-
-
-	public String getConsignorAdditionalPartyIdentification() {
-		return consignorAdditionalPartyIdentification;
-	}
-
-
-	public void setConsignorAdditionalPartyIdentification(String consignorAdditionalPartyIdentification) {
-		this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
-	}
-
-
-	public String getConsigneeAdditionalPartyIdentification() {
-		return consigneeAdditionalPartyIdentification;
-	}
-
-
-	public void setConsigneeAdditionalPartyIdentification(String consigneeAdditionalPartyIdentification) {
-		this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
-	}
-
-
-	public OWLLiteral getSplitShipment() {
-		return splitShipment;
-	}
-
-
-	public void setSplitShipment(OWLLiteral splitShipment) {
-		this.splitShipment = splitShipment;
-	}
-
-
-	public String getInboundParentLoadingUnitId() {
-		return inboundParentLoadingUnitId;
-	}
-
-
-	public void setInboundParentLoadingUnitId(String inboundParentLoadingUnitId) {
-		this.inboundParentLoadingUnitId = inboundParentLoadingUnitId;
-	}
-
-
-	public String getOutboundParentLoadingUnitId() {
-		return outboundParentLoadingUnitId;
-	}
-
-
-	public void setOutboundParentLoadingUnitId(String outboundParentLoadingUnitId) {
-		this.outboundParentLoadingUnitId = outboundParentLoadingUnitId;
-	}
-
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-
-
-	public OWLLiteral getYear() {
-		return year;
-	}
-
-
-	public void setYear(OWLLiteral year) {
-		this.year = year;
-	}
-
-
-	public OWLLiteral getSeason() {
-		return season;
-	}
-
-
-	public void setSeason(OWLLiteral season) {
-		this.season = season;
-	}
-
-
-	public OWLLiteral getWeekDay() {
-		return weekDay;
-	}
-
-
-	public void setWeekDay(OWLLiteral weekDay) {
-		this.weekDay = weekDay;
-	}
-
-
-	public String getWaveId() {
-		return waveId;
-	}
-
-
-	public void setWaveId(String waveId) {
-		this.waveId = waveId;
-	}
-
-
-	public OWLLiteral getDelta() {
-		return delta;
-	}
-
-
-	public void setDelta(OWLLiteral delta) {
-		this.delta = delta;
-	}
-
-
-	public String getHashCode() {
-		return hashCode;
-	}
-
-
-	public void setHashCode(String hashCode) {
-		this.hashCode = hashCode;
-	}
-
-
-	public String getHubHashCode() {
-		return hubHashCode;
-	}
-
-
-	public void setHubHashCode(String hubHashCode) {
-		this.hubHashCode = hubHashCode;
-	}
-
-
-	public String getShipperHashCode() {
-		return shipperHashCode;
-	}
-
-
-	public void setShipperHashCode(String shipperHashCode) {
-		this.shipperHashCode = shipperHashCode;
-	}
-
-
-	public String getReceiverHashCode() {
-		return receiverHashCode;
-	}
-
-
-	public void setReceiverHashCode(String receiverHashCode) {
-		this.receiverHashCode = receiverHashCode;
-	}
-
-
-	public String getCarrierHashCode() {
-		return carrierHashCode;
-	}
-
-
-	public void setCarrierHashCode(String carrierHashCode) {
-		this.carrierHashCode = carrierHashCode;
-	}
-
-
-	public String getConsignorHashCode() {
-		return consignorHashCode;
-	}
-
-
-	public void setConsignorHashCode(String consignorHashCode) {
-		this.consignorHashCode = consignorHashCode;
-	}
-
-
-	public String getConsigneeHashCode() {
-		return consigneeHashCode;
-	}
-
-
-	public void setConsigneeHashCode(String consigneeHashCode) {
-		this.consigneeHashCode = consigneeHashCode;
-	}
 	
 
 }

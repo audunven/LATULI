@@ -1,0 +1,19 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+    <logger name="org.apache" level="ERROR" />
+    <logger name="httpclient" level="ERROR" />
+    <logger name="org.semanticweb.owlapi.utilities.Injector" level="OFF" />
+    <logger name="o.s.owlapi.utilities.Injector" level="OFF" />
+    <logger name="org.semanticweb.owlapi.model" level="OFF" />
+ 
+  <root level="OFF">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</configuration>
+

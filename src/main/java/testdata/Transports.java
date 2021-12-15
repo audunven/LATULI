@@ -26,7 +26,7 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class TransportsGenerator {
+public class Transports {
 		
 	String transportId;
 	String hubHashCode;
@@ -34,7 +34,7 @@ public class TransportsGenerator {
 	String originalDataSource;
 
 
-	public TransportsGenerator(String transportId, String hubHashCode, String transportType, String originalDataSource) {
+	public Transports(String transportId, String hubHashCode, String transportType, String originalDataSource) {
 		this.transportId = transportId;
 		this.hubHashCode = hubHashCode;
 		this.transportType = transportType;
@@ -42,12 +42,12 @@ public class TransportsGenerator {
 
 	}
 
-	public TransportsGenerator() {}
+	public Transports() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		TransportsGenerator data;
+		Transports data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Transports_multi_last_100000.csv"));
 
@@ -55,7 +55,7 @@ public class TransportsGenerator {
 
 		String[] params = null;
 
-		Set<TransportsGenerator> dataset = new HashSet<TransportsGenerator>();
+		Set<Transports> dataset = new HashSet<Transports>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -66,7 +66,7 @@ public class TransportsGenerator {
 		while (line != null) {
 			params = line.split(",");
 
-			data = new TransportsGenerator();
+			data = new Transports();
 			
 			if (!params[1].equals("0") && !params[1].equalsIgnoreCase("TransportId")) {
 			
@@ -110,7 +110,7 @@ public class TransportsGenerator {
 		int iterator = 0;
 
 
-		for (TransportsGenerator td : dataset) {
+		for (Transports td : dataset) {
 			iterator+=1;	
 
 			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));

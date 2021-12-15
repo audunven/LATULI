@@ -28,43 +28,80 @@ import utilities.StringUtilities;
  * @author audunvennesland
  *
  */
-public class PartiesGenerator {
+public class Parties {
 
-	String additionalPartyIdentification;
-	String gln;
-	String hashCode;
-	String code2;
-	String location;
-	String postalCode;
-	OWLLiteral isHub;
-	OWLLiteral isShipper;
-	OWLLiteral isCarrier;
-	OWLLiteral isConsignor;
-	String coordinates;
-
-
-	public PartiesGenerator(String additionalPartyIdentification, String gln, String hashCode, String code2, String location, String postalCode, 
-			OWLLiteral isHub, OWLLiteral isShipper, OWLLiteral isCarrier, OWLLiteral isConsignor, String coordinates) {
-		this.additionalPartyIdentification = additionalPartyIdentification;
-		this.gln = gln;
-		this.hashCode = hashCode;
-		this.code2 = code2;
-		this.location = location;
-		this.postalCode = postalCode;
-		this.isHub = isHub;
-		this.isShipper = isShipper;
-		this.isConsignor = isConsignor;
-		this.isCarrier = isCarrier;
-		this.coordinates = coordinates;
+	private String additionalPartyIdentification;
+	private String gln;
+	private String hashCode;
+	private String code2;
+	private String location;
+	private String postalCode;
+	private OWLLiteral isHub;
+	private OWLLiteral isShipper;
+	private OWLLiteral isCarrier;
+	private OWLLiteral isConsignor;
+	private String coordinates;
+	
+	private Parties(Builder builder) {
+		
+		this.additionalPartyIdentification = builder.additionalPartyIdentification;
+		this.gln = builder.gln;
+		this.hashCode = builder.hashCode;
+		this.code2 = builder.code2;
+		this.location = builder.location;
+		this.postalCode = builder.postalCode;
+		this.isHub = builder.isHub;
+		this.isShipper = builder.isShipper;
+		this.isConsignor = builder.isConsignor;
+		this.isCarrier = builder.isCarrier;
+		this.coordinates = builder.coordinates;
+		
 	}
-
-
-	public PartiesGenerator() {}
+	
+	public static class Builder {
+		
+		private String additionalPartyIdentification;
+		private String gln;
+		private String hashCode;
+		private String code2;
+		private String location;
+		private String postalCode;
+		private OWLLiteral isHub;
+		private OWLLiteral isShipper;
+		private OWLLiteral isCarrier;
+		private OWLLiteral isConsignor;
+		private String coordinates;
+		
+		
+		public Builder(String additionalPartyIdentification, String gln, String hashCode, String code2, String location, String postalCode, 
+				OWLLiteral isHub, OWLLiteral isShipper, OWLLiteral isCarrier, OWLLiteral isConsignor, String coordinates) {
+			this.additionalPartyIdentification = additionalPartyIdentification;
+			this.gln = gln;
+			this.hashCode = hashCode;
+			this.code2 = code2;
+			this.location = location;
+			this.postalCode = postalCode;
+			this.isHub = isHub;
+			this.isShipper = isShipper;
+			this.isConsignor = isConsignor;
+			this.isCarrier = isCarrier;
+			this.coordinates = coordinates;
+		}
+		
+		public Parties build() {
+			return new Parties(this);
+		}	
+	}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		PartiesGenerator data;
+		 //measure memory footprint of object creation
+		Runtime runtimeObjectCreation = Runtime.getRuntime();
+	    long usedMemoryBeforeObjectCreation = runtimeObjectCreation.totalMemory() - runtimeObjectCreation.freeMemory();
+	    System.out.println("Used Memory before object creation: " + usedMemoryBeforeObjectCreation/1000000 + " MB");
+	    
+		Parties data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/Parties_multi.csv"));
 
@@ -72,37 +109,24 @@ public class PartiesGenerator {
 
 		String[] params = null;
 
-		Set<PartiesGenerator> dataset = new HashSet<PartiesGenerator>();
+		Set<Parties> dataset = new HashSet<Parties>();
 		
 		//import ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
-		String coordinates = null;
 
 		while (line != null) {
 			params = line.split(",");
 
-			data = new PartiesGenerator();
-			
-			data.setAdditionalPartyIdentification(params[1]);
-			data.setGln(params[2]);
-			data.setHashCode(params[3]);
-			data.setCode2(params[4]);
-			data.setLocation(StringUtilities.removeWhiteSpace(params[5]));
-			data.setPostalCode(StringUtilities.removeWhiteSpace(params[6]));
-			data.setIsHub(OntologyOperations.convertToBoolean(manager, params[7]));
-			data.setIsShipper(OntologyOperations.convertToBoolean(manager, params[8]));
-			data.setIsCarrier(OntologyOperations.convertToBoolean(manager, params[9]));
-			data.setIsConsignor(OntologyOperations.convertToBoolean(manager, params[10]));
-			
-			coordinates = params[11] + "," + params[12];
-			
-			System.out.println("Coordinates: " + coordinates);
-			
-			data.setCoordinates(coordinates);
-
+			data = new Parties.Builder(params[1], params[2], params[3], params[4],
+					StringUtilities.removeWhiteSpace(params[5]),
+					StringUtilities.removeWhiteSpace(params[6]),
+					OntologyOperations.convertToBoolean(manager, params[7]),
+					OntologyOperations.convertToBoolean(manager, params[8]),
+					OntologyOperations.convertToBoolean(manager, params[9]),
+					OntologyOperations.convertToBoolean(manager, params[10]),
+							params[10] + "," + params[11]).build();
 
 			dataset.add(data);
 			line = br.readLine();
@@ -110,6 +134,14 @@ public class PartiesGenerator {
 		}
 
 		br.close();
+		
+		long usedMemoryAfterObjectCreation = runtimeObjectCreation.totalMemory() - runtimeObjectCreation.freeMemory();
+	    System.out.println("Memory increased after object creation: " + (usedMemoryAfterObjectCreation-usedMemoryBeforeObjectCreation)/1000000 + " MB");
+	    
+	    //measure memory footprint of ontology creation
+	    Runtime runtimeOntologyCreation = Runtime.getRuntime();
+	    long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+	    System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
 		//point to a local folder containing local copies of ontologies to sort out the imports
 		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
@@ -129,12 +161,9 @@ public class PartiesGenerator {
 
 		AddAxiom addAxiomChange = null;
 
-		int iterator = 0;
-
 		//adding new parties
-		for (PartiesGenerator td : dataset) {
-			iterator+=1;	
-
+		for (Parties td : dataset) {
+			
 			//adding party individual
 			if (!td.getAdditionalPartyIdentification().equals("nan")) {
 			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHashCode() + "_party"));
@@ -143,9 +172,7 @@ public class PartiesGenerator {
 			manager.applyChange(addAxiomChange);
 			}
 
-
-			//DP for expressing party details
-			
+			//DP for expressing party details		
 			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), partyInd, td.getAdditionalPartyIdentification());
 			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
 			manager.applyChange(addAxiomChange);
@@ -192,8 +219,11 @@ public class PartiesGenerator {
 
 
 		}
-		//save the ontology in each iteration
+		//save the ontology
 		manager.saveOntology(onto);
+		
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+	    System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
 	}
 	
 	public static String formatCoordinates (String coordinates) {
@@ -206,58 +236,24 @@ public class PartiesGenerator {
 	}
 
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-
 	public String getCoordinates() {
 		return coordinates;
 	}
-
-
-	public void setCoordinates(String coordinates) {
-		this.coordinates = coordinates;
-	}
-
 
 	public String getAdditionalPartyIdentification() {
 		return additionalPartyIdentification;
 	}
 
-
-	public void setAdditionalPartyIdentification(String additionalPartyIdentification) {
-		this.additionalPartyIdentification = additionalPartyIdentification;
-	}
-
-
 	public String getGln() {
 		return gln;
 	}
-
-
-	public void setGln(String gln) {
-		this.gln = gln;
-	}
-
 
 	public String getCode2() {
 		return code2;
 	}
 
-
-	public void setCode2(String code2) {
-		this.code2 = code2;
-	}
-
-
 	public String getLocation() {
 		return location;
-	}
-
-
-	public void setLocation(String location) {
-		this.location = location;
 	}
 
 
@@ -266,28 +262,12 @@ public class PartiesGenerator {
 	}
 
 
-	public void setHashCode(String hashCode) {
-		this.hashCode = hashCode;
-	}
-
-
 	public OWLLiteral getIsHub() {
 		return isHub;
 	}
 
-
-	public void setIsHub(OWLLiteral isHub) {
-		this.isHub = isHub;
-	}
-
-
 	public OWLLiteral getIsShipper() {
 		return isShipper;
-	}
-
-
-	public void setIsShipper(OWLLiteral isShipper) {
-		this.isShipper = isShipper;
 	}
 
 
@@ -296,21 +276,10 @@ public class PartiesGenerator {
 	}
 
 
-	public void setIsCarrier(OWLLiteral isCarrier) {
-		this.isCarrier = isCarrier;
-	}
-
-
 	public OWLLiteral getIsConsignor() {
 		return isConsignor;
 	}
 
-
-	public void setIsConsignor(OWLLiteral isConsignor) {
-		this.isConsignor = isConsignor;
-	}
-	
-	
 
 
 }

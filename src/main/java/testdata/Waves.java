@@ -28,7 +28,7 @@ import utilities.StringUtilities;
  * @author audunvennesland
  *
  */
-public class WaveGenerator {
+public class Waves {
 
 	String waveId;
 	OWLLiteral releasedOn;
@@ -52,7 +52,7 @@ public class WaveGenerator {
 	OWLLiteral weekDay;
 
 
-	public WaveGenerator(String waveId, OWLLiteral releasedOn, String hubAdditionalPartyIdentification, String hubHashCode, OWLLiteral closedOn, String status,
+	public Waves(String waveId, OWLLiteral releasedOn, String hubAdditionalPartyIdentification, String hubHashCode, OWLLiteral closedOn, String status,
 			OWLLiteral waveStartProcessingOn, OWLLiteral waveEndProcessingOn, OWLLiteral qttTrailers,
 			OWLLiteral qttBoxes, OWLLiteral qttBoxesProcessed, OWLLiteral qttPalletsBuilt,
 			OWLLiteral qttTasks, OWLLiteral qttShipments, String originalDataSource, OWLLiteral year, OWLLiteral season,
@@ -78,12 +78,12 @@ public class WaveGenerator {
 	}
 
 
-	public WaveGenerator() {}
+	public Waves() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		WaveGenerator data;
+		Waves data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Waves_multi_last_100000.csv"));
 
@@ -91,7 +91,7 @@ public class WaveGenerator {
 
 		String[] params = null;
 
-		Set<WaveGenerator> dataset = new HashSet<WaveGenerator>();
+		Set<Waves> dataset = new HashSet<Waves>();
 		
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
 
@@ -101,7 +101,7 @@ public class WaveGenerator {
 		while (line != null) {
 			params = line.split(",");
 
-			data = new WaveGenerator();
+			data = new Waves();
 						
 			data.setWaveId(params[1]);
 			data.setReleasedOn(OntologyOperations.convertToDateTime(manager, params[2]));
@@ -158,7 +158,7 @@ public class WaveGenerator {
 		int iterator = 0;
 
 		
-		for (WaveGenerator td : dataset) {
+		for (Waves td : dataset) {
 			iterator+=1;	
 
 			waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getWaveId() + "_wave"));

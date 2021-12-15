@@ -28,7 +28,7 @@ import utilities.StringUtilities;
  * @author audunvennesland
  *
  */
-public class ShipmentsGenerator {
+public class Shipments {
 
 	String shipmentId;
 	OWLLiteral shippedOn;
@@ -43,7 +43,7 @@ public class ShipmentsGenerator {
 	OWLLiteral season;
 	OWLLiteral weekDay;
 
-	public ShipmentsGenerator(String shipmentId, String shipperGLN, String receiverGLN,
+	public Shipments(String shipmentId, String shipperGLN, String receiverGLN,
 			String shipperAdditionalPartyIdentification, String shipperHashCode,
 			String receiverAdditionalPartyIdentification, String receiverHashCode, OWLLiteral shippedOn,
 			OWLLiteral expectedDeliveryOn, OWLLiteral plannedDeliveryDate, OWLLiteral qttBoxes, OWLLiteral qttPallets,
@@ -64,12 +64,12 @@ public class ShipmentsGenerator {
 	}
 
 
-	public ShipmentsGenerator() {}
+	public Shipments() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		ShipmentsGenerator data;
+		Shipments data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Shipments_multi_last_100000.csv"));
 
@@ -77,7 +77,7 @@ public class ShipmentsGenerator {
 
 		String[] params = null;
 
-		Set<ShipmentsGenerator> dataset = new HashSet<ShipmentsGenerator>();
+		Set<Shipments> dataset = new HashSet<Shipments>();
 		
 		//import manusquare ontology
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
@@ -88,7 +88,7 @@ public class ShipmentsGenerator {
 		while (line != null) {
 			params = line.split(",");
 
-			data = new ShipmentsGenerator();
+			data = new Shipments();
 						
 			data.setShipmentId(params[1]);
 			data.setShippedOn(OntologyOperations.convertToDateTime(manager, params[2]));
@@ -137,7 +137,7 @@ public class ShipmentsGenerator {
 
 		//adding process chain
 		
-		  for (ShipmentsGenerator td : dataset) { 
+		  for (Shipments td : dataset) { 
 			  
 		  iterator+=1;
 		  

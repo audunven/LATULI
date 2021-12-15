@@ -27,7 +27,7 @@ import owlprocessing.OntologyOperations;
  * @author audunvennesland
  *
  */
-public class InboundTrucksGenerator {
+public class InboundTrucks {
 
 	String truckId;
 	OWLLiteral firstScan;
@@ -42,7 +42,7 @@ public class InboundTrucksGenerator {
 	
 	
 
-	public InboundTrucksGenerator(String truckId, OWLLiteral firstScan, OWLLiteral inboundTruckExpectedArrival, OWLLiteral palletNr,
+	public InboundTrucks(String truckId, OWLLiteral firstScan, OWLLiteral inboundTruckExpectedArrival, OWLLiteral palletNr,
 			OWLLiteral totalWeight, OWLLiteral totalVolume, OWLLiteral numberOfLooseCartons,
 			String trailerIdentification, OWLLiteral numberOfShipments, String m3HubId) {
 		this.truckId = truckId;
@@ -58,12 +58,12 @@ public class InboundTrucksGenerator {
 	}
 
 
-	public InboundTrucksGenerator() {}
+	public InboundTrucks() {}
 
 
 	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
 
-		InboundTrucksGenerator data;
+		InboundTrucks data;
 
 		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Last_10000/InboundTruck_last_10000.csv"));
 
@@ -71,7 +71,7 @@ public class InboundTrucksGenerator {
 
 		String[] params = null;
 
-		Set<InboundTrucksGenerator> dataset = new HashSet<InboundTrucksGenerator>();
+		Set<InboundTrucks> dataset = new HashSet<InboundTrucks>();
 		
 		File ontoFile = new File("./files/ONTOLOGIES/M3Onto.owl");
 
@@ -81,7 +81,7 @@ public class InboundTrucksGenerator {
 		while (line != null) {
 			params = line.split(";");
 
-			data = new InboundTrucksGenerator();
+			data = new InboundTrucks();
 						
 			data.setTruckId(params[1]);
 			data.setTrailerIdentification(params[2]);
@@ -126,7 +126,7 @@ public class InboundTrucksGenerator {
 		int iterator = 0;
 
 		//adding process chain
-		for (InboundTrucksGenerator td : dataset) {
+		for (InboundTrucks td : dataset) {
 			iterator+=1;	
 
 			//adding inbound truck individual

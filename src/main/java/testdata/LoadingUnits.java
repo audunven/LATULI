@@ -4,155 +4,192 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 
 public class LoadingUnits {
 
-	private String loadingUnitId;
-	private String packageTypeId;
-	private String originalDataSource;
-
-	public String getLoadingUnitId() {
-		return loadingUnitId;
-	}
-
-	public String getPackageTypeId() {
-		return packageTypeId;
-	}
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-	private LoadingUnits(Builder builder) {
-
-		this.loadingUnitId = builder.loadingUnitId;
-		this.packageTypeId = builder.packageTypeId;
-		this.originalDataSource = builder.originalDataSource;
-	}
-
-	public static class Builder {
-
-		private  String loadingUnitId;
-		private String packageTypeId;
-		private String originalDataSource;
-
-		public Builder(String loadingUnitId, String packageTypeId, String originalDataSource) {
-			this.loadingUnitId = loadingUnitId;
-			this.packageTypeId = packageTypeId;
-			this.originalDataSource = originalDataSource;
-		}
-
-		public LoadingUnits build() {
-			return new LoadingUnits(this);
-		}
-	}
-
-
-
-	public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException, IOException {
-
-
-		LoadingUnits data;
-
-		String[] params = null;
-		Set<LoadingUnits> dataset = new HashSet<LoadingUnits>();
+	public static void processLoadingUnits (File loadingUnitsFolder, String baseURI, String dataDir, String indexes) {
 		
-		String CSV_folder = "./files/CSV/Truls/LoadingUnits_split/";
-		
-		File folder = new File(CSV_folder);
-		File[] filesInDir = folder.listFiles();
-		
-		BufferedReader br;
+		//measure runtime
+		long startTime = System.nanoTime();
 
-		for (int i = 0; i < filesInDir.length; i++) {
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+
+		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			System.out.println("Reading file: " + filesInDir[i].getName());
+			ValueFactory vf = connection.getValueFactory();
 			
-			br = new BufferedReader(new FileReader(filesInDir[i]));
+			IRI loadingUnitInd;
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
+			
+			File[] filesInDir = loadingUnitsFolder.listFiles();
+			String[] params = null;
 
-			String line = br.readLine();
+			BufferedReader br = null;
 
-			while (line != null) {
-				params = line.split(",");
+			for (int i = 0; i < filesInDir.length; i++) {
+				
+				try {
 
-				data = new LoadingUnits.Builder(params[1], params[2], params[3])
-						.build();
+					String line;		
 
-				dataset.add(data);
-				line = br.readLine();			
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding types
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingUnit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+
+						//adding literals
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "packageTypeId"), vf.createLiteral(params[1]));
+						
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "orderNumber"), vf.createLiteral(params[2]));
+
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						
+						}
+					}
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
 			}
-
-			br.close();		
-			
-			System.out.println("Completed processing file: " + filesInDir[i].getName());
-
 		}
+		repo.shutDown();
+
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+	
+				
+			}
+	
+public static void processLoadingUnitsHTTP (File loadingUnitsFolder, String baseURI, String rdf4jServer, String repositoryId) {
 		
-		System.out.println("Completed processing all CSV files in folder " + CSV_folder);
+		//measure runtime
+		long startTime = System.nanoTime();
 
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
 
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
+		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			ValueFactory vf = connection.getValueFactory();
+			
+			IRI loadingUnitInd;
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
+			
+			File[] filesInDir = loadingUnitsFolder.listFiles();
+			String[] params = null;
 
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
+			BufferedReader br = null;
 
-		OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
+			for (int i = 0; i < filesInDir.length; i++) {
+				
+				try {
 
-		OWLDataFactory df = manager.getOWLDataFactory();
+					String line;		
 
-		OWLIndividual loadingUnitInd = null;
+					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
+					System.out.println("Reading file: " + filesInDir[i].getName());
 
-		AddAxiom addAxiomChange = null;
+					while ((line = br.readLine()) != null) {
 
-		for (LoadingUnits td : dataset) {
+						params = line.split(",");
 
-			//adding loading unit individual
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getLoadingUnitId() + "_loadingunit"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
+						//adding types
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingUnit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 
+						//adding literals
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "packageTypeId"), vf.createLiteral(params[1]));
+						
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "orderNumber"), vf.createLiteral(params[2]));
 
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("packageTypeId", onto), loadingUnitInd, td.getPackageTypeId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						
+						}
+					}
 
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), loadingUnitInd, td.getOriginalDataSource());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+				} catch (IOException e) {
 
+					e.printStackTrace();
 
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
 		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-	}
+		repo.shutDown();
 
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+	
+				
+			}
 
 }
 

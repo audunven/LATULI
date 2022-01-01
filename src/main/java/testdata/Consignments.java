@@ -4,24 +4,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
 import utilities.StringUtilities;
 
 /**
@@ -30,712 +25,263 @@ import utilities.StringUtilities;
  */
 public class Consignments {
 
-	String consignmentId;
-	String transportId;
-	String consignmentType;
-	String reconstructionLane;
-	String reconstructionLocation;
-	String carrierAdditionalPartyIdentification;
-	String carrierHashCode;
-	String consignorAdditionalPartyIdentification;
-	String consignorHashCode;
-	String consigneeAdditionalPartyIdentification;
-	String consigneeHashCode;
-	String consignmentWaveId;
-	String hubAdditionalPartyIdentification;
-	String hubHashCode;
-	String reconstructionType;
-	OWLLiteral taskClosedOn;
-	String fullPalletConsignment;
-	OWLLiteral qttBoxes;
-	OWLLiteral qttPallets;
-	OWLLiteral qttReconstructedPallets;
-	OWLLiteral qttReconstructedParcels;
-	String originalDataSource;
-	String taskId;
-	String taskDescription;
-	OWLLiteral totalConsignmentVolume;
-	OWLLiteral totalConsignmentWeight;
-	OWLLiteral year;
-	OWLLiteral season;
-	OWLLiteral weekDay;
-	
+	public static void processConsignments (File consignmentFolder, String baseURI, String dataDir, String indexes) {
 
-	public Consignments(String consignmentId, String transportId, String consignmentType,
-			String reconstructionLane, String reconstructionLocation, String carrierAdditionalPartyIdentification,
-			String carrierHashCode, String consignorAdditionalPartyIdentification, String consignorHashCode,
-			String consigneeAdditionalPartyIdentification, String consigneeHashCode, String consignmentWaveId,
-			String hubAdditionalPartyIdentification, String hubHashCode, String reconstructionType,
-			OWLLiteral taskClosedOn, String fullPalletConsignment, OWLLiteral qttBoxes, OWLLiteral qttPallets,
-			OWLLiteral qttReconstructedPallets, OWLLiteral qttReconstructedParcels, String originalDataSource,
-			String taskId, String taskDescription, OWLLiteral totalConsignmentVolume, OWLLiteral totalConsignmentWeight,
-			OWLLiteral year, OWLLiteral season, OWLLiteral weekDay) {
-		this.consignmentId = consignmentId;
-		this.transportId = transportId;
-		this.consignmentType = consignmentType;
-		this.reconstructionLane = reconstructionLane;
-		this.reconstructionLocation = reconstructionLocation;
-		this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
-		this.carrierHashCode = carrierHashCode;
-		this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
-		this.consignorHashCode = consignorHashCode;
-		this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
-		this.consigneeHashCode = consigneeHashCode;
-		this.consignmentWaveId = consignmentWaveId;
-		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
-		this.hubHashCode = hubHashCode;
-		this.reconstructionType = reconstructionType;
-		this.taskClosedOn = taskClosedOn;
-		this.fullPalletConsignment = fullPalletConsignment;
-		this.qttBoxes = qttBoxes;
-		this.qttPallets = qttPallets;
-		this.qttReconstructedPallets = qttReconstructedPallets;
-		this.qttReconstructedParcels = qttReconstructedParcels;
-		this.originalDataSource = originalDataSource;
-		this.taskId = taskId;
-		this.taskDescription = taskDescription;
-		this.totalConsignmentVolume = totalConsignmentVolume;
-		this.totalConsignmentWeight = totalConsignmentWeight;
-		this.year = year;
-		this.season = season;
-		this.weekDay = weekDay;
-	}
+		//measure runtime
+		long startTime = System.nanoTime();
 
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
-	public Consignments() {}
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 
+		try (RepositoryConnection connection = repo.getConnection()) {
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
+			ValueFactory vf = connection.getValueFactory();
 
-		Consignments data;
+			IRI consignmentInd;
+			IRI transportInd;
+			IRI waveInd;
+			IRI carrierInd;
+			IRI consignorInd;
+			IRI consigneeInd;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Consignments_multi_last_100000.csv"));
+			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
+			IRI transportClass = vf.createIRI(baseURI, "Transport");
+			IRI waveClass = vf.createIRI(baseURI, "Wave");
+			IRI partyClass = vf.createIRI(baseURI, "Party");
 
-		String line = br.readLine();
+			File[] filesInDir = consignmentFolder.listFiles();
 
-		String[] params = null;
+			BufferedReader br = null;
 
-		Set<Consignments> dataset = new HashSet<Consignments>();
-		
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+			List<String[]> line = new ArrayList<String[]>();
 
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
+			for (int i = 0; i < filesInDir.length; i++) {
 
-		while (line != null) {
-			params = line.split(",");
-			
-			System.out.println("Params size: " + params.length);
+				try {
 
-			data = new Consignments();
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					for (String[] params : line) {
+
+						//adding types
+						consignmentInd = vf.createIRI(baseURI, params[0] + "_consignment" );
+						connection.add(consignmentInd, RDF.TYPE, consignmentClass);
+
+						//adding predicates
+						if (!params[3].equals("NULL")) {
+							transportInd = vf.createIRI(baseURI, params[3] + "_transport");
+							connection.add(transportInd, RDF.TYPE, transportClass);
+							connection.add(consignmentInd, vf.createIRI(baseURI + "includesTransport"), transportInd);
+						}
+
+						if (!params[18].equals("NULL")) {								
+							waveInd = vf.createIRI(baseURI, params[18] + "_wave");
+							connection.add(waveInd, RDF.TYPE, waveClass);
+							connection.add(consignmentInd, vf.createIRI(baseURI + "processedByWave"), waveInd);								
+						}
+
+						carrierInd = vf.createIRI(baseURI, params[11] + "_party");
+						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasCarrierParty"), carrierInd);
+
+						consignorInd = vf.createIRI(baseURI, params[14] + "_party");
+						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsignorParty"), consignorInd);
+
+						consigneeInd = vf.createIRI(baseURI, params[17] + "_party");
+						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsigneeParty"), consigneeInd);
+
+						if (!StringUtilities.convertToDateTime(params[23]).equals("0000-00-00T00:00:00")) {
+							connection.add(consignmentInd, vf.createIRI(baseURI + "taskClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[23]), XMLSchema.DATETIME));
+						}
 						
-			data.setConsignmentId(params[1]);
-			data.setTransportId(params[2]);
-			data.setConsignmentType(params[3]);			
-			data.setReconstructionLane(params[4]);
-			data.setReconstructionLocation(params[5]);
-			data.setCarrierAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[6]));
-			data.setCarrierHashCode(params[7]);
-			data.setConsignorAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[8]));
-			data.setConsignorHashCode(params[9]);
-			data.setConsigneeAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[10]));
-			data.setConsigneeHashCode(params[11]);
-			data.setConsignmentWaveId(params[12]);
-			data.setHubAdditionalPartyidentification(StringUtilities.removeWhiteSpace(params[13]));
-			data.setHubHashCode(params[14]);
-			data.setReconstructionType(params[15]);
-			data.setTaskClosedOn(OntologyOperations.convertToDateTime(manager, params[16]));
-			data.setFullPalletConsignment(params[17]);
-			data.setQttBoxes(OntologyOperations.convertToInt(manager, params[18]));
-			data.setQttPallets(OntologyOperations.convertToInt(manager, params[19]));
-			data.setQttReconstructedPallets(OntologyOperations.convertToInt(manager, params[20]));
-			data.setQttReconstructedParcels(OntologyOperations.convertToInt(manager, params[21]));
-			data.setOriginalDataSource(params[22]);
-			data.setTaskId(params[23]);
-			data.setTaskDescription(params[24]);
-			data.setTotalConsignmentVolume(OntologyOperations.convertToDecimal(manager, params[25]));
-			data.setTotalConsignmentWeight(OntologyOperations.convertToDecimal(manager, params[26]));
-			
-			if (params.length == 30) {
-		
-			data.setYear(OntologyOperations.convertToDecimal(manager, params[27]));
-			data.setSeason(OntologyOperations.convertToDecimal(manager, params[28]));
-			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[29]));
-			 
-			
+						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentType"), vf.createLiteral(params[6]));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "fullPalletConsignment"), vf.createLiteral(params[32]));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[33], XMLSchema.INT));								
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[34], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttReconstructedPallets"), vf.createLiteral(params[35], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttReconstructedParcels"), vf.createLiteral(params[36], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "totalConsignmentVolume"), vf.createLiteral(params[40], XMLSchema.DECIMAL));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "totalConsignmentWeight"), vf.createLiteral(params[41], XMLSchema.DECIMAL));
+
+					}//end for
+				
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
 			}
-			
-			dataset.add(data);
-			line = br.readLine();
 
 		}
+		repo.shutDown();
 
-		br.close();
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
 
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
 
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
 
-		OWLClass consignmentClass = OntologyOperations.getClass("Consignment", onto);
-		OWLClass transportClass = OntologyOperations.getClass("Transport", onto);
-		OWLClass waveClass = OntologyOperations.getClass("Wave", onto);
-		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
 
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual consignmentInd = null;
-		OWLIndividual transportInd = null;
-		OWLIndividual waveInd = null;
-		OWLIndividual carrierInd = null;
-		OWLIndividual consignorInd = null;
-		OWLIndividual consigneeInd = null;
-		OWLIndividual hubInd = null;
-		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
-
-		AddAxiom addAxiomChange = null;
-
-		int iterator = 0;
-
-		for (Consignments td : dataset) {
-			iterator+=1;	
-
-			//adding consignment individual
-			consignmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentId() + "_consignment"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(consignmentClass, consignmentInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
-
-			//adding transport individual and OP			
-			if (!td.getTransportId().equals("NULL")) {
-				transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-
-				//OP transportId from consignmentInd to transportInd
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("includesTransport", onto), consignmentInd, transportInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);			
-			}
-
-			//adding wave individual
-			if (!td.getConsignmentWaveId().equals("NULL")) {
-				waveInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignmentWaveId() + "_wave"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(waveClass, waveInd);			
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-
-				//OP waveId from consignmentInd to waveInd
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("processedByWave", onto), consignmentInd, waveInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);			
-			}
-			
-			//adding carrier party individual
-			//if (!td.getCarrierAdditionalPartyIdentification().equals("0") || !td.getCarrierAdditionalPartyIdentification().equals("Hub internal movements")) {
-				
-				carrierInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getCarrierHashCode() + "_party"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, carrierInd);
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-				
-				//OP 
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasCarrierParty", onto), consignmentInd, carrierInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);	
-
-			//}
-			
-			//adding consignor party individual
-			//if (!td.getConsignorAdditionalPartyIdentification().equals("0") || !td.getConsignorAdditionalPartyIdentification().equals("Hub internal movements")) {
-				
-				consignorInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsignorHashCode() + "_party"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consignorInd);
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-				
-				//OP 
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasConsignorParty", onto), consignmentInd, consignorInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);	
-
-			//}
-			
-			//adding consignee party individual
-			//if (!td.getConsigneeAdditionalPartyIdentification().equals("0") || !td.getConsigneeAdditionalPartyIdentification().equals("Hub internal movements")) {
-				
-				consigneeInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getConsigneeHashCode() + "_party"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, consigneeInd);
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-				
-				//OP 
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasConsigneeParty", onto), consignmentInd, consigneeInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);	
-
-			//}
-			
-			//adding hub party individual
-			//if (!td.getHubAdditionalPartyidentification().equals("0") || !td.getHubAdditionalPartyidentification().equals("Hub internal movements")) {
-				
-				hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubHashCode() + "_party"));
-				classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
-				addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-				manager.applyChange(addAxiomChange);
-				
-				//OP 
-				OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubParty", onto), consignmentInd, hubInd);
-				addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-				manager.applyChange(addAxiomChange);	
-
-			//}
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("consignmentId", onto), consignmentInd, td.getConsignmentId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("consignmentType", onto), consignmentInd, td.getConsignmentType());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionLane", onto), consignmentInd, td.getReconstructionLane());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionLocation", onto), consignmentInd, td.getReconstructionLocation());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-
-			
-			if (!td.getTaskClosedOn().getLiteral().equals("0000-00-00T00:00:00")) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("taskClosedOn", onto), consignmentInd, td.getTaskClosedOn());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("fullPalletConsignment", onto), consignmentInd, td.getFullPalletConsignment());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxes", onto), consignmentInd, td.getQttBoxes());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttPallets", onto), consignmentInd, td.getQttPallets());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttReconstructedPallets", onto), consignmentInd, td.getQttReconstructedPallets());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttReconstructedParcels", onto), consignmentInd, td.getQttReconstructedParcels());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), consignmentInd, td.getOriginalDataSource());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("taskId", onto), consignmentInd, td.getTaskId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("taskDescription", onto), consignmentInd, td.getTaskDescription());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("totalConsignmentVolume", onto), consignmentInd, td.getTotalConsignmentVolume());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("totalConsignmentWeight", onto), consignmentInd, td.getTotalConsignmentWeight());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-		
-			if (td.getYear() != null) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), consignmentInd, td.getYear());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-
-			if (td.getSeason() != null) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), consignmentInd, td.getSeason());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-			if (td.getWeekDay() != null) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), consignmentInd, td.getWeekDay());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			}
-		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-	}
-
-
-
-	public String getConsignmentId() {
-		return consignmentId;
-	}
-
-
-
-	public void setConsignmentId(String consignmentId) {
-		this.consignmentId = consignmentId;
-	}
-
-
-
-	public String getTransportId() {
-		return transportId;
-	}
-
-
-
-	public void setTransportId(String transportId) {
-		this.transportId = transportId;
-	}
-
-
-
-	public String getConsignmentType() {
-		return consignmentType;
-	}
-
-
-
-	public void setConsignmentType(String consignmentType) {
-		this.consignmentType = consignmentType;
-	}
-
-
-
-	public String getReconstructionLane() {
-		return reconstructionLane;
-	}
-
-
-
-	public void setReconstructionLane(String reconstructionLane) {
-		this.reconstructionLane = reconstructionLane;
-	}
-
-
-
-	public String getReconstructionLocation() {
-		return reconstructionLocation;
-	}
-
-
-
-	public void setReconstructionLocation(String reconstructionLocation) {
-		this.reconstructionLocation = reconstructionLocation;
-	}
-
-
-
-	public String getCarrierAdditionalPartyIdentification() {
-		return carrierAdditionalPartyIdentification;
-	}
-
-
-
-	public void setCarrierAdditionalPartyIdentification(String carrierAdditionalPartyIdentification) {
-		this.carrierAdditionalPartyIdentification = carrierAdditionalPartyIdentification;
-	}
-
-
-
-	public String getConsignorAdditionalPartyIdentification() {
-		return consignorAdditionalPartyIdentification;
-	}
-
-
-
-	public void setConsignorAdditionalPartyIdentification(String consignorAdditionalPartyIdentification) {
-		this.consignorAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
-	}
-
-
-
-	public String getConsigneeAdditionalPartyIdentification() {
-		return consigneeAdditionalPartyIdentification;
-	}
-
-
-
-	public void setConsigneeAdditionalPartyIdentification(String consigneeAdditionalPartyIdentification) {
-		this.consigneeAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
-	}
-
-
-
-	public String getConsignmentWaveId() {
-		return consignmentWaveId;
-	}
-
-
-
-	public void setConsignmentWaveId(String consignmentWaveId) {
-		this.consignmentWaveId = consignmentWaveId;
-	}
-
-
-
-	public String getHubAdditionalPartyidentification() {
-		return hubAdditionalPartyIdentification;
-	}
-
-
-
-	public void setHubAdditionalPartyidentification(String hubAdditionalPartyidentification) {
-		this.hubAdditionalPartyIdentification = hubAdditionalPartyidentification;
-	}
-
-
-
-	public String getReconstructionType() {
-		return reconstructionType;
-	}
-
-
-
-	public void setReconstructionType(String reconstructionType) {
-		this.reconstructionType = reconstructionType;
-	}
-
-
-
-	public OWLLiteral getTaskClosedOn() {
-		return taskClosedOn;
-	}
-
-
-
-	public void setTaskClosedOn(OWLLiteral consignmentTaskClosedOn) {
-		this.taskClosedOn = consignmentTaskClosedOn;
-	}
-
-
-
-	public String getFullPalletConsignment() {
-		return fullPalletConsignment;
-	}
-
-
-
-	public void setFullPalletConsignment(String fullPalletConsignment) {
-		this.fullPalletConsignment = fullPalletConsignment;
-	}
-
-
-
-	public OWLLiteral getQttBoxes() {
-		return qttBoxes;
-	}
-
-
-
-	public void setQttBoxes(OWLLiteral consignmentQttBoxes) {
-		this.qttBoxes = consignmentQttBoxes;
-	}
-
-
-
-	public OWLLiteral getQttPallets() {
-		return qttPallets;
-	}
-
-
-
-	public void setQttPallets(OWLLiteral consignmentQttPallets) {
-		this.qttPallets = consignmentQttPallets;
-	}
-
-
-
-	public OWLLiteral getQttReconstructedPallets() {
-		return qttReconstructedPallets;
-	}
-
-
-
-	public void setQttReconstructedPallets(OWLLiteral consignmentQttReconstructedPallets) {
-		this.qttReconstructedPallets = consignmentQttReconstructedPallets;
-	}
-
-
-
-	public OWLLiteral getQttReconstructedParcels() {
-		return qttReconstructedParcels;
-	}
-
-
-
-	public void setQttReconstructedParcels(OWLLiteral consignmentQttReconstructedParcels) {
-		this.qttReconstructedParcels = consignmentQttReconstructedParcels;
-	}
-
-
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-
-
-
-	public String getTaskId() {
-		return taskId;
-	}
-
-
-
-	public void setTaskId(String taskId) {
-		this.taskId = taskId;
-	}
-
-
-
-	public String getTaskDescription() {
-		return taskDescription;
-	}
-
-
-
-	public void setTaskDescription(String taskDescription) {
-		this.taskDescription = taskDescription;
-	}
-
-
-
-	public OWLLiteral getTotalConsignmentVolume() {
-		return totalConsignmentVolume;
-	}
-
-
-
-	public void setTotalConsignmentVolume(OWLLiteral totalConsignmentVolume) {
-		this.totalConsignmentVolume = totalConsignmentVolume;
-	}
-
-
-
-	public OWLLiteral getTotalConsignmentWeight() {
-		return totalConsignmentWeight;
-	}
-
-
-
-	public void setTotalConsignmentWeight(OWLLiteral totalConsignmentWeight) {
-		this.totalConsignmentWeight = totalConsignmentWeight;
-	}
-
-
-
-	public OWLLiteral getYear() {
-		return year;
-	}
-
-
-
-	public void setYear(OWLLiteral year) {
-		this.year = year;
-	}
-
-
-
-	public OWLLiteral getSeason() {
-		return season;
-	}
-
-
-
-	public void setSeason(OWLLiteral season) {
-		this.season = season;
-	}
-
-
-
-	public OWLLiteral getWeekDay() {
-		return weekDay;
-	}
-
-
-
-	public void setWeekDay(OWLLiteral weekDay) {
-		this.weekDay = weekDay;
-	}
-
-
-	public String getCarrierHashCode() {
-		return carrierHashCode;
-	}
-
-
-	public void setCarrierHashCode(String carrierHashCode) {
-		this.carrierHashCode = carrierHashCode;
-	}
-
-
-	public String getConsignorHashCode() {
-		return consignorHashCode;
-	}
-
-
-	public void setConsignorHashCode(String consignorHashCode) {
-		this.consignorHashCode = consignorHashCode;
-	}
-
-
-	public String getConsigneeHashCode() {
-		return consigneeHashCode;
-	}
-
-
-	public void setConsigneeHashCode(String consigneeHashCode) {
-		this.consigneeHashCode = consigneeHashCode;
-	}
-
-
-	public String getHubAdditionalPartyIdentification() {
-		return hubAdditionalPartyIdentification;
-	}
-
-
-	public void setHubAdditionalPartyIdentification(String hubAdditionalPartyIdentification) {
-		this.hubAdditionalPartyIdentification = hubAdditionalPartyIdentification;
-	}
-
-
-	public String getHubHashCode() {
-		return hubHashCode;
-	}
-
-
-	public void setHubHashCode(String hubHashCode) {
-		this.hubHashCode = hubHashCode;
-	}
-
-
+}
 	
+	public static void processConsignmentsHTTP (File consignmentFolder, String baseURI, String rdf4jServer, String repositoryId) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+		
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI consignmentInd;
+			IRI transportInd;
+			IRI waveInd;
+			IRI carrierInd;
+			IRI consignorInd;
+			IRI consigneeInd;
+
+			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
+			IRI transportClass = vf.createIRI(baseURI, "Transport");
+			IRI waveClass = vf.createIRI(baseURI, "Wave");
+			IRI partyClass = vf.createIRI(baseURI, "Party");
+
+			File[] filesInDir = consignmentFolder.listFiles();
+
+			BufferedReader br = null;
+
+			List<String[]> line = new ArrayList<String[]>();
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+				try {
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					for (String[] params : line) {
+
+						//adding types
+						consignmentInd = vf.createIRI(baseURI, params[0] + "_consignment" );
+						connection.add(consignmentInd, RDF.TYPE, consignmentClass);
+
+						//adding predicates
+						if (!params[3].equals("NULL")) {
+							transportInd = vf.createIRI(baseURI, params[3] + "_transport");
+							connection.add(transportInd, RDF.TYPE, transportClass);
+							connection.add(consignmentInd, vf.createIRI(baseURI + "includesTransport"), transportInd);
+						}
+
+						if (!params[18].equals("NULL")) {								
+							waveInd = vf.createIRI(baseURI, params[18] + "_wave");
+							connection.add(waveInd, RDF.TYPE, waveClass);
+							connection.add(consignmentInd, vf.createIRI(baseURI + "processedByWave"), waveInd);								
+						}
+
+						carrierInd = vf.createIRI(baseURI, params[11] + "_party");
+						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasCarrierParty"), carrierInd);
+
+						consignorInd = vf.createIRI(baseURI, params[14] + "_party");
+						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsignorParty"), consignorInd);
+
+						consigneeInd = vf.createIRI(baseURI, params[17] + "_party");
+						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsigneeParty"), consigneeInd);
+
+						if (!StringUtilities.convertToDateTime(params[23]).equals("0000-00-00T00:00:00")) {
+							connection.add(consignmentInd, vf.createIRI(baseURI + "taskClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[23]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentType"), vf.createLiteral(params[6]));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "fullPalletConsignment"), vf.createLiteral(params[32]));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[33], XMLSchema.INT));								
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[34], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttReconstructedPallets"), vf.createLiteral(params[35], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "qttReconstructedParcels"), vf.createLiteral(params[36], XMLSchema.INT));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "totalConsignmentVolume"), vf.createLiteral(params[40], XMLSchema.DECIMAL));
+						connection.add(consignmentInd, vf.createIRI(baseURI + "totalConsignmentWeight"), vf.createLiteral(params[41], XMLSchema.DECIMAL));
+
+					}//end for
+				
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
 
 
+			}
+
+		}
+		repo.shutDown();
+
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+
+
+}
 
 
 }

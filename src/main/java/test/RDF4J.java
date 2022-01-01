@@ -17,7 +17,7 @@ public class RDF4J {
 
 	public static void main(String[] args) {
 
-		String rdf4jServer = "http://localhost:8080/rdf4j-server";
+		String rdf4jServer = "http://78.91.106.145:8080/rdf4j-server";
 		String repositoryID = "LATKG1";
 		Repository repo = new HTTPRepository(rdf4jServer, repositoryID);
 
@@ -33,7 +33,7 @@ public class RDF4J {
 			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
 			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 
-			String CSV_folder = "./files/CSV/test_split";
+			String CSV_folder = "./files/CSV/test_split_small";
 			File folder = new File(CSV_folder);
 			File[] filesInDir = folder.listFiles();
 			System.out.println("There are " + filesInDir.length + " files in the folder.");

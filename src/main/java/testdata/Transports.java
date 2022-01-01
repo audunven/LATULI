@@ -4,23 +4,20 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -28,167 +25,260 @@ import owlprocessing.OntologyOperations;
  */
 public class Transports {
 		
-	String transportId;
-	String hubHashCode;
-	String transportType;
-	String originalDataSource;
+	public static void processTransports (File transportsFolder, String baseURI, String dataDir, String indexes) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI transportInd;
+			IRI hubInd;
+
+			IRI transportClass = vf.createIRI(baseURI, "Transport");
+			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+
+			File[] filesInDir = transportsFolder.listFiles();
+
+			BufferedReader br = null;
+
+			List<String[]> line = new ArrayList<String[]>();
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+				try {
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					for (String[] params : line) {
+
+						//adding types
+						transportInd = vf.createIRI(baseURI, params[0] + "_transport" );
+						connection.add(transportInd, RDF.TYPE, transportClass);
+
+						//adding predicates
+						hubInd = vf.createIRI(baseURI, params[8] + "_hubReconstructionLocation");
+						connection.add(hubInd, RDF.TYPE, hubReconstructionLocationClass);
+						connection.add(transportInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubInd);
+						
+						//adding literals
+						
+						if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "expectedArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[2]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "effectiveArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						}
+											
+						connection.add(transportInd, vf.createIRI(baseURI + "transportName"), vf.createLiteral(params[9]));
+						
+						if (!StringUtilities.convertToDateTime(params[10]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[10]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(transportInd, vf.createIRI(baseURI + "transportType"), vf.createLiteral(params[11]));
+						
+						if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "wavePlannedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[12]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveReleasedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[13]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[14]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[14]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[15]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveStartProcessingOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[15]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[16]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveEndProcessingOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[16]), XMLSchema.DATETIME));
+						}
+
+					}//end for
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
 
 
-	public Transports(String transportId, String hubHashCode, String transportType, String originalDataSource) {
-		this.transportId = transportId;
-		this.hubHashCode = hubHashCode;
-		this.transportType = transportType;
-		this.originalDataSource = originalDataSource;
-
-	}
-
-	public Transports() {}
-
-
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
-
-		Transports data;
-
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Transports_multi_last_100000.csv"));
-
-		String line = br.readLine();
-
-		String[] params = null;
-
-		Set<Transports> dataset = new HashSet<Transports>();
-		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
-
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
-
-		while (line != null) {
-			params = line.split(",");
-
-			data = new Transports();
-			
-			if (!params[1].equals("0") && !params[1].equalsIgnoreCase("TransportId")) {
-			
-			data.setTransportId(params[1]);
-			data.setHubHashCode(params[2]);
-			data.setTransportType(params[3]);
-			data.setOriginalDataSource(params[4]);
-			
 			}
 
-			dataset.add(data);
-			line = br.readLine();
+		}
+		repo.shutDown();
+
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+
+
+	}
+	
+	public static void processTransportsHTTP (File transportsFolder, String baseURI, String rdf4jServer, String repositoryId) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI transportInd;
+			IRI hubInd;
+
+			IRI transportClass = vf.createIRI(baseURI, "Transport");
+			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+
+			File[] filesInDir = transportsFolder.listFiles();
+
+			BufferedReader br = null;
+
+			List<String[]> line = new ArrayList<String[]>();
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+				try {
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					for (String[] params : line) {
+
+						//adding types
+						transportInd = vf.createIRI(baseURI, params[0] + "_transport" );
+						connection.add(transportInd, RDF.TYPE, transportClass);
+
+						//adding predicates
+						hubInd = vf.createIRI(baseURI, params[8] + "_hubReconstructionLocation");
+						connection.add(hubInd, RDF.TYPE, hubReconstructionLocationClass);
+						connection.add(transportInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubInd);
+						
+						//adding literals
+						
+						if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "expectedArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[2]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "effectiveArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						}
+											
+						connection.add(transportInd, vf.createIRI(baseURI + "transportName"), vf.createLiteral(params[9]));
+						
+						if (!StringUtilities.convertToDateTime(params[10]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[10]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(transportInd, vf.createIRI(baseURI + "transportType"), vf.createLiteral(params[11]));
+						
+						if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "wavePlannedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[12]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveReleasedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[13]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[14]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[14]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[15]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveStartProcessingOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[15]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[16]).equals("0000-00-00T00:00:00")) {
+							connection.add(transportInd, vf.createIRI(baseURI + "waveEndProcessingOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[16]), XMLSchema.DATETIME));
+						}
+
+					}//end for
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
 
 		}
+		repo.shutDown();
 
-		br.close();
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
 
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
 
-
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
-
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
-
-		OWLClass transportClass = OntologyOperations.getClass("Transport", onto);
-		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
-		
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual transportInd = null;
-		OWLIndividual hubInd = null;
-		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
-
-		AddAxiom addAxiomChange = null;
-
-		int iterator = 0;
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
 
 
-		for (Transports td : dataset) {
-			iterator+=1;	
-
-			transportInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getTransportId() + "_transport"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(transportClass, transportInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
-			
-			//OP 
-			hubInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getHubHashCode() + "_party"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, hubInd);
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);			
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasHubParty", onto), transportInd, hubInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);	
-
-			//DP
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportId", onto), transportInd, td.getTransportId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hubHashCode", onto), transportInd, td.getHubHashCode());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("transportType", onto), transportInd, td.getTransportType());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), transportInd, td.getOriginalDataSource());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-
-
-		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
 	}
-
-
-	public String getTransportId() {
-		return transportId;
-	}
-
-
-
-	public void setTransportId(String transportId) {
-		this.transportId = transportId;
-	}
-
-	public String getTransportType() {
-		return transportType;
-	}
-
-
-	public void setTransportType(String transportType) {
-		this.transportType = transportType;
-	}
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-
-	public String getHubHashCode() {
-		return hubHashCode;
-	}
-
-	public void setHubHashCode(String hubHashCode) {
-		this.hubHashCode = hubHashCode;
-	}
-	
-	
-
-	
 
 }

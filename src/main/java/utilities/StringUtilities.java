@@ -2,6 +2,7 @@ package utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,10 +16,18 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
+
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 
 public class StringUtilities {
 	static OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -33,6 +42,47 @@ public class StringUtilities {
 		System.out.println(output);
 		
 		
+	}
+	
+	public static String formatCoordinates (String coordinates) {
+		return "POINT(" + coordinates.substring(0, coordinates.indexOf(",")) + " " + coordinates.substring(coordinates.indexOf(",")+1, coordinates.length()) + ")";
+	}
+	
+	public static List<String[]> oneByOne(Reader reader) throws Exception {
+		List<String[]> list = new ArrayList<>();
+
+		CSVParser parser = new CSVParserBuilder()
+				.withSeparator(',')
+				.withIgnoreQuotations(false)
+				.build();
+
+		CSVReader csvReader = new CSVReaderBuilder(reader)
+				.withSkipLines(0)
+				.withCSVParser(parser)
+				.build();
+
+		String[] line;
+		while ((line = csvReader.readNext()) != null) {
+			list.add(line);
+		}
+		reader.close();
+		csvReader.close();
+		return list;
+	}
+
+	
+	public static String convertToDateTime(String input) {	
+		
+		if (input.equals("NULL") || input.length() != 27 || !input.startsWith("20")) {
+			input = "0000-00-00 00:00:00.0000000";
+		}
+		
+		String dateTime = input.substring(0, input.lastIndexOf("."));
+				
+		dateTime = dateTime.replaceAll(" ", "T");
+		
+		return dateTime;
+
 	}
 	
 	/**

@@ -4,24 +4,21 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
+
 
 /**
  * @author audunvennesland
@@ -29,347 +26,225 @@ import owlprocessing.OntologyOperations;
  */
 public class TradeItems
 {
-	
-	
-	String gtin;
-	String loadingUnitId;
-	String shipmentId;
-	OWLLiteral quantity;
-	String material;
-	String description;
-	OWLLiteral supplierQuantity;
-	OWLLiteral customerQuantity;
-	String supplierProductDescription;
-	String customerProductDescription;
-	String supplierProductId;
-	String customerProductId;
-	OWLLiteral modifiedOn;
-	String lotNumber;
-	String purchaseOrder;
-	String salesOrder;
-	String handlingInstruction;
-	String originalDataSource;
 
-	public TradeItems(String gtin, String loadingUnitId, String shipmentId, OWLLiteral quantity,
-			String material, String description, OWLLiteral supplierQuantity, OWLLiteral customerQuantity,
-			String supplierProductDescription, String customerProductDescription, String supplierProductId,
-			String customerProductId, OWLLiteral modifiedOn, String lotNumber, String purchaseOrder, String salesOrder,
-			String handlingInstruction, String originalDataSource) {
-		super();
-		this.gtin = gtin;
-		this.loadingUnitId = loadingUnitId;
-		this.shipmentId = shipmentId;
-		this.quantity = quantity;
-		this.material = material;
-		this.description = description;
-		this.supplierQuantity = supplierQuantity;
-		this.customerQuantity = customerQuantity;
-		this.supplierProductDescription = supplierProductDescription;
-		this.customerProductDescription = customerProductDescription;
-		this.supplierProductId = supplierProductId;
-		this.customerProductId = customerProductId;
-		this.modifiedOn = modifiedOn;
-		this.lotNumber = lotNumber;
-		this.purchaseOrder = purchaseOrder;
-		this.salesOrder = salesOrder;
-		this.handlingInstruction = handlingInstruction;
-		this.originalDataSource = originalDataSource;
-	}
+	public static void processTradeItems (File tradeItemsFolder, String baseURI, String dataDir, String indexes) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI tradeItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
 
 
-	public TradeItems() {}
+			IRI tradeItemClass = vf.createIRI(baseURI, "TradeItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 
+			File[] filesInDir = tradeItemsFolder.listFiles();
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
+			BufferedReader br = null;
 
-		TradeItems data;
+			List<String[]> line = new ArrayList<String[]>();
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/TradeItems_last_250000.csv"));
+			for (int i = 0; i < filesInDir.length; i++) {
 
-		String line = br.readLine();
+				try {
 
-		String[] params = null;
+					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-		Set<TradeItems> dataset = new HashSet<TradeItems>();
-		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+					System.out.println("Reading file: " + filesInDir[i].getName());
 
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 
-		while (line != null) {
-			params = line.split(",");
+					for (String[] params : line) {
 
-			data = new TradeItems();
+						//adding types
+						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeitem" );
+						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
+
+						//adding predicates
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
+
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingUnit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);								
+
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "gtin"), vf.createLiteral(params[2]));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierQuantity"), vf.createLiteral(params[6], XMLSchema.DECIMAL));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "customerQuantity"), vf.createLiteral(params[7], XMLSchema.DECIMAL));								
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierProductDescription"), vf.createLiteral(params[8]));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierProductId"), vf.createLiteral(params[10]));
 						
-			data.setShipmentId(params[0]);
-			data.setLoadingUnitId(params[1]);	
-			data.setGtin(params[2]);
-			data.setQuantity(OntologyOperations.convertToDecimal(manager, params[3]));
-			data.setMaterial(params[4]);
-			data.setDescription(params[5]);
-			data.setSupplierQuantity(OntologyOperations.convertToDecimal(manager, params[6]));
-			data.setCustomerQuantity(OntologyOperations.convertToDecimal(manager, params[7]));
-			data.setSupplierProductDescription(params[8]);
-			data.setCustomerProductDescription(params[9]);
-			data.setSupplierProductId(params[10]);
-			data.setCustomerProductId(params[11]);
-			data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[12]));
-			data.setLotNumber(params[13]);
-			data.setPurchaseOrder(params[14]);
-			data.setSalesOrder(params[15]);
-			data.setHandlingInstruction(params[16]);
-			data.setOriginalDataSource(params[17]);
+						if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
+							connection.add(tradeItemInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[12]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "handlingInstruction"), vf.createLiteral(params[16]));
+	
 
-			dataset.add(data);
-			
-			line = br.readLine();
+					}//end for
 
-		}
+				} catch (IOException e) {
 
-		br.close();
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
 
 
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
-
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
-
-		OWLClass tradeItemClass = OntologyOperations.getClass("TradeItem", onto);
-		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
-		OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
-
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual tradeItemInd = null;
-		OWLIndividual shipmentInd = null;
-		OWLIndividual loadingUnitInd = null;
-		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
-
-		AddAxiom addAxiomChange = null;
-
-		int iterator = 0;
-
-		for (TradeItems td : dataset) {
-			iterator+=1;	
-
-			//adding dangerous goods individual
-			tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_tradeitem"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
-
-			//object properties			
-			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), tradeItemInd, shipmentInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), tradeItemInd, loadingUnitInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-
-			//data properties
-			if (!td.getModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), tradeItemInd, td.getModifiedOn());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
 			}
 
 		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-	}
+		repo.shutDown();
 
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
 
-	public String getShipmentId() {
-		return shipmentId;
-	}
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
 
-	public void setShipmentId(String shipmentItemId) {
-		this.shipmentId = shipmentItemId;
-	}
-	
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
 
-	public String getLoadingUnitId() {
-		return loadingUnitId;
-	}
 
-	public void setLoadingUnitId(String loadingUnitId) {
-		this.loadingUnitId = loadingUnitId;
-	}
-
-	public String getGtin() {
-		return gtin;
-	}
-
-	public void setGtin(String gtin) {
-		this.gtin = gtin;
-	}
-
-	public OWLLiteral getModifiedOn() {
-		return modifiedOn;
-	}
-
-	public void setModifiedOn(OWLLiteral modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
-
-
-	public OWLLiteral getQuantity() {
-		return quantity;
-	}
-
-
-	public void setQuantity(OWLLiteral quantity) {
-		this.quantity = quantity;
-	}
-
-
-	public String getMaterial() {
-		return material;
-	}
-
-
-	public void setMaterial(String material) {
-		this.material = material;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public OWLLiteral getSupplierQuantity() {
-		return supplierQuantity;
-	}
-
-
-	public void setSupplierQuantity(OWLLiteral supplierQuantity) {
-		this.supplierQuantity = supplierQuantity;
-	}
-
-
-	public OWLLiteral getCustomerQuantity() {
-		return customerQuantity;
-	}
-
-
-	public void setCustomerQuantity(OWLLiteral customerQuantity) {
-		this.customerQuantity = customerQuantity;
-	}
-
-
-	public String getSupplierProductDescription() {
-		return supplierProductDescription;
-	}
-
-
-	public void setSupplierProductDescription(String supplierProductDescription) {
-		this.supplierProductDescription = supplierProductDescription;
-	}
-
-
-	public String getCustomerProductDescription() {
-		return customerProductDescription;
-	}
-
-
-	public void setCustomerProductDescription(String customerProductDescription) {
-		this.customerProductDescription = customerProductDescription;
-	}
-
-
-	public String getSupplierProductId() {
-		return supplierProductId;
-	}
-
-
-	public void setSupplierProductId(String supplierProductId) {
-		this.supplierProductId = supplierProductId;
-	}
-
-
-	public String getCustomerProductId() {
-		return customerProductId;
-	}
-
-
-	public void setCustomerProductId(String customerProductId) {
-		this.customerProductId = customerProductId;
-	}
-
-
-	public String getLotNumber() {
-		return lotNumber;
-	}
-
-
-	public void setLotNumber(String lotNumber) {
-		this.lotNumber = lotNumber;
-	}
-
-
-	public String getPurchaseOrder() {
-		return purchaseOrder;
-	}
-
-
-	public void setPurchaseOrder(String purchaseOrder) {
-		this.purchaseOrder = purchaseOrder;
-	}
-
-
-	public String getSalesOrder() {
-		return salesOrder;
-	}
-
-
-	public void setSalesOrder(String salesOrder) {
-		this.salesOrder = salesOrder;
-	}
-
-
-	public String getHandlingInstruction() {
-		return handlingInstruction;
-	}
-
-
-	public void setHandlingInstruction(String handlingInstruction) {
-		this.handlingInstruction = handlingInstruction;
-	}
-
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
 	}
 	
+	public static void processTradeItemsHTTP (File tradeItemsFolder, String baseURI, String rdf4jServer, String repositoryId) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI tradeItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
+
+
+			IRI tradeItemClass = vf.createIRI(baseURI, "TradeItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
+
+			File[] filesInDir = tradeItemsFolder.listFiles();
+
+			BufferedReader br = null;
+
+			List<String[]> line = new ArrayList<String[]>();
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+				try {
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					for (String[] params : line) {
+
+						//adding types
+						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeitem" );
+						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
+
+						//adding predicates
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
+
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingUnit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);								
+
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "gtin"), vf.createLiteral(params[2]));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierQuantity"), vf.createLiteral(params[6], XMLSchema.DECIMAL));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "customerQuantity"), vf.createLiteral(params[7], XMLSchema.DECIMAL));								
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierProductDescription"), vf.createLiteral(params[8]));
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierProductId"), vf.createLiteral(params[10]));
+						
+						if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
+							connection.add(tradeItemInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[12]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(tradeItemInd, vf.createIRI(baseURI + "handlingInstruction"), vf.createLiteral(params[16]));
 	
+
+					}//end for
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
+
+		}
+		repo.shutDown();
+
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+
+
+	}
 
 }

@@ -4,24 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
-
-import owlprocessing.OntologyOperations;
-import utilities.StringUtilities;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
 
 /**
  * @author audunvennesland
@@ -30,137 +23,140 @@ import utilities.StringUtilities;
 public class HubReconstructionLocations
 {
 
-	private String additionalPartyIdentification;
-	private String hashCode;
-	private String laneId;
-
-	private HubReconstructionLocations(Builder builder) {
-
-		this.additionalPartyIdentification = builder.additionalPartyIdentification;
-		this.hashCode = builder.hashCode;
-		this.laneId = builder.laneId;
-	}
+	public static void processHubReconstructionLocations (File hubReconstructionLocationsFolder, String baseURI, String dataDir, String indexes) {
 
 
-	public static class Builder {
-
-		private String additionalPartyIdentification;
-		private String hashCode;
-		private String laneId;
-
-		public Builder(String additionalPartyIdentification, String hashCode, String laneId) {		
-			this.additionalPartyIdentification = additionalPartyIdentification;
-			this.hashCode = hashCode;
-			this.laneId = laneId;							
-		}
-
-		public HubReconstructionLocations build() {
-			return new HubReconstructionLocations(this);
-		}
-
-	}
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 
 
-	public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException, IOException {
+		try (RepositoryConnection connection = repo.getConnection()) {
 
-		HubReconstructionLocations data;
-		Set<HubReconstructionLocations> dataset = new HashSet<HubReconstructionLocations>();
-
-		String[] params = null;
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/HubReconstructionLocations_multi_last_100000.csv"));
-
-		String line = br.readLine();
-
-		while (line != null) {
-			params = line.split(",");
-
-			data = new HubReconstructionLocations.Builder(StringUtilities.removeWhiteSpace(params[1]), params[1], params[2]).build();
-
-			dataset.add(data);
-			line = br.readLine();
-
-		}
-
-		br.close();
+			ValueFactory vf = connection.getValueFactory();
 
 
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+			IRI hubReconstructionInd;
+			IRI hubReconstructionClass = vf.createIRI(baseURI, "HubReconstructionLocation");
 
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
+			File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
+			String[] params = null;
 
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
+			BufferedReader br = null;
 
-		OWLClass hubReconstructionLocationClass = OntologyOperations.getClass("HubReconstructionLocation", onto);
-		OWLClass partyClass = OntologyOperations.getClass("Party", onto);
-
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual hubReconstructionLocationInd = null;
-		OWLIndividual partyInd = null;
+			for (int i = 0; i < filesInDir.length; i++) {
 
 
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
+				try {
 
-		AddAxiom addAxiomChange = null;
+					String line;		
 
-		int iterator = 0;
+					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-		for (HubReconstructionLocations td : dataset) {
-			iterator+=1;	
+					System.out.println("Reading file: " + filesInDir[i].getName());
 
-			//individuals and association to classes
-			hubReconstructionLocationInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getAdditionalPartyIdentification() + "_hubreconstructionlocation"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(hubReconstructionLocationClass, hubReconstructionLocationInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
+					while ((line = br.readLine()) != null) {
 
-			//object properties
-			partyInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getHashCode() + "_party");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(partyClass, partyInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+						params = line.split(",");
 
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasParty", onto), hubReconstructionLocationInd, partyInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+						//adding type
+						hubReconstructionInd = vf.createIRI(baseURI, params[0] + "_hubReconstructionLocation");			
+						connection.add(hubReconstructionInd, RDF.TYPE, hubReconstructionClass);
 
+						//adding literals
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hubReconstructionLocationId"), vf.createLiteral(params[0]));
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[1]));
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "reconstructionLane"), vf.createLiteral(params[4]));
 
-			//data properties
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("additionalPartyIdentification", onto), hubReconstructionLocationInd, td.getAdditionalPartyIdentification());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+					}//end while
 
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("hashCode", onto), hubReconstructionLocationInd, td.getHashCode());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+				} catch (IOException e) {
 
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("reconstructionLane", onto), hubReconstructionLocationInd, td.getLaneId());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
 
 
+			}
 
 		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
+		
+		repo.shutDown();
+
 	}
 	
-	public String getAdditionalPartyIdentification() {
-		return additionalPartyIdentification;
+	public static void processHubReconstructionLocationsHTTP (File hubReconstructionLocationsFolder, String baseURI, String rdf4jServer, String repositoryId) {
+
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+
+			IRI hubReconstructionInd;
+			IRI hubReconstructionClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+
+			File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
+			String[] params = null;
+
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+
+				try {
+
+					String line;		
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding type
+						hubReconstructionInd = vf.createIRI(baseURI, params[0] + "_hubReconstructionLocation");			
+						connection.add(hubReconstructionInd, RDF.TYPE, hubReconstructionClass);
+
+						//adding literals
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hubReconstructionLocationId"), vf.createLiteral(params[0]));
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[1]));
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "reconstructionLane"), vf.createLiteral(params[4]));
+
+					}//end while
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
+
+		}
+		
+		repo.shutDown();
+
 	}
 
-	public String getHashCode() {
-		return hashCode;
-	}
-
-	public String getLaneId() {
-		return laneId;
-	}
-
-}
+}//end class

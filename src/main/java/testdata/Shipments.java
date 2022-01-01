@@ -4,24 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
 import utilities.StringUtilities;
 
 /**
@@ -30,323 +23,223 @@ import utilities.StringUtilities;
  */
 public class Shipments {
 
-	String shipmentId;
-	OWLLiteral shippedOn;
-	OWLLiteral expectedDeliveryOn;
-	String shipperAdditionalPartyIdentification;	
-	String receiverAdditionalPartyIdentification;
-	OWLLiteral plannedDeliveryDate;
-	OWLLiteral qttBoxes;
-	OWLLiteral qttPallets;
-	String originalDataSource;
-	OWLLiteral year;
-	OWLLiteral season;
-	OWLLiteral weekDay;
+	
 
-	public Shipments(String shipmentId, String shipperGLN, String receiverGLN,
-			String shipperAdditionalPartyIdentification, String shipperHashCode,
-			String receiverAdditionalPartyIdentification, String receiverHashCode, OWLLiteral shippedOn,
-			OWLLiteral expectedDeliveryOn, OWLLiteral plannedDeliveryDate, OWLLiteral qttBoxes, OWLLiteral qttPallets,
-			String originalDataSource, OWLLiteral year, OWLLiteral season, OWLLiteral weekDay) {
+	public static void processShipments (File shipmentsFolder, String baseURI, String dataDir, String indexes) {
 
-		this.shipmentId = shipmentId;
-		this.shipperAdditionalPartyIdentification = shipperAdditionalPartyIdentification;
-		this.receiverAdditionalPartyIdentification = receiverAdditionalPartyIdentification;
-		this.shippedOn = shippedOn;
-		this.expectedDeliveryOn = expectedDeliveryOn;
-		this.plannedDeliveryDate = plannedDeliveryDate;
-		this.qttBoxes = qttBoxes;
-		this.qttPallets = qttPallets;
-		this.originalDataSource = originalDataSource;
-		this.year = year;
-		this.season = season;
-		this.weekDay = weekDay;
-	}
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
 
-	public Shipments() {}
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 
+		try (RepositoryConnection connection = repo.getConnection()) {
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
+			ValueFactory vf = connection.getValueFactory();
 
-		Shipments data;
+			IRI shipmentInd;
+			IRI shipperInd;
+			IRI receiverInd;
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/Shipments_multi_last_100000.csv"));
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI shipperClass = vf.createIRI(baseURI, "Shipper");
+			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
 
-		String line = br.readLine();
+			File[] filesInDir = shipmentsFolder.listFiles();
+			String[] params = null;
 
-		String[] params = null;
+			BufferedReader br = null;
 
-		Set<Shipments> dataset = new HashSet<Shipments>();
-		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
+			for (int i = 0; i < filesInDir.length; i++) {
 
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
+				try {
 
-		while (line != null) {
-			params = line.split(",");
+					String line;		
 
-			data = new Shipments();
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding types
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+
+						//adding predicates
+						shipperInd = vf.createIRI(baseURI, params[8] + "_party");
+						connection.add(shipperInd, RDF.TYPE, shipperClass);
+						connection.add(shipmentInd, vf.createIRI(baseURI + "hasShipperParty"), shipperInd);
+
+						receiverInd = vf.createIRI(baseURI, params[11] + "_party");
+						connection.add(receiverInd, RDF.TYPE, receiverClass);
+						connection.add(shipmentInd, vf.createIRI(baseURI + "hasReceiverParty"), receiverInd);
+
+						connection.add(shipmentInd, vf.createIRI(baseURI + "shipmentId"), vf.createLiteral(params[0]));
+
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "shippedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						}
 						
-			data.setShipmentId(params[1]);
-			data.setShippedOn(OntologyOperations.convertToDateTime(manager, params[2]));
-			data.setExpectedDeliveryOn(OntologyOperations.convertToDateTime(manager, params[3]));
-			data.setShipperAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[4]));
-			data.setReceiverAdditionalPartyIdentification(StringUtilities.removeWhiteSpace(params[5]));
-			data.setPlannedDeliveryDate(OntologyOperations.convertToDateTime(manager,params[6]));
-			data.setQttBoxesInShipment(OntologyOperations.convertToInt(manager, params[7]));
-			data.setQttPalletsInShipment(OntologyOperations.convertToInt(manager, params[8]));
-			data.setOriginalDataSource(params[9]);
-			data.setYear(OntologyOperations.convertToDecimal(manager, params[10]));
-			data.setSeason(OntologyOperations.convertToDecimal(manager, params[11]));
-			data.setWeekDay(OntologyOperations.convertToDecimal(manager, params[12]));
-					
-			dataset.add(data);
-			line = br.readLine();
+						if (!StringUtilities.convertToDateTime(params[4]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "expectedDeliveryOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[4]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "plannedDeliveryDate"), vf.createLiteral(StringUtilities.convertToDateTime(params[13]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(shipmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[18], XMLSchema.INT));
+						connection.add(shipmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[19], XMLSchema.INT));
+
+					}
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
 
 		}
-
-		br.close();
-
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
-
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
-
-		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
-		OWLClass shipperClass = OntologyOperations.getClass("Shipper", onto);
-		OWLClass receiverClass = OntologyOperations.getClass("Receiver", onto);
-
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual shipmentInd = null;
-		OWLIndividual shipperInd = null;
-		OWLIndividual receiverInd = null;
+		repo.shutDown();
 		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
 
-		AddAxiom addAxiomChange = null;
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
 
-		int iterator = 0;
-
-		//adding process chain
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
 		
-		  for (Shipments td : dataset) { 
-			  
-		  iterator+=1;
-		  
-		  //adding shipment individual 
-		  shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "_shipment")); 
-		  classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd); 
-		  addAxiomChange = new AddAxiom(onto, classAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  	//adding shipper individual
-			if (!td.getShipperAdditionalPartyIdentification().equals("NULL")) {
-			shipperInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipperAdditionalPartyIdentification() + "_party"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipperClass, shipperInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			//OP waveId from shipmentInd to shipperInd
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasShipperParty", onto), shipmentInd, shipperInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);			
-			}
-			
-		  	//adding receiver individual
-			if (!td.getReceiverAdditionalPartyIdentification().equals("NULL")) {
-			receiverInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getReceiverAdditionalPartyIdentification() + "_party"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(receiverClass, receiverInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+	}
+	
+	public static void processShipmentsHTTP (File shipmentsFolder, String baseURI, String rdf4jServer, String repositoryId) {
+
+		//measure runtime
+		long startTime = System.nanoTime();
+
+		//measure memory footprint of ontology creation
+		Runtime runtimeOntologyCreation = Runtime.getRuntime();
+		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI shipmentInd;
+			IRI shipperInd;
+			IRI receiverInd;
+
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI shipperClass = vf.createIRI(baseURI, "Shipper");
+			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
+
+			File[] filesInDir = shipmentsFolder.listFiles();
+			String[] params = null;
+
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+				try {
+
+					String line;		
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding types
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+
+						//adding predicates
+						shipperInd = vf.createIRI(baseURI, params[8] + "_party");
+						connection.add(shipperInd, RDF.TYPE, shipperClass);
+						connection.add(shipmentInd, vf.createIRI(baseURI + "hasShipperParty"), shipperInd);
+
+						receiverInd = vf.createIRI(baseURI, params[11] + "_party");
+						connection.add(receiverInd, RDF.TYPE, receiverClass);
+						connection.add(shipmentInd, vf.createIRI(baseURI + "hasReceiverParty"), receiverInd);
+
+						connection.add(shipmentInd, vf.createIRI(baseURI + "shipmentId"), vf.createLiteral(params[0]));
+
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "shippedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[4]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "expectedDeliveryOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[4]), XMLSchema.DATETIME));
+						}
+						
+						if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+							connection.add(shipmentInd, vf.createIRI(baseURI + "plannedDeliveryDate"), vf.createLiteral(StringUtilities.convertToDateTime(params[13]), XMLSchema.DATETIME));
+						}
+						
+						connection.add(shipmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[18], XMLSchema.INT));
+						connection.add(shipmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[19], XMLSchema.INT));
+
+					}
 					
-			//OP waveId from shipmentInd to receiverInd
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasReceiverParty", onto), shipmentInd, receiverInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);			
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
 			}
-		  
-		  
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shipmentId", onto), shipmentInd, td.getShipmentId()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("shippedOn", onto), shipmentInd, td.getShippedOn()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  if (!td.getExpectedDeliveryOn().getLiteral().startsWith("0000")) {
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("expectedDeliveryOn", onto), shipmentInd, td.getExpectedDeliveryOn());
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-		  manager.applyChange(addAxiomChange); 
-		  }
-		  
-		  if (!td.getPlannedDeliveryDate().getLiteral().startsWith("0000")) {
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("plannedDeliveryDate", onto), shipmentInd, td.getPlannedDeliveryDate());
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-		  manager.applyChange(addAxiomChange); 
-		  }
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttBoxes", onto), shipmentInd, td.getQttBoxesInShipment());
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-		  manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("qttPallets", onto), shipmentInd, td.getQttPalletsInShipment());
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-		  manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("year", onto), shipmentInd, td.getYear()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("season", onto), shipmentInd, td.getSeason()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("weekDay", onto), shipmentInd, td.getWeekDay()); 
-		  addAxiomChange = new AddAxiom(onto, DPAssertionAxiom); 
-		  manager.applyChange(addAxiomChange);
-		  
-		  
-		  }
-		 
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-	}
-	
-	public void setShippedOn(OWLLiteral shippedOn) {
-		this.shippedOn = shippedOn;
-	}
 
-
-	public OWLLiteral getShippedOn() {
-		return shippedOn;
-	}
-	
-	
-	public OWLLiteral getExpectedDeliveryOn() {
-		return expectedDeliveryOn;
-	}
-
-
-	public void setExpectedDeliveryOn(OWLLiteral expectedDeliveryOn) {
-		this.expectedDeliveryOn = expectedDeliveryOn;
-	}
-
-
-	public OWLLiteral getQttBoxesInShipment() {
-		return qttBoxes;
-	}
-
-
-	public void setQttBoxesInShipment(OWLLiteral qttBoxesInShipment) {
-		this.qttBoxes = qttBoxesInShipment;
-	}
-
-
-	public OWLLiteral getQttPalletsInShipment() {
-		return qttPallets;
-	}
-
-
-	public void setQttPalletsInShipment(OWLLiteral qttPalletsInShipment) {
-		this.qttPallets = qttPalletsInShipment;
-	}
-
-
-	public String getShipmentId() {
-		return shipmentId;
-	}
-	
-	
-	public String getShipperAdditionalPartyIdentification() {
-		return shipperAdditionalPartyIdentification;
-	}
-
-
-	public String getReceiverAdditionalPartyIdentification() {
-		return receiverAdditionalPartyIdentification;
-	}
-
-
-
-	public void setShipmentId(String consignmentId) {
-		this.shipmentId = consignmentId;
-	}
-
-
-	public void setShipperAdditionalPartyIdentification(String consignorAdditionalPartyIdentification) {
-		this.shipperAdditionalPartyIdentification = consignorAdditionalPartyIdentification;
-	}
-
-
-	public void setReceiverAdditionalPartyIdentification(String consigneeAdditionalPartyIdentification) {
-		this.receiverAdditionalPartyIdentification = consigneeAdditionalPartyIdentification;
-	}
-
-
-	public OWLLiteral getYear() {
-		return year;
-	}
-
-
-	public void setYear(OWLLiteral year) {
-		this.year = year;
-	}
-
-
-	public OWLLiteral getSeason() {
-		return season;
-	}
-
-
-	public void setSeason(OWLLiteral season) {
-		this.season = season;
-	}
-
-
-	public OWLLiteral getWeekDay() {
-		return weekDay;
-	}
-
-
-	public void setWeekDay(OWLLiteral weekDay) {
-		this.weekDay = weekDay;
-	}
-
-
-	public OWLLiteral getPlannedDeliveryDate() {
-		return plannedDeliveryDate;
-	}
-
-
-	public void setPlannedDeliveryDate(OWLLiteral plannedDeliveryDate) {
-		this.plannedDeliveryDate = plannedDeliveryDate;
-	}
-
-
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
-
-
-	public void setOriginalDataSource(String originalDataSource) {
-		this.originalDataSource = originalDataSource;
-	}
-	
-	public String toString() {
+		}
+		repo.shutDown();
 		
-		return shipmentId+""+shippedOn+""+expectedDeliveryOn+""+shipperAdditionalPartyIdentification+""+receiverAdditionalPartyIdentification+""+plannedDeliveryDate+""+qttBoxes+""+qttPallets+""+
-				originalDataSource+""+year+""+season+""+weekDay;
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
+		System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
+
+		System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB"); 
+		
 	}
-
-
 }

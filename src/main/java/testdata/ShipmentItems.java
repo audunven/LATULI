@@ -4,24 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
 
-import owlprocessing.OntologyOperations;
 
 /**
  * @author audunvennesland
@@ -29,182 +22,157 @@ import owlprocessing.OntologyOperations;
  */
 public class ShipmentItems
 {
+	public static void processShipmentItems(File partiesFolder, String baseURI, String dataDir, String indexes) {
 
-	private String shipmentId;
-	private String loadingUnitId;
-	private OWLLiteral quantity;
-	private String originalDataSource;
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+		//Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
 
-	private ShipmentItems(Builder builder) {
-		
-		this.shipmentId = builder.shipmentId;
-		this.loadingUnitId = builder.loadingUnitId;
-		this.quantity = builder.quantity;
-		this.originalDataSource = builder.originalDataSource;
-	}
+		try (RepositoryConnection connection = repo.getConnection()) {
 
-	public static class Builder {
-		
-		private String shipmentId;
-		private String loadingUnitId;
-		private OWLLiteral quantity;
-		private String originalDataSource;
-		
-		public Builder(String shipmentId, String loadingUnitId, OWLLiteral quantity, String originalDataSource) {
-			this.shipmentId = shipmentId;
-			this.loadingUnitId = loadingUnitId;
-			this.quantity = quantity;
-			this.originalDataSource = originalDataSource;
+			ValueFactory vf = connection.getValueFactory();
 
-		}
-		
-		public Builder setLoadingUnitId(String loadingUnitId) {
-			this.loadingUnitId = loadingUnitId;
-			return this;
-		}
+			IRI shipmentItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
+			IRI shipmentItemClass = vf.createIRI(baseURI, "ShipmentItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 
-		public Builder setQuantity(OWLLiteral quantity) {
-			this.quantity = quantity;
-			return this;
-		}
+			File[] filesInDir = partiesFolder.listFiles();
+			String[] params = null;
 
-		public Builder setOriginalDataSource(String originalDataSource) {
-			this.originalDataSource = originalDataSource;
-			return this;
-		}
-		
-		public ShipmentItems build() {
-			return new ShipmentItems(this);
-		}
-		
-	}
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
 
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
-		
-	    //measure memory footprint of ontology creation
-	    Runtime runtimeOntologyCreation = Runtime.getRuntime();
-	    long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
-	    System.out.println("Used memory before running the program: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
+				try {
 
-		ShipmentItems data;
-		Set<ShipmentItems> dataset = new HashSet<ShipmentItems>();
-		String[] params = null;
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_250000/ShipmentItems_multi_last_250000.csv"));
+					String line;		
 
-		//import ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
-		String line = br.readLine();
+					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-		while (line != null) {
-			params = line.split(",");
+					System.out.println("Reading file: " + filesInDir[i].getName());
 
-			data = new ShipmentItems.Builder(params[1], params[2], OntologyOperations.convertToDecimal(manager, params[3]), params[4]).build();
+					while ((line = br.readLine()) != null) {
 
-			dataset.add(data);
-			line = br.readLine();
+						params = line.split(",");
+
+						//adding type
+						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentitem");			
+						connection.add(shipmentItemInd, RDF.TYPE, shipmentItemClass);
+
+						//adding predicate
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
+
+						//adding predicate
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingunit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
+
+						//adding literals - do I need to represent as an xsd datatype?
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "quantity"), vf.createLiteral(params[3], XMLSchema.INT));
+
+					}//end while
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
 
 		}
+		repo.shutDown();
 
-		br.close();
-		
-
-
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
-
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
-
-		OWLClass shipmentItemClass = OntologyOperations.getClass("ShipmentItem", onto);
-		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
-		OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
-
-		OWLDataFactory df = manager.getOWLDataFactory();
-
-		OWLIndividual shipmentItemInd = null;
-		OWLIndividual shipmentInd = null;
-		OWLIndividual loadingUnitInd = null;
-		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
-
-		AddAxiom addAxiomChange = null;
-
-		for (ShipmentItems td : dataset) {
-
-			//adding shipmentItem individual
-			shipmentItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getShipmentId() + "-" + td.getLoadingUnitId() + "_shipmentitem"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentItemClass, shipmentItemInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
-			
-			
-			//object properties
-			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), shipmentItemInd, shipmentInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), shipmentItemInd, loadingUnitInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-
-			//data properties
-
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("originalDataSource", onto), shipmentItemInd, td.getOriginalDataSource());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("quantity", onto), shipmentItemInd, td.getQuantity());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-
-		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-		
-		long usedMemoryAfterOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
-	    System.out.println("Memory increased after ontology creation: " + (usedMemoryAfterOntologyCreation-usedMemoryBeforeOntologyCreation)/1000000 + " MB");
-	    
-	    System.out.println("\nUsed Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
-        System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
-        System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
-        System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 	}
 	
-	public String getShipmentId() {
-		return shipmentId;
-	}
+	public static void processShipmentItemsHTTP (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId) {
 
-	public String getLoadingUnitId() {
-		return loadingUnitId;
-	}
-	
-	public OWLLiteral getQuantity() {
-		return quantity;
-	}
-	
-	public void setShipmentId(String shipmentItemId) {
-		this.shipmentId = shipmentItemId;
-	}
-	
-	public String getOriginalDataSource() {
-		return originalDataSource;
-	}
+		//Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
 
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+			IRI shipmentItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
+			IRI shipmentItemClass = vf.createIRI(baseURI, "ShipmentItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
+
+			File[] filesInDir = partiesFolder.listFiles();
+			String[] params = null;
+
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+
+				try {
+
+					String line;		
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding type
+						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentitem");			
+						connection.add(shipmentItemInd, RDF.TYPE, shipmentItemClass);
+
+						//adding predicate
+						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
+
+						//adding predicate
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingunit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
+
+						//adding literals - do I need to represent as an xsd datatype?
+						connection.add(shipmentItemInd, vf.createIRI(baseURI + "quantity"), vf.createLiteral(params[3], XMLSchema.INT));
+
+					}//end while
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
+
+		}
+		repo.shutDown();
+
+	}
 }

@@ -4,24 +4,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
-import owlprocessing.OntologyOperations;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -29,168 +23,191 @@ import owlprocessing.OntologyOperations;
  */
 public class DangerousGoods
 {
-	String loadingUnitId;
-	String gtin;
-	String shipmentId;
-	OWLLiteral modifiedOn;
+	public static void processDangerousGoods (File partiesFolder, String baseURI, String dataDir, String indexes) {
 
 
-	public DangerousGoods(String loadingUnitId, String gtin, String shipmentId, OWLLiteral modifiedOn) {
-		this.loadingUnitId = loadingUnitId;
-		this.gtin = gtin;
-		this.shipmentId = shipmentId;
-		this.modifiedOn = modifiedOn;
-	}
-	
-	public DangerousGoods() {}
+		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException, OWLOntologyStorageException {
+		try (RepositoryConnection connection = repo.getConnection()) {
 
-		DangerousGoods data;
+			ValueFactory vf = connection.getValueFactory();
 
-		BufferedReader br = new BufferedReader(new FileReader("./files/CSV/Truls/Tail_100000/DRGs_last_100000_Audun.csv"));
 
-		String line = br.readLine();
-
-		String[] params = null;
-
-		Set<DangerousGoods> dataset = new HashSet<DangerousGoods>();
-		
-		//import manusquare ontology
-		File ontoFile = new File("./files/ONTOLOGIES/M3Onto_TBox.owl");
-
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		
-
-		while (line != null) {
-			params = line.split(";");
-
-			data = new DangerousGoods();
+			IRI dangerousGoodsInd;
+			IRI tradeItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
 			
-			data.setLoadingUnitId(params[0]);	
-			data.setGtin(params[1]);
-			data.setShipmentId(params[2]);
-			data.setModifiedOn(OntologyOperations.convertToDateTime(manager, params[3]));
-
-			dataset.add(data);
 			
-			line = br.readLine();
+			IRI dangerousGoodsClass = vf.createIRI(baseURI, "DangerousGoods");
+			IRI tradeItemClass = vf.createIRI(baseURI, "TradeItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 
-		}
+			File[] filesInDir = partiesFolder.listFiles();
+			String[] params = null;
 
-		br.close();
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
 
 
+				try {
 
-		//point to a local folder containing local copies of ontologies to sort out the imports
-		AutoIRIMapper mapper=new AutoIRIMapper(new File("./files/ONTOLOGIES"), true);
-		manager.addIRIMapper(mapper);
+					String line;		
 
-		OWLOntology onto = manager.loadOntologyFromOntologyDocument(ontoFile);
-		System.out.println("The ontology contains " + onto.getClassesInSignature().size() + " classes");
+					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-		OWLClass dangerousGoodsClass = OntologyOperations.getClass("DangerousGoods", onto);
-		OWLClass tradeItemClass = OntologyOperations.getClass("TradeItem", onto);
-		OWLClass shipmentClass = OntologyOperations.getClass("Shipment", onto);
-		OWLClass loadingUnitClass = OntologyOperations.getClass("LoadingUnit", onto);
+					System.out.println("Reading file: " + filesInDir[i].getName());
 
-		OWLDataFactory df = manager.getOWLDataFactory();
+					while ((line = br.readLine()) != null) {
 
-		OWLIndividual dangerousGoodsInd = null;
-		OWLIndividual tradeItemInd = null;
-		OWLIndividual shipmentInd = null;
-		OWLIndividual loadingUnitInd = null;
-		
-		OWLAxiom classAssertionAxiom = null; 
-		OWLAxiom OPAssertionAxiom = null; 
-		OWLAxiom DPAssertionAxiom = null; 
+						params = line.split(",");
 
-		AddAxiom addAxiomChange = null;
+						//adding type
+						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dgr");			
+						connection.add(dangerousGoodsInd, RDF.TYPE, dangerousGoodsClass);
 
-		int iterator = 0;
+						//adding predicate
+						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeitem");
+						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "relatesToTradeItem"), tradeItemInd);
+						
+						//adding predicate
+						shipmentInd = vf.createIRI(baseURI, params[2] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
 
-		for (DangerousGoods td : dataset) {
-			iterator+=1;	
+						//adding predicate
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingunit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
 
-			//adding dangerous goods individual
-			dangerousGoodsInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "-" + td.getLoadingUnitId() + "_dgr"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(dangerousGoodsClass, dangerousGoodsInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						
+						//adding literals - do I need to represent as an xsd datatype?
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						
+						}
 
-			//object properties
-			tradeItemInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#" + td.getGtin() + "_tradeitem"));
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(tradeItemClass, tradeItemInd);			
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);		
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("relatesToTradeItem", onto), dangerousGoodsInd, tradeItemInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			shipmentInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getShipmentId() + "_shipment");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(shipmentClass, shipmentInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("belongsToShipment", onto), dangerousGoodsInd, shipmentInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			loadingUnitInd = df.getOWLNamedIndividual(IRI.create(onto.getOntologyID().getOntologyIRI().get() + "#") + td.getLoadingUnitId() + "_loadingunit");
-			classAssertionAxiom = df.getOWLClassAssertionAxiom(loadingUnitClass, loadingUnitInd);	
-			addAxiomChange = new AddAxiom(onto, classAssertionAxiom);
-			manager.applyChange(addAxiomChange);
-			
-			OPAssertionAxiom = df.getOWLObjectPropertyAssertionAxiom(OntologyOperations.getObjectProperty("hasLoadingUnit", onto), dangerousGoodsInd, loadingUnitInd);
-			addAxiomChange = new AddAxiom(onto, OPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
 
-			//data properties
-			if (!td.getModifiedOn().getLiteral().equals("0000-00-00T00:00:00")) {
-			DPAssertionAxiom = df.getOWLDataPropertyAssertionAxiom(OntologyOperations.getDataProperty("modifiedOn", onto), dangerousGoodsInd, td.getModifiedOn());
-			addAxiomChange = new AddAxiom(onto, DPAssertionAxiom);
-			manager.applyChange(addAxiomChange);
+					}//end while
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
 			}
 
 		}
-		//save the ontology in each iteration
-		manager.saveOntology(onto);
-	}
+		
+		repo.shutDown();
 
-
-	public String getShipmentId() {
-		return shipmentId;
-	}
-
-	public void setShipmentId(String shipmentItemId) {
-		this.shipmentId = shipmentItemId;
 	}
 	
+	public static void processDangerousGoodsHTTP (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId) {
 
-	public String getLoadingUnitId() {
-		return loadingUnitId;
+
+		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+
+
+		try (RepositoryConnection connection = repo.getConnection()) {
+
+			ValueFactory vf = connection.getValueFactory();
+
+
+			IRI dangerousGoodsInd;
+			IRI tradeItemInd;
+			IRI shipmentInd;
+			IRI loadingUnitInd;
+			
+			
+			IRI dangerousGoodsClass = vf.createIRI(baseURI, "DangerousGoods");
+			IRI tradeItemClass = vf.createIRI(baseURI, "TradeItem");
+			IRI shipmentClass = vf.createIRI(baseURI, "Shipment");
+			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
+
+			File[] filesInDir = partiesFolder.listFiles();
+			String[] params = null;
+
+			BufferedReader br = null;
+
+			for (int i = 0; i < filesInDir.length; i++) {
+
+
+				try {
+
+					String line;		
+
+					br = new BufferedReader(new FileReader(filesInDir[i]));
+
+					System.out.println("Reading file: " + filesInDir[i].getName());
+
+					while ((line = br.readLine()) != null) {
+
+						params = line.split(",");
+
+						//adding type
+						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dgr");			
+						connection.add(dangerousGoodsInd, RDF.TYPE, dangerousGoodsClass);
+
+						//adding predicate
+						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeitem");
+						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "relatesToTradeItem"), tradeItemInd);
+						
+						//adding predicate
+						shipmentInd = vf.createIRI(baseURI, params[2] + "_shipment");
+						connection.add(shipmentInd, RDF.TYPE, shipmentClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
+
+						//adding predicate
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingunit");
+						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
+
+						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						
+						//adding literals - do I need to represent as an xsd datatype?
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
+						
+						}
+
+
+					}//end while
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+
+				} finally {
+
+					try {
+						if (br != null)
+							br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+
+
+			}
+
+		}
+		
+		repo.shutDown();
+
 	}
-
-	public void setLoadingUnitId(String loadingUnitId) {
-		this.loadingUnitId = loadingUnitId;
-	}
-
-	public String getGtin() {
-		return gtin;
-	}
-
-	public void setGtin(String gtin) {
-		this.gtin = gtin;
-	}
-
-	public OWLLiteral getModifiedOn() {
-		return modifiedOn;
-	}
-
-	public void setModifiedOn(OWLLiteral modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
-
 }

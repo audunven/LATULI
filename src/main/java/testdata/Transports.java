@@ -45,7 +45,7 @@ public class Transports {
 			IRI hubInd;
 
 			IRI transportClass = vf.createIRI(baseURI, "Transport");
-			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = transportsFolder.listFiles();
 
@@ -74,11 +74,13 @@ public class Transports {
 						connection.add(transportInd, RDF.TYPE, transportClass);
 
 						//adding predicates
-						hubInd = vf.createIRI(baseURI, params[8] + "_hubReconstructionLocation");
-						connection.add(hubInd, RDF.TYPE, hubReconstructionLocationClass);
-						connection.add(transportInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubInd);
+						hubInd = vf.createIRI(baseURI, params[8] + "_party");
+						connection.add(hubInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(transportInd, vf.createIRI(baseURI + "hasHubParty"), hubInd);
 						
 						//adding literals
+						
+						connection.add(transportInd, vf.createIRI(baseURI + "transportId"), vf.createLiteral(params[0]));
 						
 						if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
 							connection.add(transportInd, vf.createIRI(baseURI + "expectedArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[2]), XMLSchema.DATETIME));
@@ -173,7 +175,7 @@ public class Transports {
 			IRI hubInd;
 
 			IRI transportClass = vf.createIRI(baseURI, "Transport");
-			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = transportsFolder.listFiles();
 
@@ -202,11 +204,12 @@ public class Transports {
 						connection.add(transportInd, RDF.TYPE, transportClass);
 
 						//adding predicates
-						hubInd = vf.createIRI(baseURI, params[8] + "_hubReconstructionLocation");
-						connection.add(hubInd, RDF.TYPE, hubReconstructionLocationClass);
-						connection.add(transportInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubInd);
+						hubInd = vf.createIRI(baseURI, params[8] + "_party");
+						connection.add(hubInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(transportInd, vf.createIRI(baseURI + "hasHubParty"), hubInd);
 						
 						//adding literals
+						connection.add(transportInd, vf.createIRI(baseURI + "transportId"), vf.createLiteral(params[0]));
 						
 						if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
 							connection.add(transportInd, vf.createIRI(baseURI + "expectedArrival"), vf.createLiteral(StringUtilities.convertToDateTime(params[2]), XMLSchema.DATETIME));

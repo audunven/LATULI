@@ -51,7 +51,9 @@ public class Consignments {
 			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
 			IRI transportClass = vf.createIRI(baseURI, "Transport");
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI consignorClass = vf.createIRI(baseURI, "Consignor");
+			IRI consigneeClass = vf.createIRI(baseURI, "Consignee");
+			IRI carrierClass = vf.createIRI(baseURI, "Carrier");
 
 			File[] filesInDir = consignmentFolder.listFiles();
 
@@ -93,21 +95,22 @@ public class Consignments {
 						}
 
 						carrierInd = vf.createIRI(baseURI, params[11] + "_party");
-						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(carrierInd, RDF.TYPE, carrierClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasCarrierParty"), carrierInd);
 
 						consignorInd = vf.createIRI(baseURI, params[14] + "_party");
-						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignorInd, RDF.TYPE, consignorClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsignorParty"), consignorInd);
 
 						consigneeInd = vf.createIRI(baseURI, params[17] + "_party");
-						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consigneeInd, RDF.TYPE, consigneeClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsigneeParty"), consigneeInd);
 
 						if (!StringUtilities.convertToDateTime(params[23]).equals("0000-00-00T00:00:00")) {
 							connection.add(consignmentInd, vf.createIRI(baseURI + "taskClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[23]), XMLSchema.DATETIME));
 						}
 						
+						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentId"), vf.createLiteral(params[0]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentType"), vf.createLiteral(params[6]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "fullPalletConsignment"), vf.createLiteral(params[32]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[33], XMLSchema.INT));								
@@ -180,7 +183,9 @@ public class Consignments {
 			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
 			IRI transportClass = vf.createIRI(baseURI, "Transport");
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI consignorClass = vf.createIRI(baseURI, "Consignor");
+			IRI consigneeClass = vf.createIRI(baseURI, "Consignee");
+			IRI carrierClass = vf.createIRI(baseURI, "Carrier");
 
 			File[] filesInDir = consignmentFolder.listFiles();
 
@@ -222,21 +227,23 @@ public class Consignments {
 						}
 
 						carrierInd = vf.createIRI(baseURI, params[11] + "_party");
-						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(carrierInd, RDF.TYPE, carrierClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasCarrierParty"), carrierInd);
 
 						consignorInd = vf.createIRI(baseURI, params[14] + "_party");
-						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignorInd, RDF.TYPE, consignorClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsignorParty"), consignorInd);
 
 						consigneeInd = vf.createIRI(baseURI, params[17] + "_party");
-						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consigneeInd, RDF.TYPE, consigneeClass);
 						connection.add(consignmentInd, vf.createIRI(baseURI + "hasConsigneeParty"), consigneeInd);
 
+						//adding literals
 						if (!StringUtilities.convertToDateTime(params[23]).equals("0000-00-00T00:00:00")) {
 							connection.add(consignmentInd, vf.createIRI(baseURI + "taskClosedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[23]), XMLSchema.DATETIME));
 						}
 						
+						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentId"), vf.createLiteral(params[0]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "consignmentType"), vf.createLiteral(params[6]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "fullPalletConsignment"), vf.createLiteral(params[32]));
 						connection.add(consignmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[33], XMLSchema.INT));								

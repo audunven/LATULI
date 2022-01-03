@@ -66,11 +66,11 @@ public class DangerousGoods
 						params = line.split(",");
 
 						//adding type
-						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dgr");			
+						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dangerousGoods");			
 						connection.add(dangerousGoodsInd, RDF.TYPE, dangerousGoodsClass);
 
 						//adding predicate
-						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeitem");
+						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeItem");
 						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "relatesToTradeItem"), tradeItemInd);
 						
@@ -80,15 +80,13 @@ public class DangerousGoods
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
 
 						//adding predicate
-						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingunit");
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingUnit");
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
 
+						//adding literals
 						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
-						
-						//adding literals - do I need to represent as an xsd datatype?
-						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
-						
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));					
 						}
 
 
@@ -160,11 +158,11 @@ public class DangerousGoods
 						params = line.split(",");
 
 						//adding type
-						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dgr");			
+						dangerousGoodsInd = vf.createIRI(baseURI, params[1] + "-" + params[0] + "_dangerousGoods");			
 						connection.add(dangerousGoodsInd, RDF.TYPE, dangerousGoodsClass);
 
 						//adding predicate
-						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeitem");
+						tradeItemInd = vf.createIRI(baseURI, params[1] + "_tradeItem");
 						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "relatesToTradeItem"), tradeItemInd);
 						
@@ -174,15 +172,13 @@ public class DangerousGoods
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
 
 						//adding predicate
-						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingunit");
+						loadingUnitInd = vf.createIRI(baseURI, params[0] + "_loadingUnit");
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
 
+						//adding literals
 						if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
-						
-						//adding literals - do I need to represent as an xsd datatype?
-						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));
-						
+						connection.add(dangerousGoodsInd, vf.createIRI(baseURI + "modifiedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[3]), XMLSchema.DATETIME));					
 						}
 
 

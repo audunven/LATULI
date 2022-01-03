@@ -59,7 +59,7 @@ public class ShipmentItems
 						params = line.split(",");
 
 						//adding type
-						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentitem");			
+						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentItem");			
 						connection.add(shipmentItemInd, RDF.TYPE, shipmentItemClass);
 
 						//adding predicate
@@ -68,11 +68,11 @@ public class ShipmentItems
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
 
 						//adding predicate
-						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingunit");
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingUnit");
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
 
-						//adding literals - do I need to represent as an xsd datatype?
+						//adding literals
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "quantity"), vf.createLiteral(params[3], XMLSchema.INT));
 
 					}//end while
@@ -136,7 +136,7 @@ public class ShipmentItems
 						params = line.split(",");
 
 						//adding type
-						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentitem");			
+						shipmentItemInd = vf.createIRI(baseURI, params[0] + "_" + params[1] + "_shipmentItem");			
 						connection.add(shipmentItemInd, RDF.TYPE, shipmentItemClass);
 
 						//adding predicate
@@ -145,11 +145,11 @@ public class ShipmentItems
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "belongsToShipment"), shipmentInd);
 
 						//adding predicate
-						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingunit");
+						loadingUnitInd = vf.createIRI(baseURI, params[1] + "_loadingUnit");
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);
 
-						//adding literals - do I need to represent as an xsd datatype?
+						//adding literals
 						connection.add(shipmentItemInd, vf.createIRI(baseURI + "quantity"), vf.createLiteral(params[3], XMLSchema.INT));
 
 					}//end while

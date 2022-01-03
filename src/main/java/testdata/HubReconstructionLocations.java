@@ -8,13 +8,11 @@ import java.io.IOException;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
-import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.http.HTTPRepository;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
-import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
 
 /**
  * @author audunvennesland
@@ -33,9 +31,10 @@ public class HubReconstructionLocations
 
 			ValueFactory vf = connection.getValueFactory();
 
-
 			IRI hubReconstructionInd;
+			IRI partyInd;
 			IRI hubReconstructionClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
 			String[] params = null;
@@ -60,6 +59,11 @@ public class HubReconstructionLocations
 						//adding type
 						hubReconstructionInd = vf.createIRI(baseURI, params[0] + "_hubReconstructionLocation");			
 						connection.add(hubReconstructionInd, RDF.TYPE, hubReconstructionClass);
+						
+						//adding predicates
+						partyInd = vf.createIRI(baseURI, params[3] + "_party");
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 						//adding literals
 						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hubReconstructionLocationId"), vf.createLiteral(params[0]));
@@ -103,7 +107,9 @@ public class HubReconstructionLocations
 
 
 			IRI hubReconstructionInd;
+			IRI partyInd;
 			IRI hubReconstructionClass = vf.createIRI(baseURI, "HubReconstructionLocation");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
 			String[] params = null;
@@ -128,6 +134,11 @@ public class HubReconstructionLocations
 						//adding type
 						hubReconstructionInd = vf.createIRI(baseURI, params[0] + "_hubReconstructionLocation");			
 						connection.add(hubReconstructionInd, RDF.TYPE, hubReconstructionClass);
+						
+						//adding predicates
+						partyInd = vf.createIRI(baseURI, params[3] + "_party");
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 						//adding literals
 						connection.add(hubReconstructionInd, vf.createIRI(baseURI + "hubReconstructionLocationId"), vf.createLiteral(params[0]));

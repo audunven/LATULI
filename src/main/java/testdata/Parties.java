@@ -54,24 +54,30 @@ public class Parties {
 
 					System.out.println("Reading file: " + filesInDir[i].getName());
 					
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
 					for (String[] params : line) {
 
 						//adding types
-						partyInd = vf.createIRI(baseURI, params[1] + "-" + params[3] + "_party");
+						partyInd = vf.createIRI(baseURI, params[2] + "_party");
 						connection.add(partyInd, RDF.TYPE, partyClass);
 
 						//adding literals
-						connection.add(partyInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[1]));
-						connection.add(partyInd, vf.createIRI(baseURI + "gln"), vf.createLiteral(params[2]));
-						connection.add(partyInd, vf.createIRI(baseURI + "hashCode"), vf.createLiteral(params[3]));
-						connection.add(partyInd, vf.createIRI(baseURI + "code2"), vf.createLiteral(params[4]));
-						connection.add(partyInd, vf.createIRI(baseURI + "location"), vf.createLiteral(params[51]));
-						connection.add(partyInd, vf.createIRI(baseURI + "postalCode"), vf.createLiteral(params[6]));
-						connection.add(partyInd, vf.createIRI(baseURI + "isHub"), vf.createLiteral(params[7], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isShipper"), vf.createLiteral(params[8], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isCarrier"), vf.createLiteral(params[9], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isConsignor"), vf.createLiteral(params[10], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(geosparqlURI + "asWKT"), vf.createLiteral(StringUtilities.formatCoordinates(params[11] + "," + params[12]), GEO.WKT_LITERAL));
+						connection.add(partyInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[0]));
+						connection.add(partyInd, vf.createIRI(baseURI + "gln"), vf.createLiteral(params[1]));
+						connection.add(partyInd, vf.createIRI(baseURI + "hashCode"), vf.createLiteral(params[2]));
+						connection.add(partyInd, vf.createIRI(baseURI + "code2"), vf.createLiteral(params[7]));
+						connection.add(partyInd, vf.createIRI(baseURI + "location"), vf.createLiteral(params[8]));
+						connection.add(partyInd, vf.createIRI(baseURI + "postalCode"), vf.createLiteral(params[9]));
+						connection.add(partyInd, vf.createIRI(baseURI + "isHub"), vf.createLiteral(params[11], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isShipper"), vf.createLiteral(params[12], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isCarrier"), vf.createLiteral(params[13], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isConsignor"), vf.createLiteral(params[14], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(geosparqlURI + "asWKT"), vf.createLiteral(StringUtilities.formatCoordinates(params[19]), GEO.WKT_LITERAL));
 
 					}
 
@@ -124,24 +130,30 @@ public class Parties {
 
 					System.out.println("Reading file: " + filesInDir[i].getName());
 					
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
 					for (String[] params : line) {
 
 						//adding types
-						partyInd = vf.createIRI(baseURI, params[1] + "-" + params[3] + "_party");
+						partyInd = vf.createIRI(baseURI, params[2] + "_party");
 						connection.add(partyInd, RDF.TYPE, partyClass);
-
+						
 						//adding literals
-						connection.add(partyInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[1]));
-						connection.add(partyInd, vf.createIRI(baseURI + "gln"), vf.createLiteral(params[2]));
-						connection.add(partyInd, vf.createIRI(baseURI + "hashCode"), vf.createLiteral(params[3]));
-						connection.add(partyInd, vf.createIRI(baseURI + "code2"), vf.createLiteral(params[4]));
-						connection.add(partyInd, vf.createIRI(baseURI + "location"), vf.createLiteral(params[51]));
-						connection.add(partyInd, vf.createIRI(baseURI + "postalCode"), vf.createLiteral(params[6]));
-						connection.add(partyInd, vf.createIRI(baseURI + "isHub"), vf.createLiteral(params[7], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isShipper"), vf.createLiteral(params[8], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isCarrier"), vf.createLiteral(params[9], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(baseURI + "isConsignor"), vf.createLiteral(params[10], XMLSchema.INT));
-						connection.add(partyInd, vf.createIRI(geosparqlURI + "asWKT"), vf.createLiteral(StringUtilities.formatCoordinates(params[11] + "," + params[12]), GEO.WKT_LITERAL));
+						connection.add(partyInd, vf.createIRI(baseURI + "additionalPartyIdentification"), vf.createLiteral(params[0]));
+						connection.add(partyInd, vf.createIRI(baseURI + "gln"), vf.createLiteral(params[1]));
+						connection.add(partyInd, vf.createIRI(baseURI + "hashCode"), vf.createLiteral(params[2]));
+						connection.add(partyInd, vf.createIRI(baseURI + "code2"), vf.createLiteral(params[7]));
+						connection.add(partyInd, vf.createIRI(baseURI + "location"), vf.createLiteral(params[8]));
+						connection.add(partyInd, vf.createIRI(baseURI + "postalCode"), vf.createLiteral(params[9]));
+						connection.add(partyInd, vf.createIRI(baseURI + "isHub"), vf.createLiteral(params[11], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isShipper"), vf.createLiteral(params[12], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isCarrier"), vf.createLiteral(params[13], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(baseURI + "isConsignor"), vf.createLiteral(params[14], XMLSchema.INT));
+						connection.add(partyInd, vf.createIRI(geosparqlURI + "asWKT"), vf.createLiteral(StringUtilities.formatCoordinates(params[19]), GEO.WKT_LITERAL));
 
 					}
 

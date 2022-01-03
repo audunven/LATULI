@@ -36,7 +36,6 @@ public class XDocLoadingUnits
 
 
 		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
-		//Repository repo = new HTTPRepository(RDF4JSERVER, REPOSITORYID);
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 
@@ -61,7 +60,12 @@ public class XDocLoadingUnits
 			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
 			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
+			IRI shipperClass = vf.createIRI(baseURI, "Shipper");
+			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
+			IRI consignorClass = vf.createIRI(baseURI, "Consignor");
+			IRI consigneeClass = vf.createIRI(baseURI, "Consignee");
+			IRI carrierClass = vf.createIRI(baseURI, "Carrier");
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
 
 			File[] filesInDir = xdluFolder.listFiles();
@@ -84,13 +88,13 @@ public class XDocLoadingUnits
 						params = line.split(",");
 
 						//adding types
-						xdluInd = vf.createIRI(baseURI, params[0] + "_xdocloadingunit");
+						xdluInd = vf.createIRI(baseURI, params[0] + "_xDocLoadingUnit");
 						connection.add(xdluInd, RDF.TYPE, xdluClass);
 
 						//adding predicates
 						hubReconstructionLocationInd = vf.createIRI(baseURI, params[17] + "_hubReconstructionLocation");
 						connection.add(hubReconstructionLocationInd, RDF.TYPE, hubReconstructionLocationClass);
-						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubReconstructionLocationInd);
+						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubReconstructionLocation"), hubReconstructionLocationInd);
 
 						loadingUnitInd = vf.createIRI(baseURI, params[7] + "_loadingUnit");
 						connection.add(hubReconstructionLocationInd, RDF.TYPE, loadingUnitClass);
@@ -112,42 +116,37 @@ public class XDocLoadingUnits
 						connection.add(outboundConsignmentInd, RDF.TYPE, consignmentClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasOutboundConsignment"), outboundConsignmentInd);
 
-
 						partyInd = vf.createIRI(baseURI, params[15] + "_party");
-						connection.add(partyInd, RDF.TYPE, partyClass);
-						connection.add(xdluInd, vf.createIRI(baseURI + "hasParty"), partyInd);
-
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 						shipperInd = vf.createIRI(baseURI, params[23] + "_party");
-						connection.add(shipperInd, RDF.TYPE, partyClass);
+						connection.add(shipperInd, RDF.TYPE, shipperClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasShipper"), shipperInd);
 
-
 						receiverInd = vf.createIRI(baseURI, params[26] + "_party");
-						connection.add(receiverInd, RDF.TYPE, partyClass);
+						connection.add(receiverInd, RDF.TYPE, receiverClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasReceiver"), receiverInd);
 
-
 						carrierInd = vf.createIRI(baseURI, params[29] + "_party");
-						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(carrierInd, RDF.TYPE, carrierClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasCarrier"), carrierInd);
 
-
 						consignorInd = vf.createIRI(baseURI, params[32] + "_party");
-						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignorInd, RDF.TYPE, consignorClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasConsignor"), consignorInd);
 
-
 						consigneeInd = vf.createIRI(baseURI, params[35] + "_party");
-						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consigneeInd, RDF.TYPE, consigneeClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasConsignee"), consigneeInd);
-
 
 						waveInd = vf.createIRI(baseURI, params[36] + "_wave");
 						connection.add(waveInd, RDF.TYPE, waveClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "processedByWave"), waveInd);
 
 						//adding literals
+						connection.add(xdluInd, vf.createIRI(baseURI + "internalId"), vf.createLiteral(params[0]));
+						
 						if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
 							connection.add(xdluInd, vf.createIRI(baseURI + "preSortScanOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[1]), XMLSchema.DATETIME));
 						}
@@ -241,7 +240,12 @@ public class XDocLoadingUnits
 			IRI hubReconstructionLocationClass = vf.createIRI(baseURI, "HubReconstructionLocation");
 			IRI loadingUnitClass = vf.createIRI(baseURI, "LoadingUnit");
 			IRI consignmentClass = vf.createIRI(baseURI, "Consignment");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
+			IRI shipperClass = vf.createIRI(baseURI, "Shipper");
+			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
+			IRI consignorClass = vf.createIRI(baseURI, "Consignor");
+			IRI consigneeClass = vf.createIRI(baseURI, "Consignee");
+			IRI carrierClass = vf.createIRI(baseURI, "Carrier");
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
 
 			File[] filesInDir = xdluFolder.listFiles();
@@ -264,13 +268,13 @@ public class XDocLoadingUnits
 						params = line.split(",");
 
 						//adding types
-						xdluInd = vf.createIRI(baseURI, params[0] + "_xdocloadingunit");
+						xdluInd = vf.createIRI(baseURI, params[0] + "_xDocLoadingUnit");
 						connection.add(xdluInd, RDF.TYPE, xdluClass);
 
 						//adding predicates
 						hubReconstructionLocationInd = vf.createIRI(baseURI, params[17] + "_hubReconstructionLocation");
 						connection.add(hubReconstructionLocationInd, RDF.TYPE, hubReconstructionLocationClass);
-						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), hubReconstructionLocationInd);
+						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubReconstructionLocation"), hubReconstructionLocationInd);
 
 						loadingUnitInd = vf.createIRI(baseURI, params[7] + "_loadingUnit");
 						connection.add(hubReconstructionLocationInd, RDF.TYPE, loadingUnitClass);
@@ -294,32 +298,32 @@ public class XDocLoadingUnits
 
 
 						partyInd = vf.createIRI(baseURI, params[15] + "_party");
-						connection.add(partyInd, RDF.TYPE, partyClass);
-						connection.add(xdluInd, vf.createIRI(baseURI + "hasParty"), partyInd);
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(xdluInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 
 						shipperInd = vf.createIRI(baseURI, params[23] + "_party");
-						connection.add(shipperInd, RDF.TYPE, partyClass);
+						connection.add(shipperInd, RDF.TYPE, shipperClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasShipper"), shipperInd);
 
 
 						receiverInd = vf.createIRI(baseURI, params[26] + "_party");
-						connection.add(receiverInd, RDF.TYPE, partyClass);
+						connection.add(receiverInd, RDF.TYPE, receiverClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasReceiver"), receiverInd);
 
 
 						carrierInd = vf.createIRI(baseURI, params[29] + "_party");
-						connection.add(carrierInd, RDF.TYPE, partyClass);
+						connection.add(carrierInd, RDF.TYPE, carrierClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasCarrier"), carrierInd);
 
 
 						consignorInd = vf.createIRI(baseURI, params[32] + "_party");
-						connection.add(consignorInd, RDF.TYPE, partyClass);
+						connection.add(consignorInd, RDF.TYPE, consignorClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasConsignor"), consignorInd);
 
 
 						consigneeInd = vf.createIRI(baseURI, params[35] + "_party");
-						connection.add(consigneeInd, RDF.TYPE, partyClass);
+						connection.add(consigneeInd, RDF.TYPE, consigneeClass);
 						connection.add(xdluInd, vf.createIRI(baseURI + "hasConsignee"), consigneeInd);
 
 
@@ -328,6 +332,8 @@ public class XDocLoadingUnits
 						connection.add(xdluInd, vf.createIRI(baseURI + "processedByWave"), waveInd);
 
 						//adding literals
+						connection.add(xdluInd, vf.createIRI(baseURI + "internalId"), vf.createLiteral(params[0]));
+						
 						if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
 							connection.add(xdluInd, vf.createIRI(baseURI + "preSortScanOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[1]), XMLSchema.DATETIME));
 						}

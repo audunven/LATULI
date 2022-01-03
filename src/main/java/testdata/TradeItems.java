@@ -75,7 +75,7 @@ public class TradeItems
 					for (String[] params : line) {
 
 						//adding types
-						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeitem" );
+						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeItem" );
 						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
 
 						//adding predicates
@@ -87,6 +87,7 @@ public class TradeItems
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);								
 
+						//adding literals
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "gtin"), vf.createLiteral(params[2]));
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierQuantity"), vf.createLiteral(params[6], XMLSchema.DECIMAL));
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "customerQuantity"), vf.createLiteral(params[7], XMLSchema.DECIMAL));								
@@ -185,7 +186,7 @@ public class TradeItems
 					for (String[] params : line) {
 
 						//adding types
-						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeitem" );
+						tradeItemInd = vf.createIRI(baseURI, params[0] + "-" + params[1] + "_tradeItem" );
 						connection.add(tradeItemInd, RDF.TYPE, tradeItemClass);
 
 						//adding predicates
@@ -197,6 +198,7 @@ public class TradeItems
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "hasLoadingUnit"), loadingUnitInd);								
 
+						//adding literals
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "gtin"), vf.createLiteral(params[2]));
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "supplierQuantity"), vf.createLiteral(params[6], XMLSchema.DECIMAL));
 						connection.add(tradeItemInd, vf.createIRI(baseURI + "customerQuantity"), vf.createLiteral(params[7], XMLSchema.DECIMAL));								

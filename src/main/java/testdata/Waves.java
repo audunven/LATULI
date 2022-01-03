@@ -44,7 +44,7 @@ public class Waves {
 			IRI partyInd;
 
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = wavesFolder.listFiles();
 			String[] params = null;
@@ -70,11 +70,13 @@ public class Waves {
 						connection.add(waveInd, RDF.TYPE, waveClass);
 
 						//adding predicates
-						partyInd = vf.createIRI(baseURI, params[6] + "_hubReconstructionLocation");
-						connection.add(partyInd, RDF.TYPE, partyClass);
-						connection.add(waveInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), partyInd);
+						partyInd = vf.createIRI(baseURI, params[6] + "_party");
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(waveInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 						//adding literals
+						connection.add(waveInd, vf.createIRI(baseURI + "waveId"), vf.createLiteral(params[0]));
+						
 						if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
 							connection.add(waveInd, vf.createIRI(baseURI + "plannedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[1]), XMLSchema.DATETIME));								
 						}
@@ -168,7 +170,7 @@ public class Waves {
 			IRI partyInd;
 
 			IRI waveClass = vf.createIRI(baseURI, "Wave");
-			IRI partyClass = vf.createIRI(baseURI, "Party");
+			IRI terminalOperatorClass = vf.createIRI(baseURI, "TerminalOperator");
 
 			File[] filesInDir = wavesFolder.listFiles();
 			String[] params = null;
@@ -194,11 +196,13 @@ public class Waves {
 						connection.add(waveInd, RDF.TYPE, waveClass);
 
 						//adding predicates
-						partyInd = vf.createIRI(baseURI, params[6] + "_hubReconstructionLocation");
-						connection.add(partyInd, RDF.TYPE, partyClass);
-						connection.add(waveInd, vf.createIRI(baseURI + "hasHubReconstructionParty"), partyInd);
+						partyInd = vf.createIRI(baseURI, params[6] + "_party");
+						connection.add(partyInd, RDF.TYPE, terminalOperatorClass);
+						connection.add(waveInd, vf.createIRI(baseURI + "hasHubParty"), partyInd);
 
 						//adding literals
+						connection.add(waveInd, vf.createIRI(baseURI + "waveId"), vf.createLiteral(params[0]));
+						
 						if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
 							connection.add(waveInd, vf.createIRI(baseURI + "plannedOn"), vf.createLiteral(StringUtilities.convertToDateTime(params[1]), XMLSchema.DATETIME));								
 						}

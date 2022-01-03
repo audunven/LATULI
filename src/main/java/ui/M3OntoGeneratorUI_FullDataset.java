@@ -18,7 +18,8 @@ public class M3OntoGeneratorUI_FullDataset {
 
 	public static void main(String[] args) {
 		
-		testRun();
+		//testRun();
+		realRunHub();
 
 	}
 
@@ -108,7 +109,6 @@ public class M3OntoGeneratorUI_FullDataset {
 				HubReconstructionLocations.processHubReconstructionLocationsHTTP (folder, baseURI, rdf4jServer, repositoryId);
 			}
 
-
 		}
 
 		long endTime = System.nanoTime();		
@@ -123,8 +123,8 @@ public class M3OntoGeneratorUI_FullDataset {
 
 	}
 
-	//real-run against the local native store
-	public static void realRun() {
+	//real-run against the local native store and csv data filtered on a particular period of time
+	public static void realRunPeriod() {
 
 		long startTime = System.nanoTime();
 
@@ -135,73 +135,73 @@ public class M3OntoGeneratorUI_FullDataset {
 		String indexes = "spoc,posc,cosp";
 
 		//access all files in folder
-		File parentFolder = new File("./files/CSV/Audun");
+		File parentFolder = new File("./files/CSV/Audun/_FILTER_PERIOD");
 		File[] files = parentFolder.listFiles();
 
 		for (File folder : files) {
 
-			if (folder.getName().startsWith("filtered_xdlus")) {		
+			if (folder.getName().startsWith("xdlu")) {		
 				
 				System.out.println("\nProcessing XDoc Loading Units\n");
 
 				XDocLoadingUnits.processXDocLoadingUnits(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_consignments")) {
+			} else if (folder.getName().startsWith("consignments")) {
 				
 				System.out.println("\nProcessing Consignments\n");
 
 				Consignments.processConsignments(folder, baseURI, dataDir, indexes);
 			}
 
-			else if (folder.getName().startsWith("filtered_parties")) {
+			else if (folder.getName().startsWith("parties")) {
 				
 				System.out.println("\nProcessing Parties\n");
 
 				Parties.processParties(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_dgrs")) {
+			} else if (folder.getName().startsWith("dgrs_")) {
 				
 				System.out.println("\nProcessing Dangerous Goods\n");
 
 				DangerousGoods.processDangerousGoods(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_shipmentitems")) {
+			} else if (folder.getName().startsWith("shipmentitems")) {
 				
 				System.out.println("\nProcessing Shipment Items\n");
 
 				ShipmentItems.processShipmentItems(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_shipments")) {
+			} else if (folder.getName().startsWith("shipments")) {
 				
 				System.out.println("\nProcessing Shipments\n");
 
 				Shipments.processShipments(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_waves")) {
+			} else if (folder.getName().startsWith("waves")) {
 				
 				System.out.println("\nProcessing Waves\n");
 
 				Waves.processWaves(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_tradeitems")) {
+			} else if (folder.getName().startsWith("tradeitems")) {
 				
 				System.out.println("\nProcessing Trade Items\n");
 
 				TradeItems.processTradeItems(folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_transports")) {
+			} else if (folder.getName().startsWith("transports")) {
 				
 				System.out.println("\nProcessing Transports\n");
 
 				Transports.processTransports (folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_loadingunits")) {
+			} else if (folder.getName().startsWith("loadingunits")) {
 				
 				System.out.println("\nProcessing Loading Units\n");
 
 				LoadingUnits.processLoadingUnits (folder, baseURI, dataDir, indexes);
 
-			} else if (folder.getName().startsWith("filtered_hubreconstructionlocations")) {
+			} else if (folder.getName().startsWith("hubreconstructionlocations")) {
 				
 				System.out.println("\nProcessing Hub Reconstruction Locations\n");
 
@@ -222,6 +222,106 @@ public class M3OntoGeneratorUI_FullDataset {
 		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 
 	}
+	
+	//real-run against the local native store and csv data filtered on a particular hub
+		public static void realRunHub() {
+
+			long startTime = System.nanoTime();
+
+			String baseURI = "http://latuli.no/onto#";
+
+			//if using a native repository
+			String dataDir = "/Users/audunvennesland/RDF4J_db_filteredByHub";
+			String indexes = "spoc,posc,cosp";
+
+			//access all files in folder
+			File parentFolder = new File("./files/CSV/Audun/_FILTER_HUB");
+			File[] files = parentFolder.listFiles();
+
+			for (File folder : files) {
+
+				if (folder.getName().startsWith("xdlu")) {		
+					
+					System.out.println("\nProcessing XDoc Loading Units\n");
+
+					XDocLoadingUnits.processXDocLoadingUnits(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("consignments")) {
+					
+					System.out.println("\nProcessing Consignments\n");
+
+					Consignments.processConsignments(folder, baseURI, dataDir, indexes);
+				}
+
+				else if (folder.getName().startsWith("parties")) {
+					
+					System.out.println("\nProcessing Parties\n");
+
+					Parties.processParties(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("dgrs")) {
+					
+					System.out.println("\nProcessing Dangerous Goods\n");
+
+					DangerousGoods.processDangerousGoods(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("shipmentitems")) {
+					
+					System.out.println("\nProcessing Shipment Items\n");
+
+					ShipmentItems.processShipmentItems(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("shipments")) {
+					
+					System.out.println("\nProcessing Shipments\n");
+
+					Shipments.processShipments(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("waves")) {
+					
+					System.out.println("\nProcessing Waves\n");
+
+					Waves.processWaves(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("tradeitems")) {
+					
+					System.out.println("\nProcessing Trade Items\n");
+
+					TradeItems.processTradeItems(folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("transports")) {
+					
+					System.out.println("\nProcessing Transports\n");
+
+					Transports.processTransports (folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("loadingunits")) {
+					
+					System.out.println("\nProcessing Loading Units\n");
+
+					LoadingUnits.processLoadingUnits (folder, baseURI, dataDir, indexes);
+
+				} else if (folder.getName().startsWith("hubreconstructionlocations")) {
+					
+					System.out.println("\nProcessing Hub Reconstruction Locations\n");
+
+					HubReconstructionLocations.processHubReconstructionLocations (folder, baseURI, dataDir, indexes);
+				}
+
+
+			}
+
+			long endTime = System.nanoTime();		
+			long timeElapsed = endTime - startTime;		
+			System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+			System.out.println("\nMEMORY USAGE for the entire transformation process: ");
+			System.out.println("Used Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+			System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+			System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+			System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
+
+		}
 
 
 

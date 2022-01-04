@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -51,23 +53,26 @@ public class Shipments {
 			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
 
 			File[] filesInDir = shipmentsFolder.listFiles();
-			String[] params = null;
 
 			BufferedReader br = null;
+			
+			List<String[]> line = new ArrayList<String[]>();
 
 			for (int i = 0; i < filesInDir.length; i++) {
 
 				try {
 
-					String line;		
-
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
 					System.out.println("Reading file: " + filesInDir[i].getName());
+					
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 
-					while ((line = br.readLine()) != null) {
-
-						params = line.split(",");
+					for (String[] params : line) {
 
 						//adding types
 						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
@@ -99,7 +104,8 @@ public class Shipments {
 						connection.add(shipmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[18], XMLSchema.INT));
 						connection.add(shipmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[19], XMLSchema.INT));
 
-					}
+					}//end for
+					
 				} catch (IOException e) {
 
 					e.printStackTrace();
@@ -159,23 +165,26 @@ public class Shipments {
 			IRI receiverClass = vf.createIRI(baseURI, "Receiver");
 
 			File[] filesInDir = shipmentsFolder.listFiles();
-			String[] params = null;
 
 			BufferedReader br = null;
+			
+			List<String[]> line = new ArrayList<String[]>();
 
 			for (int i = 0; i < filesInDir.length; i++) {
 
 				try {
 
-					String line;		
-
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
 					System.out.println("Reading file: " + filesInDir[i].getName());
+					
+					try {
+						line = StringUtilities.oneByOne(br);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 
-					while ((line = br.readLine()) != null) {
-
-						params = line.split(",");
+					for (String[] params : line) {
 
 						//adding types
 						shipmentInd = vf.createIRI(baseURI, params[0] + "_shipment");
@@ -207,7 +216,7 @@ public class Shipments {
 						connection.add(shipmentInd, vf.createIRI(baseURI + "qttBoxes"), vf.createLiteral(params[18], XMLSchema.INT));
 						connection.add(shipmentInd, vf.createIRI(baseURI + "qttPallets"), vf.createLiteral(params[19], XMLSchema.INT));
 
-					}
+					}//end for
 					
 				} catch (IOException e) {
 

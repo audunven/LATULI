@@ -13,9 +13,6 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.http.HTTPRepository;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
-import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
 import utilities.StringUtilities;
 
@@ -27,7 +24,7 @@ import utilities.StringUtilities;
 public class TradeItems
 {
 
-	public static void processTradeItems (File tradeItemsFolder, String baseURI, String dataDir, String indexes) {
+	public static void processTradeItems (File tradeItemsFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -37,9 +34,9 @@ public class TradeItems
 		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
 		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
 
-		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
-
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -138,7 +135,7 @@ public class TradeItems
 
 	}
 	
-	public static void processTradeItemsHTTP (File tradeItemsFolder, String baseURI, String rdf4jServer, String repositoryId) {
+	public static void processTradeItemsHTTP (File tradeItemsFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -147,10 +144,10 @@ public class TradeItems
 		Runtime runtimeOntologyCreation = Runtime.getRuntime();
 		long usedMemoryBeforeOntologyCreation = runtimeOntologyCreation.totalMemory() - runtimeOntologyCreation.freeMemory();
 		System.out.println("Used Memory before ontology creation: " + usedMemoryBeforeOntologyCreation/1000000 + " MB");
-
-		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
-
+		
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

@@ -11,9 +11,6 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
-import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
-import org.eclipse.rdf4j.repository.http.HTTPRepository;
 
 
 /**
@@ -22,12 +19,11 @@ import org.eclipse.rdf4j.repository.http.HTTPRepository;
  */
 public class ShipmentItems
 {
-	public static void processShipmentItems(File partiesFolder, String baseURI, String dataDir, String indexes) {
-
-		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
-		//Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+	public static void processShipmentItems(File partiesFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -99,12 +95,11 @@ public class ShipmentItems
 
 	}
 	
-	public static void processShipmentItemsHTTP (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId) {
-
-		//Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
-		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
+	public static void processShipmentItemsHTTP (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

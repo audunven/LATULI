@@ -10,9 +10,6 @@ import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.http.HTTPRepository;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
-import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 
 /**
  * @author audunvennesland
@@ -21,13 +18,12 @@ import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
 public class HubReconstructionLocations
 {
 
-	public static void processHubReconstructionLocations (File hubReconstructionLocationsFolder, String baseURI, String dataDir, String indexes) {
-
-
-		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
+	public static void processHubReconstructionLocations (File hubReconstructionLocationsFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -95,13 +91,11 @@ public class HubReconstructionLocations
 
 	}
 	
-	public static void processHubReconstructionLocationsHTTP (File hubReconstructionLocationsFolder, String baseURI, String rdf4jServer, String repositoryId) {
-
-
-		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
-
+	public static void processHubReconstructionLocationsHTTP (File hubReconstructionLocationsFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

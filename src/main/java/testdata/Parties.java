@@ -9,15 +9,11 @@ import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.GEO;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
-import org.eclipse.rdf4j.sail.nativerdf.NativeStore;
-import org.eclipse.rdf4j.repository.http.HTTPRepository;
-import org.eclipse.rdf4j.model.vocabulary.GEO;
-
 
 import utilities.StringUtilities;
 
@@ -27,12 +23,14 @@ import utilities.StringUtilities;
  */
 public class Parties {
 
-	public static void processParties(File partiesFolder, String baseURI, String dataDir, String indexes) {
+	public static void processParties(File partiesFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
-		Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 		String geosparqlURI = "http://www.opengis.net/ont/geosparql#";
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("geo", geosparqlURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -103,12 +101,14 @@ public class Parties {
 
 	}
 	
-	public static void processPartiesHTTP(File partiesFolder, String baseURI, String rdf4jServer, String repositoryId) {
+	public static void processPartiesHTTP(File partiesFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
-		Repository repo = new HTTPRepository(rdf4jServer, repositoryId);
 		String geosparqlURI = "http://www.opengis.net/ont/geosparql#";
 
 		try (RepositoryConnection connection = repo.getConnection()) {
+			
+			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("geo", geosparqlURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

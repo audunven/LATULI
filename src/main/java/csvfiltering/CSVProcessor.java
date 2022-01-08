@@ -27,12 +27,12 @@ public class CSVProcessor {
 
 
 		String startDateTime = "2020-01-01T00:00:00";
-		String endDateTime = "2020-06-30T00:00:00";
+		String endDateTime = "2020-03-30T00:00:00";
 		int csvFieldNumber = 13;
 		String hub = "C042";
 
-		//filterOnPeriod(startDateTime, endDateTime);
-		filterOnHub(csvFieldNumber, hub);
+		filterOnPeriod(startDateTime, endDateTime);
+		//filterOnHub(csvFieldNumber, hub);
 
 	}
 	

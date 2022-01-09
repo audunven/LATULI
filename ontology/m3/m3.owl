@@ -1,0 +1,1361 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/audunvennesland/ontologies/2021/3/untitled-ontology-510#"
+     xml:base="http://www.semanticweb.org/audunvennesland/ontologies/2021/3/untitled-ontology-510"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:geos="http://www.opengis.net/ont/geosparql#"
+     xmlns:onto="http://latuli.no/onto#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://latuli.no/onto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#wktLiteral -->
+
+    <rdfs:Datatype rdf:about="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/onto#belongsToShipment -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#belongsToShipment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Shipment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasCarrierParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasCarrierParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Carrier"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasConsigneeParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasConsigneeParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Consignee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasConsignorParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasConsignorParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Consignor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasHubParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubParty">
+        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasHubReconstructionLocation -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubReconstructionLocation">
+        <rdfs:range rdf:resource="http://latuli.no/onto#HubReconstructionLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasHubReconstructionParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubReconstructionParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasInboundConsignment -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasInboundConsignment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Consignment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasInboundParentLoadingUnit -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasInboundParentLoadingUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasLoadingUnit -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasLoadingUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasOutboundConsignment -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasOutboundConsignment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Consignment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasOutboundParentLoadingUnit -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasOutboundParentLoadingUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasReceiverParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasReceiverParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Receiver"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hasShipperParty -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasShipperParty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Shipper"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#includesTransport -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#includesTransport">
+        <rdfs:range rdf:resource="http://latuli.no/onto#Transport"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#processedByWave -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#processedByWave">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#Wave"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/onto#relatesToTradeItem -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/onto#relatesToTradeItem">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://latuli.no/onto#TradeItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/onto#additionalPartyIdentification -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#additionalPartyIdentification">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#asWKT -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#asWKT">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#carrierHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#carrierHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#closedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#closedOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#code2 -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#code2">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#consigneeHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consigneeHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#consignmentId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignmentId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#consignmentType -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignmentType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#consignorHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignorHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#createdOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#createdOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#customerProductDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerProductDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#customerProductId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerProductId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#customerQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerQuantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#delta -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#delta">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#description -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#description">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#effectiveArrival -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#effectiveArrival">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#expectedArrival -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#expectedArrival">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#expectedDeliveryOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#expectedDeliveryOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <skos:prefLabel xml:lang="nb">expectedDeliveryOn</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#finishedScanOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#finishedScanOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#fullPalletConsignment -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#fullPalletConsignment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#gln -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#gln">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#gtin -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#gtin">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#handlingInstruction -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#handlingInstruction">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hashCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hubAdditionalPartyIdentification -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubAdditionalPartyIdentification">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hubHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hubReconstructionHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubReconstructionHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#hubReconstructionLocationId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubReconstructionLocationId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#internalId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#internalId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#isCarrier -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isCarrier">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#isConsignor -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isConsignor">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#isHub -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isHub">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#isShipper -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isShipper">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#location -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#location">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#lotNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#lotNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#material -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#material">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#modifiedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#modifiedOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#orderNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#orderNumber">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#originalDataSource -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#originalDataSource">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#packageTypeId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#packageTypeId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#plannedDeliveryDate -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#plannedDeliveryDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#plannedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#plannedOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#postalCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#postalCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#preSortScanOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#preSortScanOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#XDocLoadingUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#purchaseOrder -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#purchaseOrder">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttBoxes -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttBoxes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttBoxesProcessed -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttBoxesProcessed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttPallets -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttPallets">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttPalletsBuilt -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttPalletsBuilt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttReconstructedPallets -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttReconstructedPallets">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttReconstructedParcels -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttReconstructedParcels">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttShipments -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttShipments">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttTasks -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttTasks">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#qttTrailers -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttTrailers">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#quantity -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#quantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#ShipmentItem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#receiverHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#receiverHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#reconstructedScanOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructedScanOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#XDocLoadingUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#reconstructionLane -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionLane">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#reconstructionLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionLocation">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#reconstructionType -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#reconstructionTypeId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionTypeId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#releasedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#releasedOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#salesOrder -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#salesOrder">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#season -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#season">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#shipmentId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shipmentId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#shippedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shippedOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <skos:prefLabel xml:lang="nb">shippedOn</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#shipperHashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shipperHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#splitShipment -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#splitShipment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#status -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#status">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#supplierProductDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierProductDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#supplierProductId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierProductId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#supplierQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierQuantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#taskClosedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskClosedOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#taskDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#taskId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#totalConsignmentVolume -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#totalConsignmentVolume">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#totalConsignmentWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#totalConsignmentWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#transportId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#transportName -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportName">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#transportType -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Transport"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#volume -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#volume">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#waveClosedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveClosedOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#waveEndProcessingOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveEndProcessingOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#waveId -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#wavePlannedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#wavePlannedOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#waveReleasedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveReleasedOn">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#waveStartProcessingOn -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveStartProcessingOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#weekDay -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#weekDay">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#weight -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#weight">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/onto#year -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#year">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/onto#Carrier -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Carrier">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Consignee -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Consignee">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Consignment -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Consignment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasCarrierParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Carrier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsigneeParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsignorParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#includesTransport"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Transport"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#processedByWave"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Wave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Consignor -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Consignor">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#DangerousGoods -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#DangerousGoods">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#relatesToTradeItem"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#TradeItem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#HubReconstructionLocation -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#HubReconstructionLocation">
+        <owl:equivalentClass rdf:resource="http://latuli.no/onto#Terminal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#LoadingUnit -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#LoadingUnit"/>
+    
+
+
+    <!-- http://latuli.no/onto#Party -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Party"/>
+    
+
+
+    <!-- http://latuli.no/onto#Receiver -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Receiver">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Shipment -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Shipment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasReceiverParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Receiver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasShipperParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipper"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#ShipmentItem -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#ShipmentItem">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Shipper -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Shipper">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Terminal -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Terminal"/>
+    
+
+
+    <!-- http://latuli.no/onto#TerminalOperator -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#TerminalOperator">
+        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#TradeItem -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#TradeItem">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#Transport -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Transport"/>
+    
+
+
+    <!-- http://latuli.no/onto#Wave -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#Wave">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://latuli.no/onto#XDocLoadingUnit -->
+
+    <owl:Class rdf:about="http://latuli.no/onto#XDocLoadingUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasCarrierParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Carrier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsigneeParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsignorParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubReconstructionParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasInboundConsignment"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasInboundParentLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasOutboundConsignment"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasOutboundParentLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasReceiverParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Receiver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#hasShipperParty"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipper"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://latuli.no/onto#processedByWave"/>
+                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Wave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

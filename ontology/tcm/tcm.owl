@@ -1,0 +1,646 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://latuli.no/terminalCapacityOnto#"
+     xml:base="http://latuli.no/terminalCapacityOnto"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://latuli.no/terminalCapacityOnto">
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageContainerTransitTime -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageContainerTransitTime">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageLoadingTime -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageLoadingTime">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageMissedOrders -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageMissedOrders">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNotFullyLoadedTransportMeans -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNotFullyLoadedTransportMeans">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfHandlingUnitsProcessedPerPeriod -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfHandlingUnitsProcessedPerPeriod">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfInboundTrucksProcessedPerPeriod -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfInboundTrucksProcessedPerPeriod">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfOutboundTrucksProcessedPerPeriod -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfOutboundTrucksProcessedPerPeriod">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageScheduleLength -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageScheduleLength">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageTranshipmentTime -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageTranshipmentTime">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageUnloadingTime -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageUnloadingTime">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageWaitingTimeInboundTrucks -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageWaitingTimeInboundTrucks">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageWaitingTimeOutboundTrucks -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageWaitingTimeOutboundTrucks">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#degreeOfMultimodality -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#degreeOfMultimodality">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#dimensionMeasurementType -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#dimensionMeasurementType">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#handlingAreaSize -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#handlingAreaSize">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#internalResourceCapacity -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#internalResourceCapacity">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#internalTravelDistance -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#internalTravelDistance">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#maxContainerTransitTime -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxContainerTransitTime">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#maxWaitingTimeInboundTrucks -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxWaitingTimeInboundTrucks">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#maxWaitingTimeOutboundTrucks -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxWaitingTimeOutboundTrucks">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#periodicMeasurementDurationType -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#periodicMeasurementDurationType">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#serviceMode -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#serviceMode">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#ServiceMode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#storageCapacity -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#storageCapacity">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#supportedGoodsType -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedGoodsType">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#GoodsType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#supportedLogisticsUnitType -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedLogisticsUnitType">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#supportedTransportMeansType -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedTransportMeansType">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#terminalTotalSize -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#terminalTotalSize">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#transitCenterSize -->
+
+    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#transitCenterSize">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfTouches -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfTouches">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfWorkingHours -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfWorkingHours">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#averagePercentageTrucksOrTrailersDeclinedEntrance -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averagePercentageTrucksOrTrailersDeclinedEntrance">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#closeAdherenceToSchedule -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#closeAdherenceToSchedule">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#combinedManualAndAutomaticInternalTransportation -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#combinedManualAndAutomaticInternalTransportation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#dimensionMeasurementValue -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#dimensionMeasurementValue">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#maxNumberOfStockedProducts -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxNumberOfStockedProducts">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfInboundDoors -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfInboundDoors">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfOutboundDoors -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfOutboundDoors">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfParkingBaysInBuffer -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfParkingBaysInBuffer">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfSwitchBays -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfSwitchBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfTrailerParkingBays -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfTrailerParkingBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#numberOfTruckParkingBays -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfTruckParkingBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#onlyAutomaticInternalTransportation -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#onlyAutomaticInternalTransportation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#onlyManualInternalTransportation -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#onlyManualInternalTransportation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#periodicMeasurementValue -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#periodicMeasurementValue">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#preemptionAllowed -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#preemptionAllowed">
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#serviceMode -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#serviceMode"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#totalNumberOfStockedProducts -->
+
+    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#totalNumberOfStockedProducts">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Dimension -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#GoodsType -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#GoodsType"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#LogisticsUnit -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#MeasurementType -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#PeriodicMeasurement -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Service -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Service"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#ServiceMode -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#ServiceMode"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Terminal -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Terminal"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#TransportMeans -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#TransportMode -->
+
+    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Aircraft -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Aircraft">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Carton -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Carton">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#CubicMeter -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#CubicMeter">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Meter -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Meter">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Multimodal -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Multimodal">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Pallet -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Pallet">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Ship -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Ship">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#SquareMeter -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#SquareMeter">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Train -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Train">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#Truck -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Truck">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://latuli.no/terminalCapacityOnto#UniModal -->
+
+    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#UniModal">
+        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

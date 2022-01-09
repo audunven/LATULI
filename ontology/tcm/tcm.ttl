@@ -1,0 +1,420 @@
+@prefix : <http://latuli.no/terminalCapacityOnto#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <http://latuli.no/terminalCapacityOnto> .
+
+<http://latuli.no/terminalCapacityOnto> rdf:type owl:Ontology ;
+                                         owl:imports <http://www.opengis.net/ont/geosparql> ,
+                                                     <http://www.w3.org/2006/time#2016> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://latuli.no/terminalCapacityOnto#averageContainerTransitTime
+:averageContainerTransitTime rdf:type owl:ObjectProperty ;
+                             rdfs:domain :Terminal ;
+                             rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageLoadingTime
+:averageLoadingTime rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Terminal ;
+                    rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageMissedOrders
+:averageMissedOrders rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Terminal ;
+                     rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageNotFullyLoadedTransportMeans
+:averageNotFullyLoadedTransportMeans rdf:type owl:ObjectProperty ;
+                                     rdfs:domain :Terminal ;
+                                     rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageNumberOfHandlingUnitsProcessedPerPeriod
+:averageNumberOfHandlingUnitsProcessedPerPeriod rdf:type owl:ObjectProperty ;
+                                                rdfs:domain :Terminal ;
+                                                rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageNumberOfInboundTrucksProcessedPerPeriod
+:averageNumberOfInboundTrucksProcessedPerPeriod rdf:type owl:ObjectProperty ;
+                                                rdfs:domain :Terminal ;
+                                                rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageNumberOfOutboundTrucksProcessedPerPeriod
+:averageNumberOfOutboundTrucksProcessedPerPeriod rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain :Terminal ;
+                                                 rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageScheduleLength
+:averageScheduleLength rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Terminal ;
+                       rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageTranshipmentTime
+:averageTranshipmentTime rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Terminal ;
+                         rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageUnloadingTime
+:averageUnloadingTime rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Terminal ;
+                      rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageWaitingTimeInboundTrucks
+:averageWaitingTimeInboundTrucks rdf:type owl:ObjectProperty ;
+                                 rdfs:domain :Terminal ;
+                                 rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageWaitingTimeOutboundTrucks
+:averageWaitingTimeOutboundTrucks rdf:type owl:ObjectProperty ;
+                                  rdfs:domain :Terminal ;
+                                  rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#degreeOfMultimodality
+:degreeOfMultimodality rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Terminal ;
+                       rdfs:range :TransportMode .
+
+
+###  http://latuli.no/terminalCapacityOnto#dimensionMeasurementType
+:dimensionMeasurementType rdf:type owl:ObjectProperty ;
+                          rdfs:domain :Dimension ;
+                          rdfs:range :MeasurementType .
+
+
+###  http://latuli.no/terminalCapacityOnto#handlingAreaSize
+:handlingAreaSize rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Terminal ;
+                  rdfs:range :Dimension .
+
+
+###  http://latuli.no/terminalCapacityOnto#internalResourceCapacity
+:internalResourceCapacity rdf:type owl:ObjectProperty ;
+                          rdfs:domain :Terminal ;
+                          rdfs:range :Dimension .
+
+
+###  http://latuli.no/terminalCapacityOnto#internalTravelDistance
+:internalTravelDistance rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Terminal ;
+                        rdfs:range :Dimension .
+
+
+###  http://latuli.no/terminalCapacityOnto#maxContainerTransitTime
+:maxContainerTransitTime rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Terminal ;
+                         rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#maxWaitingTimeInboundTrucks
+:maxWaitingTimeInboundTrucks rdf:type owl:ObjectProperty ;
+                             rdfs:domain :Terminal ;
+                             rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#maxWaitingTimeOutboundTrucks
+:maxWaitingTimeOutboundTrucks rdf:type owl:ObjectProperty ;
+                              rdfs:domain :Terminal ;
+                              rdfs:range :PeriodicMeasurement .
+
+
+###  http://latuli.no/terminalCapacityOnto#periodicMeasurementDurationType
+:periodicMeasurementDurationType rdf:type owl:ObjectProperty ;
+                                 rdfs:domain :PeriodicMeasurement ;
+                                 rdfs:range <http://www.w3.org/2006/time#TemporalUnit> .
+
+
+###  http://latuli.no/terminalCapacityOnto#serviceMode
+:serviceMode rdf:type owl:ObjectProperty ;
+             rdfs:domain :Terminal ;
+             rdfs:range :ServiceMode .
+
+
+###  http://latuli.no/terminalCapacityOnto#storageCapacity
+:storageCapacity rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Terminal ;
+                 rdfs:range :Dimension .
+
+
+###  http://latuli.no/terminalCapacityOnto#supportedGoodsType
+:supportedGoodsType rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Terminal ;
+                    rdfs:range :GoodsType .
+
+
+###  http://latuli.no/terminalCapacityOnto#supportedLogisticsUnitType
+:supportedLogisticsUnitType rdf:type owl:ObjectProperty ;
+                            rdfs:domain :Terminal ;
+                            rdfs:range :LogisticsUnit .
+
+
+###  http://latuli.no/terminalCapacityOnto#supportedTransportMeansType
+:supportedTransportMeansType rdf:type owl:ObjectProperty ;
+                             rdfs:domain :Terminal ;
+                             rdfs:range :TransportMeans .
+
+
+###  http://latuli.no/terminalCapacityOnto#terminalTotalSize
+:terminalTotalSize rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Terminal ;
+                   rdfs:range :Dimension .
+
+
+###  http://latuli.no/terminalCapacityOnto#transitCenterSize
+:transitCenterSize rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Terminal ;
+                   rdfs:range :Dimension .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://latuli.no/terminalCapacityOnto#averageNumberOfTouches
+:averageNumberOfTouches rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :Terminal ;
+                        rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#averageNumberOfWorkingHours
+:averageNumberOfWorkingHours rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf owl:topDataProperty ;
+                             rdfs:domain :Terminal ;
+                             rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/terminalCapacityOnto#averagePercentageTrucksOrTrailersDeclinedEntrance
+:averagePercentageTrucksOrTrailersDeclinedEntrance rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain :Terminal ;
+                                                   rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/terminalCapacityOnto#closeAdherenceToSchedule
+:closeAdherenceToSchedule rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :Terminal ;
+                          rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/terminalCapacityOnto#combinedManualAndAutomaticInternalTransportation
+:combinedManualAndAutomaticInternalTransportation rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain :Terminal ;
+                                                  rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/terminalCapacityOnto#dimensionMeasurementValue
+:dimensionMeasurementValue rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Dimension ;
+                           rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#maxNumberOfStockedProducts
+:maxNumberOfStockedProducts rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:domain :Terminal ;
+                            rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfInboundDoors
+:numberOfInboundDoors rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain :Terminal ;
+                      rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfOutboundDoors
+:numberOfOutboundDoors rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain :Terminal ;
+                       rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfParkingBaysInBuffer
+:numberOfParkingBaysInBuffer rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf owl:topDataProperty ;
+                             rdfs:domain :Terminal ;
+                             rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfSwitchBays
+:numberOfSwitchBays rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Terminal ;
+                    rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfTrailerParkingBays
+:numberOfTrailerParkingBays rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:domain :Terminal ;
+                            rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#numberOfTruckParkingBays
+:numberOfTruckParkingBays rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain :Terminal ;
+                          rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#onlyAutomaticInternalTransportation
+:onlyAutomaticInternalTransportation rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                     rdfs:domain :Terminal ;
+                                     rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/terminalCapacityOnto#onlyManualInternalTransportation
+:onlyManualInternalTransportation rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                  rdfs:domain :Terminal ;
+                                  rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/terminalCapacityOnto#periodicMeasurementValue
+:periodicMeasurementValue rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :PeriodicMeasurement ;
+                          rdfs:range xsd:int .
+
+
+###  http://latuli.no/terminalCapacityOnto#preemptionAllowed
+:preemptionAllowed rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Terminal ;
+                   rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/terminalCapacityOnto#serviceMode
+:serviceMode rdf:type owl:DatatypeProperty .
+
+
+###  http://latuli.no/terminalCapacityOnto#totalNumberOfStockedProducts
+:totalNumberOfStockedProducts rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdfs:domain :Terminal ;
+                              rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://latuli.no/terminalCapacityOnto#Dimension
+:Dimension rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#GoodsType
+:GoodsType rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#LogisticsUnit
+:LogisticsUnit rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#MeasurementType
+:MeasurementType rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#PeriodicMeasurement
+:PeriodicMeasurement rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#Service
+:Service rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#ServiceMode
+:ServiceMode rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#Terminal
+:Terminal rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#TransportMeans
+:TransportMeans rdf:type owl:Class .
+
+
+###  http://latuli.no/terminalCapacityOnto#TransportMode
+:TransportMode rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://latuli.no/terminalCapacityOnto#Aircraft
+:Aircraft rdf:type owl:NamedIndividual ,
+                   :TransportMeans .
+
+
+###  http://latuli.no/terminalCapacityOnto#Carton
+:Carton rdf:type owl:NamedIndividual ,
+                 :LogisticsUnit .
+
+
+###  http://latuli.no/terminalCapacityOnto#CubicMeter
+:CubicMeter rdf:type owl:NamedIndividual ,
+                     :MeasurementType .
+
+
+###  http://latuli.no/terminalCapacityOnto#Meter
+:Meter rdf:type owl:NamedIndividual ,
+                :MeasurementType .
+
+
+###  http://latuli.no/terminalCapacityOnto#Multimodal
+:Multimodal rdf:type owl:NamedIndividual ,
+                     :TransportMode .
+
+
+###  http://latuli.no/terminalCapacityOnto#Pallet
+:Pallet rdf:type owl:NamedIndividual ,
+                 :LogisticsUnit .
+
+
+###  http://latuli.no/terminalCapacityOnto#Ship
+:Ship rdf:type owl:NamedIndividual ,
+               :TransportMeans .
+
+
+###  http://latuli.no/terminalCapacityOnto#SquareMeter
+:SquareMeter rdf:type owl:NamedIndividual ,
+                      :MeasurementType .
+
+
+###  http://latuli.no/terminalCapacityOnto#Train
+:Train rdf:type owl:NamedIndividual ,
+                :TransportMeans .
+
+
+###  http://latuli.no/terminalCapacityOnto#Truck
+:Truck rdf:type owl:NamedIndividual ,
+                :TransportMeans .
+
+
+###  http://latuli.no/terminalCapacityOnto#UniModal
+:UniModal rdf:type owl:NamedIndividual ,
+                   :TransportMode .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

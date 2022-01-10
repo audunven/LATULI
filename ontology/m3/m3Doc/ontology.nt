@@ -1,4 +1,5 @@
-<http://latuli.no/onto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/latuli/ontology/m3#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/latuli/ontology/m3#> <http://www.w3.org/2002/07/owl#imports> <http://www.opengis.net/ont/geosparql> .
 # 
 # 
 # #################################################################
@@ -32,92 +33,108 @@
 # #################################################################
 # 
 # 
-# http://latuli.no/onto#belongsToShipment
-<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Shipment> .
+# https://w3id.org/latuli/ontology/m3#belongsToShipment
+<https://w3id.org/latuli/ontology/m3#belongsToShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a TradeItem or a ShipmentItem to a Shipment." .
 # 
-# http://latuli.no/onto#hasCarrierParty
-<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Carrier> .
+# https://w3id.org/latuli/ontology/m3#hasCarrierParty
+<https://w3id.org/latuli/ontology/m3#hasCarrierParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Carrier> .
+<https://w3id.org/latuli/ontology/m3#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier" .
 # 
-# http://latuli.no/onto#hasConsigneeParty
-<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignee> .
+# https://w3id.org/latuli/ontology/m3#hasConsigneeParty
+<https://w3id.org/latuli/ontology/m3#hasConsigneeParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Consignee> .
+<https://w3id.org/latuli/ontology/m3#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee" .
 # 
-# http://latuli.no/onto#hasConsignorParty
-<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignor> .
+# https://w3id.org/latuli/ontology/m3#hasConsignorParty
+<https://w3id.org/latuli/ontology/m3#hasConsignorParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Consignor> .
+<https://w3id.org/latuli/ontology/m3#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor" .
 # 
-# http://latuli.no/onto#hasHubParty
-<http://latuli.no/onto#hasHubParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasHubParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#hasHubParty
+<https://w3id.org/latuli/ontology/m3#hasHubParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasHubParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#hasHubParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator" .
 # 
-# http://latuli.no/onto#hasHubReconstructionLocation
-<http://latuli.no/onto#hasHubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasHubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#HubReconstructionLocation> .
+# https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#HubReconstructionLocation> .
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) to an HubReconstructionLocation" .
 # 
-# http://latuli.no/onto#hasHubReconstructionParty
-<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Party> .
 # 
-# http://latuli.no/onto#hasInboundConsignment
-<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignment> .
+# https://w3id.org/latuli/ontology/m3#hasInboundConsignment
+<https://w3id.org/latuli/ontology/m3#hasInboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound Consignment" .
 # 
-# http://latuli.no/onto#hasInboundParentLoadingUnit
-<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit
+<https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound parent LoadingUnit" .
 # 
-# http://latuli.no/onto#hasLoadingUnit
-<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# https://w3id.org/latuli/ontology/m3#hasLoadingUnit
+<https://w3id.org/latuli/ontology/m3#hasLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit" .
 # 
-# http://latuli.no/onto#hasOutboundConsignment
-<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignment> .
+# https://w3id.org/latuli/ontology/m3#hasOutboundConsignment
+<https://w3id.org/latuli/ontology/m3#hasOutboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound Consignment" .
 # 
-# http://latuli.no/onto#hasOutboundParentLoadingUnit
-<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit
+<https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound parent LoadingUnit" .
 # 
-# http://latuli.no/onto#hasParty
-<http://latuli.no/onto#hasParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#hasParty
+<https://w3id.org/latuli/ontology/m3#hasParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Party> .
 # 
-# http://latuli.no/onto#hasReceiverParty
-<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Receiver> .
+# https://w3id.org/latuli/ontology/m3#hasReceiverParty
+<https://w3id.org/latuli/ontology/m3#hasReceiverParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Receiver> .
+<https://w3id.org/latuli/ontology/m3#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver." .
 # 
-# http://latuli.no/onto#hasShipperParty
-<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Shipper> .
+# https://w3id.org/latuli/ontology/m3#hasShipperParty
+<https://w3id.org/latuli/ontology/m3#hasShipperParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Shipper> .
+<https://w3id.org/latuli/ontology/m3#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper." .
 # 
-# http://latuli.no/onto#includesTransport
-<http://latuli.no/onto#includesTransport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#includesTransport> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Transport> .
+# https://w3id.org/latuli/ontology/m3#includesTransport
+<https://w3id.org/latuli/ontology/m3#includesTransport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#includesTransport> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Transport> .
+<https://w3id.org/latuli/ontology/m3#includesTransport> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a Consignment to a Transport" .
 # 
-# http://latuli.no/onto#processedByWave
-<http://latuli.no/onto#processedByWave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#processedByWave> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#processedByWave> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Wave> .
+# https://w3id.org/latuli/ontology/m3#processedByWave
+<https://w3id.org/latuli/ontology/m3#processedByWave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#processedByWave> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#processedByWave> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#processedByWave> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave." .
 # 
-# http://latuli.no/onto#relatesToTradeItem
-<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
-<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#TradeItem> .
+# https://w3id.org/latuli/ontology/m3#relatesToTradeItem
+<https://w3id.org/latuli/ontology/m3#relatesToTradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/latuli/ontology/m3#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/latuli/ontology/m3#TradeItem> .
+<https://w3id.org/latuli/ontology/m3#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a DGR (dangerous goods) to a Trade Item." .
 # 
 # 
 # 
@@ -128,451 +145,504 @@
 # #################################################################
 # 
 # 
-# http://latuli.no/onto#additionalPartyIdentification
-<http://latuli.no/onto#additionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#additionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#asWKT
-<http://latuli.no/onto#asWKT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.opengis.net/ont/geosparql#wktLiteral> .
-# 
-# http://latuli.no/onto#carrierHashCode
-<http://latuli.no/onto#carrierHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#carrierHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#closedOn
-<http://latuli.no/onto#closedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#closedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#closedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#code2
-<http://latuli.no/onto#code2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#consigneeHashCode
-<http://latuli.no/onto#consigneeHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#consigneeHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#consignmentId
-<http://latuli.no/onto#consignmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#consignmentId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#consignmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#consignmentType
-<http://latuli.no/onto#consignmentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#consignmentType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#consignmentType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#consignorHashCode
-<http://latuli.no/onto#consignorHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#consignorHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#createdOn
-<http://latuli.no/onto#createdOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#createdOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#customerProductDescription
-<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#customerProductId
-<http://latuli.no/onto#customerProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#customerProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#customerProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#customerQuantity
-<http://latuli.no/onto#customerQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#delta
-<http://latuli.no/onto#delta> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#delta> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#delta> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#description
-<http://latuli.no/onto#description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#description> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#description> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#effectiveArrival
-<http://latuli.no/onto#effectiveArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#effectiveArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#expectedArrival
-<http://latuli.no/onto#expectedArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#expectedArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#expectedDeliveryOn
-<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "expectedDeliveryOn"@nb .
-# 
-# http://latuli.no/onto#finishedScanOn
-<http://latuli.no/onto#finishedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#finishedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#fullPalletConsignment
-<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#gln
-<http://latuli.no/onto#gln> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#gln> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#gln> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#gtin
-<http://latuli.no/onto#gtin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#gtin> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#handlingInstruction
-<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#hashCode
-<http://latuli.no/onto#hashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#hashCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#hashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#hubAdditionalPartyIdentification
-<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#hubHashCode
-<http://latuli.no/onto#hubHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#hubHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#hubReconstructionHashCode
-<http://latuli.no/onto#hubReconstructionHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#hubReconstructionHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#hubReconstructionLocationId
-<http://latuli.no/onto#hubReconstructionLocationId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#hubReconstructionLocationId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#internalId
-<http://latuli.no/onto#internalId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#internalId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#isCarrier
-<http://latuli.no/onto#isCarrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#isCarrier> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
-# 
-# http://latuli.no/onto#isConsignor
-<http://latuli.no/onto#isConsignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#isConsignor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
-# 
-# http://latuli.no/onto#isHub
-<http://latuli.no/onto#isHub> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#isHub> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
-# 
-# http://latuli.no/onto#isShipper
-<http://latuli.no/onto#isShipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#isShipper> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
-# 
-# http://latuli.no/onto#location
-<http://latuli.no/onto#location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#lotNumber
-<http://latuli.no/onto#lotNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#lotNumber> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#lotNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#material
-<http://latuli.no/onto#material> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#material> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#material> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#modifiedOn
-<http://latuli.no/onto#modifiedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#orderNumber
-<http://latuli.no/onto#orderNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#orderNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#originalDataSource
-<http://latuli.no/onto#originalDataSource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#originalDataSource> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#originalDataSource> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#packageTypeId
-<http://latuli.no/onto#packageTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#LoadingUnit> .
-<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#plannedDeliveryDate
-<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#plannedOn
-<http://latuli.no/onto#plannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#plannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#postalCode
-<http://latuli.no/onto#postalCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#preSortScanOn
-<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#XDocLoadingUnit> .
-<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#purchaseOrder
-<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#qttBoxes
-<http://latuli.no/onto#qttBoxes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttBoxesProcessed
-<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttPallets
-<http://latuli.no/onto#qttPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttPalletsBuilt
-<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttReconstructedPallets
-<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttReconstructedParcels
-<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttShipments
-<http://latuli.no/onto#qttShipments> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
-<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttTasks
-<http://latuli.no/onto#qttTasks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
-<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#qttTrailers
-<http://latuli.no/onto#qttTrailers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
-<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#quantity
-<http://latuli.no/onto#quantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#ShipmentItem> .
-<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#receiverHashCode
-<http://latuli.no/onto#receiverHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#receiverHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#reconstructedScanOn
-<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#XDocLoadingUnit> .
-<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#reconstructionLane
-<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#reconstructionLocation
-<http://latuli.no/onto#reconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#reconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#reconstructionType
-<http://latuli.no/onto#reconstructionType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#reconstructionType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#reconstructionType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#reconstructionTypeId
-<http://latuli.no/onto#reconstructionTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#reconstructionTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#releasedOn
-<http://latuli.no/onto#releasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#releasedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#releasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#salesOrder
-<http://latuli.no/onto#salesOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#salesOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#salesOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#season
-<http://latuli.no/onto#season> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#season> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#season> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#shipmentId
-<http://latuli.no/onto#shipmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#shipmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#shippedOn
-<http://latuli.no/onto#shippedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-<http://latuli.no/onto#shippedOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "shippedOn"@nb .
-# 
-# http://latuli.no/onto#shipperHashCode
-<http://latuli.no/onto#shipperHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#shipperHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#splitShipment
-<http://latuli.no/onto#splitShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#splitShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#splitShipment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
-# 
-# http://latuli.no/onto#status
-<http://latuli.no/onto#status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#status> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#status> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#supplierProductDescription
-<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#supplierProductId
-<http://latuli.no/onto#supplierProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#supplierQuantity
-<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#taskClosedOn
-<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#taskDescription
-<http://latuli.no/onto#taskDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#taskDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#taskDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#taskId
-<http://latuli.no/onto#taskId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#taskId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#taskId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#totalConsignmentVolume
-<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#totalConsignmentWeight
-<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#transportId
-<http://latuli.no/onto#transportId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#transportId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#transportId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#transportName
-<http://latuli.no/onto#transportName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#transportName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#transportType
-<http://latuli.no/onto#transportType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Transport> .
-<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#volume
-<http://latuli.no/onto#volume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#volume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#volume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#waveClosedOn
-<http://latuli.no/onto#waveClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#waveClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#waveEndProcessingOn
-<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
-<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#waveId
-<http://latuli.no/onto#waveId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#waveId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-# 
-# http://latuli.no/onto#wavePlannedOn
-<http://latuli.no/onto#wavePlannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#wavePlannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#waveReleasedOn
-<http://latuli.no/onto#waveReleasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#waveReleasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#waveStartProcessingOn
-<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
-<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
-# 
-# http://latuli.no/onto#weekDay
-<http://latuli.no/onto#weekDay> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#weekDay> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#weekDay> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#weight
-<http://latuli.no/onto#weight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#weight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#weight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
-# 
-# http://latuli.no/onto#year
-<http://latuli.no/onto#year> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://latuli.no/onto#year> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
-<http://latuli.no/onto#year> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# https://w3id.org/latuli/ontology/m3#additionalPartyIdentification
+<https://w3id.org/latuli/ontology/m3#additionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#additionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#additionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#comment> "Identifies a party using a custom identification scheme." .
+# 
+# https://w3id.org/latuli/ontology/m3#asWKT
+<https://w3id.org/latuli/ontology/m3#asWKT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#asWKT> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#asWKT> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#asWKT> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.opengis.net/ont/geosparql#wktLiteral> .
+# 
+# https://w3id.org/latuli/ontology/m3#carrierHashCode
+<https://w3id.org/latuli/ontology/m3#carrierHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#carrierHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#carrierHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a carrier party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#closedOn
+<https://w3id.org/latuli/ontology/m3#closedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#closedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#closedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#closedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave is closed." .
+# 
+# https://w3id.org/latuli/ontology/m3#code2
+<https://w3id.org/latuli/ontology/m3#code2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#code2> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#code2> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#code2> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#code2> <http://www.w3.org/2000/01/rdf-schema#comment> "Two-digit identifier for describing a country." .
+# 
+# https://w3id.org/latuli/ontology/m3#consigneeHashCode
+<https://w3id.org/latuli/ontology/m3#consigneeHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#consigneeHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#consigneeHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a consignee party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#consignmentId
+<https://w3id.org/latuli/ontology/m3#consignmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#consignmentId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#consignmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#consignmentId> <http://www.w3.org/2000/01/rdf-schema#comment> "An unique identifier for a consignment." .
+# 
+# https://w3id.org/latuli/ontology/m3#consignmentType
+<https://w3id.org/latuli/ontology/m3#consignmentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#consignmentType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#consignmentType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#consignmentType> <http://www.w3.org/2000/01/rdf-schema#comment> "Describes whether a consignment is inbound or outbound" .
+# 
+# https://w3id.org/latuli/ontology/m3#consignorHashCode
+<https://w3id.org/latuli/ontology/m3#consignorHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#consignorHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#consignorHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a consignor  party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#createdOn
+<https://w3id.org/latuli/ontology/m3#createdOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#createdOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#createdOn> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a consignor  party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#customerProductDescription
+<https://w3id.org/latuli/ontology/m3#customerProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a trade item by the customer." .
+# 
+# https://w3id.org/latuli/ontology/m3#customerProductId
+<https://w3id.org/latuli/ontology/m3#customerProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#customerProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#customerProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#customerProductId> <http://www.w3.org/2000/01/rdf-schema#comment> "The identifier of a trade item used by the customer" .
+# 
+# https://w3id.org/latuli/ontology/m3#customerQuantity
+<https://w3id.org/latuli/ontology/m3#customerQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of trade items expected by the customer." .
+# 
+# https://w3id.org/latuli/ontology/m3#description
+<https://w3id.org/latuli/ontology/m3#description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#description> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#description> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#description> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a trade item." .
+# 
+# https://w3id.org/latuli/ontology/m3#effectiveArrival
+<https://w3id.org/latuli/ontology/m3#effectiveArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#effectiveArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#effectiveArrival> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a transport means actually arrived at an hub." .
+# 
+# https://w3id.org/latuli/ontology/m3#expectedArrival
+<https://w3id.org/latuli/ontology/m3#expectedArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#expectedArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#expectedArrival> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a transport means is expected to arrive at an hub." .
+# 
+# https://w3id.org/latuli/ontology/m3#expectedDeliveryOn
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a shipment is expected to be delivered to a receiver." .
+<https://w3id.org/latuli/ontology/m3#expectedDeliveryOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "expectedDeliveryOn"@nb .
+# 
+# https://w3id.org/latuli/ontology/m3#finishedScanOn
+<https://w3id.org/latuli/ontology/m3#finishedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#finishedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#finishedScanOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a xDocLoadingUnit (cross dock loading unit) has been scanned." .
+# 
+# https://w3id.org/latuli/ontology/m3#fullPalletConsignment
+<https://w3id.org/latuli/ontology/m3#fullPalletConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#comment> "Describes whether a consignment consist of full pallets (1) or not (0)" .
+# 
+# https://w3id.org/latuli/ontology/m3#gln
+<https://w3id.org/latuli/ontology/m3#gln> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#gln> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#gln> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#gln> <http://www.w3.org/2000/01/rdf-schema#comment> "GLN is the GS1 Identification Key used to identify physical locations or parties. The key comprises a GS1 Company Prefix, Location Reference, and Check Digit" .
+# 
+# https://w3id.org/latuli/ontology/m3#gtin
+<https://w3id.org/latuli/ontology/m3#gtin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#gtin> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#gtin> <http://www.w3.org/2000/01/rdf-schema#comment> "GTIN is the GS1 Identification Key used to identify trade items. The key comprises a GS1 Company Prefix, an Item Reference and Check Digit." .
+# 
+# https://w3id.org/latuli/ontology/m3#handlingInstruction
+<https://w3id.org/latuli/ontology/m3#handlingInstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#comment> "Instructions that describe how goods should be expedited during transport and other goods handling." .
+# 
+# https://w3id.org/latuli/ontology/m3#hashCode
+<https://w3id.org/latuli/ontology/m3#hashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#hashCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#hashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#hashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a hub party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification
+<https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#comment> "Identifies a hub party using a custom identification scheme." .
+# 
+# https://w3id.org/latuli/ontology/m3#hubHashCode
+<https://w3id.org/latuli/ontology/m3#hubHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#hubHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#hubHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a hub party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode
+<https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a hub reconstruction location using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId
+<https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId> <http://www.w3.org/2000/01/rdf-schema#comment> "A unique identifier for a hub reconstruction location" .
+# 
+# https://w3id.org/latuli/ontology/m3#internalId
+<https://w3id.org/latuli/ontology/m3#internalId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#internalId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#internalId> <http://www.w3.org/2000/01/rdf-schema#comment> "A unique identifier for an xDocLoadingUnit (cross-dock loading unit)" .
+# 
+# https://w3id.org/latuli/ontology/m3#isCarrier
+<https://w3id.org/latuli/ontology/m3#isCarrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#isCarrier> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/latuli/ontology/m3#isCarrier> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a party is a carrier (1) or not (0)" .
+# 
+# https://w3id.org/latuli/ontology/m3#isConsignor
+<https://w3id.org/latuli/ontology/m3#isConsignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#isConsignor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/latuli/ontology/m3#isConsignor> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a party is a consignor (1) or not (0)" .
+# 
+# https://w3id.org/latuli/ontology/m3#isHub
+<https://w3id.org/latuli/ontology/m3#isHub> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#isHub> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/latuli/ontology/m3#isHub> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a party is a hub (1) or not (0)" .
+# 
+# https://w3id.org/latuli/ontology/m3#isShipper
+<https://w3id.org/latuli/ontology/m3#isShipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#isShipper> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/latuli/ontology/m3#isShipper> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a party is a shipper (1) or not (0)" .
+# 
+# https://w3id.org/latuli/ontology/m3#location
+<https://w3id.org/latuli/ontology/m3#location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#location> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#location> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#location> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#location> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of the city associated with a party" .
+# 
+# https://w3id.org/latuli/ontology/m3#lotNumber
+<https://w3id.org/latuli/ontology/m3#lotNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#lotNumber> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#lotNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#lotNumber> <http://www.w3.org/2000/01/rdf-schema#comment> "A lot number is an identification number assigned to a particular quantity or lot of material from a single manufacturer" .
+# 
+# https://w3id.org/latuli/ontology/m3#material
+<https://w3id.org/latuli/ontology/m3#material> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#material> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#material> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#material> <http://www.w3.org/2000/01/rdf-schema#comment> "Describes the material used in a trade item" .
+# 
+# https://w3id.org/latuli/ontology/m3#modifiedOn
+<https://w3id.org/latuli/ontology/m3#modifiedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when an entry in the database is modified." .
+# 
+# https://w3id.org/latuli/ontology/m3#orderNumber
+<https://w3id.org/latuli/ontology/m3#orderNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#orderNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#orderNumber> <http://www.w3.org/2000/01/rdf-schema#comment> "A reference to the order number when describing a loading unit." .
+# 
+# https://w3id.org/latuli/ontology/m3#packageTypeId
+<https://w3id.org/latuli/ontology/m3#packageTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#comment> "Describes what type of packaging type the loading unit consists of. Examples are BX (box) and PX (pallet)." .
+# 
+# https://w3id.org/latuli/ontology/m3#plannedDeliveryDate
+<https://w3id.org/latuli/ontology/m3#plannedDeliveryDate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a shipment is planned to be delivered to the receiver." .
+# 
+# https://w3id.org/latuli/ontology/m3#plannedOn
+<https://w3id.org/latuli/ontology/m3#plannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#plannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#plannedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave has been planned." .
+# 
+# https://w3id.org/latuli/ontology/m3#postalCode
+<https://w3id.org/latuli/ontology/m3#postalCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#postalCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#postalCode> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#postalCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#postalCode> <http://www.w3.org/2000/01/rdf-schema#comment> "Describes the postal code associated with a party." .
+# 
+# https://w3id.org/latuli/ontology/m3#preSortScanOn
+<https://w3id.org/latuli/ontology/m3#preSortScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when an XDocLoadingUnit (cross-dock loading unit) has been presorted." .
+# 
+# https://w3id.org/latuli/ontology/m3#purchaseOrder
+<https://w3id.org/latuli/ontology/m3#purchaseOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#comment> "A reference to a purchase order associated with a trade item" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttBoxes
+<https://w3id.org/latuli/ontology/m3#qttBoxes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of boxes in a consignment, a shipment or in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttBoxesProcessed
+<https://w3id.org/latuli/ontology/m3#qttBoxesProcessed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of boxes processed in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttPallets
+<https://w3id.org/latuli/ontology/m3#qttPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttPallets> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of pallets in a consignment, a shipment or in wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttPalletsBuilt
+<https://w3id.org/latuli/ontology/m3#qttPalletsBuilt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of pallets built in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttReconstructedPallets
+<https://w3id.org/latuli/ontology/m3#qttReconstructedPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of reconstructed pallets in a consignment" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttReconstructedParcels
+<https://w3id.org/latuli/ontology/m3#qttReconstructedParcels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of reconstructed parcels in a consignment" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttShipments
+<https://w3id.org/latuli/ontology/m3#qttShipments> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttShipments> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttShipments> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#qttShipments> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttShipments> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of shipments processed in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttTasks
+<https://w3id.org/latuli/ontology/m3#qttTasks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttTasks> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttTasks> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#qttTasks> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttTasks> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of tasks processed in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#qttTrailers
+<https://w3id.org/latuli/ontology/m3#qttTrailers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of trailers processed in a wave" .
+# 
+# https://w3id.org/latuli/ontology/m3#quantity
+<https://w3id.org/latuli/ontology/m3#quantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#quantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#quantity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#ShipmentItem> .
+<https://w3id.org/latuli/ontology/m3#quantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#quantity> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of individual items in a trade item" .
+# 
+# https://w3id.org/latuli/ontology/m3#receiverHashCode
+<https://w3id.org/latuli/ontology/m3#receiverHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#receiverHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#receiverHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a receiver party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#reconstructedScanOn
+<https://w3id.org/latuli/ontology/m3#reconstructedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when an XDocLoadingUnit (cross-dock loading unit) is being reconstructed." .
+# 
+# https://w3id.org/latuli/ontology/m3#reconstructionLane
+<https://w3id.org/latuli/ontology/m3#reconstructionLane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#comment> "A lane or section in a terminal or hub used for the reconstruction of goods" .
+# 
+# https://w3id.org/latuli/ontology/m3#reconstructionLocation
+<https://w3id.org/latuli/ontology/m3#reconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#reconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#comment> "A location in which a reconstruction takes place." .
+# 
+# https://w3id.org/latuli/ontology/m3#reconstructionTypeId
+<https://w3id.org/latuli/ontology/m3#reconstructionTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#reconstructionTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#reconstructionTypeId> <http://www.w3.org/2000/01/rdf-schema#comment> "The type of reconstruction performed. Values are either loose cartons (LooseCarton), recon pallet (ReconPallet), or recon parcel (ReconParcel)." .
+# 
+# https://w3id.org/latuli/ontology/m3#releasedOn
+<https://w3id.org/latuli/ontology/m3#releasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#releasedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#releasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#releasedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave is released." .
+# 
+# https://w3id.org/latuli/ontology/m3#salesOrder
+<https://w3id.org/latuli/ontology/m3#salesOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#salesOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#salesOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#salesOrder> <http://www.w3.org/2000/01/rdf-schema#comment> "A reference to a sales order associated with a trade item" .
+# 
+# https://w3id.org/latuli/ontology/m3#shipmentId
+<https://w3id.org/latuli/ontology/m3#shipmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#shipmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#shipmentId> <http://www.w3.org/2000/01/rdf-schema#comment> "A unique identifier for a shipment." .
+# 
+# https://w3id.org/latuli/ontology/m3#shippedOn
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a shipment is sent from a shipper." .
+<https://w3id.org/latuli/ontology/m3#shippedOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "shippedOn"@nb .
+# 
+# https://w3id.org/latuli/ontology/m3#shipperHashCode
+<https://w3id.org/latuli/ontology/m3#shipperHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#shipperHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#shipperHashCode> <http://www.w3.org/2000/01/rdf-schema#comment> "A hashcode which represents a shipper party using a numeric value" .
+# 
+# https://w3id.org/latuli/ontology/m3#splitShipment
+<https://w3id.org/latuli/ontology/m3#splitShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#splitShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#splitShipment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+<https://w3id.org/latuli/ontology/m3#splitShipment> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a shipment has been split or not." .
+# 
+# https://w3id.org/latuli/ontology/m3#status
+<https://w3id.org/latuli/ontology/m3#status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#status> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#status> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#status> <http://www.w3.org/2000/01/rdf-schema#comment> "The status of a wave." .
+# 
+# https://w3id.org/latuli/ontology/m3#supplierProductDescription
+<https://w3id.org/latuli/ontology/m3#supplierProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a trade item by the supplier." .
+# 
+# https://w3id.org/latuli/ontology/m3#supplierProductId
+<https://w3id.org/latuli/ontology/m3#supplierProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#comment> "The identifier of a trade item used by the supplier." .
+# 
+# https://w3id.org/latuli/ontology/m3#supplierQuantity
+<https://w3id.org/latuli/ontology/m3#supplierQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#comment> "The quantity of trade items as provided by the supplier." .
+# 
+# https://w3id.org/latuli/ontology/m3#taskClosedOn
+<https://w3id.org/latuli/ontology/m3#taskClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a consignment task is closed." .
+# 
+# https://w3id.org/latuli/ontology/m3#taskDescription
+<https://w3id.org/latuli/ontology/m3#taskDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#taskDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#taskDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#taskDescription> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a reconstruction task related to a consignment. Examples are Reconstruct by Address, Reconstruct by Product or Reconstruct by Order." .
+# 
+# https://w3id.org/latuli/ontology/m3#taskId
+<https://w3id.org/latuli/ontology/m3#taskId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#taskId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#taskId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#taskId> <http://www.w3.org/2000/01/rdf-schema#comment> "An identifier that describes the reconstruction task related to a consignment." .
+# 
+# https://w3id.org/latuli/ontology/m3#totalConsignmentVolume
+<https://w3id.org/latuli/ontology/m3#totalConsignmentVolume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#comment> "The total volume of a consignment." .
+# 
+# https://w3id.org/latuli/ontology/m3#totalConsignmentWeight
+<https://w3id.org/latuli/ontology/m3#totalConsignmentWeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#comment> "The total weight of a consignment." .
+# 
+# https://w3id.org/latuli/ontology/m3#transportId
+<https://w3id.org/latuli/ontology/m3#transportId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#transportId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#transportId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#transportId> <http://www.w3.org/2000/01/rdf-schema#comment> "A unique identifier for a transport." .
+# 
+# https://w3id.org/latuli/ontology/m3#transportName
+<https://w3id.org/latuli/ontology/m3#transportName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#transportName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#transportName> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of a transport. Examples are TJUE042ZU2 and 528776." .
+# 
+# https://w3id.org/latuli/ontology/m3#transportType
+<https://w3id.org/latuli/ontology/m3#transportType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#transportType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#transportType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Transport> .
+<https://w3id.org/latuli/ontology/m3#transportType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#transportType> <http://www.w3.org/2000/01/rdf-schema#comment> "A flag that defines whether a transport is inbound (IN) or outbound (OUT)" .
+# 
+# https://w3id.org/latuli/ontology/m3#volume
+<https://w3id.org/latuli/ontology/m3#volume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#volume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#volume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#volume> <http://www.w3.org/2000/01/rdf-schema#comment> "The volume of an xDocLoadingUnit (cross-dock loading unit)." .
+# 
+# https://w3id.org/latuli/ontology/m3#waveClosedOn
+<https://w3id.org/latuli/ontology/m3#waveClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#waveClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#waveClosedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave is closed." .
+# 
+# https://w3id.org/latuli/ontology/m3#waveEndProcessingOn
+<https://w3id.org/latuli/ontology/m3#waveEndProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave process is ended." .
+# 
+# https://w3id.org/latuli/ontology/m3#waveId
+<https://w3id.org/latuli/ontology/m3#waveId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#waveId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/latuli/ontology/m3#waveId> <http://www.w3.org/2000/01/rdf-schema#comment> "A unique identifier for a wave." .
+# 
+# https://w3id.org/latuli/ontology/m3#wavePlannedOn
+<https://w3id.org/latuli/ontology/m3#wavePlannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#wavePlannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#wavePlannedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave has been planned." .
+# 
+# https://w3id.org/latuli/ontology/m3#waveReleasedOn
+<https://w3id.org/latuli/ontology/m3#waveReleasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#waveReleasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#waveReleasedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave has been released to the floor." .
+# 
+# https://w3id.org/latuli/ontology/m3#waveStartProcessingOn
+<https://w3id.org/latuli/ontology/m3#waveStartProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://w3id.org/latuli/ontology/m3#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Timestamp for when a wave process is started." .
+# 
+# https://w3id.org/latuli/ontology/m3#weight
+<https://w3id.org/latuli/ontology/m3#weight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/latuli/ontology/m3#weight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/latuli/ontology/m3#weight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/latuli/ontology/m3#weight> <http://www.w3.org/2000/01/rdf-schema#comment> "The weight of an xDocLoadingUnit (cross-dock loading unit)." .
 # 
 # 
 # 
@@ -583,185 +653,201 @@
 # #################################################################
 # 
 # 
-# http://latuli.no/onto#Carrier
-<http://latuli.no/onto#Carrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Carrier> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#Carrier
+<https://w3id.org/latuli/ontology/m3#Carrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Carrier> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Carrier> <http://www.w3.org/2000/01/rdf-schema#comment> "A company, which physically transports goods from one place to another." .
 # 
-# http://latuli.no/onto#Consignee
-<http://latuli.no/onto#Consignee> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Consignee> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#Consignee
+<https://w3id.org/latuli/ontology/m3#Consignee> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Consignee> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Consignee> <http://www.w3.org/2000/01/rdf-schema#comment> "In a consignment view / scenario, the entity who will receive the physical shipment." .
 # 
-# http://latuli.no/onto#Consignment
-<http://latuli.no/onto#Consignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid1 .
+# https://w3id.org/latuli/ontology/m3#Consignment
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid1 .
 _:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid1 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasCarrierParty> .
-_:genid1 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Carrier> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid2 .
+_:genid1 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasCarrierParty> .
+_:genid1 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Carrier> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid2 .
 _:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsigneeParty> .
-_:genid2 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignee> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid3 .
+_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasConsigneeParty> .
+_:genid2 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignee> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid3 .
 _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsignorParty> .
-_:genid3 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignor> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid4 .
+_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasConsignorParty> .
+_:genid3 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignor> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid4 .
 _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubParty> .
-_:genid4 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid5 .
+_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasHubParty> .
+_:genid4 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid5 .
 _:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#includesTransport> .
-_:genid5 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Transport> .
-<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid6 .
+_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#includesTransport> .
+_:genid5 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Transport> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid6 .
 _:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid6 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#processedByWave> .
-_:genid6 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Wave> .
+_:genid6 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#processedByWave> .
+_:genid6 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#Consignment> <http://www.w3.org/2000/01/rdf-schema#comment> "A consignment is a logical grouping of goods (one or more physical entities) that is intended to be transported as a whole from a consignor to a consignee by a carrier or freight forwarder via one or more modes of transport, subject to one single transport contract." .
 # 
-# http://latuli.no/onto#Consignor
-<http://latuli.no/onto#Consignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Consignor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#Consignor
+<https://w3id.org/latuli/ontology/m3#Consignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Consignor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Consignor> <http://www.w3.org/2000/01/rdf-schema#comment> "In a consignment view / scenario, the entity who will ship the physical shipment." .
 # 
-# http://latuli.no/onto#DangerousGoods
-<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid7 .
+# https://w3id.org/latuli/ontology/m3#DangerousGoods
+<https://w3id.org/latuli/ontology/m3#DangerousGoods> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid7 .
 _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid7 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
-_:genid7 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid8 .
+_:genid7 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#belongsToShipment> .
+_:genid7 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid8 .
 _:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid8 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
-_:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
-<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
+_:genid8 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasLoadingUnit> .
+_:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
 _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#relatesToTradeItem> .
-_:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#TradeItem> .
+_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#relatesToTradeItem> .
+_:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#TradeItem> .
 # 
-# http://latuli.no/onto#HubReconstructionLocation
-<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/2002/07/owl#equivalentClass> <http://latuli.no/onto#Terminal> .
-<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
+# https://w3id.org/latuli/ontology/m3#HubReconstructionLocation
+<https://w3id.org/latuli/ontology/m3#HubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#HubReconstructionLocation> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/latuli/ontology/m3#Terminal> .
+<https://w3id.org/latuli/ontology/m3#HubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
 _:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasParty> .
-_:genid10 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasParty> .
+_:genid10 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#HubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#comment> "The location where a reconstruction of goods takes place." .
 # 
-# http://latuli.no/onto#LoadingUnit
-<http://latuli.no/onto#LoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# https://w3id.org/latuli/ontology/m3#LoadingUnit
+<https://w3id.org/latuli/ontology/m3#LoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#LoadingUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "A logistic unit is a unit of any composition made up for transport and or storage which has to be managed throughout the supply chain." .
 # 
-# http://latuli.no/onto#Party
-<http://latuli.no/onto#Party> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# https://w3id.org/latuli/ontology/m3#Party
+<https://w3id.org/latuli/ontology/m3#Party> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Party> <http://www.w3.org/2000/01/rdf-schema#comment> "A person or group of people constituting a particular side in a contract or legal action." .
 # 
-# http://latuli.no/onto#Receiver
-<http://latuli.no/onto#Receiver> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Receiver> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#Receiver
+<https://w3id.org/latuli/ontology/m3#Receiver> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Receiver> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Receiver> <http://www.w3.org/2000/01/rdf-schema#comment> "In a shipment scenario, a party who engages in receiving goods." .
 # 
-# http://latuli.no/onto#Shipment
-<http://latuli.no/onto#Shipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
+# https://w3id.org/latuli/ontology/m3#Shipment
+<https://w3id.org/latuli/ontology/m3#Shipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
 _:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasReceiverParty> .
-_:genid11 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Receiver> .
-<http://latuli.no/onto#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
+_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasReceiverParty> .
+_:genid11 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Receiver> .
+<https://w3id.org/latuli/ontology/m3#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
 _:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasShipperParty> .
-_:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipper> .
+_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasShipperParty> .
+_:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Shipper> .
+<https://w3id.org/latuli/ontology/m3#Shipment> <http://www.w3.org/2000/01/rdf-schema#comment> "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice." .
 # 
-# http://latuli.no/onto#ShipmentItem
-<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
+# https://w3id.org/latuli/ontology/m3#ShipmentItem
+<https://w3id.org/latuli/ontology/m3#ShipmentItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
 _:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
-_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
+_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#belongsToShipment> .
+_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
 _:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
-_:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasLoadingUnit> .
+_:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#comment> "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice." .
 # 
-# http://latuli.no/onto#Shipper
-<http://latuli.no/onto#Shipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Shipper> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#Shipper
+<https://w3id.org/latuli/ontology/m3#Shipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Shipper> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Shipper> <http://www.w3.org/2000/01/rdf-schema#comment> "In a shipment scenario, a party who engages in shipping goods." .
 # 
-# http://latuli.no/onto#Terminal
-<http://latuli.no/onto#Terminal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# https://w3id.org/latuli/ontology/m3#Terminal
+<https://w3id.org/latuli/ontology/m3#Terminal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 # 
-# http://latuli.no/onto#TerminalOperator
-<http://latuli.no/onto#TerminalOperator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#TerminalOperator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# https://w3id.org/latuli/ontology/m3#TerminalOperator
+<https://w3id.org/latuli/ontology/m3#TerminalOperator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#TerminalOperator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#TerminalOperator> <http://www.w3.org/2000/01/rdf-schema#comment> "Terminal operator means a person who by ownership or contractual agreement is charged with the responsibility for, or physical control over, and operation of a logistics terminal." .
 # 
-# http://latuli.no/onto#TradeItem
-<http://latuli.no/onto#TradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid15 .
+# https://w3id.org/latuli/ontology/m3#TradeItem
+<https://w3id.org/latuli/ontology/m3#TradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid15 .
 _:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid15 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
-_:genid15 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
-<http://latuli.no/onto#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid16 .
+_:genid15 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#belongsToShipment> .
+_:genid15 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Shipment> .
+<https://w3id.org/latuli/ontology/m3#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid16 .
 _:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid16 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
-_:genid16 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+_:genid16 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasLoadingUnit> .
+_:genid16 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#TradeItem> <http://www.w3.org/2000/01/rdf-schema#comment> "A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain." .
 # 
-# http://latuli.no/onto#Transport
-<http://latuli.no/onto#Transport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# https://w3id.org/latuli/ontology/m3#Transport
+<https://w3id.org/latuli/ontology/m3#Transport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Transport> <http://www.w3.org/2000/01/rdf-schema#comment> "Transport is the act of moving goods and materials from one location to another" .
 # 
-# http://latuli.no/onto#Wave
-<http://latuli.no/onto#Wave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#Wave> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid17 .
+# https://w3id.org/latuli/ontology/m3#Wave
+<https://w3id.org/latuli/ontology/m3#Wave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#Wave> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid17 .
 _:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid17 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubParty> .
-_:genid17 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+_:genid17 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasHubParty> .
+_:genid17 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#Wave> <http://www.w3.org/2000/01/rdf-schema#comment> "A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections." .
 # 
-# http://latuli.no/onto#XDocLoadingUnit
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid18 .
+# https://w3id.org/latuli/ontology/m3#XDocLoadingUnit
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid18 .
 _:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid18 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasCarrierParty> .
-_:genid18 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Carrier> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid19 .
+_:genid18 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasCarrierParty> .
+_:genid18 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Carrier> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid19 .
 _:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid19 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsigneeParty> .
-_:genid19 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignee> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid20 .
+_:genid19 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasConsigneeParty> .
+_:genid19 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignee> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid20 .
 _:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid20 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsignorParty> .
-_:genid20 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignor> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid21 .
+_:genid20 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasConsignorParty> .
+_:genid20 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignor> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid21 .
 _:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid21 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubReconstructionParty> .
-_:genid21 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid22 .
+_:genid21 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty> .
+_:genid21 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid22 .
 _:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid22 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasInboundConsignment> .
-_:genid22 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid23 .
+_:genid22 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasInboundConsignment> .
+_:genid22 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid23 .
 _:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid23 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasInboundParentLoadingUnit> .
-_:genid23 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid24 .
+_:genid23 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit> .
+_:genid23 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid24 .
 _:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid24 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
-_:genid24 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid25 .
+_:genid24 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasLoadingUnit> .
+_:genid24 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid25 .
 _:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid25 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasOutboundConsignment> .
-_:genid25 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignment> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid26 .
+_:genid25 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasOutboundConsignment> .
+_:genid25 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Consignment> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid26 .
 _:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid26 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasOutboundParentLoadingUnit> .
-_:genid26 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid27 .
+_:genid26 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit> .
+_:genid26 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#LoadingUnit> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid27 .
 _:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid27 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasParty> .
-_:genid27 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid28 .
+_:genid27 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasParty> .
+_:genid27 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Party> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid28 .
 _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid28 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasReceiverParty> .
-_:genid28 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Receiver> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid29 .
+_:genid28 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasReceiverParty> .
+_:genid28 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Receiver> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid29 .
 _:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid29 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasShipperParty> .
-_:genid29 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipper> .
-<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid30 .
+_:genid29 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#hasShipperParty> .
+_:genid29 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Shipper> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid30 .
 _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid30 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#processedByWave> .
-_:genid30 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Wave> .
+_:genid30 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/latuli/ontology/m3#processedByWave> .
+_:genid30 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/latuli/ontology/m3#Wave> .
+<https://w3id.org/latuli/ontology/m3#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "A loading unit which is received through an inbound dock and then transferred across the dock to an outbound transportation dock." .
 # 
 # Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/

@@ -1,12 +1,13 @@
-@prefix : <http://latuli.no/onto#> .
+@prefix : <https://w3id.org/latuli/ontology/m3#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://latuli.no/onto> .
+@base <https://w3id.org/latuli/ontology/m3#> .
 
-<http://latuli.no/onto> rdf:type owl:Ontology .
+<https://w3id.org/latuli/ontology/m3#> rdf:type owl:Ontology ;
+                                        owl:imports <http://www.opengis.net/ont/geosparql> .
 
 #################################################################
 #    Annotation properties
@@ -28,666 +29,731 @@
 #    Object Properties
 #################################################################
 
-###  http://latuli.no/onto#belongsToShipment
+###  https://w3id.org/latuli/ontology/m3#belongsToShipment
 :belongsToShipment rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:range :Shipment .
+                   rdfs:range :Shipment ;
+                   rdfs:comment "Relates a TradeItem or a ShipmentItem to a Shipment." .
 
 
-###  http://latuli.no/onto#hasCarrierParty
+###  https://w3id.org/latuli/ontology/m3#hasCarrierParty
 :hasCarrierParty rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:range :Carrier .
+                 rdfs:range :Carrier ;
+                 rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier" .
 
 
-###  http://latuli.no/onto#hasConsigneeParty
+###  https://w3id.org/latuli/ontology/m3#hasConsigneeParty
 :hasConsigneeParty rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:range :Consignee .
+                   rdfs:range :Consignee ;
+                   rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee" .
 
 
-###  http://latuli.no/onto#hasConsignorParty
+###  https://w3id.org/latuli/ontology/m3#hasConsignorParty
 :hasConsignorParty rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:range :Consignor .
+                   rdfs:range :Consignor ;
+                   rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor" .
 
 
-###  http://latuli.no/onto#hasHubParty
+###  https://w3id.org/latuli/ontology/m3#hasHubParty
 :hasHubParty rdf:type owl:ObjectProperty ;
-             rdfs:range :Party .
+             rdfs:range :Party ;
+             rdfs:comment "Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator" .
 
 
-###  http://latuli.no/onto#hasHubReconstructionLocation
+###  https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation
 :hasHubReconstructionLocation rdf:type owl:ObjectProperty ;
-                              rdfs:range :HubReconstructionLocation .
+                              rdfs:range :HubReconstructionLocation ;
+                              rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) to an HubReconstructionLocation" .
 
 
-###  http://latuli.no/onto#hasHubReconstructionParty
+###  https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty
 :hasHubReconstructionParty rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf owl:topObjectProperty ;
                            rdfs:range :Party .
 
 
-###  http://latuli.no/onto#hasInboundConsignment
+###  https://w3id.org/latuli/ontology/m3#hasInboundConsignment
 :hasInboundConsignment rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf owl:topObjectProperty ;
-                       rdfs:range :Consignment .
+                       rdfs:range :Consignment ;
+                       rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound Consignment" .
 
 
-###  http://latuli.no/onto#hasInboundParentLoadingUnit
+###  https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit
 :hasInboundParentLoadingUnit rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf owl:topObjectProperty ;
-                             rdfs:range :LoadingUnit .
+                             rdfs:range :LoadingUnit ;
+                             rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound parent LoadingUnit" .
 
 
-###  http://latuli.no/onto#hasLoadingUnit
+###  https://w3id.org/latuli/ontology/m3#hasLoadingUnit
 :hasLoadingUnit rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:range :LoadingUnit .
+                rdfs:range :LoadingUnit ;
+                rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit" .
 
 
-###  http://latuli.no/onto#hasOutboundConsignment
+###  https://w3id.org/latuli/ontology/m3#hasOutboundConsignment
 :hasOutboundConsignment rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf owl:topObjectProperty ;
-                        rdfs:range :Consignment .
+                        rdfs:range :Consignment ;
+                        rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound Consignment" .
 
 
-###  http://latuli.no/onto#hasOutboundParentLoadingUnit
+###  https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit
 :hasOutboundParentLoadingUnit rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf owl:topObjectProperty ;
-                              rdfs:range :LoadingUnit .
+                              rdfs:range :LoadingUnit ;
+                              rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound parent LoadingUnit" .
 
 
-###  http://latuli.no/onto#hasParty
+###  https://w3id.org/latuli/ontology/m3#hasParty
 :hasParty rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           rdfs:range :Party .
 
 
-###  http://latuli.no/onto#hasReceiverParty
+###  https://w3id.org/latuli/ontology/m3#hasReceiverParty
 :hasReceiverParty rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
-                  rdfs:range :Receiver .
+                  rdfs:range :Receiver ;
+                  rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver." .
 
 
-###  http://latuli.no/onto#hasShipperParty
+###  https://w3id.org/latuli/ontology/m3#hasShipperParty
 :hasShipperParty rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:range :Shipper .
+                 rdfs:range :Shipper ;
+                 rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper." .
 
 
-###  http://latuli.no/onto#includesTransport
+###  https://w3id.org/latuli/ontology/m3#includesTransport
 :includesTransport rdf:type owl:ObjectProperty ;
-                   rdfs:range :Transport .
+                   rdfs:range :Transport ;
+                   rdfs:comment "Relates a Consignment to a Transport" .
 
 
-###  http://latuli.no/onto#processedByWave
+###  https://w3id.org/latuli/ontology/m3#processedByWave
 :processedByWave rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:range :Wave .
+                 rdfs:range :Wave ;
+                 rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave." .
 
 
-###  http://latuli.no/onto#relatesToTradeItem
+###  https://w3id.org/latuli/ontology/m3#relatesToTradeItem
 :relatesToTradeItem rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
-                    rdfs:range :TradeItem .
+                    rdfs:range :TradeItem ;
+                    rdfs:comment "Relates a DGR (dangerous goods) to a Trade Item." .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://latuli.no/onto#additionalPartyIdentification
+###  https://w3id.org/latuli/ontology/m3#additionalPartyIdentification
 :additionalPartyIdentification rdf:type owl:DatatypeProperty ;
-                               rdfs:range xsd:string .
+                               rdfs:range xsd:string ;
+                               rdfs:comment "Identifies a party using a custom identification scheme." .
 
 
-###  http://latuli.no/onto#asWKT
+###  https://w3id.org/latuli/ontology/m3#asWKT
 :asWKT rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf owl:topDataProperty ;
        rdfs:domain :Party ;
        rdfs:range <http://www.opengis.net/ont/geosparql#wktLiteral> .
 
 
-###  http://latuli.no/onto#carrierHashCode
+###  https://w3id.org/latuli/ontology/m3#carrierHashCode
 :carrierHashCode rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:comment "A hashcode which represents a carrier party using a numeric value" .
 
 
-###  http://latuli.no/onto#closedOn
+###  https://w3id.org/latuli/ontology/m3#closedOn
 :closedOn rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:range xsd:dateTime .
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "Timestamp for when a wave is closed." .
 
 
-###  http://latuli.no/onto#code2
+###  https://w3id.org/latuli/ontology/m3#code2
 :code2 rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf owl:topDataProperty ;
        rdfs:domain :Party ;
-       rdfs:range xsd:string .
+       rdfs:range xsd:string ;
+       rdfs:comment "Two-digit identifier for describing a country." .
 
 
-###  http://latuli.no/onto#consigneeHashCode
+###  https://w3id.org/latuli/ontology/m3#consigneeHashCode
 :consigneeHashCode rdf:type owl:DatatypeProperty ;
-                   rdfs:range xsd:string .
+                   rdfs:range xsd:string ;
+                   rdfs:comment "A hashcode which represents a consignee party using a numeric value" .
 
 
-###  http://latuli.no/onto#consignmentId
+###  https://w3id.org/latuli/ontology/m3#consignmentId
 :consignmentId rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:range xsd:string .
+               rdfs:range xsd:string ;
+               rdfs:comment "An unique identifier for a consignment." .
 
 
-###  http://latuli.no/onto#consignmentType
+###  https://w3id.org/latuli/ontology/m3#consignmentType
 :consignmentType rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Describes whether a consignment is inbound or outbound" .
 
 
-###  http://latuli.no/onto#consignorHashCode
+###  https://w3id.org/latuli/ontology/m3#consignorHashCode
 :consignorHashCode rdf:type owl:DatatypeProperty ;
-                   rdfs:range xsd:string .
+                   rdfs:range xsd:string ;
+                   rdfs:comment "A hashcode which represents a consignor  party using a numeric value" .
 
 
-###  http://latuli.no/onto#createdOn
+###  https://w3id.org/latuli/ontology/m3#createdOn
 :createdOn rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:dateTime .
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "A hashcode which represents a consignor  party using a numeric value" .
 
 
-###  http://latuli.no/onto#customerProductDescription
+###  https://w3id.org/latuli/ontology/m3#customerProductDescription
 :customerProductDescription rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
-                            rdfs:range xsd:string .
+                            rdfs:range xsd:string ;
+                            rdfs:comment "A description of a trade item by the customer." .
 
 
-###  http://latuli.no/onto#customerProductId
+###  https://w3id.org/latuli/ontology/m3#customerProductId
 :customerProductId rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:range xsd:string .
+                   rdfs:range xsd:string ;
+                   rdfs:comment "The identifier of a trade item used by the customer" .
 
 
-###  http://latuli.no/onto#customerQuantity
+###  https://w3id.org/latuli/ontology/m3#customerQuantity
 :customerQuantity rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:range xsd:decimal .
+                  rdfs:range xsd:decimal ;
+                  rdfs:comment "The quantity of trade items expected by the customer." .
 
 
-###  http://latuli.no/onto#delta
-:delta rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf owl:topDataProperty ;
-       rdfs:range xsd:decimal .
-
-
-###  http://latuli.no/onto#description
+###  https://w3id.org/latuli/ontology/m3#description
 :description rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "A description of a trade item." .
 
 
-###  http://latuli.no/onto#effectiveArrival
+###  https://w3id.org/latuli/ontology/m3#effectiveArrival
 :effectiveArrival rdf:type owl:DatatypeProperty ;
-                  rdfs:range xsd:dateTime .
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "Timestamp for when a transport means actually arrived at an hub." .
 
 
-###  http://latuli.no/onto#expectedArrival
+###  https://w3id.org/latuli/ontology/m3#expectedArrival
 :expectedArrival rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:dateTime .
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "Timestamp for when a transport means is expected to arrive at an hub." .
 
 
-###  http://latuli.no/onto#expectedDeliveryOn
+###  https://w3id.org/latuli/ontology/m3#expectedDeliveryOn
 :expectedDeliveryOn rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
                     rdfs:domain :Shipment ;
                     rdfs:range xsd:dateTime ;
+                    rdfs:comment "Timestamp for when a shipment is expected to be delivered to a receiver." ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "expectedDeliveryOn"@nb .
 
 
-###  http://latuli.no/onto#finishedScanOn
+###  https://w3id.org/latuli/ontology/m3#finishedScanOn
 :finishedScanOn rdf:type owl:DatatypeProperty ;
-                rdfs:range xsd:dateTime .
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "Timestamp for when a xDocLoadingUnit (cross dock loading unit) has been scanned." .
 
 
-###  http://latuli.no/onto#fullPalletConsignment
+###  https://w3id.org/latuli/ontology/m3#fullPalletConsignment
 :fullPalletConsignment rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
-                       rdfs:range xsd:string .
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Describes whether a consignment consist of full pallets (1) or not (0)" .
 
 
-###  http://latuli.no/onto#gln
+###  https://w3id.org/latuli/ontology/m3#gln
 :gln rdf:type owl:DatatypeProperty ;
      rdfs:subPropertyOf owl:topDataProperty ;
-     rdfs:range xsd:string .
+     rdfs:range xsd:string ;
+     rdfs:comment "GLN is the GS1 Identification Key used to identify physical locations or parties. The key comprises a GS1 Company Prefix, Location Reference, and Check Digit" .
 
 
-###  http://latuli.no/onto#gtin
+###  https://w3id.org/latuli/ontology/m3#gtin
 :gtin rdf:type owl:DatatypeProperty ;
-      rdfs:range xsd:string .
+      rdfs:range xsd:string ;
+      rdfs:comment "GTIN is the GS1 Identification Key used to identify trade items. The key comprises a GS1 Company Prefix, an Item Reference and Check Digit." .
 
 
-###  http://latuli.no/onto#handlingInstruction
+###  https://w3id.org/latuli/ontology/m3#handlingInstruction
 :handlingInstruction rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
-                     rdfs:range xsd:string .
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Instructions that describe how goods should be expedited during transport and other goods handling." .
 
 
-###  http://latuli.no/onto#hashCode
+###  https://w3id.org/latuli/ontology/m3#hashCode
 :hashCode rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:range xsd:string .
+          rdfs:range xsd:string ;
+          rdfs:comment "A hashcode which represents a hub party using a numeric value" .
 
 
-###  http://latuli.no/onto#hubAdditionalPartyIdentification
+###  https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification
 :hubAdditionalPartyIdentification rdf:type owl:DatatypeProperty ;
                                   rdfs:subPropertyOf owl:topDataProperty ;
-                                  rdfs:range xsd:string .
+                                  rdfs:range xsd:string ;
+                                  rdfs:comment "Identifies a hub party using a custom identification scheme." .
 
 
-###  http://latuli.no/onto#hubHashCode
+###  https://w3id.org/latuli/ontology/m3#hubHashCode
 :hubHashCode rdf:type owl:DatatypeProperty ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "A hashcode which represents a hub party using a numeric value" .
 
 
-###  http://latuli.no/onto#hubReconstructionHashCode
+###  https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode
 :hubReconstructionHashCode rdf:type owl:DatatypeProperty ;
-                           rdfs:range xsd:string .
+                           rdfs:range xsd:string ;
+                           rdfs:comment "A hashcode which represents a hub reconstruction location using a numeric value" .
 
 
-###  http://latuli.no/onto#hubReconstructionLocationId
+###  https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId
 :hubReconstructionLocationId rdf:type owl:DatatypeProperty ;
-                             rdfs:range xsd:string .
+                             rdfs:range xsd:string ;
+                             rdfs:comment "A unique identifier for a hub reconstruction location" .
 
 
-###  http://latuli.no/onto#internalId
+###  https://w3id.org/latuli/ontology/m3#internalId
 :internalId rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:string .
+            rdfs:range xsd:string ;
+            rdfs:comment "A unique identifier for an xDocLoadingUnit (cross-dock loading unit)" .
 
 
-###  http://latuli.no/onto#isCarrier
+###  https://w3id.org/latuli/ontology/m3#isCarrier
 :isCarrier rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:boolean .
+           rdfs:range xsd:boolean ;
+           rdfs:comment "A flag that defines whether a party is a carrier (1) or not (0)" .
 
 
-###  http://latuli.no/onto#isConsignor
+###  https://w3id.org/latuli/ontology/m3#isConsignor
 :isConsignor rdf:type owl:DatatypeProperty ;
-             rdfs:range xsd:boolean .
+             rdfs:range xsd:boolean ;
+             rdfs:comment "A flag that defines whether a party is a consignor (1) or not (0)" .
 
 
-###  http://latuli.no/onto#isHub
+###  https://w3id.org/latuli/ontology/m3#isHub
 :isHub rdf:type owl:DatatypeProperty ;
-       rdfs:range xsd:boolean .
+       rdfs:range xsd:boolean ;
+       rdfs:comment "A flag that defines whether a party is a hub (1) or not (0)" .
 
 
-###  http://latuli.no/onto#isShipper
+###  https://w3id.org/latuli/ontology/m3#isShipper
 :isShipper rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:boolean .
+           rdfs:range xsd:boolean ;
+           rdfs:comment "A flag that defines whether a party is a shipper (1) or not (0)" .
 
 
-###  http://latuli.no/onto#location
+###  https://w3id.org/latuli/ontology/m3#location
 :location rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Party ;
-          rdfs:range xsd:string .
+          rdfs:range xsd:string ;
+          rdfs:comment "The name of the city associated with a party" .
 
 
-###  http://latuli.no/onto#lotNumber
+###  https://w3id.org/latuli/ontology/m3#lotNumber
 :lotNumber rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
-           rdfs:range xsd:string .
+           rdfs:range xsd:string ;
+           rdfs:comment "A lot number is an identification number assigned to a particular quantity or lot of material from a single manufacturer" .
 
 
-###  http://latuli.no/onto#material
+###  https://w3id.org/latuli/ontology/m3#material
 :material rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:range xsd:string .
+          rdfs:range xsd:string ;
+          rdfs:comment "Describes the material used in a trade item" .
 
 
-###  http://latuli.no/onto#modifiedOn
+###  https://w3id.org/latuli/ontology/m3#modifiedOn
 :modifiedOn rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:dateTime .
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "Timestamp for when an entry in the database is modified." .
 
 
-###  http://latuli.no/onto#orderNumber
+###  https://w3id.org/latuli/ontology/m3#orderNumber
 :orderNumber rdf:type owl:DatatypeProperty ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "A reference to the order number when describing a loading unit." .
 
 
-###  http://latuli.no/onto#originalDataSource
-:originalDataSource rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf owl:topDataProperty ;
-                    rdfs:range xsd:string .
-
-
-###  http://latuli.no/onto#packageTypeId
+###  https://w3id.org/latuli/ontology/m3#packageTypeId
 :packageTypeId rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :LoadingUnit ;
-               rdfs:range xsd:string .
+               rdfs:range xsd:string ;
+               rdfs:comment "Describes what type of packaging type the loading unit consists of. Examples are BX (box) and PX (pallet)." .
 
 
-###  http://latuli.no/onto#plannedDeliveryDate
+###  https://w3id.org/latuli/ontology/m3#plannedDeliveryDate
 :plannedDeliveryDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain :Shipment ;
-                     rdfs:range xsd:dateTime .
+                     rdfs:range xsd:dateTime ;
+                     rdfs:comment "Timestamp for when a shipment is planned to be delivered to the receiver." .
 
 
-###  http://latuli.no/onto#plannedOn
+###  https://w3id.org/latuli/ontology/m3#plannedOn
 :plannedOn rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:dateTime .
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "Timestamp for when a wave has been planned." .
 
 
-###  http://latuli.no/onto#postalCode
+###  https://w3id.org/latuli/ontology/m3#postalCode
 :postalCode rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:domain :Party ;
-            rdfs:range xsd:string .
+            rdfs:range xsd:string ;
+            rdfs:comment "Describes the postal code associated with a party." .
 
 
-###  http://latuli.no/onto#preSortScanOn
+###  https://w3id.org/latuli/ontology/m3#preSortScanOn
 :preSortScanOn rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :XDocLoadingUnit ;
-               rdfs:range xsd:dateTime .
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Timestamp for when an XDocLoadingUnit (cross-dock loading unit) has been presorted." .
 
 
-###  http://latuli.no/onto#purchaseOrder
+###  https://w3id.org/latuli/ontology/m3#purchaseOrder
 :purchaseOrder rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:range xsd:string .
+               rdfs:range xsd:string ;
+               rdfs:comment "A reference to a purchase order associated with a trade item" .
 
 
-###  http://latuli.no/onto#qttBoxes
+###  https://w3id.org/latuli/ontology/m3#qttBoxes
 :qttBoxes rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Consignment ;
-          rdfs:range xsd:int .
+          rdfs:range xsd:int ;
+          rdfs:comment "The quantity of boxes in a consignment, a shipment or in a wave" .
 
 
-###  http://latuli.no/onto#qttBoxesProcessed
+###  https://w3id.org/latuli/ontology/m3#qttBoxesProcessed
 :qttBoxesProcessed rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:range xsd:int .
+                   rdfs:range xsd:int ;
+                   rdfs:comment "The quantity of boxes processed in a wave" .
 
 
-###  http://latuli.no/onto#qttPallets
+###  https://w3id.org/latuli/ontology/m3#qttPallets
 :qttPallets rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:int .
+            rdfs:range xsd:int ;
+            rdfs:comment "The quantity of pallets in a consignment, a shipment or in wave" .
 
 
-###  http://latuli.no/onto#qttPalletsBuilt
+###  https://w3id.org/latuli/ontology/m3#qttPalletsBuilt
 :qttPalletsBuilt rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
-                 rdfs:range xsd:int .
+                 rdfs:range xsd:int ;
+                 rdfs:comment "The quantity of pallets built in a wave" .
 
 
-###  http://latuli.no/onto#qttReconstructedPallets
+###  https://w3id.org/latuli/ontology/m3#qttReconstructedPallets
 :qttReconstructedPallets rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf owl:topDataProperty ;
                          rdfs:domain :Consignment ;
-                         rdfs:range xsd:int .
+                         rdfs:range xsd:int ;
+                         rdfs:comment "The quantity of reconstructed pallets in a consignment" .
 
 
-###  http://latuli.no/onto#qttReconstructedParcels
+###  https://w3id.org/latuli/ontology/m3#qttReconstructedParcels
 :qttReconstructedParcels rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf owl:topDataProperty ;
                          rdfs:domain :Consignment ;
-                         rdfs:range xsd:int .
+                         rdfs:range xsd:int ;
+                         rdfs:comment "The quantity of reconstructed parcels in a consignment" .
 
 
-###  http://latuli.no/onto#qttShipments
+###  https://w3id.org/latuli/ontology/m3#qttShipments
 :qttShipments rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain :Wave ;
-              rdfs:range xsd:int .
+              rdfs:range xsd:int ;
+              rdfs:comment "The quantity of shipments processed in a wave" .
 
 
-###  http://latuli.no/onto#qttTasks
+###  https://w3id.org/latuli/ontology/m3#qttTasks
 :qttTasks rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Wave ;
-          rdfs:range xsd:int .
+          rdfs:range xsd:int ;
+          rdfs:comment "The quantity of tasks processed in a wave" .
 
 
-###  http://latuli.no/onto#qttTrailers
+###  https://w3id.org/latuli/ontology/m3#qttTrailers
 :qttTrailers rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :Wave ;
-             rdfs:range xsd:int .
+             rdfs:range xsd:int ;
+             rdfs:comment "The quantity of trailers processed in a wave" .
 
 
-###  http://latuli.no/onto#quantity
+###  https://w3id.org/latuli/ontology/m3#quantity
 :quantity rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :ShipmentItem ;
-          rdfs:range xsd:int .
+          rdfs:range xsd:int ;
+          rdfs:comment "The quantity of individual items in a trade item" .
 
 
-###  http://latuli.no/onto#receiverHashCode
+###  https://w3id.org/latuli/ontology/m3#receiverHashCode
 :receiverHashCode rdf:type owl:DatatypeProperty ;
-                  rdfs:range xsd:string .
+                  rdfs:range xsd:string ;
+                  rdfs:comment "A hashcode which represents a receiver party using a numeric value" .
 
 
-###  http://latuli.no/onto#reconstructedScanOn
+###  https://w3id.org/latuli/ontology/m3#reconstructedScanOn
 :reconstructedScanOn rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain :XDocLoadingUnit ;
-                     rdfs:range xsd:dateTime .
+                     rdfs:range xsd:dateTime ;
+                     rdfs:comment "Timestamp for when an XDocLoadingUnit (cross-dock loading unit) is being reconstructed." .
 
 
-###  http://latuli.no/onto#reconstructionLane
+###  https://w3id.org/latuli/ontology/m3#reconstructionLane
 :reconstructionLane rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
-                    rdfs:range xsd:string .
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A lane or section in a terminal or hub used for the reconstruction of goods" .
 
 
-###  http://latuli.no/onto#reconstructionLocation
+###  https://w3id.org/latuli/ontology/m3#reconstructionLocation
 :reconstructionLocation rdf:type owl:DatatypeProperty ;
-                        rdfs:range xsd:string .
+                        rdfs:range xsd:string ;
+                        rdfs:comment "A location in which a reconstruction takes place." .
 
 
-###  http://latuli.no/onto#reconstructionType
-:reconstructionType rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf owl:topDataProperty ;
-                    rdfs:range xsd:string .
-
-
-###  http://latuli.no/onto#reconstructionTypeId
+###  https://w3id.org/latuli/ontology/m3#reconstructionTypeId
 :reconstructionTypeId rdf:type owl:DatatypeProperty ;
-                      rdfs:range xsd:string .
+                      rdfs:range xsd:string ;
+                      rdfs:comment "The type of reconstruction performed. Values are either loose cartons (LooseCarton), recon pallet (ReconPallet), or recon parcel (ReconParcel)." .
 
 
-###  http://latuli.no/onto#releasedOn
+###  https://w3id.org/latuli/ontology/m3#releasedOn
 :releasedOn rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:dateTime .
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "Timestamp for when a wave is released." .
 
 
-###  http://latuli.no/onto#salesOrder
+###  https://w3id.org/latuli/ontology/m3#salesOrder
 :salesOrder rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:string .
+            rdfs:range xsd:string ;
+            rdfs:comment "A reference to a sales order associated with a trade item" .
 
 
-###  http://latuli.no/onto#season
-:season rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:range xsd:decimal .
-
-
-###  http://latuli.no/onto#shipmentId
+###  https://w3id.org/latuli/ontology/m3#shipmentId
 :shipmentId rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:string .
+            rdfs:range xsd:string ;
+            rdfs:comment "A unique identifier for a shipment." .
 
 
-###  http://latuli.no/onto#shippedOn
+###  https://w3id.org/latuli/ontology/m3#shippedOn
 :shippedOn rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
            rdfs:domain :Shipment ;
            rdfs:range xsd:dateTime ;
+           rdfs:comment "Timestamp for when a shipment is sent from a shipper." ;
            <http://www.w3.org/2004/02/skos/core#prefLabel> "shippedOn"@nb .
 
 
-###  http://latuli.no/onto#shipperHashCode
+###  https://w3id.org/latuli/ontology/m3#shipperHashCode
 :shipperHashCode rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:comment "A hashcode which represents a shipper party using a numeric value" .
 
 
-###  http://latuli.no/onto#splitShipment
+###  https://w3id.org/latuli/ontology/m3#splitShipment
 :splitShipment rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:range xsd:int .
+               rdfs:range xsd:int ;
+               rdfs:comment "A flag that defines whether a shipment has been split or not." .
 
 
-###  http://latuli.no/onto#status
+###  https://w3id.org/latuli/ontology/m3#status
 :status rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:range xsd:string .
+        rdfs:range xsd:string ;
+        rdfs:comment "The status of a wave." .
 
 
-###  http://latuli.no/onto#supplierProductDescription
+###  https://w3id.org/latuli/ontology/m3#supplierProductDescription
 :supplierProductDescription rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
-                            rdfs:range xsd:string .
+                            rdfs:range xsd:string ;
+                            rdfs:comment "A description of a trade item by the supplier." .
 
 
-###  http://latuli.no/onto#supplierProductId
+###  https://w3id.org/latuli/ontology/m3#supplierProductId
 :supplierProductId rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:range xsd:string .
+                   rdfs:range xsd:string ;
+                   rdfs:comment "The identifier of a trade item used by the supplier." .
 
 
-###  http://latuli.no/onto#supplierQuantity
+###  https://w3id.org/latuli/ontology/m3#supplierQuantity
 :supplierQuantity rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:range xsd:decimal .
+                  rdfs:range xsd:decimal ;
+                  rdfs:comment "The quantity of trade items as provided by the supplier." .
 
 
-###  http://latuli.no/onto#taskClosedOn
+###  https://w3id.org/latuli/ontology/m3#taskClosedOn
 :taskClosedOn rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain :Consignment ;
-              rdfs:range xsd:dateTime .
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Timestamp for when a consignment task is closed." .
 
 
-###  http://latuli.no/onto#taskDescription
+###  https://w3id.org/latuli/ontology/m3#taskDescription
 :taskDescription rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:comment "A description of a reconstruction task related to a consignment. Examples are Reconstruct by Address, Reconstruct by Product or Reconstruct by Order." .
 
 
-###  http://latuli.no/onto#taskId
+###  https://w3id.org/latuli/ontology/m3#taskId
 :taskId rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:range xsd:string .
+        rdfs:range xsd:string ;
+        rdfs:comment "An identifier that describes the reconstruction task related to a consignment." .
 
 
-###  http://latuli.no/onto#totalConsignmentVolume
+###  https://w3id.org/latuli/ontology/m3#totalConsignmentVolume
 :totalConsignmentVolume rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain :Consignment ;
-                        rdfs:range xsd:decimal .
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "The total volume of a consignment." .
 
 
-###  http://latuli.no/onto#totalConsignmentWeight
+###  https://w3id.org/latuli/ontology/m3#totalConsignmentWeight
 :totalConsignmentWeight rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain :Consignment ;
-                        rdfs:range xsd:decimal .
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "The total weight of a consignment." .
 
 
-###  http://latuli.no/onto#transportId
+###  https://w3id.org/latuli/ontology/m3#transportId
 :transportId rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "A unique identifier for a transport." .
 
 
-###  http://latuli.no/onto#transportName
+###  https://w3id.org/latuli/ontology/m3#transportName
 :transportName rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:string .
+               rdfs:range xsd:string ;
+               rdfs:comment "The name of a transport. Examples are TJUE042ZU2 and 528776." .
 
 
-###  http://latuli.no/onto#transportType
+###  https://w3id.org/latuli/ontology/m3#transportType
 :transportType rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:domain :Transport ;
-               rdfs:range xsd:string .
+               rdfs:range xsd:string ;
+               rdfs:comment "A flag that defines whether a transport is inbound (IN) or outbound (OUT)" .
 
 
-###  http://latuli.no/onto#volume
+###  https://w3id.org/latuli/ontology/m3#volume
 :volume rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:range xsd:decimal .
+        rdfs:range xsd:decimal ;
+        rdfs:comment "The volume of an xDocLoadingUnit (cross-dock loading unit)." .
 
 
-###  http://latuli.no/onto#waveClosedOn
+###  https://w3id.org/latuli/ontology/m3#waveClosedOn
 :waveClosedOn rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:dateTime .
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Timestamp for when a wave is closed." .
 
 
-###  http://latuli.no/onto#waveEndProcessingOn
+###  https://w3id.org/latuli/ontology/m3#waveEndProcessingOn
 :waveEndProcessingOn rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain :Wave ;
-                     rdfs:range xsd:dateTime .
+                     rdfs:range xsd:dateTime ;
+                     rdfs:comment "Timestamp for when a wave process is ended." .
 
 
-###  http://latuli.no/onto#waveId
+###  https://w3id.org/latuli/ontology/m3#waveId
 :waveId rdf:type owl:DatatypeProperty ;
-        rdfs:range xsd:string .
+        rdfs:range xsd:string ;
+        rdfs:comment "A unique identifier for a wave." .
 
 
-###  http://latuli.no/onto#wavePlannedOn
+###  https://w3id.org/latuli/ontology/m3#wavePlannedOn
 :wavePlannedOn rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:dateTime .
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Timestamp for when a wave has been planned." .
 
 
-###  http://latuli.no/onto#waveReleasedOn
+###  https://w3id.org/latuli/ontology/m3#waveReleasedOn
 :waveReleasedOn rdf:type owl:DatatypeProperty ;
-                rdfs:range xsd:dateTime .
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "Timestamp for when a wave has been released to the floor." .
 
 
-###  http://latuli.no/onto#waveStartProcessingOn
+###  https://w3id.org/latuli/ontology/m3#waveStartProcessingOn
 :waveStartProcessingOn rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain :Wave ;
-                       rdfs:range xsd:dateTime .
+                       rdfs:range xsd:dateTime ;
+                       rdfs:comment "Timestamp for when a wave process is started." .
 
 
-###  http://latuli.no/onto#weekDay
-:weekDay rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf owl:topDataProperty ;
-         rdfs:range xsd:decimal .
-
-
-###  http://latuli.no/onto#weight
+###  https://w3id.org/latuli/ontology/m3#weight
 :weight rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:range xsd:decimal .
-
-
-###  http://latuli.no/onto#year
-:year rdf:type owl:DatatypeProperty ;
-      rdfs:subPropertyOf owl:topDataProperty ;
-      rdfs:range xsd:decimal .
+        rdfs:range xsd:decimal ;
+        rdfs:comment "The weight of an xDocLoadingUnit (cross-dock loading unit)." .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://latuli.no/onto#Carrier
+###  https://w3id.org/latuli/ontology/m3#Carrier
 :Carrier rdf:type owl:Class ;
-         rdfs:subClassOf :Party .
+         rdfs:subClassOf :Party ;
+         rdfs:comment "A company, which physically transports goods from one place to another." .
 
 
-###  http://latuli.no/onto#Consignee
+###  https://w3id.org/latuli/ontology/m3#Consignee
 :Consignee rdf:type owl:Class ;
-           rdfs:subClassOf :Party .
+           rdfs:subClassOf :Party ;
+           rdfs:comment "In a consignment view / scenario, the entity who will receive the physical shipment." .
 
 
-###  http://latuli.no/onto#Consignment
+###  https://w3id.org/latuli/ontology/m3#Consignment
 :Consignment rdf:type owl:Class ;
              rdfs:subClassOf [ rdf:type owl:Restriction ;
                                owl:onProperty :hasCarrierParty ;
@@ -712,15 +778,17 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :processedByWave ;
                                owl:someValuesFrom :Wave
-                             ] .
+                             ] ;
+             rdfs:comment "A consignment is a logical grouping of goods (one or more physical entities) that is intended to be transported as a whole from a consignor to a consignee by a carrier or freight forwarder via one or more modes of transport, subject to one single transport contract." .
 
 
-###  http://latuli.no/onto#Consignor
+###  https://w3id.org/latuli/ontology/m3#Consignor
 :Consignor rdf:type owl:Class ;
-           rdfs:subClassOf :Party .
+           rdfs:subClassOf :Party ;
+           rdfs:comment "In a consignment view / scenario, the entity who will ship the physical shipment." .
 
 
-###  http://latuli.no/onto#DangerousGoods
+###  https://w3id.org/latuli/ontology/m3#DangerousGoods
 :DangerousGoods rdf:type owl:Class ;
                 rdfs:subClassOf [ rdf:type owl:Restriction ;
                                   owl:onProperty :belongsToShipment ;
@@ -736,29 +804,33 @@
                                 ] .
 
 
-###  http://latuli.no/onto#HubReconstructionLocation
+###  https://w3id.org/latuli/ontology/m3#HubReconstructionLocation
 :HubReconstructionLocation rdf:type owl:Class ;
                            owl:equivalentClass :Terminal ;
                            rdfs:subClassOf [ rdf:type owl:Restriction ;
                                              owl:onProperty :hasParty ;
                                              owl:someValuesFrom :Party
-                                           ] .
+                                           ] ;
+                           rdfs:comment "The location where a reconstruction of goods takes place." .
 
 
-###  http://latuli.no/onto#LoadingUnit
-:LoadingUnit rdf:type owl:Class .
+###  https://w3id.org/latuli/ontology/m3#LoadingUnit
+:LoadingUnit rdf:type owl:Class ;
+             rdfs:comment "A logistic unit is a unit of any composition made up for transport and or storage which has to be managed throughout the supply chain." .
 
 
-###  http://latuli.no/onto#Party
-:Party rdf:type owl:Class .
+###  https://w3id.org/latuli/ontology/m3#Party
+:Party rdf:type owl:Class ;
+       rdfs:comment "A person or group of people constituting a particular side in a contract or legal action." .
 
 
-###  http://latuli.no/onto#Receiver
+###  https://w3id.org/latuli/ontology/m3#Receiver
 :Receiver rdf:type owl:Class ;
-          rdfs:subClassOf :Party .
+          rdfs:subClassOf :Party ;
+          rdfs:comment "In a shipment scenario, a party who engages in receiving goods." .
 
 
-###  http://latuli.no/onto#Shipment
+###  https://w3id.org/latuli/ontology/m3#Shipment
 :Shipment rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasReceiverParty ;
@@ -767,10 +839,11 @@
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasShipperParty ;
                             owl:someValuesFrom :Shipper
-                          ] .
+                          ] ;
+          rdfs:comment "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice." .
 
 
-###  http://latuli.no/onto#ShipmentItem
+###  https://w3id.org/latuli/ontology/m3#ShipmentItem
 :ShipmentItem rdf:type owl:Class ;
               rdfs:subClassOf [ rdf:type owl:Restriction ;
                                 owl:onProperty :belongsToShipment ;
@@ -779,24 +852,27 @@
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :hasLoadingUnit ;
                                 owl:someValuesFrom :LoadingUnit
-                              ] .
+                              ] ;
+              rdfs:comment "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice." .
 
 
-###  http://latuli.no/onto#Shipper
+###  https://w3id.org/latuli/ontology/m3#Shipper
 :Shipper rdf:type owl:Class ;
-         rdfs:subClassOf :Party .
+         rdfs:subClassOf :Party ;
+         rdfs:comment "In a shipment scenario, a party who engages in shipping goods." .
 
 
-###  http://latuli.no/onto#Terminal
+###  https://w3id.org/latuli/ontology/m3#Terminal
 :Terminal rdf:type owl:Class .
 
 
-###  http://latuli.no/onto#TerminalOperator
+###  https://w3id.org/latuli/ontology/m3#TerminalOperator
 :TerminalOperator rdf:type owl:Class ;
-                  rdfs:subClassOf :Party .
+                  rdfs:subClassOf :Party ;
+                  rdfs:comment "Terminal operator means a person who by ownership or contractual agreement is charged with the responsibility for, or physical control over, and operation of a logistics terminal." .
 
 
-###  http://latuli.no/onto#TradeItem
+###  https://w3id.org/latuli/ontology/m3#TradeItem
 :TradeItem rdf:type owl:Class ;
            rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty :belongsToShipment ;
@@ -805,22 +881,25 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :hasLoadingUnit ;
                              owl:someValuesFrom :LoadingUnit
-                           ] .
+                           ] ;
+           rdfs:comment "A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain." .
 
 
-###  http://latuli.no/onto#Transport
-:Transport rdf:type owl:Class .
+###  https://w3id.org/latuli/ontology/m3#Transport
+:Transport rdf:type owl:Class ;
+           rdfs:comment "Transport is the act of moving goods and materials from one location to another" .
 
 
-###  http://latuli.no/onto#Wave
+###  https://w3id.org/latuli/ontology/m3#Wave
 :Wave rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :hasHubParty ;
                         owl:someValuesFrom :Party
-                      ] .
+                      ] ;
+      rdfs:comment "A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections." .
 
 
-###  http://latuli.no/onto#XDocLoadingUnit
+###  https://w3id.org/latuli/ontology/m3#XDocLoadingUnit
 :XDocLoadingUnit rdf:type owl:Class ;
                  rdfs:subClassOf [ rdf:type owl:Restriction ;
                                    owl:onProperty :hasCarrierParty ;
@@ -873,7 +952,8 @@
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :processedByWave ;
                                    owl:someValuesFrom :Wave
-                                 ] .
+                                 ] ;
+                 rdfs:comment "A loading unit which is received through an inbound dock and then transferred across the dock to an outbound transportation dock." .
 
 
 ###  Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/

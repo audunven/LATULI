@@ -6,7 +6,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/m3#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/m3#","name":"https://w3id.org/latuli/ontology/m3#", "headline":"Document describing the ontology https://w3id.org/latuli/ontology/m3#", "datePublished":"Mon Jan 10 16:20:36 CET 2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/m3#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/m3#","name":"https://w3id.org/latuli/ontology/m3#", "headline":"The M3 ontology describes concepts related to freight transport and terminal operations.", "datePublished":"10.01.2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -54,6 +54,7 @@ $(function(){
 <div class="container">
 <div class="head">
 <div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h2>Release  10.01.2022</h2>
 
 
 <dl>
@@ -74,42 +75,17 @@ $(function(){
 <div>
 <span>Ontology Specification Draft</span>
 </div>
-</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
-This is a place holder text for the abstract. The abstract should contain a couple of sentences summarizing the ontology and its purpose.</span>
+</div>     <div id="abstract">The M3 ontology describes entities related to freight transport and terminal operations. 
 </div>
 <div id="toc"></div> 
 
 <!--INTRODUCTION SECTION-->
-    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-<span class="markdown">
-This is a place holder text for the introduction. The introduction should briefly describe the ontology, its motivation, state of the art and goals.</span>
-<div id="namespacedeclarations">
-<h3 id="ns" class="list">Namespace declarations</h3>
-<div id="ns" align="center">
-<table>
-<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
-<tbody>
-<tr><td><b>[Ontology NS Prefix]</b></td><td>&lt;https://w3id.org/latuli/ontology/m3#&gt;</td></tr>
-<tr><td><b>geos</b></td><td>&lt;http://www.opengis.net/ont/geosparql&gt;</td></tr>
-<tr><td><b>[Ontology NS Prefix]</b></td><td>&lt;https://w3id.org/latuli/ontology/m3&gt;</td></tr>
-<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl&gt;</td></tr>
-<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt;</td></tr>
-<tr><td><b>terms</b></td><td>&lt;http://purl.org/dc/terms&gt;</td></tr>
-<tr><td><b>xml</b></td><td>&lt;http://www.w3.org/XML/1998/namespace&gt;</td></tr>
-<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema&gt;</td></tr>
-<tr><td><b>skos</b></td><td>&lt;http://www.w3.org/2004/02/skos/core&gt;</td></tr>
-<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema&gt;</td></tr>
-<tr><td><b>onto</b></td><td>&lt;http://latuli.no/onto&gt;</td></tr>
-<tr><td><b>dc</b></td><td>&lt;http://purl.org/dc/elements/1.1&gt;</td></tr>
-</tbody>
-</table>
-</div>
-</div>
+    <div id="introduction">The M3 ontology is developed in the research project Latuli, a project funded by the Norwegian Research Council. The partners in this project are Mixmove (https://www.mixmove.io/) and SINTEF (http://www.sintef.com). The main objective of this project is to perform data analysis and thereby get a step closer to self-learning freight terminals. 
 </div>
   
 
 <!--OVERVIEW SECTION-->
-    <div id="overview"><h2 id="overv" class="list">[Ontology Name]: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+    <div id="overview"><h2 id="overv" class="list">M3 Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 <span class="markdown">
 This ontology has the following classes and properties.</span>
 <h4>Classes</h4>
@@ -139,6 +115,12 @@ This ontology has the following classes and properties.</span>
          title="https://w3id.org/latuli/ontology/m3#DangerousGoods">
          <span>dangerous goods</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
    </li>
    <li>
       <a href="#HubReconstructionLocation"
@@ -178,6 +160,10 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+         title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+   </li>
+   <li>
       <a href="#TerminalOperator"
          title="https://w3id.org/latuli/ontology/m3#TerminalOperator">
          <span>terminal operator</span>
@@ -210,6 +196,46 @@ This ontology has the following classes and properties.</span>
          title="https://w3id.org/latuli/ontology/m3#belongsToShipment">
          <span>belongs to shipment</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehContains" title="http://www.opengis.net/ont/geosparql#ehContains">contains contains</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfContains" title="http://www.opengis.net/ont/geosparql#sfContains">contains contains</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehCoveredBy" title="http://www.opengis.net/ont/geosparql#ehCoveredBy">coveredBy coveredBy</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehCovers" title="http://www.opengis.net/ont/geosparql#ehCovers">covers covers</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfCrosses" title="http://www.opengis.net/ont/geosparql#sfCrosses">crosses crosses</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
+         title="http://www.opengis.net/ont/geosparql#defaultGeometry">defaultGeometry defaultGeometry</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8dc" title="http://www.opengis.net/ont/geosparql#rcc8dc">disconnected disconnected</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehDisjoint" title="http://www.opengis.net/ont/geosparql#ehDisjoint">disjoint disjoint</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8eq" title="http://www.opengis.net/ont/geosparql#rcc8eq">equals equals</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfEquals" title="http://www.opengis.net/ont/geosparql#sfEquals">equals equals</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8ec" title="http://www.opengis.net/ont/geosparql#rcc8ec">externally connected externally connected</a>
    </li>
    <li>
       <a href="#hasCarrierParty"
@@ -294,10 +320,38 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#http://www.opengis.net/ont/geosparql#hasGeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry">hasGeometry hasGeometry</a>
+   </li>
+   <li>
       <a href="#includesTransport"
          title="https://w3id.org/latuli/ontology/m3#includesTransport">
          <span>includes transport</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfIntersects"
+         title="http://www.opengis.net/ont/geosparql#sfIntersects">intersects intersects</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8ntppi" title="http://www.opengis.net/ont/geosparql#rcc8ntppi">non-tangential proper part inverse non-tangential proper part inverse</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#ehOverlap" title="http://www.opengis.net/ont/geosparql#ehOverlap">overlap overlap</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfOverlaps" title="http://www.opengis.net/ont/geosparql#sfOverlaps">overlaps overlaps</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8po" title="http://www.opengis.net/ont/geosparql#rcc8po">partially overlapping partially overlapping</a>
    </li>
    <li>
       <a href="#processedByWave"
@@ -311,6 +365,18 @@ This ontology has the following classes and properties.</span>
          <span>relates to trade item</span>
       </a>
    </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8tppi" title="http://www.opengis.net/ont/geosparql#rcc8tppi">tangential proper part inverse tangential proper part inverse</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfTouches" title="http://www.opengis.net/ont/geosparql#sfTouches">touches touches</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#sfWithin" title="http://www.opengis.net/ont/geosparql#sfWithin">within within</a>
+   </li>
 </ul><h4>Data Properties</h4><ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" class="hlist">
    <li>
       <a href="#additionalPartyIdentification"
@@ -322,6 +388,12 @@ This ontology has the following classes and properties.</span>
       <a href="#asWKT" title="https://w3id.org/latuli/ontology/m3#asWKT">
          <span>as w k t</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
    </li>
    <li>
       <a href="#carrierHashCode"
@@ -364,6 +436,10 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#http://www.opengis.net/ont/geosparql#coordinateDimension"
+         title="http://www.opengis.net/ont/geosparql#coordinateDimension">coordinateDimension coordinateDimension</a>
+   </li>
+   <li>
       <a href="#createdOn" title="https://w3id.org/latuli/ontology/m3#createdOn">
          <span>created on</span>
       </a>
@@ -390,6 +466,9 @@ This ontology has the following classes and properties.</span>
       <a href="#description" title="https://w3id.org/latuli/ontology/m3#description">
          <span>description</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#dimension" title="http://www.opengis.net/ont/geosparql#dimension">dimension dimension</a>
    </li>
    <li>
       <a href="#effectiveArrival"
@@ -434,6 +513,10 @@ This ontology has the following classes and properties.</span>
          title="https://w3id.org/latuli/ontology/m3#handlingInstruction">
          <span>handling instruction</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#hasSerialization"
+         title="http://www.opengis.net/ont/geosparql#hasSerialization">has serialization has serialization</a>
    </li>
    <li>
       <a href="#hashCode" title="https://w3id.org/latuli/ontology/m3#hashCode">
@@ -487,6 +570,12 @@ This ontology has the following classes and properties.</span>
       <a href="#isShipper" title="https://w3id.org/latuli/ontology/m3#isShipper">
          <span>is shipper</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#isEmpty" title="http://www.opengis.net/ont/geosparql#isEmpty">isEmpty isEmpty</a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#isSimple" title="http://www.opengis.net/ont/geosparql#isSimple">isSimple isSimple</a>
    </li>
    <li>
       <a href="#location" title="https://w3id.org/latuli/ontology/m3#location">
@@ -582,7 +671,8 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
-      <a href="#qttShipments" title="https://w3id.org/latuli/ontology/m3#qttShipments">
+      <a href="#qttShipments"
+         title="https://w3id.org/latuli/ontology/m3#qttShipments">
          <span>qtt shipments</span>
       </a>
    </li>
@@ -654,6 +744,10 @@ This ontology has the following classes and properties.</span>
          title="https://w3id.org/latuli/ontology/m3#shipperHashCode">
          <span>shipper hash code</span>
       </a>
+   </li>
+   <li>
+      <a href="#http://www.opengis.net/ont/geosparql#spatialDimension"
+         title="http://www.opengis.net/ont/geosparql#spatialDimension">spatialDimension spatialDimension</a>
    </li>
    <li>
       <a href="#splitShipment"
@@ -783,19 +877,11 @@ This ontology has the following classes and properties.</span>
    </li>
 </ul>
 </div>
-  
-
-<!--DESCRIPTION SECTION-->
-    <div id="description"><h2 id="desc" class="list">[Ontology Name]: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-<span class="markdown">
-This is a placeholder text for the description of your ontology. The description should include an explanation and a diagram explaining how the classes are related, examples of usage, etc.</span>
-
-</div>
    
 
 <!--CROSSREF SECTION-->
-   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for [Ontology Name] classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-This section provides details for each class and property defined by [Ontology Name].
+   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for M3 Ontology classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by M3 Ontology.
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
    <h3 id="classes-headline" class="list">Classes</h3>
    <ul class="hlist">
@@ -824,6 +910,12 @@ This section provides details for each class and property defined by [Ontology N
             title="https://w3id.org/latuli/ontology/m3#DangerousGoods">
             <span>dangerous goods</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
       </li>
       <li>
          <a href="#HubReconstructionLocation"
@@ -861,6 +953,10 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#Shipper" title="https://w3id.org/latuli/ontology/m3#Shipper">
             <span>shipper</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+            title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
       </li>
       <li>
          <a href="#TerminalOperator"
@@ -1010,6 +1106,171 @@ This section provides details for each class and property defined by [Ontology N
       <dl class="description">
          <dt>has super-classes</dt>
          <dd/>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#Feature">
+      <h3>Feature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <h3>Feature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#Feature</p>
+      <div class="comment">
+         <span class="markdown">
+      This class represents the top-level feature type. This class is 
+      equivalent to GFI_Feature defined in ISO 19156:2011, and it is 
+      superclass of all feature types.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      This class represents the top-level feature type. This class is 
+      equivalent to GFI_Feature defined in ISO 19156:2011, and it is 
+      superclass of all feature types.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      This class represents the top-level feature type. This class is 
+      equivalent to GFI_Feature defined in ISO 19156:2011, and it is 
+      superclass of all feature types.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+               title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
+               title="http://www.opengis.net/ont/geosparql#defaultGeometry">defaultGeometry defaultGeometry</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#hasGeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry">hasGeometry hasGeometry</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#Geometry">
+      <h3>Geometry<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <h3>Geometry<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#Geometry</p>
+      <div class="comment">
+         <span class="markdown">
+      The class represents the top-level geometry type. This class is 
+      equivalent to the UML class GM_Object defined in ISO 19107, and 
+      it is superclass of all geometry types.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The class represents the top-level geometry type. This class is 
+      equivalent to the UML class GM_Object defined in ISO 19107, and 
+      it is superclass of all geometry types.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The class represents the top-level geometry type. This class is 
+      equivalent to the UML class GM_Object defined in ISO 19107, and 
+      it is superclass of all geometry types.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+               title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#coordinateDimension"
+               title="http://www.opengis.net/ont/geosparql#coordinateDimension">coordinateDimension coordinateDimension</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#dimension" title="http://www.opengis.net/ont/geosparql#dimension">dimension dimension</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#hasSerialization"
+               title="http://www.opengis.net/ont/geosparql#hasSerialization">has serialization has serialization</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#isEmpty" title="http://www.opengis.net/ont/geosparql#isEmpty">isEmpty isEmpty</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#isSimple" title="http://www.opengis.net/ont/geosparql#isSimple">isSimple isSimple</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#spatialDimension"
+               title="http://www.opengis.net/ont/geosparql#spatialDimension">spatialDimension spatialDimension</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
+               title="http://www.opengis.net/ont/geosparql#defaultGeometry">defaultGeometry defaultGeometry</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#hasGeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry">hasGeometry hasGeometry</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
       </dl>
    </div>
    <div class="entity" id="HubReconstructionLocation">
@@ -1207,6 +1468,124 @@ This section provides details for each class and property defined by [Ontology N
          </dd>
       </dl>
    </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#SpatialObject">
+      <h3>SpatialObject<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <h3>SpatialObject<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#SpatialObject</p>
+      <div class="comment">
+         <span class="markdown">
+      The class spatial-object represents everything that can have 
+      a spatial representation. It is superclass of feature and geometry.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The class spatial-object represents everything that can have 
+      a spatial representation. It is superclass of feature and geometry.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The class spatial-object represents everything that can have 
+      a spatial representation. It is superclass of feature and geometry.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#ehContains" title="http://www.opengis.net/ont/geosparql#ehContains">contains contains</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfContains" title="http://www.opengis.net/ont/geosparql#sfContains">contains contains</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehCoveredBy" title="http://www.opengis.net/ont/geosparql#ehCoveredBy">coveredBy coveredBy</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehCovers" title="http://www.opengis.net/ont/geosparql#ehCovers">covers covers</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfCrosses" title="http://www.opengis.net/ont/geosparql#sfCrosses">crosses crosses</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8dc" title="http://www.opengis.net/ont/geosparql#rcc8dc">disconnected disconnected</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehDisjoint" title="http://www.opengis.net/ont/geosparql#ehDisjoint">disjoint disjoint</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8eq" title="http://www.opengis.net/ont/geosparql#rcc8eq">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfEquals" title="http://www.opengis.net/ont/geosparql#sfEquals">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ec" title="http://www.opengis.net/ont/geosparql#rcc8ec">externally connected externally connected</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfIntersects"
+               title="http://www.opengis.net/ont/geosparql#sfIntersects">intersects intersects</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ntppi" title="http://www.opengis.net/ont/geosparql#rcc8ntppi">non-tangential proper part inverse non-tangential proper part inverse</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehOverlap" title="http://www.opengis.net/ont/geosparql#ehOverlap">overlap overlap</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfOverlaps" title="http://www.opengis.net/ont/geosparql#sfOverlaps">overlaps overlaps</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8po" title="http://www.opengis.net/ont/geosparql#rcc8po">partially overlapping partially overlapping</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8tppi" title="http://www.opengis.net/ont/geosparql#rcc8tppi">tangential proper part inverse tangential proper part inverse</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfTouches" title="http://www.opengis.net/ont/geosparql#sfTouches">touches touches</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfWithin" title="http://www.opengis.net/ont/geosparql#sfWithin">within within</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#ehContains" title="http://www.opengis.net/ont/geosparql#ehContains">contains contains</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfContains" title="http://www.opengis.net/ont/geosparql#sfContains">contains contains</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehCoveredBy" title="http://www.opengis.net/ont/geosparql#ehCoveredBy">coveredBy coveredBy</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehCovers" title="http://www.opengis.net/ont/geosparql#ehCovers">covers covers</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfCrosses" title="http://www.opengis.net/ont/geosparql#sfCrosses">crosses crosses</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8dc" title="http://www.opengis.net/ont/geosparql#rcc8dc">disconnected disconnected</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehDisjoint" title="http://www.opengis.net/ont/geosparql#ehDisjoint">disjoint disjoint</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8eq" title="http://www.opengis.net/ont/geosparql#rcc8eq">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfEquals" title="http://www.opengis.net/ont/geosparql#sfEquals">equals equals</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ec" title="http://www.opengis.net/ont/geosparql#rcc8ec">externally connected externally connected</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfIntersects"
+               title="http://www.opengis.net/ont/geosparql#sfIntersects">intersects intersects</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ntppi" title="http://www.opengis.net/ont/geosparql#rcc8ntppi">non-tangential proper part inverse non-tangential proper part inverse</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#ehOverlap" title="http://www.opengis.net/ont/geosparql#ehOverlap">overlap overlap</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfOverlaps" title="http://www.opengis.net/ont/geosparql#sfOverlaps">overlaps overlaps</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8po" title="http://www.opengis.net/ont/geosparql#rcc8po">partially overlapping partially overlapping</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8tppi" title="http://www.opengis.net/ont/geosparql#rcc8tppi">tangential proper part inverse tangential proper part inverse</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfTouches" title="http://www.opengis.net/ont/geosparql#sfTouches">touches touches</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.opengis.net/ont/geosparql#sfWithin" title="http://www.opengis.net/ont/geosparql#sfWithin">within within</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
    <div class="entity" id="TerminalOperator">
       <h3>terminal operator<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
@@ -1286,7 +1665,8 @@ This section provides details for each class and property defined by [Ontology N
          <dd/>
          <dt>is in domain of</dt>
          <dd>
-            <a href="#qttShipments" title="https://w3id.org/latuli/ontology/m3#qttShipments">qtt shipments</a>
+            <a href="#qttShipments"
+               title="https://w3id.org/latuli/ontology/m3#qttShipments">qtt shipments</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#qttTasks" title="https://w3id.org/latuli/ontology/m3#qttTasks">qtt tasks</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#qttTrailers" title="https://w3id.org/latuli/ontology/m3#qttTrailers">qtt trailers</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#waveEndProcessingOn"
@@ -1334,6 +1714,46 @@ This section provides details for each class and property defined by [Ontology N
             title="https://w3id.org/latuli/ontology/m3#belongsToShipment">
             <span>belongs to shipment</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehContains" title="http://www.opengis.net/ont/geosparql#ehContains">contains contains</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfContains" title="http://www.opengis.net/ont/geosparql#sfContains">contains contains</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehCoveredBy" title="http://www.opengis.net/ont/geosparql#ehCoveredBy">coveredBy coveredBy</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehCovers" title="http://www.opengis.net/ont/geosparql#ehCovers">covers covers</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfCrosses" title="http://www.opengis.net/ont/geosparql#sfCrosses">crosses crosses</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
+            title="http://www.opengis.net/ont/geosparql#defaultGeometry">defaultGeometry defaultGeometry</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8dc" title="http://www.opengis.net/ont/geosparql#rcc8dc">disconnected disconnected</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehDisjoint" title="http://www.opengis.net/ont/geosparql#ehDisjoint">disjoint disjoint</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8eq" title="http://www.opengis.net/ont/geosparql#rcc8eq">equals equals</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfEquals" title="http://www.opengis.net/ont/geosparql#sfEquals">equals equals</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8ec" title="http://www.opengis.net/ont/geosparql#rcc8ec">externally connected externally connected</a>
       </li>
       <li>
          <a href="#hasCarrierParty"
@@ -1418,10 +1838,38 @@ This section provides details for each class and property defined by [Ontology N
          </a>
       </li>
       <li>
+         <a href="#http://www.opengis.net/ont/geosparql#hasGeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry">hasGeometry hasGeometry</a>
+      </li>
+      <li>
          <a href="#includesTransport"
             title="https://w3id.org/latuli/ontology/m3#includesTransport">
             <span>includes transport</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfIntersects"
+            title="http://www.opengis.net/ont/geosparql#sfIntersects">intersects intersects</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8ntppi" title="http://www.opengis.net/ont/geosparql#rcc8ntppi">non-tangential proper part inverse non-tangential proper part inverse</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#ehOverlap" title="http://www.opengis.net/ont/geosparql#ehOverlap">overlap overlap</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfOverlaps" title="http://www.opengis.net/ont/geosparql#sfOverlaps">overlaps overlaps</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8po" title="http://www.opengis.net/ont/geosparql#rcc8po">partially overlapping partially overlapping</a>
       </li>
       <li>
          <a href="#processedByWave"
@@ -1434,6 +1882,18 @@ This section provides details for each class and property defined by [Ontology N
             title="https://w3id.org/latuli/ontology/m3#relatesToTradeItem">
             <span>relates to trade item</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8tppi" title="http://www.opengis.net/ont/geosparql#rcc8tppi">tangential proper part inverse tangential proper part inverse</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfTouches" title="http://www.opengis.net/ont/geosparql#sfTouches">touches touches</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#sfWithin" title="http://www.opengis.net/ont/geosparql#sfWithin">within within</a>
       </li>
    </ul>
    <div class="entity" id="belongsToShipment">
@@ -1457,6 +1917,893 @@ This section provides details for each class and property defined by [Ontology N
             <dt>has range</dt>
             <dd>
                <a href="#Shipment" title="https://w3id.org/latuli/ontology/m3#Shipment">shipment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehContains">
+      <h3>contains<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>contains<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehContains</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*TFF*FF*
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*TFF*FF*
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*TFF*FF*
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfContains">
+      <h3>contains<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>contains<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfContains</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*****FF*
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*****FF*
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: T*****FF*
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehCoveredBy">
+      <h3>coveredBy<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>coveredBy<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehCoveredBy</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFF*TFT**
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFF*TFT**
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFF*TFT**
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehCovers">
+      <h3>covers<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>covers<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehCovers</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: T*TFT*FF*
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: T*TFT*FF*
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: T*TFT*FF*
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfCrosses">
+      <h3>crosses<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>crosses<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfCrosses</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially crosses the 
+      object SpatialObject. DE-9IM: T*T******
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially crosses the 
+      object SpatialObject. DE-9IM: T*T******
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially crosses the 
+      object SpatialObject. DE-9IM: T*T******
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#defaultGeometry">
+      <h3>defaultGeometry<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>defaultGeometry<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#defaultGeometry</p>
+      <div class="comment">
+         <span class="markdown">
+      The default geometry to be used in spatial calculations.
+      It is Usually the most detailed geometry.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The default geometry to be used in spatial calculations.
+      It is Usually the most detailed geometry.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The default geometry to be used in spatial calculations.
+      It is Usually the most detailed geometry.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#hasGeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry">hasGeometry hasGeometry</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8dc">
+      <h3>disconnected<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>disconnected<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8dc</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FFTFFTTTT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FFTFFTTTT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FFTFFTTTT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehDisjoint">
+      <h3>disjoint<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>disjoint<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehDisjoint</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfDisjoint">
+      <h3>disjoint<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>disjoint<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfDisjoint</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint 
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint 
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially disjoint 
+      from the object SpatialObject. DE-9IM: FF*FF****
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehEquals">
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehEquals</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8eq">
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8eq</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfEquals">
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>equals<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfEquals</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially equals the 
+      object SpatialObject. DE-9IM: TFFFTFFFT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8ec">
+      <h3>externally connected<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>externally connected<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8ec</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. DE-9IM: FFTFTTTTT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. DE-9IM: FFTFTTTTT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. DE-9IM: FFTFTTTTT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -1809,6 +3156,75 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#hasGeometry">
+      <h3>hasGeometry<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>hasGeometry<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#hasGeometry</p>
+      <div class="comment">
+         <span class="markdown">
+      A spatial representation for a given feature.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      A spatial representation for a given feature.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      A spatial representation for a given feature.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
+                  title="http://www.opengis.net/ont/geosparql#defaultGeometry">defaultGeometry defaultGeometry</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="includesTransport">
       <h3>includes transport<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -1824,6 +3240,556 @@ This section provides details for each class and property defined by [Ontology N
             <dt>has range</dt>
             <dd>
                <a href="#Transport" title="https://w3id.org/latuli/ontology/m3#Transport">transport</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehInside">
+      <h3>inside<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>inside<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehInside</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFF*FFT**
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFF*FFT**
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFF*FFT**
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfIntersects">
+      <h3>intersects<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>intersects<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfIntersects</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is not spatially disjoint 
+      from the object SpatialObject.
+      DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T**** 
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is not spatially disjoint 
+      from the object SpatialObject.
+      DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T**** 
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is not spatially disjoint 
+      from the object SpatialObject.
+      DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T**** 
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehMeet">
+      <h3>meet<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>meet<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehMeet</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. 
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. 
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially meets the 
+      object SpatialObject. 
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8ntppi">
+      <h3>non-tangential proper part inverse<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>non-tangential proper part inverse<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8ntppi</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: TTTFFTFFT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: TTTFFTFFT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially contains the 
+      object SpatialObject. DE-9IM: TTTFFTFFT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8ntpp">
+      <h3>non-tangential proper part<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>non-tangential proper part<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8ntpp</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFFTFFTTT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFFTFFTTT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially inside 
+      the object SpatialObject. DE-9IM: TFFTFFTTT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#ehOverlap">
+      <h3>overlap<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>overlap<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#ehOverlap</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T**
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T**
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T**
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfOverlaps">
+      <h3>overlaps<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>overlaps<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfOverlaps</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T** 
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T** 
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: T*T***T** 
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8po">
+      <h3>partially overlapping<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>partially overlapping<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8po</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: TTTTTTTTT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: TTTTTTTTT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially overlaps the 
+      object SpatialObject. DE-9IM: TTTTTTTTT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -1881,6 +3847,281 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8tppi">
+      <h3>tangential proper part inverse<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>tangential proper part inverse<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8tppi</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: TTTFTTFFT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: TTTFTTFFT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially covers the 
+      object SpatialObject. DE-9IM: TTTFTTFFT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#rcc8tpp">
+      <h3>tangential proper part<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>tangential proper part<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#rcc8tpp</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFFTTFTTT
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFFTTFTTT
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially covered 
+      by the object SpatialObject. DE-9IM: TFFTTFTTT
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfTouches">
+      <h3>touches<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>touches<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfTouches</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially touches the 
+      object SpatialObject.
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially touches the 
+      object SpatialObject.
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject spatially touches the 
+      object SpatialObject.
+      DE-9IM: FT******* ^ F**T***** ^ F***T****
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#sfWithin">
+      <h3>within<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <h3>within<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#sfWithin</p>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially within the 
+      object SpatialObject. DE-9IM: T*F**F***
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially within the 
+      object SpatialObject. DE-9IM: T*F**F***
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Exists if the subject SpatialObject is spatially within the 
+      object SpatialObject. DE-9IM: T*F**F***
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
+                  title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
 </div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
    <h3 id="dataproperties-headline" class="list">Data Properties</h3>
    <ul class="hlist">
@@ -1894,6 +4135,12 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#asWKT" title="https://w3id.org/latuli/ontology/m3#asWKT">
             <span>as w k t</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
       </li>
       <li>
          <a href="#carrierHashCode"
@@ -1936,6 +4183,10 @@ This section provides details for each class and property defined by [Ontology N
          </a>
       </li>
       <li>
+         <a href="#http://www.opengis.net/ont/geosparql#coordinateDimension"
+            title="http://www.opengis.net/ont/geosparql#coordinateDimension">coordinateDimension coordinateDimension</a>
+      </li>
+      <li>
          <a href="#createdOn" title="https://w3id.org/latuli/ontology/m3#createdOn">
             <span>created on</span>
          </a>
@@ -1962,6 +4213,9 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#description" title="https://w3id.org/latuli/ontology/m3#description">
             <span>description</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#dimension" title="http://www.opengis.net/ont/geosparql#dimension">dimension dimension</a>
       </li>
       <li>
          <a href="#effectiveArrival"
@@ -2006,6 +4260,10 @@ This section provides details for each class and property defined by [Ontology N
             title="https://w3id.org/latuli/ontology/m3#handlingInstruction">
             <span>handling instruction</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#hasSerialization"
+            title="http://www.opengis.net/ont/geosparql#hasSerialization">has serialization has serialization</a>
       </li>
       <li>
          <a href="#hashCode" title="https://w3id.org/latuli/ontology/m3#hashCode">
@@ -2059,6 +4317,12 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#isShipper" title="https://w3id.org/latuli/ontology/m3#isShipper">
             <span>is shipper</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#isEmpty" title="http://www.opengis.net/ont/geosparql#isEmpty">isEmpty isEmpty</a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#isSimple" title="http://www.opengis.net/ont/geosparql#isSimple">isSimple isSimple</a>
       </li>
       <li>
          <a href="#location" title="https://w3id.org/latuli/ontology/m3#location">
@@ -2154,7 +4418,8 @@ This section provides details for each class and property defined by [Ontology N
          </a>
       </li>
       <li>
-         <a href="#qttShipments" title="https://w3id.org/latuli/ontology/m3#qttShipments">
+         <a href="#qttShipments"
+            title="https://w3id.org/latuli/ontology/m3#qttShipments">
             <span>qtt shipments</span>
          </a>
       </li>
@@ -2226,6 +4491,10 @@ This section provides details for each class and property defined by [Ontology N
             title="https://w3id.org/latuli/ontology/m3#shipperHashCode">
             <span>shipper hash code</span>
          </a>
+      </li>
+      <li>
+         <a href="#http://www.opengis.net/ont/geosparql#spatialDimension"
+            title="http://www.opengis.net/ont/geosparql#spatialDimension">spatialDimension spatialDimension</a>
       </li>
       <li>
          <a href="#splitShipment"
@@ -2393,7 +4662,147 @@ This section provides details for each class and property defined by [Ontology N
             <dd>
                <a href="http://www.opengis.net/ont/geosparql#wktLiteral"
                   target="_blank"
-                  title="http://www.opengis.net/ont/geosparql#wktLiteral">wkt literal</a>
+                  title="http://www.opengis.net/ont/geosparql#wktLiteral">Well-known Text Literal Well-known Text Literal</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#asGML">
+      <h3>asGML<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>asGML<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#asGML</p>
+      <div class="comment">
+         <span class="markdown">
+      The GML serialization of a geometry
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The GML serialization of a geometry
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The GML serialization of a geometry
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#hasSerialization"
+                  title="http://www.opengis.net/ont/geosparql#hasSerialization">has serialization has serialization</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.opengis.net/ont/geosparql#gmlLiteral"
+                  target="_blank"
+                  title="http://www.opengis.net/ont/geosparql#gmlLiteral">GML Literal GML Literal</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#asWKT">
+      <h3>asWKT<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>asWKT<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#asWKT</p>
+      <div class="comment">
+         <span class="markdown">
+      The WKT serialization of a geometry
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The WKT serialization of a geometry
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The WKT serialization of a geometry
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#hasSerialization"
+                  title="http://www.opengis.net/ont/geosparql#hasSerialization">has serialization has serialization</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.opengis.net/ont/geosparql#wktLiteral"
+                  target="_blank"
+                  title="http://www.opengis.net/ont/geosparql#wktLiteral">Well-known Text Literal Well-known Text Literal</a>
             </dd>
          </dl>
       </div>
@@ -2574,6 +4983,73 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#coordinateDimension">
+      <h3>coordinateDimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>coordinateDimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#coordinateDimension</p>
+      <div class="comment">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the position of this
+      geometry in a coordinate system.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the position of this
+      geometry in a coordinate system.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the position of this
+      geometry in a coordinate system.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="createdOn">
       <h3>created on<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -2699,6 +5175,79 @@ This section provides details for each class and property defined by [Ontology N
                <a href="http://www.w3.org/2001/XMLSchema#string"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#dimension">
+      <h3>dimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>dimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#dimension</p>
+      <div class="comment">
+         <span class="markdown">
+      The topological dimension of this geometric object, which 
+      must be less than or equal to the coordinate dimension. 
+      In non-homogeneous collections, this will return the largest 
+      topological dimension of the contained objects.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The topological dimension of this geometric object, which 
+      must be less than or equal to the coordinate dimension. 
+      In non-homogeneous collections, this will return the largest 
+      topological dimension of the contained objects.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The topological dimension of this geometric object, which 
+      must be less than or equal to the coordinate dimension. 
+      In non-homogeneous collections, this will return the largest 
+      topological dimension of the contained objects.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
             </dd>
          </dl>
       </div>
@@ -2896,6 +5445,76 @@ This section provides details for each class and property defined by [Ontology N
                <a href="http://www.w3.org/2001/XMLSchema#string"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#hasSerialization">
+      <h3>has serialization<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>has serialization<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#hasSerialization</p>
+      <div class="comment">
+         <span class="markdown">
+      Connects a geometry object with its text-based serialization.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      Connects a geometry object with its text-based serialization.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      Connects a geometry object with its text-based serialization.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
+                  target="_blank"
+                  title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</a>
             </dd>
          </dl>
       </div>
@@ -3113,6 +5732,143 @@ This section provides details for each class and property defined by [Ontology N
       </div>
       <div class="description">
          <dl>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#isEmpty">
+      <h3>isEmpty<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>isEmpty<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#isEmpty</p>
+      <div class="comment">
+         <span class="markdown">
+      (true) if this geometric object is the empty Geometry. If 
+      true, then this geometric object represents the empty point 
+      set for the coordinate space.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      (true) if this geometric object is the empty Geometry. If 
+      true, then this geometric object represents the empty point 
+      set for the coordinate space.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      (true) if this geometric object is the empty Geometry. If 
+      true, then this geometric object represents the empty point 
+      set for the coordinate space.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#isSimple">
+      <h3>isSimple<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>isSimple<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#isSimple</p>
+      <div class="comment">
+         <span class="markdown">
+      (true) if this geometric object has no anomalous geometric 
+      points, such as self intersection or self tangency.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      (true) if this geometric object has no anomalous geometric 
+      points, such as self intersection or self tangency.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      (true) if this geometric object has no anomalous geometric 
+      points, such as self intersection or self tangency.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="http://www.w3.org/2001/XMLSchema#boolean"
@@ -3990,6 +6746,73 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="http://www.opengis.net/ont/geosparql#spatialDimension">
+      <h3>spatialDimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <h3>spatialDimension<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.opengis.net/ont/geosparql#spatialDimension</p>
+      <div class="comment">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the spatial position of 
+      this geometry in a coordinate system.
+    </span>
+      </div>
+      <div class="comment">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the spatial position of 
+      this geometry in a coordinate system.
+    </span>
+      </div>
+      <div class="info">
+         <span class="markdown">
+      The number of measurements or axes needed to describe the spatial position of 
+      this geometry in a coordinate system.
+    </span>
+      </div>
+      <dl>
+         <dt>Date:
+        </dt>
+         <dd>16/06/2011</dd>
+      </dl>
+      <dl>
+         <dt>Authors:
+                    </dt>
+         <dd>OGC GeoSPARQL 1.0 Standard Working Group</dd>
+         <dt>Contributors:
+                    </dt>
+         <dd>Matthew Perry</dd>
+      </dl>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
+         </dd>
+         <dd>
+            <a href="http://www.opengis.net/spec/geosparql/1.0">http://www.opengis.net/spec/geosparql/1.0</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="splitShipment">
       <h3>split shipment<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -4584,15 +7407,6 @@ This section provides details for each class and property defined by [Ontology N
 <sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals
 </div>
 </div>
-</div>
-    
-
-<!--REFERENCES SECTION-->
-  <div id="references">
-<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-<span class="markdown">
-Add your references here. It is recommended to have them as a list.</span>
-
 </div>
 <div id="acknowledgments">
 <h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>

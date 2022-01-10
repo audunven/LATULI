@@ -9,7 +9,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:terms="http://purl.org/dc/terms/">
-    <owl:Ontology rdf:about="http://latuli.no/terminalCapacityOnto">
+    <owl:Ontology rdf:about="https://w3id.org/latuli/ontology/tcm#">
         <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time#2016"/>
     </owl:Ontology>
@@ -27,254 +27,330 @@
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageContainerTransitTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#containerTransitTime -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageContainerTransitTime">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#containerTransitTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageLoadingTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#dimensionMeasurementType -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageLoadingTime">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#dimensionMeasurementType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementType"/>
+        <rdfs:comment>Relates a Dimension with a MeasurementType (e.g., metre, cubic or kilogram).</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageMissedOrders -->
+    <!-- https://w3id.org/latuli/ontology/tcm#handlingAreaSize -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageMissedOrders">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#handlingAreaSize">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the size (physical characteristics) of the handling area in a terminal</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageNotFullyLoadedTransportMeans -->
+    <!-- https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNotFullyLoadedTransportMeans">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementLimit"/>
+        <rdfs:comment>Relates a PeriodicMeasurement to a MeasurementLimit in order to specify the type of measurement made (average, min, max, etc.)</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfHandlingUnitsProcessedPerPeriod -->
+    <!-- https://w3id.org/latuli/ontology/tcm#internalResourceCapacity -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfHandlingUnitsProcessedPerPeriod">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>The capacity of the conveyor belts network in an automated transportation mode, or the maximum number of workers available if the transportation is done manually, can be either considered limited or unlimited.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfInboundTrucksProcessedPerPeriod -->
+    <!-- https://w3id.org/latuli/ontology/tcm#internalTravelDistance -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfInboundTrucksProcessedPerPeriod">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the distance from inbound docks to outbound docks including facilities used for processing the goods at a terminal.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfOutboundTrucksProcessedPerPeriod -->
+    <!-- https://w3id.org/latuli/ontology/tcm#loadingTime -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfOutboundTrucksProcessedPerPeriod">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#loadingTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The time it takes to load a transport means at the terminal.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageScheduleLength -->
+    <!-- https://w3id.org/latuli/ontology/tcm#missedOrders -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageScheduleLength">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#missedOrders">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The number of products that could not be loaded, or the corresponding lost profit.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageTranshipmentTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageTranshipmentTime">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>A ratio describing how often (on average) transport means depart from the terminal without full load</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageUnloadingTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageUnloadingTime">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The number of inbound transport means processed in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageWaitingTimeInboundTrucks -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageWaitingTimeInboundTrucks">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>A measure specifying the number of loading units processed at a terminal in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageWaitingTimeOutboundTrucks -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageWaitingTimeOutboundTrucks">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#degreeOfMultimodality -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfTouches -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#degreeOfMultimodality">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfTouches">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>Number of operations on a handling unit between it is unloaded from an inbound transport means and until it is loaded onto an outbound transport means</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#dimensionMeasurementType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#dimensionMeasurementType">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>Describes the percentage of trailers declined entrance upon arrival</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#handlingAreaSize -->
+    <!-- https://w3id.org/latuli/ontology/tcm#percentTransportMeansDeclinedEntrance -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#handlingAreaSize">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#percentTransportMeansDeclinedEntrance">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>Describes the percentage of transport means declined entrance upon arrival</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#internalResourceCapacity -->
+    <!-- https://w3id.org/latuli/ontology/tcm#periodicMeasurementDurationType -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#internalResourceCapacity">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#internalTravelDistance -->
-
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#internalTravelDistance">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#maxContainerTransitTime -->
-
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxContainerTransitTime">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#maxWaitingTimeInboundTrucks -->
-
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxWaitingTimeInboundTrucks">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#maxWaitingTimeOutboundTrucks -->
-
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxWaitingTimeOutboundTrucks">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#periodicMeasurementDurationType -->
-
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#periodicMeasurementDurationType">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#periodicMeasurementDurationType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+        <rdfs:comment>Describes a specific duration of a PeriodicMeasurement</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#serviceMode -->
+    <!-- https://w3id.org/latuli/ontology/tcm#planningHorizon -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#serviceMode">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#ServiceMode"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#planningHorizon">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The planning horizon (in time) used at a terminal</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#storageCapacity -->
+    <!-- https://w3id.org/latuli/ontology/tcm#productType -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#storageCapacity">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#productType">
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#GoodsType"/>
+        <rdfs:comment>Relates an Inventory with a GoodsType</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#supportedGoodsType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#productsStayTime -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedGoodsType">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#GoodsType"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#productsStayTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The (average)  time spent inside the cross-dock for all the products.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#supportedLogisticsUnitType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#scheduleLength -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedLogisticsUnitType">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#scheduleLength">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The time between completed operation and the beginning of a new one</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#supportedTransportMeansType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#serviceMode -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#supportedTransportMeansType">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#serviceMode">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#ServiceMode"/>
+        <rdfs:comment>Relates a terminal to a ServiceMode.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#terminalTotalSize -->
+    <!-- https://w3id.org/latuli/ontology/tcm#stockedInventory -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#terminalTotalSize">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#stockedInventory">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Inventory"/>
+        <rdfs:comment>Describes the number and type of stocked products at a terminal, possibly for a particular period of time.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#transitCenterSize -->
+    <!-- https://w3id.org/latuli/ontology/tcm#storageCapacity -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/terminalCapacityOnto#transitCenterSize">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#storageCapacity">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the capacity (physical characteristics) of the storage function in a terminal</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#supportedGoodsType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#supportedGoodsType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#GoodsType"/>
+        <rdfs:comment>Describes the types of goods supported by the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#supportedLogisticsUnitType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#supportedLogisticsUnitType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#LogisticsUnit"/>
+        <rdfs:comment>Describes the types of logistics units supported at the terminal (e.g., containers, pallets, parcels, etc.)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#supportedTransportMeansType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#supportedTransportMeansType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMeans"/>
+        <rdfs:comment>Describes the types of transport means supported at the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#supportedTransportMode -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#supportedTransportMode">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMode"/>
+        <rdfs:comment>Describes the types of transport modes supported at the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#terminalTotalSize -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#terminalTotalSize">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the total size (physical characteristics) of a terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#transhipmentTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#transhipmentTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The processing time  (e.g. for a shipment or a consignment) from it arrives at the terminal until it leaves the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#transitCenterSize -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#transitCenterSize">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the size (physical characteristics) of the transit center in a terminal</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#unloadingTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#unloadingTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The time it takes to unload a transport means at the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#waitingTimeInboundTransportMeans -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#waitingTimeInboundTransportMeans">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>Time spent at docks waiting to unload goods.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#waitingTimeOutboundTransportMeans -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#waitingTimeOutboundTransportMeans">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>Time spent at docks waiting to transport goods from terminal.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -290,183 +366,171 @@
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfTouches -->
+    <!-- https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfTouches">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#averageNumberOfWorkingHours -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averageNumberOfWorkingHours">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The average number of working hours per week at the terminal</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#averagePercentageTrucksOrTrailersDeclinedEntrance -->
+    <!-- https://w3id.org/latuli/ontology/tcm#closeAdherenceToSchedule -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#averagePercentageTrucksOrTrailersDeclinedEntrance">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#closeAdherenceToSchedule">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag stating whether the terminal adheres to the schedule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether the internal transportation at the terminal is a combination of automated and manual (true) or not (false)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#dimensionMeasurementValue -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#dimensionMeasurementValue">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>A value that specifies a dimension measurement (e.g. The total size of a terminal has a value of 1000 (square metres)).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#doorUtilisationRate -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#doorUtilisationRate">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Describes the occupation time of doors at the terminal.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#closeAdherenceToSchedule -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#closeAdherenceToSchedule">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The number of inbound doors available at a terminal.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfOutboundDoors -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfOutboundDoors">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The number of outbound doors available at a terminal.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfParkingBaysInBuffer -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfParkingBaysInBuffer">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Describes the number of transport mode parking bays in a buffer zone.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Inventory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The number of stocked products at a terminal</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfTrailerParkingBays -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfTrailerParkingBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Describes the number of parking bays allocated to trailers</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfTransportMeansParkingBays -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfTransportMeansParkingBays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Describes the number of parking bays allocated to transport means</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether the internal transportation at the terminal is only automated (true) or not (false)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#combinedManualAndAutomaticInternalTransportation -->
+    <!-- https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#combinedManualAndAutomaticInternalTransportation">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether the internal transportation at the terminal is only manual (true) or not (false)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#dimensionMeasurementValue -->
+    <!-- https://w3id.org/latuli/ontology/tcm#periodicMeasurementValue -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#dimensionMeasurementValue">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#periodicMeasurementValue">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>A value that specifies a periodic measurement (e.g. the average unloading time at terminal X is 30 (minutes)).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#maxNumberOfStockedProducts -->
+    <!-- https://w3id.org/latuli/ontology/tcm#preemptionAllowed -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#maxNumberOfStockedProducts">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfInboundDoors -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfInboundDoors">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfOutboundDoors -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfOutboundDoors">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfParkingBaysInBuffer -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfParkingBaysInBuffer">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfSwitchBays -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfSwitchBays">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfTrailerParkingBays -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfTrailerParkingBays">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#numberOfTruckParkingBays -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#numberOfTruckParkingBays">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#onlyAutomaticInternalTransportation -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#onlyAutomaticInternalTransportation">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#preemptionAllowed">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#onlyManualInternalTransportation -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#onlyManualInternalTransportation">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#periodicMeasurementValue -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#periodicMeasurementValue">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#preemptionAllowed -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#preemptionAllowed">
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#serviceMode -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#serviceMode"/>
-    
-
-
-    <!-- http://latuli.no/terminalCapacityOnto#totalNumberOfStockedProducts -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/terminalCapacityOnto#totalNumberOfStockedProducts">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/terminalCapacityOnto#Terminal"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Describes whether the loading or unloading of a truck can be interrupted and must be completed later.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -482,63 +546,91 @@
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Dimension -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Dimension -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Dimension"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Dimension">
+        <rdfs:comment>Defines a measurable dimension (length, mass, weight, volume, or area) of an item.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#GoodsType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#GoodsType -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#GoodsType"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#GoodsType">
+        <rdfs:comment>Describes a classification of goods being managed during a freight logistics operation.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#LogisticsUnit -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Inventory -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Inventory">
+        <rdfs:comment>Describes the magnitude and type of inventory kept in a terminal.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#MeasurementType -->
+    <!-- https://w3id.org/latuli/ontology/tcm#LogisticsUnit -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#LogisticsUnit">
+        <rdfs:comment>Describes a uniquely identifiable unit consisting of one or more packages, goods items, or pieces of transport equipment.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#PeriodicMeasurement -->
+    <!-- https://w3id.org/latuli/ontology/tcm#MeasurementLimit -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#PeriodicMeasurement"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#MeasurementLimit">
+        <rdfs:comment>Describes the type of periodic measurement being made. Examples are average, maximum, minimum, median and standard deviation.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Service -->
+    <!-- https://w3id.org/latuli/ontology/tcm#MeasurementType -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Service"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#MeasurementType">
+        <rdfs:comment>Describes different types of measurement units. Examples are metre, cubic and gram.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#ServiceMode -->
+    <!-- https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#ServiceMode"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">
+        <rdfs:comment>Describes a periodic measurement of some performance indicator related to a freight terminal.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Terminal -->
+    <!-- https://w3id.org/latuli/ontology/tcm#ServiceMode -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#Terminal"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#ServiceMode">
+        <rdfs:comment>Describes whether the door mode at a terminal is exclusive or mixed. The door mode is exclusive if each door is dedicated either to inbound trucks or outbound trucks exclusively. The door mode is mixed if a truck can be docked at any door.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#TransportMeans -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Terminal -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Terminal">
+        <rdfs:comment>A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals.</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#TransportMode -->
+    <!-- https://w3id.org/latuli/ontology/tcm#TransportMeans -->
 
-    <owl:Class rdf:about="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#TransportMeans">
+        <rdfs:comment>A transport means is a particular device (with its own engine/power) used to convey goods or other objects from place to place during logistics cargo movements.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#TransportMode -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#TransportMode">
+        <rdfs:comment>Describes the mode of transportation being used on a transportation segment. Examples are AirTransport, RoadTransport, RailTransport and MaritimeTransport.</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -553,90 +645,114 @@
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Aircraft -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Aircraft -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Aircraft">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Aircraft">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMeans"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Carton -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Carton -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Carton">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Carton">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#LogisticsUnit"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#CubicMeter -->
+    <!-- https://w3id.org/latuli/ontology/tcm#CubicMeter -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#CubicMeter">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#CubicMeter">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementType"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Meter -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Meter -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Meter">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Meter">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementType"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Multimodal -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Multimodal -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Multimodal">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Multimodal">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMode"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Pallet -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Pallet -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Pallet">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#LogisticsUnit"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Pallet">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#LogisticsUnit"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Ship -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Ship -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Ship">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Ship">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMeans"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#SquareMeter -->
+    <!-- https://w3id.org/latuli/ontology/tcm#SquareMeter -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#SquareMeter">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#MeasurementType"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#SquareMeter">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementType"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Train -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Train -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Train">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Train">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMeans"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#Truck -->
+    <!-- https://w3id.org/latuli/ontology/tcm#Truck -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#Truck">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMeans"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#Truck">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMeans"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://latuli.no/terminalCapacityOnto#UniModal -->
+    <!-- https://w3id.org/latuli/ontology/tcm#UniModal -->
 
-    <owl:NamedIndividual rdf:about="http://latuli.no/terminalCapacityOnto#UniModal">
-        <rdf:type rdf:resource="http://latuli.no/terminalCapacityOnto#TransportMode"/>
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#UniModal">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#TransportMode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#avg -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#avg">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementLimit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#max -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#max">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementLimit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#min -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/latuli/ontology/tcm#min">
+        <rdf:type rdf:resource="https://w3id.org/latuli/ontology/tcm#MeasurementLimit"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 

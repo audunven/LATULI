@@ -11,7 +11,9 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:terms="http://purl.org/dc/terms/">
-    <owl:Ontology rdf:about="http://latuli.no/onto"/>
+    <owl:Ontology rdf:about="https://w3id.org/latuli/ontology/m3#">
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+    </owl:Ontology>
     
 
 
@@ -60,161 +62,177 @@
     
 
 
-    <!-- http://latuli.no/onto#belongsToShipment -->
+    <!-- https://w3id.org/latuli/ontology/m3#belongsToShipment -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#belongsToShipment">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#belongsToShipment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
+        <rdfs:comment>Relates a TradeItem or a ShipmentItem to a Shipment.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasCarrierParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasCarrierParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasCarrierParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasCarrierParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Carrier"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Carrier"/>
+        <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasConsigneeParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasConsigneeParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasConsigneeParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsigneeParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Consignee"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignee"/>
+        <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasConsignorParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasConsignorParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasConsignorParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsignorParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Consignor"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignor"/>
+        <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasHubParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasHubParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubParty">
-        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasHubParty">
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasHubReconstructionLocation -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubReconstructionLocation">
-        <rdfs:range rdf:resource="http://latuli.no/onto#HubReconstructionLocation"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasHubReconstructionLocation">
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) to an HubReconstructionLocation</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasHubReconstructionParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasHubReconstructionParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasInboundConsignment -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasInboundConsignment -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasInboundConsignment">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasInboundConsignment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound Consignment</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasInboundParentLoadingUnit -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasInboundParentLoadingUnit">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) to an inbound parent LoadingUnit</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasLoadingUnit -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasLoadingUnit -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasLoadingUnit">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasLoadingUnit">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasOutboundConsignment -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasOutboundConsignment -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasOutboundConsignment">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasOutboundConsignment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound Consignment</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasOutboundParentLoadingUnit -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasOutboundParentLoadingUnit">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) to an outbound parent LoadingUnit</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasReceiverParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasReceiverParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasReceiverParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasReceiverParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Receiver"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Receiver"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#hasShipperParty -->
+    <!-- https://w3id.org/latuli/ontology/m3#hasShipperParty -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#hasShipperParty">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasShipperParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Shipper"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Shipper"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#includesTransport -->
+    <!-- https://w3id.org/latuli/ontology/m3#includesTransport -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#includesTransport">
-        <rdfs:range rdf:resource="http://latuli.no/onto#Transport"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#includesTransport">
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Transport"/>
+        <rdfs:comment>Relates a Consignment to a Transport</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#processedByWave -->
+    <!-- https://w3id.org/latuli/ontology/m3#processedByWave -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#processedByWave">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#processedByWave">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
+        <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://latuli.no/onto#relatesToTradeItem -->
+    <!-- https://w3id.org/latuli/ontology/m3#relatesToTradeItem -->
 
-    <owl:ObjectProperty rdf:about="http://latuli.no/onto#relatesToTradeItem">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#relatesToTradeItem">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://latuli.no/onto#TradeItem"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#TradeItem"/>
+        <rdfs:comment>Relates a DGR (dangerous goods) to a Trade Item.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -230,808 +248,837 @@
     
 
 
-    <!-- http://latuli.no/onto#additionalPartyIdentification -->
+    <!-- https://w3id.org/latuli/ontology/m3#additionalPartyIdentification -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#additionalPartyIdentification">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#additionalPartyIdentification">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifies a party using a custom identification scheme.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#asWKT -->
+    <!-- https://w3id.org/latuli/ontology/m3#asWKT -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#asWKT">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#asWKT">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
         <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#carrierHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#carrierHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#carrierHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#carrierHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a carrier party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#closedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#closedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#closedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#closedOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave is closed.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#code2 -->
+    <!-- https://w3id.org/latuli/ontology/m3#code2 -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#code2">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#code2">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Two-digit identifier for describing a country.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#consigneeHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#consigneeHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consigneeHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#consigneeHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a consignee party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#consignmentId -->
+    <!-- https://w3id.org/latuli/ontology/m3#consignmentId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignmentId">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#consignmentType -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignmentType">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#consignmentId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>An unique identifier for a consignment.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#consignorHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#consignmentType -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#consignorHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#consignmentType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes whether a consignment is inbound or outbound</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#createdOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#consignorHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#createdOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#consignorHashCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a consignor  party using a numeric value</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#createdOn -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#createdOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>A hashcode which represents a consignor  party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#customerProductDescription -->
+    <!-- https://w3id.org/latuli/ontology/m3#customerProductDescription -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerProductDescription">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#customerProductDescription">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A description of a trade item by the customer.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#customerProductId -->
+    <!-- https://w3id.org/latuli/ontology/m3#customerProductId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerProductId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#customerProductId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The identifier of a trade item used by the customer</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#customerQuantity -->
+    <!-- https://w3id.org/latuli/ontology/m3#customerQuantity -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#customerQuantity">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#customerQuantity">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The quantity of trade items expected by the customer.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#delta -->
+    <!-- https://w3id.org/latuli/ontology/m3#description -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#delta">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#description -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#description">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#description">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A description of a trade item.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#effectiveArrival -->
+    <!-- https://w3id.org/latuli/ontology/m3#effectiveArrival -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#effectiveArrival">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#effectiveArrival">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a transport means actually arrived at an hub.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#expectedArrival -->
+    <!-- https://w3id.org/latuli/ontology/m3#expectedArrival -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#expectedArrival">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#expectedArrival">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a transport means is expected to arrive at an hub.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#expectedDeliveryOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#expectedDeliveryOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#expectedDeliveryOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#expectedDeliveryOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a shipment is expected to be delivered to a receiver.</rdfs:comment>
         <skos:prefLabel xml:lang="nb">expectedDeliveryOn</skos:prefLabel>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#finishedScanOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#finishedScanOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#finishedScanOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#finishedScanOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a xDocLoadingUnit (cross dock loading unit) has been scanned.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#fullPalletConsignment -->
+    <!-- https://w3id.org/latuli/ontology/m3#fullPalletConsignment -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#fullPalletConsignment">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#fullPalletConsignment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes whether a consignment consist of full pallets (1) or not (0)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#gln -->
+    <!-- https://w3id.org/latuli/ontology/m3#gln -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#gln">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#gln">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>GLN is the GS1 Identification Key used to identify physical locations or parties. The key comprises a GS1 Company Prefix, Location Reference, and Check Digit</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#gtin -->
+    <!-- https://w3id.org/latuli/ontology/m3#gtin -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#gtin">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#gtin">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>GTIN is the GS1 Identification Key used to identify trade items. The key comprises a GS1 Company Prefix, an Item Reference and Check Digit.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#handlingInstruction -->
+    <!-- https://w3id.org/latuli/ontology/m3#handlingInstruction -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#handlingInstruction">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#handlingInstruction">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Instructions that describe how goods should be expedited during transport and other goods handling.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#hashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#hashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hashCode">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a hub party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#hubAdditionalPartyIdentification -->
+    <!-- https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubAdditionalPartyIdentification">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hubAdditionalPartyIdentification">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifies a hub party using a custom identification scheme.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#hubHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#hubHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hubHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a hub party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#hubReconstructionHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubReconstructionHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hubReconstructionHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a hub reconstruction location using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#hubReconstructionLocationId -->
+    <!-- https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#hubReconstructionLocationId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hubReconstructionLocationId">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for a hub reconstruction location</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#internalId -->
+    <!-- https://w3id.org/latuli/ontology/m3#internalId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#internalId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#internalId">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for an xDocLoadingUnit (cross-dock loading unit)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#isCarrier -->
+    <!-- https://w3id.org/latuli/ontology/m3#isCarrier -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isCarrier">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#isCarrier">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether a party is a carrier (1) or not (0)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#isConsignor -->
+    <!-- https://w3id.org/latuli/ontology/m3#isConsignor -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isConsignor">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#isConsignor">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether a party is a consignor (1) or not (0)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#isHub -->
+    <!-- https://w3id.org/latuli/ontology/m3#isHub -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isHub">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#isHub">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether a party is a hub (1) or not (0)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#isShipper -->
+    <!-- https://w3id.org/latuli/ontology/m3#isShipper -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#isShipper">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#isShipper">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>A flag that defines whether a party is a shipper (1) or not (0)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#location -->
+    <!-- https://w3id.org/latuli/ontology/m3#location -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#location">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#location">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of the city associated with a party</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#lotNumber -->
+    <!-- https://w3id.org/latuli/ontology/m3#lotNumber -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#lotNumber">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#material -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#material">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#lotNumber">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A lot number is an identification number assigned to a particular quantity or lot of material from a single manufacturer</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#modifiedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#material -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#modifiedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#material">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes the material used in a trade item</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#modifiedOn -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#modifiedOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when an entry in the database is modified.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#orderNumber -->
+    <!-- https://w3id.org/latuli/ontology/m3#orderNumber -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#orderNumber">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#orderNumber">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A reference to the order number when describing a loading unit.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#originalDataSource -->
+    <!-- https://w3id.org/latuli/ontology/m3#packageTypeId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#originalDataSource">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#packageTypeId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes what type of packaging type the loading unit consists of. Examples are BX (box) and PX (pallet).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#packageTypeId -->
+    <!-- https://w3id.org/latuli/ontology/m3#plannedDeliveryDate -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#packageTypeId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#plannedDeliveryDate">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#LoadingUnit"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#plannedDeliveryDate -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#plannedDeliveryDate">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a shipment is planned to be delivered to the receiver.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#plannedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#plannedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#plannedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#plannedOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave has been planned.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#postalCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#postalCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#postalCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#postalCode">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Party"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes the postal code associated with a party.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#preSortScanOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#preSortScanOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#preSortScanOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#preSortScanOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#XDocLoadingUnit"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when an XDocLoadingUnit (cross-dock loading unit) has been presorted.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#purchaseOrder -->
+    <!-- https://w3id.org/latuli/ontology/m3#purchaseOrder -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#purchaseOrder">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#purchaseOrder">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A reference to a purchase order associated with a trade item</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttBoxes -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttBoxes -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttBoxes">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttBoxes">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of boxes in a consignment, a shipment or in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttBoxesProcessed -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttBoxesProcessed -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttBoxesProcessed">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#qttPallets -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttPallets">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttBoxesProcessed">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of boxes processed in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttPalletsBuilt -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttPallets -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttPalletsBuilt">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttPallets">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of pallets in a consignment, a shipment or in wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttReconstructedPallets -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttPalletsBuilt -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttReconstructedPallets">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttPalletsBuilt">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of pallets built in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttReconstructedParcels -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttReconstructedPallets -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttReconstructedParcels">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttReconstructedPallets">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of reconstructed pallets in a consignment</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttShipments -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttReconstructedParcels -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttShipments">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttReconstructedParcels">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of reconstructed parcels in a consignment</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttTasks -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttShipments -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttTasks">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttShipments">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of shipments processed in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#qttTrailers -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttTasks -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#qttTrailers">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttTasks">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of tasks processed in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#quantity -->
+    <!-- https://w3id.org/latuli/ontology/m3#qttTrailers -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#quantity">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#qttTrailers">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#ShipmentItem"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of trailers processed in a wave</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#receiverHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#quantity -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#receiverHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#quantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#ShipmentItem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The quantity of individual items in a trade item</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#receiverHashCode -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#receiverHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a receiver party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#reconstructedScanOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#reconstructedScanOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructedScanOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#reconstructedScanOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#XDocLoadingUnit"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when an XDocLoadingUnit (cross-dock loading unit) is being reconstructed.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#reconstructionLane -->
+    <!-- https://w3id.org/latuli/ontology/m3#reconstructionLane -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionLane">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#reconstructionLane">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A lane or section in a terminal or hub used for the reconstruction of goods</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#reconstructionLocation -->
+    <!-- https://w3id.org/latuli/ontology/m3#reconstructionLocation -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionLocation">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#reconstructionLocation">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A location in which a reconstruction takes place.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#reconstructionType -->
+    <!-- https://w3id.org/latuli/ontology/m3#reconstructionTypeId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionType">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#reconstructionTypeId">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The type of reconstruction performed. Values are either loose cartons (LooseCarton), recon pallet (ReconPallet), or recon parcel (ReconParcel).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#reconstructionTypeId -->
+    <!-- https://w3id.org/latuli/ontology/m3#releasedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#reconstructionTypeId">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#releasedOn -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#releasedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#releasedOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave is released.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#salesOrder -->
+    <!-- https://w3id.org/latuli/ontology/m3#salesOrder -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#salesOrder">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#salesOrder">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A reference to a sales order associated with a trade item</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#season -->
+    <!-- https://w3id.org/latuli/ontology/m3#shipmentId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#season">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#shipmentId -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shipmentId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#shipmentId">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for a shipment.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#shippedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#shippedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shippedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#shippedOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Shipment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a shipment is sent from a shipper.</rdfs:comment>
         <skos:prefLabel xml:lang="nb">shippedOn</skos:prefLabel>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#shipperHashCode -->
+    <!-- https://w3id.org/latuli/ontology/m3#shipperHashCode -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#shipperHashCode">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#shipperHashCode">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A hashcode which represents a shipper party using a numeric value</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#splitShipment -->
+    <!-- https://w3id.org/latuli/ontology/m3#splitShipment -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#splitShipment">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#splitShipment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>A flag that defines whether a shipment has been split or not.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#status -->
+    <!-- https://w3id.org/latuli/ontology/m3#status -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#status">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#status">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The status of a wave.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#supplierProductDescription -->
+    <!-- https://w3id.org/latuli/ontology/m3#supplierProductDescription -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierProductDescription">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#supplierProductDescription">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A description of a trade item by the supplier.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#supplierProductId -->
+    <!-- https://w3id.org/latuli/ontology/m3#supplierProductId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierProductId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#supplierProductId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The identifier of a trade item used by the supplier.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#supplierQuantity -->
+    <!-- https://w3id.org/latuli/ontology/m3#supplierQuantity -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#supplierQuantity">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#supplierQuantity">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The quantity of trade items as provided by the supplier.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#taskClosedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#taskClosedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskClosedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#taskClosedOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a consignment task is closed.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#taskDescription -->
+    <!-- https://w3id.org/latuli/ontology/m3#taskDescription -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskDescription">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#taskDescription">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A description of a reconstruction task related to a consignment. Examples are Reconstruct by Address, Reconstruct by Product or Reconstruct by Order.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#taskId -->
+    <!-- https://w3id.org/latuli/ontology/m3#taskId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#taskId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#taskId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>An identifier that describes the reconstruction task related to a consignment.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#totalConsignmentVolume -->
+    <!-- https://w3id.org/latuli/ontology/m3#totalConsignmentVolume -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#totalConsignmentVolume">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#totalConsignmentVolume">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The total volume of a consignment.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#totalConsignmentWeight -->
+    <!-- https://w3id.org/latuli/ontology/m3#totalConsignmentWeight -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#totalConsignmentWeight">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#totalConsignmentWeight">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Consignment"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The total weight of a consignment.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#transportId -->
+    <!-- https://w3id.org/latuli/ontology/m3#transportId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#transportId">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for a transport.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#transportName -->
+    <!-- https://w3id.org/latuli/ontology/m3#transportName -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportName">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#transportName">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of a transport. Examples are TJUE042ZU2 and 528776.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#transportType -->
+    <!-- https://w3id.org/latuli/ontology/m3#transportType -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#transportType">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#transportType">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Transport"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Transport"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A flag that defines whether a transport is inbound (IN) or outbound (OUT)</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#volume -->
+    <!-- https://w3id.org/latuli/ontology/m3#volume -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#volume">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#volume">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The volume of an xDocLoadingUnit (cross-dock loading unit).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#waveClosedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#waveClosedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveClosedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#waveClosedOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave is closed.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#waveEndProcessingOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#waveEndProcessingOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveEndProcessingOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#waveEndProcessingOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave process is ended.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#waveId -->
+    <!-- https://w3id.org/latuli/ontology/m3#waveId -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveId">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#waveId">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for a wave.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#wavePlannedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#wavePlannedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#wavePlannedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#wavePlannedOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave has been planned.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#waveReleasedOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#waveReleasedOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveReleasedOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#waveReleasedOn">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave has been released to the floor.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#waveStartProcessingOn -->
+    <!-- https://w3id.org/latuli/ontology/m3#waveStartProcessingOn -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#waveStartProcessingOn">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#waveStartProcessingOn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://latuli.no/onto#Wave"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp for when a wave process is started.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://latuli.no/onto#weekDay -->
+    <!-- https://w3id.org/latuli/ontology/m3#weight -->
 
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#weekDay">
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#weight">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#weight -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#weight">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://latuli.no/onto#year -->
-
-    <owl:DatatypeProperty rdf:about="http://latuli.no/onto#year">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The weight of an xDocLoadingUnit (cross-dock loading unit).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1047,311 +1094,330 @@
     
 
 
-    <!-- http://latuli.no/onto#Carrier -->
+    <!-- https://w3id.org/latuli/ontology/m3#Carrier -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Carrier">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Carrier">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>A company, which physically transports goods from one place to another.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Consignee -->
+    <!-- https://w3id.org/latuli/ontology/m3#Consignee -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Consignee">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Consignee">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>In a consignment view / scenario, the entity who will receive the physical shipment.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Consignment -->
+    <!-- https://w3id.org/latuli/ontology/m3#Consignment -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Consignment">
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Consignment">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasCarrierParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Carrier"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasCarrierParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Carrier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsigneeParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignee"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasConsigneeParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignee"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsignorParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignor"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasConsignorParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignor"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasHubParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#includesTransport"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Transport"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#includesTransport"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Transport"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#processedByWave"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Wave"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#processedByWave"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>A consignment is a logical grouping of goods (one or more physical entities) that is intended to be transported as a whole from a consignor to a consignee by a carrier or freight forwarder via one or more modes of transport, subject to one single transport contract.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Consignor -->
+    <!-- https://w3id.org/latuli/ontology/m3#Consignor -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Consignor">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Consignor">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>In a consignment view / scenario, the entity who will ship the physical shipment.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#DangerousGoods -->
+    <!-- https://w3id.org/latuli/ontology/m3#DangerousGoods -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#DangerousGoods">
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#DangerousGoods">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#relatesToTradeItem"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#TradeItem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://latuli.no/onto#HubReconstructionLocation -->
-
-    <owl:Class rdf:about="http://latuli.no/onto#HubReconstructionLocation">
-        <owl:equivalentClass rdf:resource="http://latuli.no/onto#Terminal"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#relatesToTradeItem"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#TradeItem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#LoadingUnit -->
+    <!-- https://w3id.org/latuli/ontology/m3#HubReconstructionLocation -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#LoadingUnit"/>
-    
-
-
-    <!-- http://latuli.no/onto#Party -->
-
-    <owl:Class rdf:about="http://latuli.no/onto#Party"/>
-    
-
-
-    <!-- http://latuli.no/onto#Receiver -->
-
-    <owl:Class rdf:about="http://latuli.no/onto#Receiver">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation">
+        <owl:equivalentClass rdf:resource="https://w3id.org/latuli/ontology/m3#Terminal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The location where a reconstruction of goods takes place.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Shipment -->
+    <!-- https://w3id.org/latuli/ontology/m3#LoadingUnit -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Shipment">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasReceiverParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Receiver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasShipperParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipper"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#LoadingUnit">
+        <rdfs:comment>A logistic unit is a unit of any composition made up for transport and or storage which has to be managed throughout the supply chain.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#ShipmentItem -->
+    <!-- https://w3id.org/latuli/ontology/m3#Party -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#ShipmentItem">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Party">
+        <rdfs:comment>A person or group of people constituting a particular side in a contract or legal action.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Shipper -->
+    <!-- https://w3id.org/latuli/ontology/m3#Receiver -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Shipper">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Receiver">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>In a shipment scenario, a party who engages in receiving goods.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Terminal -->
+    <!-- https://w3id.org/latuli/ontology/m3#Shipment -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Terminal"/>
-    
-
-
-    <!-- http://latuli.no/onto#TerminalOperator -->
-
-    <owl:Class rdf:about="http://latuli.no/onto#TerminalOperator">
-        <rdfs:subClassOf rdf:resource="http://latuli.no/onto#Party"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Shipment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasReceiverParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Receiver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasShipperParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipper"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#TradeItem -->
+    <!-- https://w3id.org/latuli/ontology/m3#ShipmentItem -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#TradeItem">
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#ShipmentItem">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#belongsToShipment"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipment"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#Transport -->
+    <!-- https://w3id.org/latuli/ontology/m3#Shipper -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#Transport"/>
-    
-
-
-    <!-- http://latuli.no/onto#Wave -->
-
-    <owl:Class rdf:about="http://latuli.no/onto#Wave">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Shipper">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>In a shipment scenario, a party who engages in shipping goods.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://latuli.no/onto#XDocLoadingUnit -->
+    <!-- https://w3id.org/latuli/ontology/m3#Terminal -->
 
-    <owl:Class rdf:about="http://latuli.no/onto#XDocLoadingUnit">
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Terminal"/>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#TerminalOperator -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#TerminalOperator">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+        <rdfs:comment>Terminal operator means a person who by ownership or contractual agreement is charged with the responsibility for, or physical control over, and operation of a logistics terminal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#TradeItem -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#TradeItem">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasCarrierParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Carrier"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#belongsToShipment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsigneeParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignee"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#Transport -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Transport">
+        <rdfs:comment>Transport is the act of moving goods and materials from one location to another</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#Wave -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Wave">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasHubParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#XDocLoadingUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasCarrierParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Carrier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasConsignorParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignor"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasConsigneeParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignee"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasHubReconstructionParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasConsignorParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignor"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasInboundConsignment"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignment"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasInboundParentLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasInboundConsignment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasOutboundConsignment"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Consignment"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasOutboundParentLoadingUnit"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#LoadingUnit"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasOutboundConsignment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Party"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasReceiverParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Receiver"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#hasShipperParty"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Shipper"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasReceiverParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Receiver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://latuli.no/onto#processedByWave"/>
-                <owl:someValuesFrom rdf:resource="http://latuli.no/onto#Wave"/>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasShipperParty"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipper"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#processedByWave"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A loading unit which is received through an inbound dock and then transferred across the dock to an outbound transportation dock.</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 

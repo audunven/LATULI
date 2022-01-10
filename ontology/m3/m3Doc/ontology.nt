@@ -1,0 +1,767 @@
+<http://latuli.no/onto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.opengis.net/ont/geosparql#wktLiteral
+<http://www.opengis.net/ont/geosparql#wktLiteral> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://latuli.no/onto#belongsToShipment
+<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#belongsToShipment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Shipment> .
+# 
+# http://latuli.no/onto#hasCarrierParty
+<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasCarrierParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Carrier> .
+# 
+# http://latuli.no/onto#hasConsigneeParty
+<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasConsigneeParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignee> .
+# 
+# http://latuli.no/onto#hasConsignorParty
+<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasConsignorParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignor> .
+# 
+# http://latuli.no/onto#hasHubParty
+<http://latuli.no/onto#hasHubParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasHubParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#hasHubReconstructionLocation
+<http://latuli.no/onto#hasHubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasHubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#HubReconstructionLocation> .
+# 
+# http://latuli.no/onto#hasHubReconstructionParty
+<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasHubReconstructionParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#hasInboundConsignment
+<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasInboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignment> .
+# 
+# http://latuli.no/onto#hasInboundParentLoadingUnit
+<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasInboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# 
+# http://latuli.no/onto#hasLoadingUnit
+<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# 
+# http://latuli.no/onto#hasOutboundConsignment
+<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasOutboundConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Consignment> .
+# 
+# http://latuli.no/onto#hasOutboundParentLoadingUnit
+<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasOutboundParentLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#LoadingUnit> .
+# 
+# http://latuli.no/onto#hasParty
+<http://latuli.no/onto#hasParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#hasReceiverParty
+<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasReceiverParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Receiver> .
+# 
+# http://latuli.no/onto#hasShipperParty
+<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#hasShipperParty> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Shipper> .
+# 
+# http://latuli.no/onto#includesTransport
+<http://latuli.no/onto#includesTransport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#includesTransport> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Transport> .
+# 
+# http://latuli.no/onto#processedByWave
+<http://latuli.no/onto#processedByWave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#processedByWave> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#processedByWave> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#Wave> .
+# 
+# http://latuli.no/onto#relatesToTradeItem
+<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://latuli.no/onto#relatesToTradeItem> <http://www.w3.org/2000/01/rdf-schema#range> <http://latuli.no/onto#TradeItem> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://latuli.no/onto#additionalPartyIdentification
+<http://latuli.no/onto#additionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#additionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#asWKT
+<http://latuli.no/onto#asWKT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#asWKT> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.opengis.net/ont/geosparql#wktLiteral> .
+# 
+# http://latuli.no/onto#carrierHashCode
+<http://latuli.no/onto#carrierHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#carrierHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#closedOn
+<http://latuli.no/onto#closedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#closedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#closedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#code2
+<http://latuli.no/onto#code2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#code2> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#consigneeHashCode
+<http://latuli.no/onto#consigneeHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#consigneeHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#consignmentId
+<http://latuli.no/onto#consignmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#consignmentId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#consignmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#consignmentType
+<http://latuli.no/onto#consignmentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#consignmentType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#consignmentType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#consignorHashCode
+<http://latuli.no/onto#consignorHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#consignorHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#createdOn
+<http://latuli.no/onto#createdOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#createdOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#customerProductDescription
+<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#customerProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#customerProductId
+<http://latuli.no/onto#customerProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#customerProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#customerProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#customerQuantity
+<http://latuli.no/onto#customerQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#customerQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#delta
+<http://latuli.no/onto#delta> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#delta> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#delta> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#description
+<http://latuli.no/onto#description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#description> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#description> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#effectiveArrival
+<http://latuli.no/onto#effectiveArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#effectiveArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#expectedArrival
+<http://latuli.no/onto#expectedArrival> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#expectedArrival> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#expectedDeliveryOn
+<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://latuli.no/onto#expectedDeliveryOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "expectedDeliveryOn"@nb .
+# 
+# http://latuli.no/onto#finishedScanOn
+<http://latuli.no/onto#finishedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#finishedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#fullPalletConsignment
+<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#fullPalletConsignment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#gln
+<http://latuli.no/onto#gln> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#gln> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#gln> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#gtin
+<http://latuli.no/onto#gtin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#gtin> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#handlingInstruction
+<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#handlingInstruction> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#hashCode
+<http://latuli.no/onto#hashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#hashCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#hashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#hubAdditionalPartyIdentification
+<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#hubAdditionalPartyIdentification> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#hubHashCode
+<http://latuli.no/onto#hubHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#hubHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#hubReconstructionHashCode
+<http://latuli.no/onto#hubReconstructionHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#hubReconstructionHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#hubReconstructionLocationId
+<http://latuli.no/onto#hubReconstructionLocationId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#hubReconstructionLocationId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#internalId
+<http://latuli.no/onto#internalId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#internalId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#isCarrier
+<http://latuli.no/onto#isCarrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#isCarrier> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+# 
+# http://latuli.no/onto#isConsignor
+<http://latuli.no/onto#isConsignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#isConsignor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+# 
+# http://latuli.no/onto#isHub
+<http://latuli.no/onto#isHub> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#isHub> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+# 
+# http://latuli.no/onto#isShipper
+<http://latuli.no/onto#isShipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#isShipper> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+# 
+# http://latuli.no/onto#location
+<http://latuli.no/onto#location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#location> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#lotNumber
+<http://latuli.no/onto#lotNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#lotNumber> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#lotNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#material
+<http://latuli.no/onto#material> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#material> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#material> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#modifiedOn
+<http://latuli.no/onto#modifiedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#modifiedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#orderNumber
+<http://latuli.no/onto#orderNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#orderNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#originalDataSource
+<http://latuli.no/onto#originalDataSource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#originalDataSource> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#originalDataSource> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#packageTypeId
+<http://latuli.no/onto#packageTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#LoadingUnit> .
+<http://latuli.no/onto#packageTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#plannedDeliveryDate
+<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#plannedDeliveryDate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#plannedOn
+<http://latuli.no/onto#plannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#plannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#postalCode
+<http://latuli.no/onto#postalCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#postalCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#preSortScanOn
+<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#XDocLoadingUnit> .
+<http://latuli.no/onto#preSortScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#purchaseOrder
+<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#purchaseOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#qttBoxes
+<http://latuli.no/onto#qttBoxes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#qttBoxes> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttBoxesProcessed
+<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttBoxesProcessed> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttPallets
+<http://latuli.no/onto#qttPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttPalletsBuilt
+<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttPalletsBuilt> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttReconstructedPallets
+<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#qttReconstructedPallets> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttReconstructedParcels
+<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#qttReconstructedParcels> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttShipments
+<http://latuli.no/onto#qttShipments> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
+<http://latuli.no/onto#qttShipments> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttTasks
+<http://latuli.no/onto#qttTasks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
+<http://latuli.no/onto#qttTasks> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#qttTrailers
+<http://latuli.no/onto#qttTrailers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
+<http://latuli.no/onto#qttTrailers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#quantity
+<http://latuli.no/onto#quantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#ShipmentItem> .
+<http://latuli.no/onto#quantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#receiverHashCode
+<http://latuli.no/onto#receiverHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#receiverHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#reconstructedScanOn
+<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#XDocLoadingUnit> .
+<http://latuli.no/onto#reconstructedScanOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#reconstructionLane
+<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#reconstructionLane> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#reconstructionLocation
+<http://latuli.no/onto#reconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#reconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#reconstructionType
+<http://latuli.no/onto#reconstructionType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#reconstructionType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#reconstructionType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#reconstructionTypeId
+<http://latuli.no/onto#reconstructionTypeId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#reconstructionTypeId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#releasedOn
+<http://latuli.no/onto#releasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#releasedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#releasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#salesOrder
+<http://latuli.no/onto#salesOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#salesOrder> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#salesOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#season
+<http://latuli.no/onto#season> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#season> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#season> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#shipmentId
+<http://latuli.no/onto#shipmentId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#shipmentId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#shippedOn
+<http://latuli.no/onto#shippedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#shippedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://latuli.no/onto#shippedOn> <http://www.w3.org/2004/02/skos/core#prefLabel> "shippedOn"@nb .
+# 
+# http://latuli.no/onto#shipperHashCode
+<http://latuli.no/onto#shipperHashCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#shipperHashCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#splitShipment
+<http://latuli.no/onto#splitShipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#splitShipment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#splitShipment> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+# 
+# http://latuli.no/onto#status
+<http://latuli.no/onto#status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#status> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#status> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#supplierProductDescription
+<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#supplierProductDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#supplierProductId
+<http://latuli.no/onto#supplierProductId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#supplierProductId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#supplierQuantity
+<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#supplierQuantity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#taskClosedOn
+<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#taskClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#taskDescription
+<http://latuli.no/onto#taskDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#taskDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#taskDescription> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#taskId
+<http://latuli.no/onto#taskId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#taskId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#taskId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#totalConsignmentVolume
+<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#totalConsignmentVolume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#totalConsignmentWeight
+<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#totalConsignmentWeight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#transportId
+<http://latuli.no/onto#transportId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#transportId> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#transportId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#transportName
+<http://latuli.no/onto#transportName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#transportName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#transportType
+<http://latuli.no/onto#transportType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Transport> .
+<http://latuli.no/onto#transportType> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#volume
+<http://latuli.no/onto#volume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#volume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#volume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#waveClosedOn
+<http://latuli.no/onto#waveClosedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#waveClosedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#waveEndProcessingOn
+<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
+<http://latuli.no/onto#waveEndProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#waveId
+<http://latuli.no/onto#waveId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#waveId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# http://latuli.no/onto#wavePlannedOn
+<http://latuli.no/onto#wavePlannedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#wavePlannedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#waveReleasedOn
+<http://latuli.no/onto#waveReleasedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#waveReleasedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#waveStartProcessingOn
+<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://latuli.no/onto#Wave> .
+<http://latuli.no/onto#waveStartProcessingOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+# 
+# http://latuli.no/onto#weekDay
+<http://latuli.no/onto#weekDay> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#weekDay> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#weekDay> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#weight
+<http://latuli.no/onto#weight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#weight> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#weight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# http://latuli.no/onto#year
+<http://latuli.no/onto#year> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://latuli.no/onto#year> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://latuli.no/onto#year> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://latuli.no/onto#Carrier
+<http://latuli.no/onto#Carrier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Carrier> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#Consignee
+<http://latuli.no/onto#Consignee> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Consignee> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#Consignment
+<http://latuli.no/onto#Consignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid1 .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid1 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasCarrierParty> .
+_:genid1 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Carrier> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid2 .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsigneeParty> .
+_:genid2 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignee> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsignorParty> .
+_:genid3 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignor> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid4 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubParty> .
+_:genid4 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid5 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#includesTransport> .
+_:genid5 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Transport> .
+<http://latuli.no/onto#Consignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid6 .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid6 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#processedByWave> .
+_:genid6 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Wave> .
+# 
+# http://latuli.no/onto#Consignor
+<http://latuli.no/onto#Consignor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Consignor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#DangerousGoods
+<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid7 .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid7 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
+_:genid7 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid8 .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid8 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
+_:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+<http://latuli.no/onto#DangerousGoods> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#relatesToTradeItem> .
+_:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#TradeItem> .
+# 
+# http://latuli.no/onto#HubReconstructionLocation
+<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/2002/07/owl#equivalentClass> <http://latuli.no/onto#Terminal> .
+<http://latuli.no/onto#HubReconstructionLocation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasParty> .
+_:genid10 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#LoadingUnit
+<http://latuli.no/onto#LoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://latuli.no/onto#Party
+<http://latuli.no/onto#Party> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://latuli.no/onto#Receiver
+<http://latuli.no/onto#Receiver> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Receiver> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#Shipment
+<http://latuli.no/onto#Shipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasReceiverParty> .
+_:genid11 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Receiver> .
+<http://latuli.no/onto#Shipment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasShipperParty> .
+_:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipper> .
+# 
+# http://latuli.no/onto#ShipmentItem
+<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
+_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#ShipmentItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
+_:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+# 
+# http://latuli.no/onto#Shipper
+<http://latuli.no/onto#Shipper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Shipper> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#Terminal
+<http://latuli.no/onto#Terminal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://latuli.no/onto#TerminalOperator
+<http://latuli.no/onto#TerminalOperator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#TerminalOperator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#TradeItem
+<http://latuli.no/onto#TradeItem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid15 .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid15 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#belongsToShipment> .
+_:genid15 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipment> .
+<http://latuli.no/onto#TradeItem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid16 .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid16 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
+_:genid16 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+# 
+# http://latuli.no/onto#Transport
+<http://latuli.no/onto#Transport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://latuli.no/onto#Wave
+<http://latuli.no/onto#Wave> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#Wave> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid17 .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid17 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubParty> .
+_:genid17 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+# 
+# http://latuli.no/onto#XDocLoadingUnit
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid18 .
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid18 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasCarrierParty> .
+_:genid18 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Carrier> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid19 .
+_:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid19 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsigneeParty> .
+_:genid19 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignee> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid20 .
+_:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid20 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasConsignorParty> .
+_:genid20 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignor> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid21 .
+_:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid21 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasHubReconstructionParty> .
+_:genid21 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid22 .
+_:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid22 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasInboundConsignment> .
+_:genid22 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid23 .
+_:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid23 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasInboundParentLoadingUnit> .
+_:genid23 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid24 .
+_:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid24 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasLoadingUnit> .
+_:genid24 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid25 .
+_:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid25 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasOutboundConsignment> .
+_:genid25 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Consignment> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid26 .
+_:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid26 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasOutboundParentLoadingUnit> .
+_:genid26 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#LoadingUnit> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid27 .
+_:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid27 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasParty> .
+_:genid27 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Party> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid28 .
+_:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid28 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasReceiverParty> .
+_:genid28 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Receiver> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid29 .
+_:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid29 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#hasShipperParty> .
+_:genid29 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Shipper> .
+<http://latuli.no/onto#XDocLoadingUnit> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid30 .
+_:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid30 <http://www.w3.org/2002/07/owl#onProperty> <http://latuli.no/onto#processedByWave> .
+_:genid30 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://latuli.no/onto#Wave> .
+# 
+# Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/

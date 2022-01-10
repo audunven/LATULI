@@ -1,0 +1,879 @@
+@prefix : <http://latuli.no/onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://latuli.no/onto> .
+
+<http://latuli.no/onto> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+<http://www.opengis.net/ont/geosparql#wktLiteral> rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://latuli.no/onto#belongsToShipment
+:belongsToShipment rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:range :Shipment .
+
+
+###  http://latuli.no/onto#hasCarrierParty
+:hasCarrierParty rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:range :Carrier .
+
+
+###  http://latuli.no/onto#hasConsigneeParty
+:hasConsigneeParty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:range :Consignee .
+
+
+###  http://latuli.no/onto#hasConsignorParty
+:hasConsignorParty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:range :Consignor .
+
+
+###  http://latuli.no/onto#hasHubParty
+:hasHubParty rdf:type owl:ObjectProperty ;
+             rdfs:range :Party .
+
+
+###  http://latuli.no/onto#hasHubReconstructionLocation
+:hasHubReconstructionLocation rdf:type owl:ObjectProperty ;
+                              rdfs:range :HubReconstructionLocation .
+
+
+###  http://latuli.no/onto#hasHubReconstructionParty
+:hasHubReconstructionParty rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf owl:topObjectProperty ;
+                           rdfs:range :Party .
+
+
+###  http://latuli.no/onto#hasInboundConsignment
+:hasInboundConsignment rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:range :Consignment .
+
+
+###  http://latuli.no/onto#hasInboundParentLoadingUnit
+:hasInboundParentLoadingUnit rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdfs:range :LoadingUnit .
+
+
+###  http://latuli.no/onto#hasLoadingUnit
+:hasLoadingUnit rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:range :LoadingUnit .
+
+
+###  http://latuli.no/onto#hasOutboundConsignment
+:hasOutboundConsignment rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:range :Consignment .
+
+
+###  http://latuli.no/onto#hasOutboundParentLoadingUnit
+:hasOutboundParentLoadingUnit rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf owl:topObjectProperty ;
+                              rdfs:range :LoadingUnit .
+
+
+###  http://latuli.no/onto#hasParty
+:hasParty rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:range :Party .
+
+
+###  http://latuli.no/onto#hasReceiverParty
+:hasReceiverParty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:range :Receiver .
+
+
+###  http://latuli.no/onto#hasShipperParty
+:hasShipperParty rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:range :Shipper .
+
+
+###  http://latuli.no/onto#includesTransport
+:includesTransport rdf:type owl:ObjectProperty ;
+                   rdfs:range :Transport .
+
+
+###  http://latuli.no/onto#processedByWave
+:processedByWave rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:range :Wave .
+
+
+###  http://latuli.no/onto#relatesToTradeItem
+:relatesToTradeItem rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:range :TradeItem .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://latuli.no/onto#additionalPartyIdentification
+:additionalPartyIdentification rdf:type owl:DatatypeProperty ;
+                               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#asWKT
+:asWKT rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Party ;
+       rdfs:range <http://www.opengis.net/ont/geosparql#wktLiteral> .
+
+
+###  http://latuli.no/onto#carrierHashCode
+:carrierHashCode rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#closedOn
+:closedOn rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#code2
+:code2 rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Party ;
+       rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#consigneeHashCode
+:consigneeHashCode rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#consignmentId
+:consignmentId rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#consignmentType
+:consignmentType rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#consignorHashCode
+:consignorHashCode rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#createdOn
+:createdOn rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#customerProductDescription
+:customerProductDescription rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#customerProductId
+:customerProductId rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#customerQuantity
+:customerQuantity rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#delta
+:delta rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#effectiveArrival
+:effectiveArrival rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#expectedArrival
+:expectedArrival rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#expectedDeliveryOn
+:expectedDeliveryOn rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Shipment ;
+                    rdfs:range xsd:dateTime ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "expectedDeliveryOn"@nb .
+
+
+###  http://latuli.no/onto#finishedScanOn
+:finishedScanOn rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#fullPalletConsignment
+:fullPalletConsignment rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#gln
+:gln rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#gtin
+:gtin rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#handlingInstruction
+:handlingInstruction rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#hashCode
+:hashCode rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#hubAdditionalPartyIdentification
+:hubAdditionalPartyIdentification rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                  rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#hubHashCode
+:hubHashCode rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#hubReconstructionHashCode
+:hubReconstructionHashCode rdf:type owl:DatatypeProperty ;
+                           rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#hubReconstructionLocationId
+:hubReconstructionLocationId rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#internalId
+:internalId rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#isCarrier
+:isCarrier rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/onto#isConsignor
+:isConsignor rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/onto#isHub
+:isHub rdf:type owl:DatatypeProperty ;
+       rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/onto#isShipper
+:isShipper rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:boolean .
+
+
+###  http://latuli.no/onto#location
+:location rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Party ;
+          rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#lotNumber
+:lotNumber rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#material
+:material rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#modifiedOn
+:modifiedOn rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#orderNumber
+:orderNumber rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#originalDataSource
+:originalDataSource rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#packageTypeId
+:packageTypeId rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :LoadingUnit ;
+               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#plannedDeliveryDate
+:plannedDeliveryDate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :Shipment ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#plannedOn
+:plannedOn rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#postalCode
+:postalCode rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Party ;
+            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#preSortScanOn
+:preSortScanOn rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :XDocLoadingUnit ;
+               rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#purchaseOrder
+:purchaseOrder rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#qttBoxes
+:qttBoxes rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Consignment ;
+          rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttBoxesProcessed
+:qttBoxesProcessed rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttPallets
+:qttPallets rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttPalletsBuilt
+:qttPalletsBuilt rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttReconstructedPallets
+:qttReconstructedPallets rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :Consignment ;
+                         rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttReconstructedParcels
+:qttReconstructedParcels rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :Consignment ;
+                         rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttShipments
+:qttShipments rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Wave ;
+              rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttTasks
+:qttTasks rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Wave ;
+          rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#qttTrailers
+:qttTrailers rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Wave ;
+             rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#quantity
+:quantity rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :ShipmentItem ;
+          rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#receiverHashCode
+:receiverHashCode rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#reconstructedScanOn
+:reconstructedScanOn rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :XDocLoadingUnit ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#reconstructionLane
+:reconstructionLane rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#reconstructionLocation
+:reconstructionLocation rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#reconstructionType
+:reconstructionType rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#reconstructionTypeId
+:reconstructionTypeId rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#releasedOn
+:releasedOn rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#salesOrder
+:salesOrder rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#season
+:season rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#shipmentId
+:shipmentId rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#shippedOn
+:shippedOn rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Shipment ;
+           rdfs:range xsd:dateTime ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "shippedOn"@nb .
+
+
+###  http://latuli.no/onto#shipperHashCode
+:shipperHashCode rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#splitShipment
+:splitShipment rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:int .
+
+
+###  http://latuli.no/onto#status
+:status rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#supplierProductDescription
+:supplierProductDescription rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#supplierProductId
+:supplierProductId rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#supplierQuantity
+:supplierQuantity rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#taskClosedOn
+:taskClosedOn rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Consignment ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#taskDescription
+:taskDescription rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#taskId
+:taskId rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#totalConsignmentVolume
+:totalConsignmentVolume rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :Consignment ;
+                        rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#totalConsignmentWeight
+:totalConsignmentWeight rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :Consignment ;
+                        rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#transportId
+:transportId rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#transportName
+:transportName rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#transportType
+:transportType rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Transport ;
+               rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#volume
+:volume rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#waveClosedOn
+:waveClosedOn rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#waveEndProcessingOn
+:waveEndProcessingOn rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :Wave ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#waveId
+:waveId rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string .
+
+
+###  http://latuli.no/onto#wavePlannedOn
+:wavePlannedOn rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#waveReleasedOn
+:waveReleasedOn rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#waveStartProcessingOn
+:waveStartProcessingOn rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain :Wave ;
+                       rdfs:range xsd:dateTime .
+
+
+###  http://latuli.no/onto#weekDay
+:weekDay rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#weight
+:weight rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:range xsd:decimal .
+
+
+###  http://latuli.no/onto#year
+:year rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://latuli.no/onto#Carrier
+:Carrier rdf:type owl:Class ;
+         rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#Consignee
+:Consignee rdf:type owl:Class ;
+           rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#Consignment
+:Consignment rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasCarrierParty ;
+                               owl:someValuesFrom :Carrier
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasConsigneeParty ;
+                               owl:someValuesFrom :Consignee
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasConsignorParty ;
+                               owl:someValuesFrom :Consignor
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasHubParty ;
+                               owl:someValuesFrom :Party
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :includesTransport ;
+                               owl:someValuesFrom :Transport
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :processedByWave ;
+                               owl:someValuesFrom :Wave
+                             ] .
+
+
+###  http://latuli.no/onto#Consignor
+:Consignor rdf:type owl:Class ;
+           rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#DangerousGoods
+:DangerousGoods rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :belongsToShipment ;
+                                  owl:someValuesFrom :Shipment
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasLoadingUnit ;
+                                  owl:someValuesFrom :LoadingUnit
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :relatesToTradeItem ;
+                                  owl:someValuesFrom :TradeItem
+                                ] .
+
+
+###  http://latuli.no/onto#HubReconstructionLocation
+:HubReconstructionLocation rdf:type owl:Class ;
+                           owl:equivalentClass :Terminal ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasParty ;
+                                             owl:someValuesFrom :Party
+                                           ] .
+
+
+###  http://latuli.no/onto#LoadingUnit
+:LoadingUnit rdf:type owl:Class .
+
+
+###  http://latuli.no/onto#Party
+:Party rdf:type owl:Class .
+
+
+###  http://latuli.no/onto#Receiver
+:Receiver rdf:type owl:Class ;
+          rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#Shipment
+:Shipment rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasReceiverParty ;
+                            owl:someValuesFrom :Receiver
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasShipperParty ;
+                            owl:someValuesFrom :Shipper
+                          ] .
+
+
+###  http://latuli.no/onto#ShipmentItem
+:ShipmentItem rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :belongsToShipment ;
+                                owl:someValuesFrom :Shipment
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLoadingUnit ;
+                                owl:someValuesFrom :LoadingUnit
+                              ] .
+
+
+###  http://latuli.no/onto#Shipper
+:Shipper rdf:type owl:Class ;
+         rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#Terminal
+:Terminal rdf:type owl:Class .
+
+
+###  http://latuli.no/onto#TerminalOperator
+:TerminalOperator rdf:type owl:Class ;
+                  rdfs:subClassOf :Party .
+
+
+###  http://latuli.no/onto#TradeItem
+:TradeItem rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :belongsToShipment ;
+                             owl:someValuesFrom :Shipment
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasLoadingUnit ;
+                             owl:someValuesFrom :LoadingUnit
+                           ] .
+
+
+###  http://latuli.no/onto#Transport
+:Transport rdf:type owl:Class .
+
+
+###  http://latuli.no/onto#Wave
+:Wave rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasHubParty ;
+                        owl:someValuesFrom :Party
+                      ] .
+
+
+###  http://latuli.no/onto#XDocLoadingUnit
+:XDocLoadingUnit rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasCarrierParty ;
+                                   owl:someValuesFrom :Carrier
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasConsigneeParty ;
+                                   owl:someValuesFrom :Consignee
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasConsignorParty ;
+                                   owl:someValuesFrom :Consignor
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasHubReconstructionParty ;
+                                   owl:someValuesFrom :Party
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasInboundConsignment ;
+                                   owl:someValuesFrom :Consignment
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasInboundParentLoadingUnit ;
+                                   owl:someValuesFrom :LoadingUnit
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasLoadingUnit ;
+                                   owl:someValuesFrom :LoadingUnit
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasOutboundConsignment ;
+                                   owl:someValuesFrom :Consignment
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasOutboundParentLoadingUnit ;
+                                   owl:someValuesFrom :LoadingUnit
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasParty ;
+                                   owl:someValuesFrom :Party
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasReceiverParty ;
+                                   owl:someValuesFrom :Receiver
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasShipperParty ;
+                                   owl:someValuesFrom :Shipper
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :processedByWave ;
+                                   owl:someValuesFrom :Wave
+                                 ] .
+
+
+###  Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/

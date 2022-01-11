@@ -1,3 +1,4 @@
 files/
 target/
 .DS_Store
+/bin/

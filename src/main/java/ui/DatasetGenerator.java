@@ -19,7 +19,7 @@ import testdata.Transports;
 import testdata.Waves;
 import testdata.XDocLoadingUnits;
 
-public class M3OntoGeneratorUI_FullDataset {
+public class DatasetGenerator {
 
 	public static void main(String[] args) {
 		

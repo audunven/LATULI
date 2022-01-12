@@ -97,6 +97,7 @@ geos:wktLiteral rdf:type rdfs:Datatype .
 ###  https://w3id.org/latuli/ontology/m3#hasLoadingUnit
 :hasLoadingUnit rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :XDocLoadingUnit ;
                 rdfs:range :LoadingUnit ;
                 rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit" .
 

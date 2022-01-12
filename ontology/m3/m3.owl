@@ -153,6 +153,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasLoadingUnit">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit</rdfs:comment>
     </owl:ObjectProperty>

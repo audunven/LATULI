@@ -6,7 +6,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/m3#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/m3#","name":"https://w3id.org/latuli/ontology/m3#", "headline":"The M3 ontology describes concepts related to freight transport and terminal operations.", "datePublished":"10.01.2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/m3#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/m3#","name":"https://w3id.org/latuli/ontology/m3#", "headline":"The M3 ontology describes entities related to freight transport and terminal operations.", "datePublished":"12.01.2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -54,7 +54,7 @@ $(function(){
 <div class="container">
 <div class="head">
 <div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
-<h2>Release  10.01.2022</h2>
+<h2>Release  12.01.2022</h2>
 
 
 <dl>
@@ -85,7 +85,7 @@ $(function(){
   
 
 <!--OVERVIEW SECTION-->
-    <div id="overview"><h2 id="overv" class="list">M3 Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+    <div id="overview"><h2 id="overv" class="list">M3: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 <span class="markdown">
 This ontology has the following classes and properties.</span>
 <h4>Classes</h4>
@@ -880,8 +880,8 @@ This ontology has the following classes and properties.</span>
    
 
 <!--CROSSREF SECTION-->
-   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for M3 Ontology classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-This section provides details for each class and property defined by M3 Ontology.
+   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for M3 classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by M3.
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
    <h3 id="classes-headline" class="list">Classes</h3>
    <ul class="hlist">
@@ -1914,6 +1914,19 @@ This section provides details for each class and property defined by M3 Ontology
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#DangerousGoods"
+                  title="https://w3id.org/latuli/ontology/m3#DangerousGoods">dangerous goods</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#ShipmentItem"
+                  title="https://w3id.org/latuli/ontology/m3#ShipmentItem">shipment item</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#TradeItem" title="https://w3id.org/latuli/ontology/m3#TradeItem">trade item</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#Shipment" title="https://w3id.org/latuli/ontology/m3#Shipment">shipment</a>
@@ -2827,6 +2840,15 @@ This section provides details for each class and property defined by M3 Ontology
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Consignment" title="https://w3id.org/latuli/ontology/m3#Consignment">consignment</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#Carrier" title="https://w3id.org/latuli/ontology/m3#Carrier">carrier</a>
@@ -2852,6 +2874,15 @@ This section provides details for each class and property defined by M3 Ontology
                <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Consignment" title="https://w3id.org/latuli/ontology/m3#Consignment">consignment</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
             <dd>
@@ -2879,6 +2910,15 @@ This section provides details for each class and property defined by M3 Ontology
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Consignment" title="https://w3id.org/latuli/ontology/m3#Consignment">consignment</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#Consignor" title="https://w3id.org/latuli/ontology/m3#Consignor">consignor</a>
@@ -2899,6 +2939,22 @@ This section provides details for each class and property defined by M3 Ontology
       </div>
       <div class="description">
          <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#HubReconstructionLocation"
+                  title="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation">hub reconstruction location</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#Transport" title="https://w3id.org/latuli/ontology/m3#Transport">transport</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#Wave" title="https://w3id.org/latuli/ontology/m3#Wave">wave</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#Party" title="https://w3id.org/latuli/ontology/m3#Party">party</a>
@@ -3021,6 +3077,19 @@ This section provides details for each class and property defined by M3 Ontology
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ShipmentItem"
+                  title="https://w3id.org/latuli/ontology/m3#ShipmentItem">shipment item</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#TradeItem" title="https://w3id.org/latuli/ontology/m3#TradeItem">trade item</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#LoadingUnit" title="https://w3id.org/latuli/ontology/m3#LoadingUnit">loading unit</a>
@@ -3122,6 +3191,16 @@ This section provides details for each class and property defined by M3 Ontology
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ShipmentItem"
+                  title="https://w3id.org/latuli/ontology/m3#ShipmentItem">shipment item</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
             <dt>has range</dt>
             <dd>
                <a href="#Receiver" title="https://w3id.org/latuli/ontology/m3#Receiver">receiver</a>
@@ -3147,6 +3226,16 @@ This section provides details for each class and property defined by M3 Ontology
                <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ShipmentItem"
+                  title="https://w3id.org/latuli/ontology/m3#ShipmentItem">shipment item</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
             <dd>
@@ -3812,6 +3901,15 @@ This section provides details for each class and property defined by M3 Ontology
                <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Consignment" title="https://w3id.org/latuli/ontology/m3#Consignment">consignment</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#XDocLoadingUnit"
+                  title="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit">x doc loading unit</a>
+               <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
             <dd>

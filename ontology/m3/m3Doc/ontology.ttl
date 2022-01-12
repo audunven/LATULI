@@ -725,6 +725,12 @@
 ###  https://w3id.org/latuli/ontology/m3#belongsToShipment
 :belongsToShipment rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :DangerousGoods
+                                               :ShipmentItem
+                                               :TradeItem
+                                             )
+                               ] ;
                    rdfs:range :Shipment ;
                    rdfs:comment "Relates a TradeItem or a ShipmentItem to a Shipment." .
 
@@ -732,6 +738,11 @@
 ###  https://w3id.org/latuli/ontology/m3#hasCarrierParty
 :hasCarrierParty rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Consignment
+                                             :XDocLoadingUnit
+                                           )
+                             ] ;
                  rdfs:range :Carrier ;
                  rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier" .
 
@@ -739,6 +750,11 @@
 ###  https://w3id.org/latuli/ontology/m3#hasConsigneeParty
 :hasConsigneeParty rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Consignment
+                                               :XDocLoadingUnit
+                                             )
+                               ] ;
                    rdfs:range :Consignee ;
                    rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee" .
 
@@ -746,12 +762,24 @@
 ###  https://w3id.org/latuli/ontology/m3#hasConsignorParty
 :hasConsignorParty rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Consignment
+                                               :XDocLoadingUnit
+                                             )
+                               ] ;
                    rdfs:range :Consignor ;
                    rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor" .
 
 
 ###  https://w3id.org/latuli/ontology/m3#hasHubParty
 :hasHubParty rdf:type owl:ObjectProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :HubReconstructionLocation
+                                         :Transport
+                                         :Wave
+                                         :XDocLoadingUnit
+                                       )
+                         ] ;
              rdfs:range :Party ;
              rdfs:comment "Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator" .
 
@@ -785,6 +813,12 @@
 ###  https://w3id.org/latuli/ontology/m3#hasLoadingUnit
 :hasLoadingUnit rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :ShipmentItem
+                                            :TradeItem
+                                            :XDocLoadingUnit
+                                          )
+                            ] ;
                 rdfs:range :LoadingUnit ;
                 rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit" .
 
@@ -812,6 +846,11 @@
 ###  https://w3id.org/latuli/ontology/m3#hasReceiverParty
 :hasReceiverParty rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :ShipmentItem
+                                              :XDocLoadingUnit
+                                            )
+                              ] ;
                   rdfs:range :Receiver ;
                   rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver." .
 
@@ -819,6 +858,11 @@
 ###  https://w3id.org/latuli/ontology/m3#hasShipperParty
 :hasShipperParty rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :ShipmentItem
+                                             :XDocLoadingUnit
+                                           )
+                             ] ;
                  rdfs:range :Shipper ;
                  rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper." .
 
@@ -832,6 +876,11 @@
 ###  https://w3id.org/latuli/ontology/m3#processedByWave
 :processedByWave rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Consignment
+                                             :XDocLoadingUnit
+                                           )
+                             ] ;
                  rdfs:range :Wave ;
                  rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave." .
 

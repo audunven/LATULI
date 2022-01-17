@@ -1,8 +1,10 @@
-package testdata;
+package csv2KG;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,136 @@ import utilities.StringUtilities;
  *
  */
 public class Consignments {
+	
+	public static void processConsignmentsToTSV (File consignmentFolder, String tsvFile) {
 
-	public static void processConsignments (File consignmentFolder, String baseURI, String dataDir, String indexes, Repository repo) {
+		String consignmentEntity;
+
+		File[] filesInDir = consignmentFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+			try {
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(tsvFile, true));
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				for (String[] params : line) {
+
+					//isType				
+					consignmentEntity = params[0];
+
+					bw.write(consignmentEntity + "\t" + "isType" + "\t" + "Consignment" + "\n");
+
+
+					//includesTransport
+					if (!params[3].equals("NULL")) {
+
+						bw.write(consignmentEntity + "\t" + "includesTransport" + "\t" + params[3] + "_transport" + "\n");
+
+					}
+
+					//isProcessedByWave
+					if (!params[18].equals("NULL")) {								
+
+						bw.write(consignmentEntity + "\t" + "isProcessedByWave" + "\t" + params[18] + "_wave" + "\n");
+					}
+
+					//hasCarrierParty						
+					bw.write(consignmentEntity + "\t" + "hasCarrierParty" + "\t" + params[11] + "_party" + "\n");
+
+					//hasConsignorParty						
+					bw.write(consignmentEntity + "\t" + "hasConsignorParty" + "\t" + params[14] + "_party" + "\n");
+
+
+					//hasConsigneeParty					
+					bw.write(consignmentEntity + "\t" + "hasConsigneeParty" + "\t" + params[17] + "_party" + "\n");
+
+
+					//hasTaskClosedOn
+					if (!StringUtilities.convertToDateTime(params[23]).equals("0000-00-00T00:00:00")) {
+
+						bw.write(consignmentEntity + "\t" + "hasTaskClosedOn" + "\t" + StringUtilities.convertToDateTime(params[23]) + "\n");
+					}
+
+					//hasConsignmentId						
+					bw.write(consignmentEntity + "\t" + "hasConsignmentId" + "\t" + params[0] + "\n");
+
+
+					//isConsignmentType						
+					bw.write(consignmentEntity + "\t" + "isConsignmentType" + "\t" + params[6] + "\n");
+
+
+					//isFullPalletConsignment						
+					bw.write(consignmentEntity + "\t" + "isFullPalletConsignment" + "\t" + params[32] + "\n");
+
+
+					//hasQttBoxes						
+					bw.write(consignmentEntity + "\t" + "hasQttBoxes" + "\t" + params[33] + "\n");
+
+
+					//hasQttPallets						
+					bw.write(consignmentEntity + "\t" + "hasQttPallets" + "\t" + params[34] + "\n");
+
+
+					//hasQttReconstructedPallets						
+					bw.write(consignmentEntity + "\t" + "hasQttReconstructedPallets" + "\t" + params[35] + "\n");
+
+
+					//hasQttReconstructedParcels						
+					bw.write(consignmentEntity + "\t" + "hasQttReconstructedParcels" + "\t" + params[36] + "\n");
+
+
+					//hasTotalConsignmentVolume						
+					bw.write(consignmentEntity + "\t" + "hasTotalConsignmentVolume" + "\t" + params[40] + "\n");
+
+
+					//hasTotalConsignmentWeight
+					bw.write(consignmentEntity + "\t" + "hasTotalConsignmentWeight" + "\t" + params[41] + "\n");
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+
+
+	}
+
+	public static void processConsignmentsToLocalRepo (File consignmentFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -34,7 +164,7 @@ public class Consignments {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -154,7 +284,7 @@ public class Consignments {
 
 }
 	
-	public static void processConsignmentsHTTP (File consignmentFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
+	public static void processConsignmentsToRemoteRepo (File consignmentFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -166,7 +296,7 @@ public class Consignments {
 		
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

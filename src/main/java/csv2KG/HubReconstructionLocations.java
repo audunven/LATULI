@@ -1,9 +1,13 @@
-package testdata;
+package csv2KG;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -17,13 +21,87 @@ import org.eclipse.rdf4j.repository.RepositoryConnection;
  */
 public class HubReconstructionLocations
 {
+	
+	
+	public static void processHubReconstructionLocationsToTSV (File hubReconstructionLocationsFolder, String tsvFile) {
 
-	public static void processHubReconstructionLocations (File hubReconstructionLocationsFolder, String baseURI, String dataDir, String indexes, Repository repo) {
+		String hubReconstructionLocationEntity;
+
+		File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(tsvFile, true));
+
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+					hubReconstructionLocationEntity = params[0] + "_hubReconstructionLocation";
+					
+					bw.write(hubReconstructionLocationEntity + "\t" + "isType" + "\t" + "HubReconstructionLocation" + "\n");
+					
+					//hasHubParty						
+					bw.write(hubReconstructionLocationEntity + "\t" + "hasHubParty" + "\t" + params[3] + "_party" + "\n");
+
+
+					//hasHubReconstructionLocation
+					bw.write(hubReconstructionLocationEntity + "\t" + "hasHubReconstructionLocation" + "\t" + params[0] + "\n");
+
+					
+					//hasAdditionalPartyId
+					bw.write(hubReconstructionLocationEntity + "\t" + "hasAdditionalPartyId" + "\t" + params[1] + "\n");
+
+					
+					//hasLaneId
+					bw.write(hubReconstructionLocationEntity + "\t" + "hasLaneId" + "\t" + params[4] + "\n");
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
+
+	public static void processHubReconstructionLocationsToLocalRepo (File hubReconstructionLocationsFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -91,11 +169,11 @@ public class HubReconstructionLocations
 
 	}
 	
-	public static void processHubReconstructionLocationsHTTP (File hubReconstructionLocationsFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
+	public static void processHubReconstructionLocationsToRemoteRepo (File hubReconstructionLocationsFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

@@ -1,9 +1,13 @@
-package testdata;
+package csv2KG;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -19,11 +23,85 @@ import org.eclipse.rdf4j.repository.RepositoryConnection;
  */
 public class ShipmentItems
 {
-	public static void processShipmentItems(File partiesFolder, String baseURI, String dataDir, String indexes, Repository repo) {
+	
+	public static void processShipmentItemsToTSV(File partiesFolder, String tsvFile) {
+
+		
+		String shipmentItemEntity;
+
+		File[] filesInDir = partiesFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+		
+		List<String[]> line = new ArrayList<String[]>();
+
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(tsvFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+
+					//adding type
+					
+					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem";
+					
+					bw.write(shipmentItemEntity + "\t" + "isType" + "\t" + "ShipmentItem" + "\n");
+
+					//belongsToShipment						
+					bw.write(shipmentItemEntity + "\t" + "belongsToShipment" + "\t" + params[0] + "_shipment" + "\n");
+
+
+					//hasLoadingUnit						
+					bw.write(shipmentItemEntity + "\t" + "hasLoadingUnit" + "\t" + params[1] + "_loadingUnit" + "\n");
+
+
+					//hasQuantity
+					bw.write(shipmentItemEntity + "\t" + "hasQuantity" + "\t" + params[3] + "\n");
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
+	
+	public static void processShipmentItemsToLocalRepo (File partiesFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -95,11 +173,11 @@ public class ShipmentItems
 
 	}
 	
-	public static void processShipmentItemsHTTP (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
+	public static void processShipmentItemsToRemoteRepo (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

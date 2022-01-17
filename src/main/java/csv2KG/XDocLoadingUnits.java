@@ -1,9 +1,13 @@
-package testdata;
+package csv2KG;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -20,8 +24,141 @@ import utilities.StringUtilities;
  */
 public class XDocLoadingUnits
 {
+	
+	public static void processXDocLoadingUnitsToTSV (File xdluFolder, String tsvFile) {
 
-	public static void processXDocLoadingUnits(File xdluFolder, String baseURI, String dataDir, String indexes, Repository repo) {
+		String xDocLoadingUnitEntity;
+
+		File[] filesInDir = xdluFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(tsvFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+
+					//isType				
+					xDocLoadingUnitEntity = params[0] + "_xDocLoadingUnit";
+
+					bw.write(xDocLoadingUnitEntity + "\t" + "isType" + "\t" + "XDocLoadingUnit" + "\n");
+
+					//hasHubReconstructionLocation
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasHubReconstructionLocation" + "\t" + params[17] + "_hubReconstructionLocation" + "\n");
+
+					//hasLoadingUnit
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasLoadingUnit" + "\t" + params[7] + "_loadingUnit" + "\n");
+
+					//hasInboundParentLoadingUnit
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasInboundParentLoadingUnit" + "\t" + params[41] + "_loadingUnit" + "\n");
+
+					//hasOutboundParentLoadingUnit
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasOutboundParentLoadingUnit" + "\t" + params[42] + "_loadingUnit" + "\n");
+
+					//hasInboundConsignment
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasInboundConsignment" + "\t" + params[11] + "_consignment" + "\n");
+
+					//hasOutboundConsignment
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasOutboundConsignment" + "\t" + params[12] + "_consignment" + "\n");
+
+					//hasHubParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasHubParty" + "\t" + params[15] + "_party" + "\n");
+
+					//hasShipperParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasShipperParty" + "\t" + params[23] + "_party" + "\n");
+
+					//hasReceiverParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasReceiverParty" + "\t" + params[26] + "_party" + "\n");
+
+					//hasCarrierParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasCarrierParty" + "\t" + params[29] + "_party" + "\n");
+
+					//hasConsignorParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasConsignorParty" + "\t" + params[32] + "_party" + "\n");
+
+					//hasConsigneeParty
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasConsigneeParty" + "\t" + params[35] + "_party" + "\n");
+
+					//isProcessedByWave
+					bw.write(xDocLoadingUnitEntity + "\t" + "isProcessedByWave" + "\t" + params[36] + "_wave" + "\n");
+
+					//hasInternalId
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasInternalId" + "\t" + params[0] + "\n");
+
+
+					//hasPresortScanOn
+					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
+						bw.write(xDocLoadingUnitEntity + "\t" + "hasPresortScanOn" + "\t" + StringUtilities.convertToDateTime(params[1]) + "\n");
+
+					}
+
+					//hasReconstructedScanOn
+					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+						bw.write(xDocLoadingUnitEntity + "\t" + "hasReconstructedScanOn" + "\t" + StringUtilities.convertToDateTime(params[2]) + "\n");
+
+					}
+
+					//hasFinishedScanOn
+					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						bw.write(xDocLoadingUnitEntity + "\t" + "hasFinishedScanOn" + "\t" + StringUtilities.convertToDateTime(params[3]) + "\n");
+
+					}
+
+					//hasVolume
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasVolume" + "\t" + params[5] + "\n");
+
+					//hasWeight
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasWeight" + "\t" + params[6] + "\n");
+
+					//hasReconstructionType
+					bw.write(xDocLoadingUnitEntity + "\t" + "hasReconstructionType" + "\t" + params[37] + "\n");
+
+					//isSplitShipment
+					bw.write(xDocLoadingUnitEntity + "\t" + "isSplitShipment" + "\t" + params[40] + "\n");
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+
+
+	}
+
+	public static void processXDocLoadingUnitsToLocalRepo (File xdluFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -33,7 +170,7 @@ public class XDocLoadingUnits
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 
@@ -200,7 +337,7 @@ public class XDocLoadingUnits
 
 	}
 	
-	public static void processXDocLoadingUnitsHTTP (File xdluFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
+	public static void processXDocLoadingUnitsToRemoteRepo (File xdluFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		//measure runtime
 		long startTime = System.nanoTime();
@@ -212,7 +349,7 @@ public class XDocLoadingUnits
 
 		try (RepositoryConnection connection = repo.getConnection()) {
 			
-			connection.setNamespace("lat", baseURI);
+			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
 

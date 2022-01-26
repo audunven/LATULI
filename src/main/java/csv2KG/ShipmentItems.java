@@ -17,6 +17,7 @@ import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import utilities.RDF4JUtilities;
+import utilities.StringUtilities;
 
 
 /**
@@ -55,13 +56,18 @@ public class ShipmentItems {
 				br = new BufferedReader(new FileReader(filesInDir[i]));
 				bw = new BufferedWriter(new FileWriter(ntFile, true));
 
-
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 
 					//adding type
-					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem";
+					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem>";
 					
 					bw.write(RDF4JUtilities.createType(shipmentItemEntity, baseURI, rdf_type, type, tripleClosure));
 
@@ -126,6 +132,12 @@ public class ShipmentItems {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 

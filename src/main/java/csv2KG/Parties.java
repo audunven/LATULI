@@ -72,7 +72,7 @@ public class Parties {
 
 					//adding types
 
-					partyEntity = params[2] + "_party";
+					partyEntity = params[2] + "_party>";
 
 					bw.write(RDF4JUtilities.createType(partyEntity, baseURI, rdf_type, type, tripleClosure));
 

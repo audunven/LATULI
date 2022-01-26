@@ -55,10 +55,16 @@ public class LoadingUnits {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 
-					loadingUnitEntity = params[0] + "_loadingUnit";
+					loadingUnitEntity = params[0] + "_loadingUnit>";
 
 					//rdf:type
 					bw.write(RDF4JUtilities.createType(loadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
@@ -124,6 +130,12 @@ public class LoadingUnits {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 

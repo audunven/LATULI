@@ -65,7 +65,7 @@ public class Transports {
 
 				for (String[] params : line) {
 
-					transportEntity = params[0] + "_transport";
+					transportEntity = params[0] + "_transport>";
 
 					//adding types						
 					bw.write(RDF4JUtilities.createType(transportEntity, baseURI, rdf_type, type, tripleClosure));

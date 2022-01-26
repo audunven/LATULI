@@ -67,7 +67,7 @@ public class TradeItems {
 				for (String[] params : line) {
 
 					//isType					
-					tradeItemEntity = params[0] + "-" + params[1] + "_tradeItem";
+					tradeItemEntity = params[0] + "-" + params[1] + "_tradeItem>";
 					bw.write(RDF4JUtilities.createType(tradeItemEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//belongsToShipment

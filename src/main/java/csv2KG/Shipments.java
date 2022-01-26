@@ -66,7 +66,7 @@ public class Shipments {
 				for (String[] params : line) {
 
 					//isType					
-					shipmentEntity = params[0] + "_shipment";
+					shipmentEntity = params[0] + "_shipment>";
 					bw.write(RDF4JUtilities.createType(shipmentEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//hasShipperParty

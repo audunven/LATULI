@@ -1,6 +1,10 @@
 package ui;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
@@ -74,13 +78,73 @@ public class DatasetGenerator {
 
 		for (File folder : files) {
 
-			if (folder.getName().startsWith("consignments")) {		
+			if (folder.getName().startsWith("xdlu")) {		
+
+				System.out.println("\nProcessing XDocLoadingUnits\n");
+
+				XDocLoadingUnits.processXDocLoadingUnitsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("consignments")) {
 
 				System.out.println("\nProcessing Consignments\n");
 
 				Consignments.processConsignmentsToNTriple (folder, outputFile);
+			}
 
-			} 
+			else if (folder.getName().startsWith("parties")) {
+
+				System.out.println("\nProcessing Parties\n");
+
+				Parties.processPartiesToNTriple(folder, outputFile);
+
+			} else if (folder.getName().startsWith("dgr")) {
+
+				System.out.println("\nProcessing Dangerous Goods\n");
+
+				DangerousGoods.processDangerousGoodsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("shipmentitems")) {
+
+				System.out.println("\nProcessing Shipment Items\n");
+
+				ShipmentItems.processShipmentItemsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("shipments")) {
+
+				System.out.println("\nProcessing Shipments\n");
+
+				Shipments.processShipmentsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("waves")) {
+
+				System.out.println("\nProcessing Waves\n");
+
+				Waves.processWavesToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("tradeitems")) {
+
+				System.out.println("\nProcessing Trade Items\n");
+
+				TradeItems.processTradeItemsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("transports")) {
+
+				System.out.println("\nProcessing Transports\n");
+
+				Transports.processTransportsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("loadingunits")) {
+
+				System.out.println("\nProcessing Loading Units\n");
+
+				LoadingUnits.processLoadingUnitsToNTriple (folder, outputFile);
+
+			} else if (folder.getName().startsWith("hubreconstructionlocations")) {
+
+				System.out.println("\nProcessing Hub Reconstruction Locations\n");
+
+				HubReconstructionLocations.processHubReconstructionLocationsToNTriple (folder, outputFile);
+			}
 
 		}
 
@@ -93,6 +157,29 @@ public class DatasetGenerator {
 		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
 		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
 		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
+		
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(outputFile));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int lines = 0;
+		try {
+			while (reader.readLine() != null) lines++;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			reader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Number of lines in file: " + lines);
 
 	}
 

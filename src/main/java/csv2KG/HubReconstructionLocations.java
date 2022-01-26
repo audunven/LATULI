@@ -16,6 +16,7 @@ import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import utilities.RDF4JUtilities;
+import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
@@ -54,13 +55,17 @@ public class HubReconstructionLocations {
 				br = new BufferedReader(new FileReader(filesInDir[i]));
 				bw = new BufferedWriter(new FileWriter(ntFile, true));
 
-
-
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 
-					hubReconstructionLocationEntity = params[0] + "_hubReconstructionLocation";
+					hubReconstructionLocationEntity = params[0] + "_hubReconstructionLocation>";
 					
 					//rdf:type
 					bw.write(RDF4JUtilities.createType(hubReconstructionLocationEntity, baseURI, rdf_type, type, tripleClosure));
@@ -124,9 +129,13 @@ public class HubReconstructionLocations {
 				br = new BufferedReader(new FileReader(filesInDir[i]));
 				bw = new BufferedWriter(new FileWriter(tsvFile, true));
 
-
-
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 

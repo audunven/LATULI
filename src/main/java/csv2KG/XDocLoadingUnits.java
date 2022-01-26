@@ -55,14 +55,19 @@ public class XDocLoadingUnits {
 				br = new BufferedReader(new FileReader(filesInDir[i]));
 				bw = new BufferedWriter(new FileWriter(ntFile, true));
 
-
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 
 
 					//isType				
-					xDocLoadingUnitEntity = params[0] + "_xDocLoadingUnit";
+					xDocLoadingUnitEntity = params[0] + "_xDocLoadingUnit>";
 
 					bw.write(RDF4JUtilities.createType(xDocLoadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
 
@@ -211,6 +216,12 @@ public class XDocLoadingUnits {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 

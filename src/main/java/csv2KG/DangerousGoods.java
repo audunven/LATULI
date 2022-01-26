@@ -65,7 +65,7 @@ public class DangerousGoods {
 
 				for (String[] params : line) {
 
-					dangerousGoodsEntity = params[1] + "-" + params[0] + "_dgr";
+					dangerousGoodsEntity = params[1] + "-" + params[0] + "_dgr>";
 
 					//rdf:type					
 					bw.write(RDF4JUtilities.createType(dangerousGoodsEntity, baseURI, rdf_type, type, tripleClosure));

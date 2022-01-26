@@ -57,12 +57,18 @@ public class Waves {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 
 
 					//isType					
-					waveEntity = params[0] + "_wave";
+					waveEntity = params[0] + "_wave>";
 
 					bw.write(RDF4JUtilities.createType(waveEntity, baseURI, rdf_type, type, tripleClosure));
 
@@ -200,6 +206,12 @@ public class Waves {
 
 
 				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				for (String[] params : line) {
 

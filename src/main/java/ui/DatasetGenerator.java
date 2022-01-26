@@ -54,8 +54,8 @@ public class DatasetGenerator {
 		//createFullDataset(folderPath, outputFile);
 
 		/*if creating the full dataset to n-triples*/
-		String folderPath = "./files/CSV/Audun/_TEST_NT";
-		String outputFile = "files/CSV/Audun/dataset.nt";
+		String folderPath = "./files/CSV/Audun/_ORIGINAL_CSV";
+		String outputFile = "files/CSV/Audun/full_dataset.nt";
 		createFullDatasetToNTriples(folderPath, outputFile);
 
 
@@ -158,28 +158,28 @@ public class DatasetGenerator {
 		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
 		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 		
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new FileReader(outputFile));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		int lines = 0;
-		try {
-			while (reader.readLine() != null) lines++;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			reader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println("Number of lines in file: " + lines);
+//		BufferedReader reader = null;
+//		try {
+//			reader = new BufferedReader(new FileReader(outputFile));
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		int lines = 0;
+//		try {
+//			while (reader.readLine() != null) lines++;
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			reader.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		System.out.println("Number of lines in file: " + lines);
 
 	}
 

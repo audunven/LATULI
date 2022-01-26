@@ -130,7 +130,7 @@ public class XDocLoadingUnits {
 
 					//presortScanOn
 					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
-						bw.write(xDocLoadingUnitEntity + "\t" + "presortScanOn" + "\t" + StringUtilities.convertToDateTime(params[1]) + "\n");
+						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "presortScanOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 

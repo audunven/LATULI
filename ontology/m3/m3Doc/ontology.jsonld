@@ -1,83 +1,5 @@
 [ {
   "@id" : "_:genid1",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#DangerousGoods"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#ShipmentItem"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#TradeItem"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid11",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid14",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Transport"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Wave"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid19",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#ShipmentItem"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#TradeItem"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid23",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#ShipmentItem"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid26",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#ShipmentItem"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid29",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid32",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasCarrierParty"
@@ -86,79 +8,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Carrier"
   } ]
 }, {
-  "@id" : "_:genid33",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#hasConsigneeParty"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Consignee"
-  } ]
-}, {
-  "@id" : "_:genid34",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#hasConsignorParty"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Consignor"
-  } ]
-}, {
-  "@id" : "_:genid35",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#hasHubParty"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Party"
-  } ]
-}, {
-  "@id" : "_:genid36",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#includesTransport"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Transport"
-  } ]
-}, {
-  "@id" : "_:genid37",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#processedByWave"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Wave"
-  } ]
-}, {
-  "@id" : "_:genid38",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#belongsToShipment"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#Shipment"
-  } ]
-}, {
-  "@id" : "_:genid39",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#hasLoadingUnit"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
-  } ]
-}, {
-  "@id" : "_:genid40",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#relatesToTradeItem"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/m3#TradeItem"
-  } ]
-}, {
-  "@id" : "_:genid41",
+  "@id" : "_:genid10",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasParty"
@@ -167,7 +17,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Party"
   } ]
 }, {
-  "@id" : "_:genid42",
+  "@id" : "_:genid11",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasReceiverParty"
@@ -176,7 +26,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Receiver"
   } ]
 }, {
-  "@id" : "_:genid43",
+  "@id" : "_:genid12",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasShipperParty"
@@ -185,7 +35,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipper"
   } ]
 }, {
-  "@id" : "_:genid44",
+  "@id" : "_:genid13",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#belongsToShipment"
@@ -194,7 +44,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipment"
   } ]
 }, {
-  "@id" : "_:genid45",
+  "@id" : "_:genid14",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasLoadingUnit"
@@ -203,7 +53,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
   } ]
 }, {
-  "@id" : "_:genid46",
+  "@id" : "_:genid15",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#belongsToShipment"
@@ -212,7 +62,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipment"
   } ]
 }, {
-  "@id" : "_:genid47",
+  "@id" : "_:genid16",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasLoadingUnit"
@@ -221,7 +71,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
   } ]
 }, {
-  "@id" : "_:genid48",
+  "@id" : "_:genid17",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasHubParty"
@@ -230,7 +80,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Party"
   } ]
 }, {
-  "@id" : "_:genid49",
+  "@id" : "_:genid18",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasCarrierParty"
@@ -239,17 +89,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Carrier"
   } ]
 }, {
-  "@id" : "_:genid5",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid50",
+  "@id" : "_:genid19",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasConsigneeParty"
@@ -258,7 +98,16 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignee"
   } ]
 }, {
-  "@id" : "_:genid51",
+  "@id" : "_:genid2",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#hasConsigneeParty"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Consignee"
+  } ]
+}, {
+  "@id" : "_:genid20",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasConsignorParty"
@@ -267,7 +116,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignor"
   } ]
 }, {
-  "@id" : "_:genid52",
+  "@id" : "_:genid21",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasHubReconstructionParty"
@@ -276,7 +125,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Party"
   } ]
 }, {
-  "@id" : "_:genid53",
+  "@id" : "_:genid22",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasInboundConsignment"
@@ -285,7 +134,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
   } ]
 }, {
-  "@id" : "_:genid54",
+  "@id" : "_:genid23",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasInboundParentLoadingUnit"
@@ -294,7 +143,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
   } ]
 }, {
-  "@id" : "_:genid55",
+  "@id" : "_:genid24",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasLoadingUnit"
@@ -303,7 +152,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
   } ]
 }, {
-  "@id" : "_:genid56",
+  "@id" : "_:genid25",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasOutboundConsignment"
@@ -312,7 +161,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
   } ]
 }, {
-  "@id" : "_:genid57",
+  "@id" : "_:genid26",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasOutboundParentLoadingUnit"
@@ -321,7 +170,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
   } ]
 }, {
-  "@id" : "_:genid58",
+  "@id" : "_:genid27",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasParty"
@@ -330,7 +179,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Party"
   } ]
 }, {
-  "@id" : "_:genid59",
+  "@id" : "_:genid28",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasReceiverParty"
@@ -339,7 +188,7 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Receiver"
   } ]
 }, {
-  "@id" : "_:genid60",
+  "@id" : "_:genid29",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#hasShipperParty"
@@ -348,7 +197,16 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipper"
   } ]
 }, {
-  "@id" : "_:genid61",
+  "@id" : "_:genid3",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#hasConsignorParty"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Consignor"
+  } ]
+}, {
+  "@id" : "_:genid30",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#processedByWave"
@@ -357,14 +215,58 @@
     "@id" : "https://w3id.org/latuli/ontology/m3#Wave"
   } ]
 }, {
+  "@id" : "_:genid4",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#hasHubParty"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Party"
+  } ]
+}, {
+  "@id" : "_:genid5",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#includesTransport"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Transport"
+  } ]
+}, {
+  "@id" : "_:genid6",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#processedByWave"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Wave"
+  } ]
+}, {
+  "@id" : "_:genid7",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#belongsToShipment"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#Shipment"
+  } ]
+}, {
   "@id" : "_:genid8",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "https://w3id.org/latuli/ontology/m3#Consignment"
-    }, {
-      "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
-    } ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#hasLoadingUnit"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
+  } ]
+}, {
+  "@id" : "_:genid9",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#relatesToTradeItem"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#TradeItem"
   } ]
 }, {
   "@id" : "http://www.opengis.net/ont/geosparql#Feature",
@@ -2104,17 +2006,17 @@
     "@value" : "A consignment is a logical grouping of goods (one or more physical entities) that is intended to be transported as a whole from a consignor to a consignee by a carrier or freight forwarder via one or more modes of transport, subject to one single transport contract."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid32"
+    "@id" : "_:genid1"
   }, {
-    "@id" : "_:genid33"
+    "@id" : "_:genid2"
   }, {
-    "@id" : "_:genid34"
+    "@id" : "_:genid3"
   }, {
-    "@id" : "_:genid35"
+    "@id" : "_:genid4"
   }, {
-    "@id" : "_:genid36"
+    "@id" : "_:genid5"
   }, {
-    "@id" : "_:genid37"
+    "@id" : "_:genid6"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#Consignor",
@@ -2129,11 +2031,11 @@
   "@id" : "https://w3id.org/latuli/ontology/m3#DangerousGoods",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid38"
+    "@id" : "_:genid7"
   }, {
-    "@id" : "_:genid39"
+    "@id" : "_:genid8"
   }, {
-    "@id" : "_:genid40"
+    "@id" : "_:genid9"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#HubReconstructionLocation",
@@ -2142,7 +2044,7 @@
     "@value" : "The location where a reconstruction of goods takes place."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid41"
+    "@id" : "_:genid10"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Terminal"
@@ -2175,9 +2077,9 @@
     "@value" : "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid42"
+    "@id" : "_:genid11"
   }, {
-    "@id" : "_:genid43"
+    "@id" : "_:genid12"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#ShipmentItem",
@@ -2186,9 +2088,9 @@
     "@value" : "A shipment is an identifiable collection of one or more Trade Items available to be transported together from the shipper (Original Consignor/Shipper), to the receiver (Final/Ultimate Consignee). Typically the shipment is the entity communicated between trading partners in the Despatch and Receiving Advice."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid44"
+    "@id" : "_:genid13"
   }, {
-    "@id" : "_:genid45"
+    "@id" : "_:genid14"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#Shipper",
@@ -2218,9 +2120,9 @@
     "@value" : "A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid46"
+    "@id" : "_:genid15"
   }, {
-    "@id" : "_:genid47"
+    "@id" : "_:genid16"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#Transport",
@@ -2235,7 +2137,7 @@
     "@value" : "A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid48"
+    "@id" : "_:genid17"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit",
@@ -2244,31 +2146,31 @@
     "@value" : "A loading unit which is received through an inbound dock and then transferred across the dock to an outbound transportation dock."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid49"
+    "@id" : "_:genid18"
   }, {
-    "@id" : "_:genid50"
+    "@id" : "_:genid19"
   }, {
-    "@id" : "_:genid51"
+    "@id" : "_:genid20"
   }, {
-    "@id" : "_:genid52"
+    "@id" : "_:genid21"
   }, {
-    "@id" : "_:genid53"
+    "@id" : "_:genid22"
   }, {
-    "@id" : "_:genid54"
+    "@id" : "_:genid23"
   }, {
-    "@id" : "_:genid55"
+    "@id" : "_:genid24"
   }, {
-    "@id" : "_:genid56"
+    "@id" : "_:genid25"
   }, {
-    "@id" : "_:genid57"
+    "@id" : "_:genid26"
   }, {
-    "@id" : "_:genid58"
+    "@id" : "_:genid27"
   }, {
-    "@id" : "_:genid59"
+    "@id" : "_:genid28"
   }, {
-    "@id" : "_:genid60"
+    "@id" : "_:genid29"
   }, {
-    "@id" : "_:genid61"
+    "@id" : "_:genid30"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#additionalPartyIdentification",
@@ -2296,9 +2198,6 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates a TradeItem or a ShipmentItem to a Shipment."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid1"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipment"
@@ -2538,9 +2437,6 @@
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier"
   } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid5"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Carrier"
   } ],
@@ -2552,9 +2448,6 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid8"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignee"
@@ -2568,9 +2461,6 @@
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor"
   } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid11"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Consignor"
   } ],
@@ -2582,9 +2472,6 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid14"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Party"
@@ -2638,7 +2525,7 @@
     "@value" : "Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid19"
+    "@id" : "https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#LoadingUnit"
@@ -2685,9 +2572,6 @@
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver."
   } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid23"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Receiver"
   } ],
@@ -2695,19 +2579,40 @@
     "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/m3#hasRegulationClass",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The UN Model Regulations use a classification system in which each dangerous substance or article is assigned to a CLASS, depending on the nature of the danger it presents."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#DangerousGoods"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/m3#hasShipperParty",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid26"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Shipper"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/m3#hasUNIdentifier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "UN numbers or UN identifiers are four-digit numbers that identify dangerous goods, hazardous substances and articles (such as explosives, flammable liquids, toxic substances, etc.) in the framework of international transport."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/m3#DangerousGoods"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/m3#hashCode",
@@ -2948,9 +2853,6 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid29"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/m3#Wave"

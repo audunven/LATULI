@@ -872,15 +872,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#belongsToShipment">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#DangerousGoods"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#ShipmentItem"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#TradeItem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Shipment"/>
         <rdfs:comment>Relates a TradeItem or a ShipmentItem to a Shipment.</rdfs:comment>
     </owl:ObjectProperty>
@@ -892,14 +883,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasCarrierParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Consignment"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Carrier"/>
         <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier</rdfs:comment>
     </owl:ObjectProperty>
@@ -911,14 +894,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsigneeParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Consignment"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignee"/>
         <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignee</rdfs:comment>
     </owl:ObjectProperty>
@@ -930,14 +905,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsignorParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Consignment"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Consignor"/>
         <rdfs:comment>Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Consignor</rdfs:comment>
     </owl:ObjectProperty>
@@ -948,16 +915,6 @@
 
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasHubParty">
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Transport"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Wave"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
         <rdfs:comment>Relates a HubReconstructionLocation, an XDocLoadingUnit (cross-dock loading unit), a Wave, or a Transport to a TerminalOperator</rdfs:comment>
     </owl:ObjectProperty>
@@ -1011,15 +968,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasLoadingUnit">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#ShipmentItem"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#TradeItem"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#LoadingUnit"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit), a TradeItem, a ShipmentItem or a DGR (dangerous goods) to a LoadingUnit</rdfs:comment>
     </owl:ObjectProperty>
@@ -1063,14 +1012,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasReceiverParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#ShipmentItem"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Receiver"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver.</rdfs:comment>
     </owl:ObjectProperty>
@@ -1082,14 +1023,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasShipperParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#ShipmentItem"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Shipper"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Shipper.</rdfs:comment>
     </owl:ObjectProperty>
@@ -1111,14 +1044,6 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#processedByWave">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#Consignment"/>
-                    <rdf:Description rdf:about="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Consignment to a Wave.</rdfs:comment>
     </owl:ObjectProperty>
@@ -1614,6 +1539,28 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment>Instructions that describe how goods should be expedited during transport and other goods handling.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#hasRegulationClass -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasRegulationClass">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#DangerousGoods"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The UN Model Regulations use a classification system in which each dangerous substance or article is assigned to a CLASS, depending on the nature of the danger it presents.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#hasUNIdentifier -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasUNIdentifier">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/m3#DangerousGoods"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>UN numbers or UN identifiers are four-digit numbers that identify dangerous goods, hazardous substances and articles (such as explosives, flammable liquids, toxic substances, etc.) in the framework of international transport.</rdfs:comment>
     </owl:DatatypeProperty>
     
 

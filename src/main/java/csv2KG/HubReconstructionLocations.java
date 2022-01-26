@@ -15,13 +15,93 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
+
 /**
  * @author audunvennesland
  *
  */
-public class HubReconstructionLocations
-{
+public class HubReconstructionLocations {
 	
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+	
+	public static void processHubReconstructionLocationsToNTriple (File hubReconstructionLocationsFolder, String ntFile) {
+		
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "HubReconstructionLocation";
+		String tripleClosure = "> .\n";
+
+		String hubReconstructionLocationEntity;
+
+		File[] filesInDir = hubReconstructionLocationsFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+					hubReconstructionLocationEntity = params[0] + "_hubReconstructionLocation";
+					
+					//rdf:type
+					bw.write(RDF4JUtilities.createType(hubReconstructionLocationEntity, baseURI, rdf_type, type, tripleClosure));
+					
+					//hasHubParty						
+					bw.write(RDF4JUtilities.createObjectProperty(hubReconstructionLocationEntity, baseURI, "hasHubParty", params[3], "_party", tripleClosure));
+
+					//hubReconstructionLocationId
+					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "hubReconstructionLocationId", params[0], DATATYPE_STRING, tripleClosure));
+			
+					//additionalPartyIdentification
+					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "additionalPartyIdentification", params[1], DATATYPE_STRING, tripleClosure));
+					
+					//reconstructionLane
+					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "reconstructionLane", params[4], DATATYPE_STRING, tripleClosure));
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
 	
 	public static void processHubReconstructionLocationsToTSV (File hubReconstructionLocationsFolder, String tsvFile) {
 

@@ -51,31 +51,27 @@ public class RDF4JUtilities {
 
 	}
 	
-	//https://stackoverflow.com/questions/47789037/why-is-adding-an-rdf-dump-inputstream-to-a-rdf4j-repository-so-slow-in-java
-	public void uploadFile(String context, RDFFormat format, String filePath) throws MalformedURLException, IOException {
-	    Repository repo = new SailRepository(new NativeStore());
-	    repo.initialize();
-	    IRI contextIRI = repo.getValueFactory().createIRI(context);
-	    //RDFFormat format = RDFFormat.NTRIPLES;
-	    System.out.println("Load zip file of format " + format);
-	    try (InputStream in = new FileInputStream(new File(filePath));
-	                    NotifyingRepositoryConnectionWrapper con = new NotifyingRepositoryConnectionWrapper(repo,
-	                                    repo.getConnection());) {
-	        RepositoryConnectionListenerAdapter myListener = new RepositoryConnectionListenerAdapter() {
-	            private long count = 0;
-	            @Override
-	            public void add(RepositoryConnection arg0, Resource arg1, IRI arg2, Value arg3, Resource... arg4) {
-	                count++;
-	                if (count % 100000 == 0)
-	                    System.out.println("Add statement number " + count + "\n" + arg1 + " " + arg2 + " " + arg3);
-	            }
-	        };
-	        con.addRepositoryConnectionListener(myListener);
-	        con.add(in, "", format,contextIRI);
-	    } catch (Exception e) {
-	        throw new RuntimeException(e);
-	    }
+	public static String createType (String entity, String baseURI, String rdf_type, String type, String tripleClosure) {
+		
+		return baseURI + entity + rdf_type + baseURI + type + tripleClosure;	
+		
 	}
+	
+	public static String createObjectProperty(String entity, String baseURI, String objectProperty, String value, String typeSuffix, String tripleClosure) {
+		
+		return baseURI + entity + " " + baseURI + objectProperty + "> " + " " + baseURI + value + typeSuffix + tripleClosure;
+	}
+	
+	public static String createDataProperty(String entity, String baseURI, String dataProperty, String value, String dataType, String tripleClosure) {
+		
+		return baseURI + entity + " " + baseURI + dataProperty + "> " + " " + "\"" + value + "\"" + dataType + tripleClosure;
+	}
+	
+	public static String createGeoDataProperty(String entity, String baseURI, String geoSparqlDataProperty, String value, String geoSparqlTripleClosure) {
+		
+		return baseURI + entity + " " + geoSparqlDataProperty + " " + "\"" + value + "\"" + geoSparqlTripleClosure;
+	}
+	
 	
 
 	public static void removeRepository(String rdf4jServer, String repositoryId) {

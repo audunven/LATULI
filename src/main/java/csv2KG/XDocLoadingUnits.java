@@ -16,14 +16,178 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
 import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
  *
  */
-public class XDocLoadingUnits
-{
+public class XDocLoadingUnits {
+	
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+	
+	public static void processXDocLoadingUnitsToNTriple (File xdluFolder, String ntFile) {
+		
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "XDocLoadingUnit";
+		String tripleClosure = "> .\n";
+
+		String xDocLoadingUnitEntity;
+
+		File[] filesInDir = xdluFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+
+					//isType				
+					xDocLoadingUnitEntity = params[0] + "_xDocLoadingUnit";
+
+					bw.write(RDF4JUtilities.createType(xDocLoadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
+
+
+					//hasHubReconstructionLocation
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubReconstructionLocation", params[17], "_hubReconstructionLocation", tripleClosure));
+
+
+					//hasLoadingUnit
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasLoadingUnit", params[7], "_loadingUnit", tripleClosure));
+
+
+					//hasInboundParentLoadingUnit
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundParentLoadingUnit", params[41], "_loadingUnit", tripleClosure));
+
+
+					//hasOutboundParentLoadingUnit
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundParentLoadingUnit", params[42], "_loadingUnit", tripleClosure));
+
+
+					//hasInboundConsignment
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundConsignment", params[11], "_consignment", tripleClosure));
+
+
+					//hasOutboundConsignment
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundConsignment", params[12], "_consignment", tripleClosure));
+
+
+					//hasHubParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubParty", params[15], "_party", tripleClosure));
+
+
+					//hasShipperParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasShipperParty", params[23], "_party", tripleClosure));
+
+
+					//hasReceiverParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasReceiverParty", params[26], "_party", tripleClosure));
+
+
+					//hasCarrierParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasCarrierParty", params[29], "_party", tripleClosure));
+
+
+					//hasConsignorParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsignorParty", params[32], "_party", tripleClosure));
+
+
+					//hasConsigneeParty
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsigneeParty", params[35], "_party", tripleClosure));
+
+
+					//processedByWave
+					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "processedByWave", params[36], "_wave", tripleClosure));
+
+
+					//internalId
+					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "internalId", params[0], DATATYPE_STRING, tripleClosure));
+
+
+					//presortScanOn
+					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
+						bw.write(xDocLoadingUnitEntity + "\t" + "presortScanOn" + "\t" + StringUtilities.convertToDateTime(params[1]) + "\n");
+
+					}
+
+					//reconstructedScanOn
+					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructedScanOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//finishedScanOn
+					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "finishedScanOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//volume
+					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "volume", params[5], DATATYPE_DECIMAL, tripleClosure));
+
+
+					//weight
+					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "weight", params[6], DATATYPE_DECIMAL, tripleClosure));
+
+
+					//reconstructionType
+					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructionType", params[37], DATATYPE_STRING, tripleClosure));
+
+
+					//splitShipment
+					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "splitShipment", params[40], DATATYPE_INT, tripleClosure));
+
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+
+
+	}
+
 	
 	public static void processXDocLoadingUnitsToTSV (File xdluFolder, String tsvFile) {
 

@@ -16,6 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -23,6 +24,158 @@ import utilities.StringUtilities;
  *
  */
 public class Waves {
+	
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+	
+	public static void processWavesToNTriple (File wavesFolder, String ntFile) {
+
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "Wave";
+		String tripleClosure = "> .\n";
+
+		String waveEntity;
+
+		File[] filesInDir = wavesFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+
+					//isType					
+					waveEntity = params[0] + "_wave";
+
+					bw.write(RDF4JUtilities.createType(waveEntity, baseURI, rdf_type, type, tripleClosure));
+
+
+					//hasHubParty				
+					bw.write(RDF4JUtilities.createObjectProperty(waveEntity, baseURI, "hasHubParty", params[6], "_party", tripleClosure));
+
+
+					//waveid
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveId", params[0], DATATYPE_STRING, tripleClosure));
+
+
+					//plannedOn
+					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "plannedOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//releasedOn
+					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "releasedOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//modifiedOn
+					if (!StringUtilities.convertToDateTime(params[7]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[7]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//closedOn
+					if (!StringUtilities.convertToDateTime(params[8]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "closedOn", StringUtilities.convertToDateTime(params[8]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//createdOn
+					if (!StringUtilities.convertToDateTime(params[10]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "createdOn", StringUtilities.convertToDateTime(params[10]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//waveStartProcessingOn
+					if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveStartProcessingOn", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//waveEndProcessingOn
+					if (!StringUtilities.convertToDateTime(params[14]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveEndProcessingOn", StringUtilities.convertToDateTime(params[14]), DATATYPE_DATETIME, tripleClosure));
+
+
+					}
+
+					//qttTrailers
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttTrailers", params[15], DATATYPE_INT, tripleClosure));
+
+
+					//qttBoxes
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttBoxes", params[16], DATATYPE_INT, tripleClosure));
+
+
+					//qttPallets
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttPallets", params[17], DATATYPE_INT, tripleClosure));
+
+
+					//qttBoxesProcessed
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttBoxesProcessed", params[18], DATATYPE_INT, tripleClosure));
+
+
+					//qttPalletsBuilt
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttPalletsBuilt", params[19], DATATYPE_INT, tripleClosure));
+
+
+					//qttTasks
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttTasks", params[20], DATATYPE_INT, tripleClosure));
+
+
+					//qttShipments
+					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttShipments", params[21], DATATYPE_INT, tripleClosure));
+
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
 	
 	public static void processWavesToTSV (File wavesFolder, String tsvFile) {
 

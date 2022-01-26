@@ -16,6 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -23,6 +24,139 @@ import utilities.StringUtilities;
  *
  */
 public class Transports {
+	
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+	
+	public static void processTransportsToNTriple (File transportsFolder, String ntFile) {
+
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "Transport";
+		String tripleClosure = "> .\n";
+
+		String transportEntity;
+
+		File[] filesInDir = transportsFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+
+		List<String[]> line = new ArrayList<String[]>();
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+			try {
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				for (String[] params : line) {
+
+					transportEntity = params[0] + "_transport";
+
+					//adding types						
+					bw.write(RDF4JUtilities.createType(transportEntity, baseURI, rdf_type, type, tripleClosure));
+
+					//hasHubParty
+					bw.write(RDF4JUtilities.createObjectProperty(transportEntity, baseURI, "hasHubParty", params[8], "_party", tripleClosure));
+
+					//transportId
+					bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "transportId", params[0], DATATYPE_STRING, tripleClosure));
+
+					//expectedArrival
+					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "expectedArrival", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//effectiveArrival
+					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "effectiveArrival", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//transportName
+					bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "transportName", params[9], DATATYPE_STRING, tripleClosure));
+
+
+					//modifiedOn
+					if (!StringUtilities.convertToDateTime(params[10]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[10]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//transportType
+					bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "transportType", params[11], DATATYPE_STRING, tripleClosure));
+
+
+					//wavePlannedOn
+					if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "wavePlannedOn", StringUtilities.convertToDateTime(params[12]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//waveReleasedOn
+					if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "waveReleasedOn", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//waveClosedOn
+					if (!StringUtilities.convertToDateTime(params[14]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "waveClosedOn", StringUtilities.convertToDateTime(params[14]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//waveStartProcessingOn
+					if (!StringUtilities.convertToDateTime(params[15]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "waveStartProcessingOn", StringUtilities.convertToDateTime(params[15]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+					//waveEndProcessingOn
+					if (!StringUtilities.convertToDateTime(params[16]).equals("0000-00-00T00:00:00")) {
+						bw.write(RDF4JUtilities.createDataProperty(transportEntity, baseURI, "waveEndProcessingOn", StringUtilities.convertToDateTime(params[16]), DATATYPE_DATETIME, tripleClosure));
+
+					}
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
 	
 	public static void processTransportsToTSV (File transportsFolder, String tsvFile) {
 

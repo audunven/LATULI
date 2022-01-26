@@ -16,14 +16,110 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
 import utilities.StringUtilities;
 
 /**
  * @author audunvennesland
  *
  */
-public class DangerousGoods
-{
+public class DangerousGoods {
+	
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+	
+	public static void processDangerousGoodsToNTriple (File dangerousGoodsFolder, String ntFile) {
+		
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "DangerousGoods";
+		String tripleClosure = "> .\n";
+
+		String dangerousGoodsEntity;
+
+		File[] filesInDir = dangerousGoodsFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		List<String[]> line = new ArrayList<String[]>();
+
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+
+			try {
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+				
+				try {
+					line = StringUtilities.oneByOne(br);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				for (String[] params : line) {
+
+					dangerousGoodsEntity = params[1] + "-" + params[0] + "_dgr";
+
+					//rdf:type					
+					bw.write(RDF4JUtilities.createType(dangerousGoodsEntity, baseURI, rdf_type, type, tripleClosure));
+
+					//relatesToTradeItem
+					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "relatesToTradeItem", params[1], "_tradeItem", tripleClosure));
+
+					
+					//belongsToShipment
+					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "belongsToShipment", params[2], "_shipment", tripleClosure));
+					
+					//hasLoadingUnit
+					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "hasLoadingUnit", params[0], "_loadingUnit", tripleClosure));
+
+					//modifiedOn
+					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {						
+					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+					}
+					
+					//hasUNIdentifier
+					if (!params[5].equals("NULL")) {
+					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasUNIdentifier", params[5], DATATYPE_STRING, tripleClosure));
+					}
+					
+					//hasRegulationClass
+					if (!params[6].equals("NULL")) {
+					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasRegulationClass", params[6], DATATYPE_STRING, tripleClosure));
+					}					
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
 	
 	public static void processDangerousGoodsToTSV (File dangerousGoodsFolder, String tsvFile) {
 

@@ -16,24 +16,101 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
+import utilities.RDF4JUtilities;
+
 
 /**
  * @author audunvennesland
  *
  */
-public class ShipmentItems
-{
-	
-	public static void processShipmentItemsToTSV(File partiesFolder, String tsvFile) {
+public class ShipmentItems {
 
-		
+	final static String DATATYPE_INT = "^^<http://www.w3.org/2001/XMLSchema#int";
+	final static String DATATYPE_DATETIME = "^^<http://www.w3.org/2001/XMLSchema#dateTime";
+	final static String DATATYPE_STRING = "^^<http://www.w3.org/2001/XMLSchema#string";
+	final static String DATATYPE_DECIMAL = "^^<http://www.w3.org/2001/XMLSchema#decimal";
+
+	public static void processShipmentItemsToNTriple (File partiesFolder, String ntFile) {
+
+		String rdf_type = " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ";
+		String baseURI = "<https://w3id.org/latuli/ontology/m3#";
+		String type = "ShipmentItem";
+		String tripleClosure = "> .\n";
+
 		String shipmentItemEntity;
 
 		File[] filesInDir = partiesFolder.listFiles();
 
 		BufferedReader br = null;
 		BufferedWriter bw = null;
-		
+
+		List<String[]> line = new ArrayList<String[]>();
+
+		for (int i = 0; i < filesInDir.length; i++) {
+
+
+			try {
+
+
+				br = new BufferedReader(new FileReader(filesInDir[i]));
+				bw = new BufferedWriter(new FileWriter(ntFile, true));
+
+
+				System.out.println("Reading file: " + filesInDir[i].getName());
+
+				for (String[] params : line) {
+
+					//adding type
+					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem";
+					
+					bw.write(RDF4JUtilities.createType(shipmentItemEntity, baseURI, rdf_type, type, tripleClosure));
+
+					//belongsToShipment						
+					bw.write(RDF4JUtilities.createObjectProperty(shipmentItemEntity, baseURI, "belongsToShipment", params[0], "_shipment", tripleClosure));
+
+					//hasLoadingUnit						
+					bw.write(RDF4JUtilities.createObjectProperty(shipmentItemEntity, baseURI, "hasLoadingUnit", params[1], "_loadingUnit", tripleClosure));
+
+					//quantity
+					bw.write(RDF4JUtilities.createDataProperty(shipmentItemEntity, baseURI, "quantity", params[3], DATATYPE_INT, tripleClosure));
+
+
+				}//end for
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				try {
+					if (br != null)
+						br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		}
+	}
+
+	public static void processShipmentItemsToTSV(File partiesFolder, String tsvFile) {
+
+
+		String shipmentItemEntity;
+
+		File[] filesInDir = partiesFolder.listFiles();
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
 		List<String[]> line = new ArrayList<String[]>();
 
 
@@ -54,9 +131,9 @@ public class ShipmentItems
 
 
 					//adding type
-					
+
 					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem";
-					
+
 					bw.write(shipmentItemEntity + "\t" + "isType" + "\t" + "ShipmentItem" + "\n");
 
 					//belongsToShipment						
@@ -85,7 +162,7 @@ public class ShipmentItems
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
-				
+
 				try {
 					if (bw != null)
 						bw.close();
@@ -96,11 +173,11 @@ public class ShipmentItems
 
 		}
 	}
-	
+
 	public static void processShipmentItemsToLocalRepo (File partiesFolder, String baseURI, String dataDir, String indexes, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
-			
+
 			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();
@@ -172,11 +249,11 @@ public class ShipmentItems
 		repo.shutDown();
 
 	}
-	
+
 	public static void processShipmentItemsToRemoteRepo (File partiesFolder, String baseURI, String rdf4jServer, String repositoryId, Repository repo) {
 
 		try (RepositoryConnection connection = repo.getConnection()) {
-			
+
 			connection.setNamespace("m3", baseURI);
 
 			ValueFactory vf = connection.getValueFactory();

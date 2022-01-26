@@ -44,12 +44,55 @@ public class DatasetGenerator {
 		//Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 		//realRunHub(dataDir, indexes, repo, baseURI);
 		
-		//if creating the full dataset
-		String folderPath = "./files/CSV/Audun/_FILTER_HUB";
-		String outputFile = "files/CSV/Audun/filter_hub_dataset.tsv";
-		createFullDataset(folderPath, outputFile);
+		/*if creating the full dataset*/
+		//String folderPath = "./files/CSV/Audun/_FILTER_HUB";
+		//String outputFile = "files/CSV/Audun/filter_hub_dataset.tsv";
+		//createFullDataset(folderPath, outputFile);
+
+		/*if creating the full dataset to n-triples*/
+		String folderPath = "./files/CSV/Audun/_TEST_NT";
+		String outputFile = "files/CSV/Audun/dataset.nt";
+		createFullDatasetToNTriples(folderPath, outputFile);
 
 
+	}
+	
+	
+	/**
+	 * Creates a dataset from csv data and represents the KG as N-Triples
+	 * @param folderPath
+	 * @param outputFile
+	   15. jan. 2022
+	 */
+	public static void createFullDatasetToNTriples (String folderPath, String outputFile) {
+
+		long startTime = System.nanoTime();
+
+		//access all files in folder
+		File parentFolder = new File(folderPath);
+		File[] files = parentFolder.listFiles();
+
+		for (File folder : files) {
+
+			if (folder.getName().startsWith("consignments")) {		
+
+				System.out.println("\nProcessing Consignments\n");
+
+				Consignments.processConsignmentsToNTriple (folder, outputFile);
+
+			} 
+
+		}
+
+		long endTime = System.nanoTime();		
+		long timeElapsed = endTime - startTime;		
+		System.err.println("The ontology generation process took: " + timeElapsed/60000000000.00 + " minutes");
+
+		System.out.println("\nMEMORY USAGE for the entire transformation process: ");
+		System.out.println("Used Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000 + " MB");
+		System.out.println("Free Memory   : " + Runtime.getRuntime().freeMemory()/1000000 + " MB");
+		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
+		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 
 	}
 

@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.1.1:1", "", "DurationType", "EARoot/EA1/EA1/EA18.htm", "247.png", "E6146", "0", "", "Enumeration0","{74B80717-D27E-4e44-AECE-012605B196EC}");
+tocTab[tocTab.length] = new Array("0.1.1:2", "", "GeographicalCoordinateSystem", "EARoot/EA1/EA1/EA19.htm", "247.png", "E6548", "0", "", "Enumeration0","{3719647A-D0F3-4d98-B8E9-6E6403190D30}");
+tocTab[tocTab.length] = new Array("0.1.1:3", "", "GoodsType", "EARoot/EA1/EA1/EA20.htm", "247.png", "E6139", "0", "", "Enumeration0","{FDEE4F77-618E-41e5-A2AE-97D53D5BAC08}");
+tocTab[tocTab.length] = new Array("0.1.1:4", "", "LogisticsUnitType", "EARoot/EA1/EA1/EA21.htm", "247.png", "E6138", "0", "", "Enumeration0","{1B383208-7EAF-4fce-8C4E-95519209D76A}");
+tocTab[tocTab.length] = new Array("0.1.1:5", "", "MeasurementType", "EARoot/EA1/EA1/EA22.htm", "247.png", "E6134", "0", "", "Enumeration0","{ABF395B0-CB0F-423f-8CE3-6475A0842E77}");
+tocTab[tocTab.length] = new Array("0.1.1:6", "", "StatisticalMeasurement", "EARoot/EA1/EA1/EA23.htm", "247.png", "E6545", "0", "", "Enumeration0","{38A1E766-90A9-4e0d-816C-6F43A9CC631C}");
+tocTab[tocTab.length] = new Array("0.1.1:7", "", "TransportMeansType", "EARoot/EA1/EA1/EA24.htm", "247.png", "E6137", "0", "", "Enumeration0","{620EEEFC-6B72-4238-AF58-D5FAB5FFBB85}");
+tocTab[tocTab.length] = new Array("0.1.1:8", "", "TransportModeType", "EARoot/EA1/EA1/EA25.htm", "247.png", "E6136", "0", "", "Enumeration0","{CBC1F2B0-0727-4985-A44E-A6BC54D70EBA}");

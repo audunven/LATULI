@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("0:1", "", "Terminal Capacity", "EARoot/EA1.htm", "175.png", "1295", "0", "", "Logical diagram0","{FEBB320C-1380-4be3-8F14-0109C40B5AA9}");
+tocTab[tocTab.length] = new Array("0:2", "", "InternalTransportation", "EARoot/EA5.htm", "5.png", "E6143", "0", "", "Class0","{CC434417-42C5-4cba-99F8-1F23EA0B0AB8}");
+tocTab[tocTab.length] = new Array("0:3", "", "ServiceMode", "EARoot/EA7.htm", "247.png", "E6132", "0", "", "Enumeration0","{0FF832E5-6F63-4f9f-8D3D-31FB39FD44C5}");
+tocTab[tocTab.length] = new Array("0:4", "", "Terminal", "EARoot/EA8.htm", "5.png", "E6130", "0", "", "Class0","{8224D98B-0287-4c5e-81AB-EFC466519877}");
+tocTab[tocTab.length] = new Array("0.1", "1", "Generic", "EARoot/EA1/EA10.htm", "4.png", "", "", "{FD369B83-5532-4435-80D5-6969ED35640F}", "Package");
+tocTab[tocTab.length] = new Array("0.2", "", "ResilienceManagement", "EARoot/EA2/EA26.htm", "4.png", "", "", "{1E789C71-9443-4c8c-A1F9-9C0916FF515B}", "Package");
+tocTab[tocTab.length] = new Array("0.3", "", "UrbanLogistics", "EARoot/EA3/EA27.htm", "4.png", "", "", "{D4462D04-6DDF-4aae-B7CB-F98984CD66E9}", "Package");

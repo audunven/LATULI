@@ -48,15 +48,19 @@ public class DatasetGenerator {
 		//Repository repo = new SailRepository(new NativeStore(new File(dataDir), indexes));
 		//realRunHub(dataDir, indexes, repo, baseURI);
 		
-		/*if creating the full dataset*/
-		//String folderPath = "./files/CSV/Audun/_FILTER_HUB";
-		//String outputFile = "files/CSV/Audun/filter_hub_dataset.tsv";
-		//createFullDataset(folderPath, outputFile);
+		//if creating the full dataset to tsv
+//		String folderPath = "./files/CSV/Audun/_ORIGINAL_CSV";
+		
+		//if creating a period-based dataset to tsv
+		String folderPath = "./files/CSV/Audun/_FILTER_PERIOD_2019-12-01T00:00:00_2020-12-31T00:00:00";
+		String outputFile = "files/CSV/Audun/Dataset_FILTER_PERIOD_2019-12-01T00:00:00_2020-12-31T00:00:00.tsv";
+		
+		createFullDatasetToTSV(folderPath, outputFile);
 
-		/*if creating the full dataset to n-triples*/
-		String folderPath = "./files/CSV/Audun/_ORIGINAL_CSV";
-		String outputFile = "files/CSV/Audun/full_dataset.nt";
-		createFullDatasetToNTriples(folderPath, outputFile);
+		//if creating the full dataset to n-triples (expensive!)
+//		String folderPath = "./files/CSV/Audun/_ORIGINAL_CSV";
+//		String outputFile = "files/CSV/Audun/full_dataset.nt";
+//		createFullDatasetToNTriples(folderPath, outputFile);
 
 
 	}
@@ -158,28 +162,6 @@ public class DatasetGenerator {
 		System.out.println("Total Memory  : " + Runtime.getRuntime().totalMemory()/1000000 + " MB");
 		System.out.println("Max Memory    : " + Runtime.getRuntime().maxMemory()/1000000 + " MB");  
 		
-//		BufferedReader reader = null;
-//		try {
-//			reader = new BufferedReader(new FileReader(outputFile));
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		int lines = 0;
-//		try {
-//			while (reader.readLine() != null) lines++;
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			reader.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		System.out.println("Number of lines in file: " + lines);
 
 	}
 
@@ -189,7 +171,7 @@ public class DatasetGenerator {
 	 * @param outputFile
 	   15. jan. 2022
 	 */
-	public static void createFullDataset (String folderPath, String outputFile) {
+	public static void createFullDatasetToTSV (String folderPath, String outputFile) {
 
 		long startTime = System.nanoTime();
 

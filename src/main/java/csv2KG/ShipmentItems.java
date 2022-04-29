@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 
@@ -69,16 +69,16 @@ public class ShipmentItems {
 					//adding type
 					shipmentItemEntity = params[0] + "_" + params[1] + "_shipmentItem>";
 					
-					bw.write(RDF4JUtilities.createType(shipmentItemEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(shipmentItemEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//belongsToShipment						
-					bw.write(RDF4JUtilities.createObjectProperty(shipmentItemEntity, baseURI, "belongsToShipment", params[0], "_shipment", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(shipmentItemEntity, baseURI, "belongsToShipment", params[0], "_shipment", tripleClosure));
 
 					//hasLoadingUnit						
-					bw.write(RDF4JUtilities.createObjectProperty(shipmentItemEntity, baseURI, "hasLoadingUnit", params[1], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(shipmentItemEntity, baseURI, "hasLoadingUnit", params[1], "_loadingUnit", tripleClosure));
 
 					//quantity
-					bw.write(RDF4JUtilities.createDataProperty(shipmentItemEntity, baseURI, "quantity", params[3], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(shipmentItemEntity, baseURI, "quantity", params[3], DATATYPE_INT, tripleClosure));
 
 
 				}//end for

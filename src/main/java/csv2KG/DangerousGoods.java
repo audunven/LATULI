@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -68,31 +68,31 @@ public class DangerousGoods {
 					dangerousGoodsEntity = params[1] + "-" + params[0] + "_dgr>";
 
 					//rdf:type					
-					bw.write(RDF4JUtilities.createType(dangerousGoodsEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(dangerousGoodsEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//relatesToTradeItem
-					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "relatesToTradeItem", params[1], "_tradeItem", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "relatesToTradeItem", params[1], "_tradeItem", tripleClosure));
 
 					
 					//belongsToShipment
-					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "belongsToShipment", params[2], "_shipment", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "belongsToShipment", params[2], "_shipment", tripleClosure));
 					
 					//hasLoadingUnit
-					bw.write(RDF4JUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "hasLoadingUnit", params[0], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(dangerousGoodsEntity, baseURI, "hasLoadingUnit", params[0], "_loadingUnit", tripleClosure));
 
 					//modifiedOn
 					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {						
-					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
 					}
 					
 					//hasUNIdentifier
 					if (!params[5].equals("NULL")) {
-					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasUNIdentifier", params[5], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasUNIdentifier", params[5], DATATYPE_STRING, tripleClosure));
 					}
 					
 					//hasRegulationClass
 					if (!params[6].equals("NULL")) {
-					bw.write(RDF4JUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasRegulationClass", params[6], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(dangerousGoodsEntity, baseURI, "hasRegulationClass", params[6], DATATYPE_STRING, tripleClosure));
 					}					
 
 				}//end for

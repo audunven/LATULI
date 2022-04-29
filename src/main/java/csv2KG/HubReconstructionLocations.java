@@ -15,7 +15,7 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -68,19 +68,19 @@ public class HubReconstructionLocations {
 					hubReconstructionLocationEntity = params[0] + "_hubReconstructionLocation>";
 					
 					//rdf:type
-					bw.write(RDF4JUtilities.createType(hubReconstructionLocationEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(hubReconstructionLocationEntity, baseURI, rdf_type, type, tripleClosure));
 					
 					//hasHubParty						
-					bw.write(RDF4JUtilities.createObjectProperty(hubReconstructionLocationEntity, baseURI, "hasHubParty", params[3], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(hubReconstructionLocationEntity, baseURI, "hasHubParty", params[3], "_party", tripleClosure));
 
 					//hubReconstructionLocationId
-					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "hubReconstructionLocationId", params[0], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "hubReconstructionLocationId", params[0], DATATYPE_STRING, tripleClosure));
 			
 					//additionalPartyIdentification
-					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "additionalPartyIdentification", params[1], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "additionalPartyIdentification", params[1], DATATYPE_STRING, tripleClosure));
 					
 					//reconstructionLane
-					bw.write(RDF4JUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "reconstructionLane", params[4], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(hubReconstructionLocationEntity, baseURI, "reconstructionLane", params[4], DATATYPE_STRING, tripleClosure));
 
 				}//end for
 

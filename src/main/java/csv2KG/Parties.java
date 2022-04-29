@@ -17,7 +17,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -74,40 +74,40 @@ public class Parties {
 
 					partyEntity = params[2] + "_party>";
 
-					bw.write(RDF4JUtilities.createType(partyEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(partyEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//additionalPartyIdentification
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "additionalPartyIdentification", params[0], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "additionalPartyIdentification", params[0], DATATYPE_STRING, tripleClosure));
 
 					//gln
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "gln", params[1], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "gln", params[1], DATATYPE_STRING, tripleClosure));
 
 					//hashCode
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "hashCode", params[2], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "hashCode", params[2], DATATYPE_STRING, tripleClosure));
 
 					//code2
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "code2", params[7], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "code2", params[7], DATATYPE_STRING, tripleClosure));
 
 					//location
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "location", params[8], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "location", params[8], DATATYPE_STRING, tripleClosure));
 
 					//postalCode
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "postalCode", params[9], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "postalCode", params[9], DATATYPE_STRING, tripleClosure));
 
 					//isHub
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "isHub", params[11], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "isHub", params[11], DATATYPE_INT, tripleClosure));
 
 					//isShipper
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "isShipper", params[12], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "isShipper", params[12], DATATYPE_INT, tripleClosure));
 
 					//isCarrier
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "isCarrier", params[13], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "isCarrier", params[13], DATATYPE_INT, tripleClosure));
 
 					//isConsignor
-					bw.write(RDF4JUtilities.createDataProperty(partyEntity, baseURI, "isConsignor", params[14], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(partyEntity, baseURI, "isConsignor", params[14], DATATYPE_INT, tripleClosure));
 
 					//asWKT
-					bw.write(RDF4JUtilities.createGeoDataProperty(partyEntity, baseURI, geoSparqlDataProperty, StringUtilities.formatCoordinates(params[19]), geoSparqlTripleClosure));
+					bw.write(KGUtilities.createGeoDataProperty(partyEntity, baseURI, geoSparqlDataProperty, StringUtilities.formatCoordinates(params[19]), geoSparqlTripleClosure));
 
 
 				}//end for

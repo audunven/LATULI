@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -67,46 +67,46 @@ public class Shipments {
 
 					//isType					
 					shipmentEntity = params[0] + "_shipment>";
-					bw.write(RDF4JUtilities.createType(shipmentEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(shipmentEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//hasShipperParty
-					bw.write(RDF4JUtilities.createObjectProperty(shipmentEntity, baseURI, "hasShipperParty", params[8], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(shipmentEntity, baseURI, "hasShipperParty", params[8], "_party", tripleClosure));
 
 
 					//hasReceiverParty						
-					bw.write(RDF4JUtilities.createObjectProperty(shipmentEntity, baseURI, "hasReceiverParty", params[11], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(shipmentEntity, baseURI, "hasReceiverParty", params[11], "_party", tripleClosure));
 
 					//shipmentId						
-					bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "shipmentId", params[0], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "shipmentId", params[0], DATATYPE_STRING, tripleClosure));
 
 
 					//shippedOn
 					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
 
-						bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "shippedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "shippedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//expectedDeliveryOn						
 					if (!StringUtilities.convertToDateTime(params[4]).equals("0000-00-00T00:00:00")) {
 
-						bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "expectedDeliveryOn", StringUtilities.convertToDateTime(params[4]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "expectedDeliveryOn", StringUtilities.convertToDateTime(params[4]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//plannedDeliveryDate					
 					if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
 
-						bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "plannedDeliveryDate", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "plannedDeliveryDate", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//qttBoxes
-					bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "qttBoxes", params[18], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "qttBoxes", params[18], DATATYPE_INT, tripleClosure));
 
 
 					//qttPallets						
-					bw.write(RDF4JUtilities.createDataProperty(shipmentEntity, baseURI, "qttPallets", params[19], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(shipmentEntity, baseURI, "qttPallets", params[19], DATATYPE_INT, tripleClosure));
 
 
 				}//end for

@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 
@@ -67,17 +67,17 @@ public class LoadingUnits {
 					loadingUnitEntity = params[0] + "_loadingUnit>";
 
 					//rdf:type
-					bw.write(RDF4JUtilities.createType(loadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(loadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//packageTypeId						
-					bw.write(RDF4JUtilities.createDataProperty(loadingUnitEntity, baseURI, "packageTypeId", params[1], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(loadingUnitEntity, baseURI, "packageTypeId", params[1], DATATYPE_STRING, tripleClosure));
 
 					//orderNumber						
-					bw.write(RDF4JUtilities.createDataProperty(loadingUnitEntity, baseURI, "orderNumber", params[2], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(loadingUnitEntity, baseURI, "orderNumber", params[2], DATATYPE_STRING, tripleClosure));
 
 					//modifiedOn
 					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(loadingUnitEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(loadingUnitEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 				}//end for

@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -70,90 +70,90 @@ public class Waves {
 					//isType					
 					waveEntity = params[0] + "_wave>";
 
-					bw.write(RDF4JUtilities.createType(waveEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(waveEntity, baseURI, rdf_type, type, tripleClosure));
 
 
 					//hasHubParty				
-					bw.write(RDF4JUtilities.createObjectProperty(waveEntity, baseURI, "hasHubParty", params[6], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(waveEntity, baseURI, "hasHubParty", params[6], "_party", tripleClosure));
 
 
 					//waveid
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveId", params[0], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "waveId", params[0], DATATYPE_STRING, tripleClosure));
 
 
 					//plannedOn
 					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "plannedOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "plannedOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//releasedOn
 					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "releasedOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "releasedOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//modifiedOn
 					if (!StringUtilities.convertToDateTime(params[7]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[7]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[7]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//closedOn
 					if (!StringUtilities.convertToDateTime(params[8]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "closedOn", StringUtilities.convertToDateTime(params[8]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "closedOn", StringUtilities.convertToDateTime(params[8]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//createdOn
 					if (!StringUtilities.convertToDateTime(params[10]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "createdOn", StringUtilities.convertToDateTime(params[10]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "createdOn", StringUtilities.convertToDateTime(params[10]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//waveStartProcessingOn
 					if (!StringUtilities.convertToDateTime(params[13]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveStartProcessingOn", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "waveStartProcessingOn", StringUtilities.convertToDateTime(params[13]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//waveEndProcessingOn
 					if (!StringUtilities.convertToDateTime(params[14]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "waveEndProcessingOn", StringUtilities.convertToDateTime(params[14]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "waveEndProcessingOn", StringUtilities.convertToDateTime(params[14]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//qttTrailers
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttTrailers", params[15], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttTrailers", params[15], DATATYPE_INT, tripleClosure));
 
 
 					//qttBoxes
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttBoxes", params[16], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttBoxes", params[16], DATATYPE_INT, tripleClosure));
 
 
 					//qttPallets
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttPallets", params[17], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttPallets", params[17], DATATYPE_INT, tripleClosure));
 
 
 					//qttBoxesProcessed
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttBoxesProcessed", params[18], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttBoxesProcessed", params[18], DATATYPE_INT, tripleClosure));
 
 
 					//qttPalletsBuilt
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttPalletsBuilt", params[19], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttPalletsBuilt", params[19], DATATYPE_INT, tripleClosure));
 
 
 					//qttTasks
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttTasks", params[20], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttTasks", params[20], DATATYPE_INT, tripleClosure));
 
 
 					//qttShipments
-					bw.write(RDF4JUtilities.createDataProperty(waveEntity, baseURI, "qttShipments", params[21], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(waveEntity, baseURI, "qttShipments", params[21], DATATYPE_INT, tripleClosure));
 
 
 

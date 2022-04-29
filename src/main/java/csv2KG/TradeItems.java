@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 
@@ -68,44 +68,44 @@ public class TradeItems {
 
 					//isType					
 					tradeItemEntity = params[0] + "-" + params[1] + "_tradeItem>";
-					bw.write(RDF4JUtilities.createType(tradeItemEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(tradeItemEntity, baseURI, rdf_type, type, tripleClosure));
 
 					//belongsToShipment
-					bw.write(RDF4JUtilities.createObjectProperty(tradeItemEntity, baseURI, "belongsToShipment", params[0], "_shipment", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(tradeItemEntity, baseURI, "belongsToShipment", params[0], "_shipment", tripleClosure));
 
 
 					//hasLoadingUnit
-					bw.write(RDF4JUtilities.createObjectProperty(tradeItemEntity, baseURI, "hasLoadingUnit", params[1], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(tradeItemEntity, baseURI, "hasLoadingUnit", params[1], "_loadingUnit", tripleClosure));
 
 
 					//gtin
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "gtin", params[2], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "gtin", params[2], DATATYPE_STRING, tripleClosure));
 
 
 					//supplierQuantity
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierQuantity", params[6], DATATYPE_DECIMAL, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierQuantity", params[6], DATATYPE_DECIMAL, tripleClosure));
 
 
 					//customerQuantity
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "customerQuantity", params[7], DATATYPE_DECIMAL, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "customerQuantity", params[7], DATATYPE_DECIMAL, tripleClosure));
 
 
 					//supplierProductDescription
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierProductDescription", params[8], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierProductDescription", params[8], DATATYPE_STRING, tripleClosure));
 
 
 					//supplierProductId
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierProductId", params[10], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "supplierProductId", params[10], DATATYPE_STRING, tripleClosure));
 
 
 					//modifiedOn
 					if (!StringUtilities.convertToDateTime(params[12]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[12]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "modifiedOn", StringUtilities.convertToDateTime(params[12]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//handlingInstructions
-					bw.write(RDF4JUtilities.createDataProperty(tradeItemEntity, baseURI, "handlingInstructions", params[16], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(tradeItemEntity, baseURI, "handlingInstructions", params[16], DATATYPE_STRING, tripleClosure));
 
 
 				}//end for

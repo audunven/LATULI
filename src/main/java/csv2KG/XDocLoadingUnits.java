@@ -16,7 +16,7 @@ import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
-import utilities.RDF4JUtilities;
+import utilities.KGUtilities;
 import utilities.StringUtilities;
 
 /**
@@ -69,99 +69,99 @@ public class XDocLoadingUnits {
 					//isType				
 					xDocLoadingUnitEntity = params[0] + "_xDocLoadingUnit>";
 
-					bw.write(RDF4JUtilities.createType(xDocLoadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
+					bw.write(KGUtilities.createType(xDocLoadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
 
 
 					//hasHubReconstructionLocation
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubReconstructionLocation", params[17], "_hubReconstructionLocation", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubReconstructionLocation", params[17], "_hubReconstructionLocation", tripleClosure));
 
 
 					//hasLoadingUnit
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasLoadingUnit", params[7], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasLoadingUnit", params[7], "_loadingUnit", tripleClosure));
 
 
 					//hasInboundParentLoadingUnit
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundParentLoadingUnit", params[41], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundParentLoadingUnit", params[41], "_loadingUnit", tripleClosure));
 
 
 					//hasOutboundParentLoadingUnit
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundParentLoadingUnit", params[42], "_loadingUnit", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundParentLoadingUnit", params[42], "_loadingUnit", tripleClosure));
 
 
 					//hasInboundConsignment
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundConsignment", params[11], "_consignment", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasInboundConsignment", params[11], "_consignment", tripleClosure));
 
 
 					//hasOutboundConsignment
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundConsignment", params[12], "_consignment", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasOutboundConsignment", params[12], "_consignment", tripleClosure));
 
 
 					//hasHubParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubParty", params[15], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasHubParty", params[15], "_party", tripleClosure));
 
 
 					//hasShipperParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasShipperParty", params[23], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasShipperParty", params[23], "_party", tripleClosure));
 
 
 					//hasReceiverParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasReceiverParty", params[26], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasReceiverParty", params[26], "_party", tripleClosure));
 
 
 					//hasCarrierParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasCarrierParty", params[29], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasCarrierParty", params[29], "_party", tripleClosure));
 
 
 					//hasConsignorParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsignorParty", params[32], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsignorParty", params[32], "_party", tripleClosure));
 
 
 					//hasConsigneeParty
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsigneeParty", params[35], "_party", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "hasConsigneeParty", params[35], "_party", tripleClosure));
 
 
 					//processedByWave
-					bw.write(RDF4JUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "processedByWave", params[36], "_wave", tripleClosure));
+					bw.write(KGUtilities.createObjectProperty(xDocLoadingUnitEntity, baseURI, "processedByWave", params[36], "_wave", tripleClosure));
 
 
 					//internalId
-					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "internalId", params[0], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "internalId", params[0], DATATYPE_STRING, tripleClosure));
 
 
 					//presortScanOn
 					if (!StringUtilities.convertToDateTime(params[1]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "presortScanOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "presortScanOn", StringUtilities.convertToDateTime(params[1]), DATATYPE_DATETIME, tripleClosure));
 
 					}
 
 					//reconstructedScanOn
 					if (!StringUtilities.convertToDateTime(params[2]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructedScanOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructedScanOn", StringUtilities.convertToDateTime(params[2]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//finishedScanOn
 					if (!StringUtilities.convertToDateTime(params[3]).equals("0000-00-00T00:00:00")) {
-						bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "finishedScanOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
+						bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "finishedScanOn", StringUtilities.convertToDateTime(params[3]), DATATYPE_DATETIME, tripleClosure));
 
 
 					}
 
 					//volume
-					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "volume", params[5], DATATYPE_DECIMAL, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "volume", params[5], DATATYPE_DECIMAL, tripleClosure));
 
 
 					//weight
-					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "weight", params[6], DATATYPE_DECIMAL, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "weight", params[6], DATATYPE_DECIMAL, tripleClosure));
 
 
 					//reconstructionType
-					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructionType", params[37], DATATYPE_STRING, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "reconstructionType", params[37], DATATYPE_STRING, tripleClosure));
 
 
 					//splitShipment
-					bw.write(RDF4JUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "splitShipment", params[40], DATATYPE_INT, tripleClosure));
+					bw.write(KGUtilities.createDataProperty(xDocLoadingUnitEntity, baseURI, "splitShipment", params[40], DATATYPE_INT, tripleClosure));
 
 
 

@@ -68,6 +68,9 @@ public class LoadingUnits {
 
 					//rdf:type
 					bw.write(KGUtilities.createType(loadingUnitEntity, baseURI, rdf_type, type, tripleClosure));
+					
+					//packageTypeId						
+					bw.write(KGUtilities.createDataProperty(loadingUnitEntity, baseURI, "hasLoadingUnitId", params[0], DATATYPE_STRING, tripleClosure));
 
 					//packageTypeId						
 					bw.write(KGUtilities.createDataProperty(loadingUnitEntity, baseURI, "packageTypeId", params[1], DATATYPE_STRING, tripleClosure));
@@ -143,6 +146,8 @@ public class LoadingUnits {
 
 					bw.write(loadingUnitEntity + "\t" + "isType" + "\t" + "LoadingUnit" + "\n");
 
+					//hasLoadingUnitId						
+					bw.write(loadingUnitEntity + "\t" + "hasLoadingUnitId" + "\t" + params[0] + "\n");
 
 					//hasPackageTypeId						
 					bw.write(loadingUnitEntity + "\t" + "hasPackageTypeId" + "\t" + params[1] + "\n");
@@ -226,6 +231,8 @@ public class LoadingUnits {
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 
 						//adding literals
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "loadingUnitId"), vf.createLiteral(params[0]));
+						
 						connection.add(loadingUnitInd, vf.createIRI(baseURI + "packageTypeId"), vf.createLiteral(params[1]));
 
 						connection.add(loadingUnitInd, vf.createIRI(baseURI + "orderNumber"), vf.createLiteral(params[2]));
@@ -311,6 +318,8 @@ public class LoadingUnits {
 						connection.add(loadingUnitInd, RDF.TYPE, loadingUnitClass);
 
 						//adding literals
+						connection.add(loadingUnitInd, vf.createIRI(baseURI + "loadingUnitId"), vf.createLiteral(params[0]));
+						
 						connection.add(loadingUnitInd, vf.createIRI(baseURI + "packageTypeId"), vf.createLiteral(params[1]));
 
 						connection.add(loadingUnitInd, vf.createIRI(baseURI + "orderNumber"), vf.createLiteral(params[2]));

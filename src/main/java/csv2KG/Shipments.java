@@ -55,7 +55,7 @@ public class Shipments {
 				bw = new BufferedWriter(new FileWriter(ntFile, true));
 
 
-				System.out.println("Reading file: " + filesInDir[i].getName());
+				//System.out.println("Reading file: " + filesInDir[i].getName());
 
 				try {
 					line = StringUtilities.oneByOne(br);
@@ -156,7 +156,7 @@ public class Shipments {
 				bw = new BufferedWriter(new FileWriter(tsvFile, true));
 
 
-				System.out.println("Reading file: " + filesInDir[i].getName());
+				//System.out.println("Reading file: " + filesInDir[i].getName());
 
 				try {
 					line = StringUtilities.oneByOne(br);
@@ -273,7 +273,7 @@ public class Shipments {
 
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-					System.out.println("Reading file: " + filesInDir[i].getName());
+					//System.out.println("Reading file: " + filesInDir[i].getName());
 
 					try {
 						line = StringUtilities.oneByOne(br);
@@ -385,7 +385,7 @@ public class Shipments {
 
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-					System.out.println("Reading file: " + filesInDir[i].getName());
+					//System.out.println("Reading file: " + filesInDir[i].getName());
 
 					try {
 						line = StringUtilities.oneByOne(br);

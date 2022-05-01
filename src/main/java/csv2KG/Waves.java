@@ -56,7 +56,7 @@ public class Waves {
 				bw = new BufferedWriter(new FileWriter(ntFile, true));
 
 
-				System.out.println("Reading file: " + filesInDir[i].getName());
+				//System.out.println("Reading file: " + filesInDir[i].getName());
 				
 				try {
 					line = StringUtilities.oneByOne(br);
@@ -205,7 +205,7 @@ public class Waves {
 				bw = new BufferedWriter(new FileWriter(tsvFile, true));
 
 
-				System.out.println("Reading file: " + filesInDir[i].getName());
+				//System.out.println("Reading file: " + filesInDir[i].getName());
 				
 				try {
 					line = StringUtilities.oneByOne(br);
@@ -355,7 +355,7 @@ public class Waves {
 
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-					System.out.println("Reading file: " + filesInDir[i].getName());
+					//System.out.println("Reading file: " + filesInDir[i].getName());
 
 					while ((line = br.readLine()) != null) {
 
@@ -480,7 +480,7 @@ public class Waves {
 
 					br = new BufferedReader(new FileReader(filesInDir[i]));
 
-					System.out.println("Reading file: " + filesInDir[i].getName());
+					//System.out.println("Reading file: " + filesInDir[i].getName());
 
 					while ((line = br.readLine()) != null) {
 

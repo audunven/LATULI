@@ -48,6 +48,11 @@ geos:wktLiteral rdf:type rdfs:Datatype .
                  rdfs:comment "Relates a Consignment or an XDocLoadingUnit (cross-dock loading unit) to a Carrier" .
 
 
+###  https://w3id.org/latuli/ontology/m3#hasConsigned
+:hasConsigned rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isConsignedAt .
+
+
 ###  https://w3id.org/latuli/ontology/m3#hasConsigneeParty
 :hasConsigneeParty rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
@@ -122,11 +127,21 @@ geos:wktLiteral rdf:type rdfs:Datatype .
           rdfs:range :Party .
 
 
+###  https://w3id.org/latuli/ontology/m3#hasPlanned
+:hasPlanned rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isPlannedAt .
+
+
 ###  https://w3id.org/latuli/ontology/m3#hasReceiverParty
 :hasReceiverParty rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   rdfs:range :Receiver ;
                   rdfs:comment "Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver." .
+
+
+###  https://w3id.org/latuli/ontology/m3#hasReconstructed
+:hasReconstructed rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isReconstructedAt .
 
 
 ###  https://w3id.org/latuli/ontology/m3#hasShipperParty
@@ -140,6 +155,18 @@ geos:wktLiteral rdf:type rdfs:Datatype .
 :includesTransport rdf:type owl:ObjectProperty ;
                    rdfs:range :Transport ;
                    rdfs:comment "Relates a Consignment to a Transport" .
+
+
+###  https://w3id.org/latuli/ontology/m3#isConsignedAt
+:isConsignedAt rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/latuli/ontology/m3#isPlannedAt
+:isPlannedAt rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/latuli/ontology/m3#isReconstructedAt
+:isReconstructedAt rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/latuli/ontology/m3#processedByWave
@@ -796,6 +823,10 @@ geos:wktLiteral rdf:type rdfs:Datatype .
                                owl:someValuesFrom :Transport
                              ] ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :isConsignedAt ;
+                               owl:someValuesFrom :HubReconstructionLocation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :processedByWave ;
                                owl:someValuesFrom :Wave
                              ] ;
@@ -827,9 +858,22 @@ geos:wktLiteral rdf:type rdfs:Datatype .
 ###  https://w3id.org/latuli/ontology/m3#HubReconstructionLocation
 :HubReconstructionLocation rdf:type owl:Class ;
                            owl:equivalentClass :Terminal ;
-                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           rdfs:subClassOf geos:Feature ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasConsigned ;
+                                             owl:someValuesFrom :Consignment
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
                                              owl:onProperty :hasParty ;
                                              owl:someValuesFrom :Party
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasPlanned ;
+                                             owl:someValuesFrom :Wave
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasReconstructed ;
+                                             owl:someValuesFrom :XDocLoadingUnit
                                            ] ;
                            rdfs:comment "The location where a reconstruction of goods takes place." .
 
@@ -883,7 +927,9 @@ geos:wktLiteral rdf:type rdfs:Datatype .
 
 
 ###  https://w3id.org/latuli/ontology/m3#Terminal
-:Terminal rdf:type owl:Class .
+:Terminal rdf:type owl:Class ;
+          rdfs:subClassOf geos:Feature ;
+          rdfs:comment "A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals." .
 
 
 ###  https://w3id.org/latuli/ontology/m3#TerminalOperator
@@ -915,6 +961,10 @@ geos:wktLiteral rdf:type rdfs:Datatype .
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :hasHubParty ;
                         owl:someValuesFrom :Party
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isPlannedAt ;
+                        owl:someValuesFrom :HubReconstructionLocation
                       ] ;
       rdfs:comment "A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections." .
 
@@ -968,6 +1018,10 @@ geos:wktLiteral rdf:type rdfs:Datatype .
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :hasShipperParty ;
                                    owl:someValuesFrom :Shipper
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isReconstructedAt ;
+                                   owl:someValuesFrom :HubReconstructionLocation
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :processedByWave ;

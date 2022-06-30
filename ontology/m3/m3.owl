@@ -82,6 +82,14 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/m3#hasConsigned -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsigned">
+        <owl:inverseOf rdf:resource="https://w3id.org/latuli/ontology/m3#isConsignedAt"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/m3#hasConsigneeParty -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasConsigneeParty">
@@ -189,12 +197,28 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/m3#hasPlanned -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasPlanned">
+        <owl:inverseOf rdf:resource="https://w3id.org/latuli/ontology/m3#isPlannedAt"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/m3#hasReceiverParty -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasReceiverParty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Receiver"/>
         <rdfs:comment>Relates an XDocLoadingUnit (cross-dock loading unit) or a Shipment to a Receiver.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#hasReconstructed -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#hasReconstructed">
+        <owl:inverseOf rdf:resource="https://w3id.org/latuli/ontology/m3#isReconstructedAt"/>
     </owl:ObjectProperty>
     
 
@@ -215,6 +239,24 @@
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/m3#Transport"/>
         <rdfs:comment>Relates a Consignment to a Transport</rdfs:comment>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#isConsignedAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#isConsignedAt"/>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#isPlannedAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#isPlannedAt"/>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/m3#isReconstructedAt -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/m3#isReconstructedAt"/>
     
 
 
@@ -1168,6 +1210,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#isConsignedAt"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#processedByWave"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
             </owl:Restriction>
@@ -1215,10 +1263,29 @@
 
     <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation">
         <owl:equivalentClass rdf:resource="https://w3id.org/latuli/ontology/m3#Terminal"/>
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasConsigned"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Consignment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasParty"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasPlanned"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Wave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasReconstructed"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#XDocLoadingUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>The location where a reconstruction of goods takes place.</rdfs:comment>
@@ -1302,7 +1369,10 @@
 
     <!-- https://w3id.org/latuli/ontology/m3#Terminal -->
 
-    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Terminal"/>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/m3#Terminal">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:comment>A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals.</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -1350,6 +1420,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasHubParty"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Party"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#isPlannedAt"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>A wave is a planning event that involves allocating a specific inventory or storage zone, and employees to pick items from those sections.</rdfs:comment>
@@ -1430,6 +1506,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#hasShipperParty"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#Shipper"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/latuli/ontology/m3#isReconstructedAt"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/latuli/ontology/m3#HubReconstructionLocation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>

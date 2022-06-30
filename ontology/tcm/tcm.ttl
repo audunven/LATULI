@@ -17,10 +17,11 @@
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/latuli/ontology/tcm#containerTransitTime
-:containerTransitTime rdf:type owl:ObjectProperty ;
-                      rdfs:domain :Terminal ;
-                      rdfs:range :PeriodicMeasurement .
+###  https://w3id.org/latuli/ontology/tcm#combinedDoor
+:combinedDoor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Terminal ;
+              rdfs:range :Door ;
+              rdfs:comment "A door, or a dock, which can be used both for receiving unloaded goods and for sending goods to be loaded onto a transport means." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#dimensionMeasurementType
@@ -30,11 +31,44 @@
                           rdfs:comment "Relates a Dimension with a MeasurementType (e.g., metre, cubic or kilogram)." .
 
 
+###  https://w3id.org/latuli/ontology/tcm#distanceToMainRoad
+:distanceToMainRoad rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Connectivity ;
+                    rdfs:range :Dimension ;
+                    rdfs:comment "Describes the distance to main roads, e.g. in terms of kilometres." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#doorServiceMode
+:doorServiceMode rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Terminal ;
+                 rdfs:range :ServiceMode ;
+                 rdfs:comment "Relates a terminal to a ServiceMode." .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#handlingAreaSize
 :handlingAreaSize rdf:type owl:ObjectProperty ;
                   rdfs:domain :Terminal ;
                   rdfs:range :Dimension ;
                   rdfs:comment "Describes the size (physical characteristics) of the handling area in a terminal" .
+
+
+###  https://w3id.org/latuli/ontology/tcm#hasDoorType
+:hasDoorType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Door ;
+             rdfs:range :DoorType .
+
+
+###  https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics
+:hasGateCharacteristics rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Gate ;
+                        rdfs:range :GateCharacteristics .
+
+
+###  https://w3id.org/latuli/ontology/tcm#hasInternalTransportation
+:hasInternalTransportation rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Terminal ;
+                           rdfs:range :InternalTransportation ;
+                           rdfs:comment "Describes what type of internal transportation a terminal uses for moving goods." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit
@@ -44,6 +78,40 @@
                      rdfs:comment "Relates a PeriodicMeasurement to a MeasurementLimit in order to specify the type of measurement made (average, min, max, etc.)" .
 
 
+###  https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity
+:hasNetworkConnectivity rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Terminal ;
+                        rdfs:range :Connectivity ;
+                        rdfs:comment "Describes how well-connected a terminal is, e.g. to main roads, main cities, etc." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement
+:hasPeriodicMeasurement rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Throughput ;
+                        rdfs:range :PeriodicMeasurement .
+
+
+###  https://w3id.org/latuli/ontology/tcm#inboundDoor
+:inboundDoor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Terminal ;
+             rdfs:range :Door ;
+             rdfs:comment "A door, or a dock, which can be used for receiving unloaded goods from a transport means." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate
+:inboundTransportMeansFillRate rdf:type owl:ObjectProperty ;
+                               rdfs:domain :Terminal ;
+                               rdfs:range :PeriodicMeasurement ;
+                               rdfs:comment "A ratio describing how often (on average) transport means depart from the terminal without full load" .
+
+
+###  https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity
+:intermediatePalletStorageCapacity rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :Terminal ;
+                                   rdfs:range :Dimension ;
+                                   rdfs:comment "Describes the capacity in terms of space (e.g. cubic or square meters) available for storing pallets intermediately." .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#internalResourceCapacity
 :internalResourceCapacity rdf:type owl:ObjectProperty ;
                           rdfs:domain :Terminal ;
@@ -51,11 +119,10 @@
                           rdfs:comment "The capacity of the conveyor belts network in an automated transportation mode, or the maximum number of workers available if the transportation is done manually, can be either considered limited or unlimited." .
 
 
-###  https://w3id.org/latuli/ontology/tcm#internalTravelDistance
-:internalTravelDistance rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Terminal ;
-                        rdfs:range :Dimension ;
-                        rdfs:comment "Describes the distance from inbound docks to outbound docks including facilities used for processing the goods at a terminal." .
+###  https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType
+:isTerminalEquipmentType rdf:type owl:ObjectProperty ;
+                         rdfs:domain :TerminalEquipment ;
+                         rdfs:range :TerminalEquipmentType .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#loadingTime
@@ -65,25 +132,31 @@
              rdfs:comment "The time it takes to load a transport means at the terminal." .
 
 
-###  https://w3id.org/latuli/ontology/tcm#missedOrders
-:missedOrders rdf:type owl:ObjectProperty ;
-              rdfs:domain :Terminal ;
-              rdfs:range :PeriodicMeasurement ;
-              rdfs:comment "The number of products that could not be loaded, or the corresponding lost profit." .
+###  https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed
+:numInboundTransportMeansProcessed rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :Terminal ;
+                                   rdfs:range :PeriodicMeasurement ;
+                                   rdfs:comment "The number of inbound transport means processed in a given period of time" .
 
 
-###  https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans
-:notFullyLoadedTransportMeans rdf:type owl:ObjectProperty ;
-                              rdfs:domain :Terminal ;
-                              rdfs:range :PeriodicMeasurement ;
-                              rdfs:comment "A ratio describing how often (on average) transport means depart from the terminal without full load" .
+###  https://w3id.org/latuli/ontology/tcm#numMissedOrders
+:numMissedOrders rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Terminal ;
+                 rdfs:range :PeriodicMeasurement ;
+                 rdfs:comment "The number of products that could not be loaded, or the corresponding lost profit." .
 
 
-###  https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed
-:numberOfInboundTransportMeansProcessed rdf:type owl:ObjectProperty ;
-                                        rdfs:domain :Terminal ;
-                                        rdfs:range :PeriodicMeasurement ;
-                                        rdfs:comment "The number of inbound transport means processed in a given period of time" .
+###  https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed
+:numOutboundTransportMeansProcessed rdf:type owl:ObjectProperty ;
+                                    rdfs:domain :Terminal ;
+                                    rdfs:range :PeriodicMeasurement ;
+                                    rdfs:comment "A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time" .
+
+
+###  https://w3id.org/latuli/ontology/tcm#numWorkers
+:numWorkers rdf:type owl:ObjectProperty ;
+            rdfs:domain :Terminal ;
+            rdfs:range :PeriodicMeasurement .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed
@@ -93,18 +166,29 @@
                                rdfs:comment "A measure specifying the number of loading units processed at a terminal in a given period of time" .
 
 
-###  https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed
-:numberOfOutboundTransportMeansProcessed rdf:type owl:ObjectProperty ;
-                                         rdfs:domain :Terminal ;
-                                         rdfs:range :PeriodicMeasurement ;
-                                         rdfs:comment "A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time" .
+###  https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity
+:numberOfMovedPalletsPerHourCapacity rdf:type owl:ObjectProperty ;
+                                     rdfs:domain :Terminal ;
+                                     rdfs:range :PeriodicMeasurement .
 
 
-###  https://w3id.org/latuli/ontology/tcm#numberOfTouches
-:numberOfTouches rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Terminal ;
-                 rdfs:range :PeriodicMeasurement ;
-                 rdfs:comment "Number of operations on a handling unit between it is unloaded from an inbound transport means and until it is loaded onto an outbound transport means" .
+###  https://w3id.org/latuli/ontology/tcm#outboundDoor
+:outboundDoor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Terminal ;
+              rdfs:range :Door ;
+              rdfs:comment "A door, or a dock, which can be used for sending goods to be loaded onto a transport means." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate
+:outboundTransportMeansFillRate rdf:type owl:ObjectProperty ;
+                                rdfs:domain :Terminal ;
+                                rdfs:range :PeriodicMeasurement .
+
+
+###  https://w3id.org/latuli/ontology/tcm#overallThroughput
+:overallThroughput rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Terminal ;
+                   rdfs:range :Throughput .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance
@@ -128,45 +212,16 @@
                                  rdfs:comment "Describes a specific duration of a PeriodicMeasurement" .
 
 
-###  https://w3id.org/latuli/ontology/tcm#planningHorizon
-:planningHorizon rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Terminal ;
-                 rdfs:range :PeriodicMeasurement ;
-                 rdfs:comment "The planning horizon (in time) used at a terminal" .
-
-
 ###  https://w3id.org/latuli/ontology/tcm#productType
 :productType rdf:type owl:ObjectProperty ;
              rdfs:range :GoodsType ;
              rdfs:comment "Relates an Inventory with a GoodsType" .
 
 
-###  https://w3id.org/latuli/ontology/tcm#productsStayTime
-:productsStayTime rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Terminal ;
-                  rdfs:range :PeriodicMeasurement ;
-                  rdfs:comment "The (average)  time spent inside the cross-dock for all the products." .
-
-
-###  https://w3id.org/latuli/ontology/tcm#scheduleLength
-:scheduleLength rdf:type owl:ObjectProperty ;
-                rdfs:domain :Terminal ;
-                rdfs:range :PeriodicMeasurement ;
-                rdfs:comment "The time between completed operation and the beginning of a new one" .
-
-
-###  https://w3id.org/latuli/ontology/tcm#serviceMode
-:serviceMode rdf:type owl:ObjectProperty ;
-             rdfs:domain :Terminal ;
-             rdfs:range :ServiceMode ;
-             rdfs:comment "Relates a terminal to a ServiceMode." .
-
-
-###  https://w3id.org/latuli/ontology/tcm#stockedInventory
-:stockedInventory rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Terminal ;
-                  rdfs:range :Inventory ;
-                  rdfs:comment "Describes the number and type of stocked products at a terminal, possibly for a particular period of time." .
+###  https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence
+:splitShipmentHandlingIncidence rdf:type owl:ObjectProperty ;
+                                rdfs:domain :Terminal ;
+                                rdfs:range :PeriodicMeasurement .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#storageCapacity
@@ -204,6 +259,13 @@
                         rdfs:comment "Describes the types of transport modes supported at the terminal." .
 
 
+###  https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize
+:temperatureControlledAreaSize rdf:type owl:ObjectProperty ;
+                               rdfs:domain :Terminal ;
+                               rdfs:range :Dimension ;
+                               rdfs:comment "Describes the size of area within the terminal used for storing temperature controlled goods." .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#terminalTotalSize
 :terminalTotalSize rdf:type owl:ObjectProperty ;
                    rdfs:domain :Terminal ;
@@ -225,11 +287,24 @@
                    rdfs:comment "Describes the size (physical characteristics) of the transit center in a terminal" .
 
 
+###  https://w3id.org/latuli/ontology/tcm#typeOfGate
+:typeOfGate rdf:type owl:ObjectProperty ;
+            rdfs:domain :Terminal ;
+            rdfs:range :Gate .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#unloadingTime
 :unloadingTime rdf:type owl:ObjectProperty ;
                rdfs:domain :Terminal ;
                rdfs:range :PeriodicMeasurement ;
                rdfs:comment "The time it takes to unload a transport means at the terminal." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment
+:usedTerminalEquipment rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Terminal ;
+                       rdfs:range :TerminalEquipment ;
+                       rdfs:comment "Describes what type of terminal equipment is used by the terminal." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#waitingTimeInboundTransportMeans
@@ -250,12 +325,36 @@
 #    Data properties
 #################################################################
 
+###  https://w3id.org/latuli/ontology/tcm#amount
+:amount rdf:type owl:DatatypeProperty ;
+        rdfs:domain :TerminalEquipment ;
+        rdfs:range xsd:int .
+
+
+###  https://w3id.org/latuli/ontology/tcm#automatedAccessControl
+:automatedAccessControl rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :GateCharacteristics ;
+                        rdfs:range xsd:boolean .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours
 :averageNumberOfWorkingHours rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf owl:topDataProperty ;
                              rdfs:domain :Terminal ;
                              rdfs:range xsd:decimal ;
                              rdfs:comment "The average number of working hours per week at the terminal" .
+
+
+###  https://w3id.org/latuli/ontology/tcm#bonded
+:bonded rdf:type owl:DatatypeProperty ;
+        rdfs:domain :GateCharacteristics ;
+        rdfs:range xsd:boolean .
+
+
+###  https://w3id.org/latuli/ontology/tcm#city
+:city rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Terminal ;
+      rdfs:range xsd:string .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#closeAdherenceToSchedule
@@ -268,9 +367,21 @@
 ###  https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation
 :combinedManualAndAutomatedInternalTransportation rdf:type owl:DatatypeProperty ;
                                                   rdfs:subPropertyOf owl:topDataProperty ;
-                                                  rdfs:domain :Terminal ;
+                                                  rdfs:domain :InternalTransportation ;
                                                   rdfs:range xsd:boolean ;
                                                   rdfs:comment "A flag that defines whether the internal transportation at the terminal is a combination of automated and manual (true) or not (false)" .
+
+
+###  https://w3id.org/latuli/ontology/tcm#country
+:country rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Terminal ;
+         rdfs:range xsd:string .
+
+
+###  https://w3id.org/latuli/ontology/tcm#cutOffTime
+:cutOffTime rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Terminal ;
+            rdfs:range xsd:string .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#dimensionMeasurementValue
@@ -287,12 +398,36 @@
                      rdfs:comment "Describes the occupation time of doors at the terminal." .
 
 
+###  https://w3id.org/latuli/ontology/tcm#gateNumber
+:gateNumber rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Gate ;
+            rdfs:range xsd:string .
+
+
+###  https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem
+:geographicalCoordinateSystem rdf:type owl:DatatypeProperty ;
+                              rdfs:domain :Terminal ;
+                              rdfs:range xsd:string .
+
+
+###  https://w3id.org/latuli/ontology/tcm#numDoors
+:numDoors rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Door ;
+          rdfs:range xsd:int .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors
 :numberOfInboundDoors rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdfs:domain :Terminal ;
                       rdfs:range xsd:int ;
                       rdfs:comment "The number of inbound doors available at a terminal." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#numberOfLanes
+:numberOfLanes rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Terminal ;
+               rdfs:range xsd:int .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#numberOfOutboundDoors
@@ -311,18 +446,24 @@
                              rdfs:comment "Describes the number of transport mode parking bays in a buffer zone." .
 
 
-###  https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts
-:numberOfStockedProducts rdf:type owl:DatatypeProperty ;
-                         rdfs:domain :Inventory ;
-                         rdfs:range xsd:decimal ;
-                         rdfs:comment "The number of stocked products at a terminal" .
+###  https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays
+:numberOfReeferContainerParkingBays rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain :Terminal ;
+                                    rdfs:range xsd:int .
+
+
+###  https://w3id.org/latuli/ontology/tcm#numberOfShifts
+:numberOfShifts rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Terminal ;
+                rdfs:range xsd:int .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays
 :numberOfSwitchBays rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
                     rdfs:domain :Terminal ;
-                    rdfs:range xsd:int .
+                    rdfs:range xsd:int ;
+                    rdfs:comment "A location where logistics units (e.g., containers) are transferred between different transport means (e.g., rail to road)" .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#numberOfTrailerParkingBays
@@ -344,7 +485,7 @@
 ###  https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation
 :onlyAutomatedInternalTransportation rdf:type owl:DatatypeProperty ;
                                      rdfs:subPropertyOf owl:topDataProperty ;
-                                     rdfs:domain :Terminal ;
+                                     rdfs:domain :InternalTransportation ;
                                      rdfs:range xsd:boolean ;
                                      rdfs:comment "A flag that defines whether the internal transportation at the terminal is only automated (true) or not (false)" .
 
@@ -352,7 +493,7 @@
 ###  https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation
 :onlyManualInternalTransportation rdf:type owl:DatatypeProperty ;
                                   rdfs:subPropertyOf owl:topDataProperty ;
-                                  rdfs:domain :Terminal ;
+                                  rdfs:domain :InternalTransportation ;
                                   rdfs:range xsd:boolean ;
                                   rdfs:comment "A flag that defines whether the internal transportation at the terminal is only manual (true) or not (false)" .
 
@@ -364,6 +505,12 @@
                           rdfs:comment "A value that specifies a periodic measurement (e.g. the average unloading time at terminal X is 30 (minutes))." .
 
 
+###  https://w3id.org/latuli/ontology/tcm#postalCode
+:postalCode rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Terminal ;
+            rdfs:range xsd:string .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#preemptionAllowed
 :preemptionAllowed rdf:type owl:DatatypeProperty ;
                    rdfs:domain :Terminal ;
@@ -371,13 +518,50 @@
                    rdfs:comment "Describes whether the loading or unloading of a truck can be interrupted and must be completed later." .
 
 
+###  https://w3id.org/latuli/ontology/tcm#streetAddress
+:streetAddress rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Terminal ;
+               rdfs:range xsd:string .
+
+
+###  https://w3id.org/latuli/ontology/tcm#twentyFourHoursService
+:twentyFourHoursService rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Terminal ;
+                        rdfs:range xsd:boolean .
+
+
 #################################################################
 #    Classes
 #################################################################
 
+###  https://w3id.org/latuli/ontology/tcm#Connectivity
+:Connectivity rdf:type owl:Class ;
+              rdfs:comment "Describes how well-connected a terminal is, for example in terms of connectivity to main cities, main roads, etc." .
+
+
 ###  https://w3id.org/latuli/ontology/tcm#Dimension
 :Dimension rdf:type owl:Class ;
            rdfs:comment "Defines a measurable dimension (length, mass, weight, volume, or area) of an item." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#Door
+:Door rdf:type owl:Class ;
+      rdfs:comment "A Door, or a dock, which is used to receive unloaded goods from transport means and to load goods onto transport means." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#DoorType
+:DoorType rdf:type owl:Class ;
+          rdfs:comment "Describes a type of door or dock at the terminal." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#Gate
+:Gate rdf:type owl:Class ;
+      rdfs:comment "A Gate is a facility for performing access control at a terminal." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#GateCharacteristics
+:GateCharacteristics rdf:type owl:Class ;
+                     rdfs:comment "Describes different types of characteristics for a gate." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#GoodsType
@@ -385,9 +569,9 @@
            rdfs:comment "Describes a classification of goods being managed during a freight logistics operation." .
 
 
-###  https://w3id.org/latuli/ontology/tcm#Inventory
-:Inventory rdf:type owl:Class ;
-           rdfs:comment "Describes the magnitude and type of inventory kept in a terminal." .
+###  https://w3id.org/latuli/ontology/tcm#InternalTransportation
+:InternalTransportation rdf:type owl:Class ;
+                        rdfs:comment "Describes how the internal transportation of goods is performed within a terminal." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#LogisticsUnit
@@ -417,7 +601,23 @@
 
 ###  https://w3id.org/latuli/ontology/tcm#Terminal
 :Terminal rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
           rdfs:comment "A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#TerminalEquipment
+:TerminalEquipment rdf:type owl:Class ;
+                   rdfs:comment "Terminal equipment used by the terminal." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType
+:TerminalEquipmentType rdf:type owl:Class ;
+                       rdfs:comment "Type of terminal equipment, such as forklifts, conveyor belts, etc." .
+
+
+###  https://w3id.org/latuli/ontology/tcm#Throughput
+:Throughput rdf:type owl:Class ;
+            rdfs:comment "Describes the throughput of goods at a terminal for a particular period of time." .
 
 
 ###  https://w3id.org/latuli/ontology/tcm#TransportMeans

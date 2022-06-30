@@ -27,11 +27,12 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#containerTransitTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#combinedDoor -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#containerTransitTime">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#combinedDoor">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Door"/>
+        <rdfs:comment>A door, or a dock, which can be used both for receiving unloaded goods and for sending goods to be loaded onto a transport means.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -46,12 +47,60 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#distanceToMainRoad -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#distanceToMainRoad">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Connectivity"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the distance to main roads, e.g. in terms of kilometres.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#doorServiceMode -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#doorServiceMode">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#ServiceMode"/>
+        <rdfs:comment>Relates a terminal to a ServiceMode.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#handlingAreaSize -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#handlingAreaSize">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
         <rdfs:comment>Describes the size (physical characteristics) of the handling area in a terminal</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#hasDoorType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasDoorType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Door"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#DoorType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Gate"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#GateCharacteristics"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#hasInternalTransportation -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasInternalTransportation">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#InternalTransportation"/>
+        <rdfs:comment>Describes what type of internal transportation a terminal uses for moving goods.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -66,6 +115,55 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Connectivity"/>
+        <rdfs:comment>Describes how well-connected a terminal is, e.g. to main roads, main cities, etc.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Throughput"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#inboundDoor -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#inboundDoor">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Door"/>
+        <rdfs:comment>A door, or a dock, which can be used for receiving unloaded goods from a transport means.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>A ratio describing how often (on average) transport means depart from the terminal without full load</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the capacity in terms of space (e.g. cubic or square meters) available for storing pallets intermediately.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#internalResourceCapacity -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">
@@ -76,12 +174,11 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#internalTravelDistance -->
+    <!-- https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
-        <rdfs:comment>Describes the distance from inbound docks to outbound docks including facilities used for processing the goods at a terminal.</rdfs:comment>
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#TerminalEquipment"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType"/>
     </owl:ObjectProperty>
     
 
@@ -96,9 +193,19 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#missedOrders -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#missedOrders">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
+        <rdfs:comment>The number of inbound transport means processed in a given period of time</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numMissedOrders -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numMissedOrders">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
         <rdfs:comment>The number of products that could not be loaded, or the corresponding lost profit.</rdfs:comment>
@@ -106,22 +213,21 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>A ratio describing how often (on average) transport means depart from the terminal without full load</rdfs:comment>
+        <rdfs:comment>A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numWorkers -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numWorkers">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>The number of inbound transport means processed in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -136,22 +242,39 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#numberOfTouches -->
+    <!-- https://w3id.org/latuli/ontology/tcm#outboundDoor -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfTouches">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#outboundDoor">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Door"/>
+        <rdfs:comment>A door, or a dock, which can be used for sending goods to be loaded onto a transport means.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>Number of operations on a handling unit between it is unloaded from an inbound transport means and until it is loaded onto an outbound transport means</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#overallThroughput -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#overallThroughput">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Throughput"/>
     </owl:ObjectProperty>
     
 
@@ -186,16 +309,6 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#planningHorizon -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#planningHorizon">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>The planning horizon (in time) used at a terminal</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://w3id.org/latuli/ontology/tcm#productType -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#productType">
@@ -205,42 +318,11 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#productsStayTime -->
+    <!-- https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#productsStayTime">
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>The (average)  time spent inside the cross-dock for all the products.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/latuli/ontology/tcm#scheduleLength -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#scheduleLength">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
-        <rdfs:comment>The time between completed operation and the beginning of a new one</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/latuli/ontology/tcm#serviceMode -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#serviceMode">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#ServiceMode"/>
-        <rdfs:comment>Relates a terminal to a ServiceMode.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/latuli/ontology/tcm#stockedInventory -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#stockedInventory">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
-        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Inventory"/>
-        <rdfs:comment>Describes the number and type of stocked products at a terminal, possibly for a particular period of time.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -295,6 +377,16 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Dimension"/>
+        <rdfs:comment>Describes the size of area within the terminal used for storing temperature controlled goods.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#terminalTotalSize -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#terminalTotalSize">
@@ -325,12 +417,31 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#typeOfGate -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#typeOfGate">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#Gate"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#unloadingTime -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#unloadingTime">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"/>
         <rdfs:comment>The time it takes to unload a transport means at the terminal.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="https://w3id.org/latuli/ontology/tcm#TerminalEquipment"/>
+        <rdfs:comment>Describes what type of terminal equipment is used by the terminal.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -366,6 +477,24 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#amount -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#amount">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#TerminalEquipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#automatedAccessControl -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#automatedAccessControl">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#GateCharacteristics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours">
@@ -373,6 +502,24 @@
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>The average number of working hours per week at the terminal</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#bonded -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#bonded">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#GateCharacteristics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#city -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#city">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
@@ -391,9 +538,27 @@
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#InternalTransportation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:comment>A flag that defines whether the internal transportation at the terminal is a combination of automated and manual (true) or not (false)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#country -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#country">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#cutOffTime -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#cutOffTime">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
@@ -418,6 +583,33 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#gateNumber -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#gateNumber">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Gate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numDoors -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numDoors">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Door"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors">
@@ -425,6 +617,15 @@
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>The number of inbound doors available at a terminal.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfLanes -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfLanes">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     </owl:DatatypeProperty>
     
 
@@ -451,12 +652,20 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts -->
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts">
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Inventory"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <rdfs:comment>The number of stocked products at a terminal</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#numberOfShifts -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#numberOfShifts">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     </owl:DatatypeProperty>
     
 
@@ -498,7 +707,7 @@
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#InternalTransportation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:comment>A flag that defines whether the internal transportation at the terminal is only automated (true) or not (false)</rdfs:comment>
     </owl:DatatypeProperty>
@@ -509,7 +718,7 @@
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#InternalTransportation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:comment>A flag that defines whether the internal transportation at the terminal is only manual (true) or not (false)</rdfs:comment>
     </owl:DatatypeProperty>
@@ -526,12 +735,39 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#postalCode -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#postalCode">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#preemptionAllowed -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#preemptionAllowed">
         <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:comment>Describes whether the loading or unloading of a truck can be interrupted and must be completed later.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#streetAddress -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#streetAddress">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#twentyFourHoursService -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/latuli/ontology/tcm#twentyFourHoursService">
+        <rdfs:domain rdf:resource="https://w3id.org/latuli/ontology/tcm#Terminal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
 
@@ -547,10 +783,50 @@
     
 
 
+    <!-- https://w3id.org/latuli/ontology/tcm#Connectivity -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Connectivity">
+        <rdfs:comment>Describes how well-connected a terminal is, for example in terms of connectivity to main cities, main roads, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/latuli/ontology/tcm#Dimension -->
 
     <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Dimension">
         <rdfs:comment>Defines a measurable dimension (length, mass, weight, volume, or area) of an item.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#Door -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Door">
+        <rdfs:comment>A Door, or a dock, which is used to receive unloaded goods from transport means and to load goods onto transport means.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#DoorType -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#DoorType">
+        <rdfs:comment>Describes a type of door or dock at the terminal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#Gate -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Gate">
+        <rdfs:comment>A Gate is a facility for performing access control at a terminal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#GateCharacteristics -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">
+        <rdfs:comment>Describes different types of characteristics for a gate.</rdfs:comment>
     </owl:Class>
     
 
@@ -563,10 +839,10 @@
     
 
 
-    <!-- https://w3id.org/latuli/ontology/tcm#Inventory -->
+    <!-- https://w3id.org/latuli/ontology/tcm#InternalTransportation -->
 
-    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Inventory">
-        <rdfs:comment>Describes the magnitude and type of inventory kept in a terminal.</rdfs:comment>
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#InternalTransportation">
+        <rdfs:comment>Describes how the internal transportation of goods is performed within a terminal.</rdfs:comment>
     </owl:Class>
     
 
@@ -614,7 +890,32 @@
     <!-- https://w3id.org/latuli/ontology/tcm#Terminal -->
 
     <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Terminal">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
         <rdfs:comment>A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#TerminalEquipment -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">
+        <rdfs:comment>Terminal equipment used by the terminal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType">
+        <rdfs:comment>Type of terminal equipment, such as forklifts, conveyor belts, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/latuli/ontology/tcm#Throughput -->
+
+    <owl:Class rdf:about="https://w3id.org/latuli/ontology/tcm#Throughput">
+        <rdfs:comment>Describes the throughput of goods at a terminal for a particular period of time.</rdfs:comment>
     </owl:Class>
     
 

@@ -579,6 +579,390 @@
     "@id" : "http://www.w3.org/2006/time#month"
   } ]
 }, {
+  "@id" : "http://purl.org/dc/elements/1.1/",
+  "http://purl.org/dc/terms/modified" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2012-06-14"
+  } ],
+  "http://purl.org/dc/terms/publisher" : [ {
+    "@id" : "http://purl.org/dc/aboutdcmi#DCMI"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "en",
+    "@value" : "Dublin Core Metadata Element Set, Version 1.1"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/contributor",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "The guidelines for using names of persons or organizations as creators also apply to contributors.  Typically, the name of a Contributor should be used to indicate the entity."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An entity responsible for making contributions to the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Contributor"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/coverage",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended practice is to use a controlled vocabulary such as the Getty Thesaurus of Geographic Names [[TGN](https://www.getty.edu/research/tools/vocabulary/tgn/index.html)]. Where appropriate, named places or time periods may be used in preference to numeric identifiers such as sets of coordinates or date ranges."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Coverage"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/coverage) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/creator",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An entity primarily responsible for making the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Creator"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/date",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A point or period of time associated with an event in the lifecycle of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Date"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/date) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/description",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An account of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Description"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/format",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to use a controlled vocabulary where available. For example, for file formats one could use the list of Internet Media Types [[MIME](https://www.iana.org/assignments/media-types/media-types.xhtml)]."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The file format, physical medium, or dimensions of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Format"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/format) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/identifier",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to identify the resource by means of a string conforming to an identification system."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An unambiguous reference to the resource within a given context."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Identifier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/identifier) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/language",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to use either a non-literal value representing a language from a controlled vocabulary such as ISO 639-2 or ISO 639-3, or a literal value consisting of an IETF Best Current Practice 47 [[IETF-BCP47](https://tools.ietf.org/html/bcp47)] language tag."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A language of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Language"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/language) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/publisher",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An entity responsible for making the resource available."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Publisher"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/relation",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A related resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Relation"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/relation) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/rights",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Information about rights held in and over the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Rights"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/rights) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/source",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A related resource from which the described resource is derived."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Source"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/source) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/subject",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Typically, the subject will be represented using keywords, key phrases, or classification codes.  Recommended best practice is to use a controlled vocabulary."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The topic of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Subject"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/subject) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/title",
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A name given to the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Title"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/type",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [[DCMI-TYPE](http://dublincore.org/documents/dcmi-type-vocabulary/)]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "1999-07-02"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The nature or genre of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Type"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "en",
+    "@value" : "A [second property](/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/type) with the same name as this property has been declared in the [dcterms: namespace](http://purl.org/dc/terms/).  See the Introduction to the document [DCMI Metadata Terms](/specifications/dublin-core/dcmi-terms/) for an explanation."
+  } ]
+}, {
   "@id" : "http://www.opengis.net/ont/geosparql#Feature",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://purl.org/dc/elements/1.1/contributor" : [ {
@@ -2484,7 +2868,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Friday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Friday"
@@ -2711,7 +3097,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Monday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Monday"
@@ -2839,7 +3227,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Saturday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Saturday"
@@ -2883,7 +3273,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Sunday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Sunday"
@@ -3077,7 +3469,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Thursday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Thursday"
@@ -3196,7 +3590,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Tuesday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Tuesday"
@@ -3240,7 +3636,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#Wednesday",
-  "@type" : [ "http://www.w3.org/2006/time#DayOfWeek" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#DayOfWeek"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Wednesday"
@@ -5071,7 +5469,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitDay",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Day (unit of temporal duration)"
@@ -5143,7 +5543,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitHour",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Hour (unit of temporal duration)"
@@ -5217,7 +5619,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitMinute",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Minute (unit of temporal duration)"
@@ -5292,7 +5696,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitMonth",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Month (unit of temporal duration)"
@@ -5364,7 +5770,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitSecond",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Second (unit of temporal duration)"
@@ -5459,7 +5867,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitWeek",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Week (unit of temporal duration)"
@@ -5534,7 +5944,9 @@
   } ]
 }, {
   "@id" : "http://www.w3.org/2006/time#unitYear",
-  "@type" : [ "http://www.w3.org/2006/time#TemporalUnit" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.w3.org/2006/time#TemporalUnit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Year (unit of temporal duration)"
@@ -5744,18 +6156,57 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Aircraft",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMeans" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMeans"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Carton",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#LogisticsUnit" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#LogisticsUnit"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#Connectivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes how well-connected a terminal is, for example in terms of connectivity to main cities, main roads, etc."
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#CubicMeter",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementType" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementType"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "Defines a measurable dimension (length, mass, weight, volume, or area) of an item."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#Door",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A Door, or a dock, which is used to receive unloaded goods from transport means and to load goods onto transport means."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#DoorType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes a type of door or dock at the terminal."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#Gate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A Gate is a facility for performing access control at a terminal."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#GateCharacteristics",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes different types of characteristics for a gate."
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#GoodsType",
@@ -5764,10 +6215,10 @@
     "@value" : "Describes a classification of goods being managed during a freight logistics operation."
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#Inventory",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#InternalTransportation",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Describes the magnitude and type of inventory kept in a terminal."
+    "@value" : "Describes how the internal transportation of goods is performed within a terminal."
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#LogisticsUnit",
@@ -5789,13 +6240,22 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Meter",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementType" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementType"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Multimodal",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMode" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMode"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Pallet",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#LogisticsUnit" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#LogisticsUnit"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -5810,19 +6270,49 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Ship",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMeans" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMeans"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#SquareMeter",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementType" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementType"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipment",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Terminal equipment used by the terminal."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Type of terminal equipment, such as forklifts, conveyor belts, etc."
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#Throughput",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes the throughput of goods at a terminal for a particular period of time."
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Train",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMeans" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMeans"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMeans",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -5837,10 +6327,34 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#Truck",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMeans" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMeans"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#UniModal",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#TransportMode" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMode"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#amount",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#automatedAccessControl",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#GateCharacteristics"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
@@ -5858,7 +6372,28 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#avg",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementLimit" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementLimit"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#bonded",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#GateCharacteristics"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#city",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#closeAdherenceToSchedule",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
@@ -5872,13 +6407,25 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#combinedDoor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A door, or a dock, which can be used both for receiving unloaded goods and for sending goods to be loaded onto a transport means."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Door"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "A flag that defines whether the internal transportation at the terminal is a combination of automated and manual (true) or not (false)"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#InternalTransportation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
@@ -5887,13 +6434,22 @@
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#containerTransitTime",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "@id" : "https://w3id.org/latuli/ontology/tcm#country",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#cutOffTime",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#dimensionMeasurementType",
@@ -5920,6 +6476,30 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#int"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#distanceToMainRoad",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes the distance to main roads, e.g. in terms of kilometres."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Connectivity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#doorServiceMode",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Relates a terminal to a ServiceMode."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#ServiceMode"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#doorUtilisationRate",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -5930,6 +6510,24 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#gateNumber",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Gate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#handlingAreaSize",
@@ -5944,6 +6542,36 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#hasDoorType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Door"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#DoorType"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Gate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#GateCharacteristics"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#hasInternalTransportation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes what type of internal transportation a terminal uses for moving goods."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#InternalTransportation"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -5954,6 +6582,63 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementLimit"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes how well-connected a terminal is, e.g. to main roads, main cities, etc."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Connectivity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Throughput"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#inboundDoor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A door, or a dock, which can be used for receiving unloaded goods from a transport means."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Door"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A ratio describing how often (on average) transport means depart from the terminal without full load"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes the capacity in terms of space (e.g. cubic or square meters) available for storing pallets intermediately."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#internalResourceCapacity",
@@ -5968,16 +6653,13 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#internalTravelDistance",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Describes the distance from inbound docks to outbound docks including facilities used for processing the goods at a terminal."
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipment"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#loadingTime",
@@ -5993,12 +6675,39 @@
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#max",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementLimit" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementLimit"
+  } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#min",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/latuli/ontology/tcm#MeasurementLimit" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#MeasurementLimit"
+  } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#missedOrders",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numDoors",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Door"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The number of inbound transport means processed in a given period of time"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numMissedOrders",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "The number of products that could not be loaded, or the corresponding lost profit."
@@ -6010,11 +6719,20 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "A ratio describing how often (on average) transport means depart from the terminal without full load"
+    "@value" : "A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time"
   } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numWorkers",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
@@ -6037,10 +6755,19 @@
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfLanes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "The number of inbound transport means processed in a given period of time"
+    "@value" : "A measure specifying the number of loading units processed at a terminal in a given period of time"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
@@ -6049,11 +6776,8 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "A measure specifying the number of loading units processed at a terminal in a given period of time"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
@@ -6076,18 +6800,6 @@
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
-  } ]
-}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfParkingBaysInBuffer",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -6103,20 +6815,29 @@
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "The number of stocked products at a terminal"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Inventory"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfShifts",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A location where logistics units (e.g., containers) are transferred between different transport means (e.g., rail to road)"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
@@ -6125,18 +6846,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
-  } ]
-}, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfTouches",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Number of operations on a handling unit between it is unloaded from an inbound transport means and until it is loaded onto an outbound transport means"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#numberOfTrailerParkingBays",
@@ -6175,7 +6884,7 @@
     "@value" : "A flag that defines whether the internal transportation at the terminal is only automated (true) or not (false)"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#InternalTransportation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
@@ -6190,13 +6899,43 @@
     "@value" : "A flag that defines whether the internal transportation at the terminal is only manual (true) or not (false)"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+    "@id" : "https://w3id.org/latuli/ontology/tcm#InternalTransportation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#outboundDoor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A door, or a dock, which can be used for sending goods to be loaded onto a transport means."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Door"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#overallThroughput",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Throughput"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance",
@@ -6247,16 +6986,13 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#int"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#planningHorizon",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "The planning horizon (in time) used at a terminal"
-  } ],
+  "@id" : "https://w3id.org/latuli/ontology/tcm#postalCode",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#preemptionAllowed",
@@ -6280,52 +7016,13 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#GoodsType"
   } ]
 }, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#productsStayTime",
+  "@id" : "https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "The (average)  time spent inside the cross-dock for all the products."
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
-  } ]
-}, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#scheduleLength",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "The time between completed operation and the beginning of a new one"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
-  } ]
-}, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#serviceMode",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Relates a terminal to a ServiceMode."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#ServiceMode"
-  } ]
-}, {
-  "@id" : "https://w3id.org/latuli/ontology/tcm#stockedInventory",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Describes the number and type of stocked products at a terminal, possibly for a particular period of time."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "https://w3id.org/latuli/ontology/tcm#Inventory"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#storageCapacity",
@@ -6338,6 +7035,15 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#streetAddress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#supportedGoodsType",
@@ -6388,6 +7094,18 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#TransportMode"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes the size of area within the terminal used for storing temperature controlled goods."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#terminalTotalSize",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -6424,6 +7142,24 @@
     "@id" : "https://w3id.org/latuli/ontology/tcm#Dimension"
   } ]
 }, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#twentyFourHoursService",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#typeOfGate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Gate"
+  } ]
+}, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#unloadingTime",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -6434,6 +7170,18 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement"
+  } ]
+}, {
+  "@id" : "https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Describes what type of terminal equipment is used by the terminal."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#Terminal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/latuli/ontology/tcm#TerminalEquipment"
   } ]
 }, {
   "@id" : "https://w3id.org/latuli/ontology/tcm#waitingTimeInboundTransportMeans",

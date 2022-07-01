@@ -6,7 +6,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/tcm#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/tcm#","name":"https://w3id.org/latuli/ontology/tcm#", "headline":"The TCM (Terminal Capacity Measurement) ontology describes entities related to freight terminal characteristics and operations.", "datePublished":"10.01.2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/latuli/ontology/tcm#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/latuli/ontology/tcm#","name":"https://w3id.org/latuli/ontology/tcm#", "headline":"The TCM (Terminal Capacity Measurement) ontology describes entities related to freight terminal characteristics and operations.", "datePublished":"30.06.2022", "author":[{"@type":"Person","name":"Audun Vennesland"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -54,7 +54,7 @@ $(function(){
 <div class="container">
 <div class="head">
 <div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
-<h2>Release  10.01.2022</h2>
+<h2>Release 30.06.2022</h2>
 
 
 <dl>
@@ -66,7 +66,7 @@ $(function(){
 <dt>Imported Ontologies:</dt>
 <dd><a href="http://www.opengis.net/ont/geosparql">geosparql</a></dd><dd><a href="http://www.opengis.net/ont/gml">gml</a></dd><dd><a href="http://www.opengis.net/ont/sf">sf</a></dd><dd><a href="http://www.w3.org/2004/02/skos/core">core</a></dd><dd><a href="http://www.w3.org/2006/time">time</a></dd>
 
-<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.rdf" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License: </dt><dd><a href="http://insertlicenseURIhere.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.org" /></a>
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.rdf" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.org" /></a>
 </dd><!-- <dt>Evaluation:</dt><dd><a href="OOPSEvaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --></dl>
 
 <hr/>
@@ -91,6 +91,12 @@ This ontology has the following classes and properties.</span>
 <h4>Classes</h4>
 <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" class="hlist">
    <li>
+      <a href="#Connectivity"
+         title="https://w3id.org/latuli/ontology/tcm#Connectivity">
+         <span>connectivity</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.w3.org/2006/time#DateTimeDescription" title="http://www.w3.org/2006/time#DateTimeDescription">Date-Time description</a>
    </li>
    <li>
@@ -105,10 +111,31 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">
+         <span>door</span>
+      </a>
+   </li>
+   <li>
+      <a href="#DoorType" title="https://w3id.org/latuli/ontology/tcm#DoorType">
+         <span>door type</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.w3.org/2006/time#DurationDescription" title="http://www.w3.org/2006/time#DurationDescription">Duration description</a>
    </li>
    <li>
       <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+   </li>
+   <li>
+      <a href="#Gate" title="https://w3id.org/latuli/ontology/tcm#Gate">
+         <span>gate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#GateCharacteristics"
+         title="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">
+         <span>gate characteristics</span>
+      </a>
    </li>
    <li>
       <a href="#http://www.w3.org/2006/time#GeneralDateTimeDescription"
@@ -127,8 +154,9 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
-      <a href="#Inventory" title="https://w3id.org/latuli/ontology/tcm#Inventory">
-         <span>inventory</span>
+      <a href="#InternalTransportation"
+         title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">
+         <span>internal transportation</span>
       </a>
    </li>
    <li>
@@ -195,6 +223,23 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#TerminalEquipment"
+         title="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">
+         <span>terminal equipment</span>
+      </a>
+   </li>
+   <li>
+      <a href="#TerminalEquipmentType"
+         title="https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType">
+         <span>terminal equipment type</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Throughput" title="https://w3id.org/latuli/ontology/tcm#Throughput">
+         <span>throughput</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.w3.org/2006/time#Duration" title="http://www.w3.org/2006/time#Duration">Time duration</a>
    </li>
    <li>
@@ -232,9 +277,9 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.w3.org/2006/time#before" title="http://www.w3.org/2006/time#before">before</a>
    </li>
    <li>
-      <a href="#containerTransitTime"
-         title="https://w3id.org/latuli/ontology/tcm#containerTransitTime">
-         <span>container transit time</span>
+      <a href="#combinedDoor"
+         title="https://w3id.org/latuli/ontology/tcm#combinedDoor">
+         <span>combined door</span>
       </a>
    </li>
    <li>
@@ -275,6 +320,18 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
    </li>
    <li>
+      <a href="#distanceToMainRoad"
+         title="https://w3id.org/latuli/ontology/tcm#distanceToMainRoad">
+         <span>distance to main road</span>
+      </a>
+   </li>
+   <li>
+      <a href="#doorServiceMode"
+         title="https://w3id.org/latuli/ontology/tcm#doorServiceMode">
+         <span>door service mode</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
    </li>
    <li>
@@ -300,6 +357,12 @@ This ontology has the following classes and properties.</span>
          title="http://www.w3.org/2006/time#hasDateTimeDescription">has Date-Time description</a>
    </li>
    <li>
+      <a href="#hasDoorType"
+         title="https://w3id.org/latuli/ontology/tcm#hasDoorType">
+         <span>has door type</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.w3.org/2006/time#hasDuration" title="http://www.w3.org/2006/time#hasDuration">has duration</a>
    </li>
    <li>
@@ -310,9 +373,33 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.w3.org/2006/time#hasEnd" title="http://www.w3.org/2006/time#hasEnd">has end</a>
    </li>
    <li>
+      <a href="#hasGateCharacteristics"
+         title="https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics">
+         <span>has gate characteristics</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasInternalTransportation"
+         title="https://w3id.org/latuli/ontology/tcm#hasInternalTransportation">
+         <span>has internal transportation</span>
+      </a>
+   </li>
+   <li>
       <a href="#hasMeasurementLimit"
          title="https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit">
          <span>has measurement limit</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasNetworkConnectivity"
+         title="https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity">
+         <span>has network connectivity</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasPeriodicMeasurement"
+         title="https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement">
+         <span>has periodic measurement</span>
       </a>
    </li>
    <li>
@@ -334,18 +421,30 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.w3.org/2006/time#timeZone" title="http://www.w3.org/2006/time#timeZone">in time zone</a>
    </li>
    <li>
+      <a href="#inboundDoor"
+         title="https://w3id.org/latuli/ontology/tcm#inboundDoor">
+         <span>inbound door</span>
+      </a>
+   </li>
+   <li>
+      <a href="#inboundTransportMeansFillRate"
+         title="https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate">
+         <span>inbound transport means fill rate</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+   </li>
+   <li>
+      <a href="#intermediatePalletStorageCapacity"
+         title="https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity">
+         <span>intermediate pallet storage capacity</span>
+      </a>
    </li>
    <li>
       <a href="#internalResourceCapacity"
          title="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">
          <span>internal resource capacity</span>
-      </a>
-   </li>
-   <li>
-      <a href="#internalTravelDistance"
-         title="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">
-         <span>internal travel distance</span>
       </a>
    </li>
    <li>
@@ -399,6 +498,12 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.w3.org/2006/time#intervalStarts" title="http://www.w3.org/2006/time#intervalStarts">interval starts</a>
    </li>
    <li>
+      <a href="#isTerminalEquipmentType"
+         title="https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType">
+         <span>is terminal equipment type</span>
+      </a>
+   </li>
+   <li>
       <a href="#loadingTime"
          title="https://w3id.org/latuli/ontology/tcm#loadingTime">
          <span>loading time</span>
@@ -406,12 +511,6 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
-   </li>
-   <li>
-      <a href="#missedOrders"
-         title="https://w3id.org/latuli/ontology/tcm#missedOrders">
-         <span>missed orders</span>
-      </a>
    </li>
    <li>
       <a href="#http://www.w3.org/2006/time#monthOfYear" title="http://www.w3.org/2006/time#monthOfYear">month of year</a>
@@ -423,15 +522,26 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
    </li>
    <li>
-      <a href="#notFullyLoadedTransportMeans"
-         title="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">
-         <span>not fully loaded transport means</span>
+      <a href="#numInboundTransportMeansProcessed"
+         title="https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed">
+         <span>num inbound transport means processed</span>
       </a>
    </li>
    <li>
-      <a href="#numberOfInboundTransportMeansProcessed"
-         title="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">
-         <span>number of inbound transport means processed</span>
+      <a href="#numMissedOrders"
+         title="https://w3id.org/latuli/ontology/tcm#numMissedOrders">
+         <span>num missed orders</span>
+      </a>
+   </li>
+   <li>
+      <a href="#numOutboundTransportMeansProcessed"
+         title="https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed">
+         <span>num outbound transport means processed</span>
+      </a>
+   </li>
+   <li>
+      <a href="#numWorkers" title="https://w3id.org/latuli/ontology/tcm#numWorkers">
+         <span>num workers</span>
       </a>
    </li>
    <li>
@@ -441,15 +551,27 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
-      <a href="#numberOfOutboundTransportMeansProcessed"
-         title="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">
-         <span>number of outbound transport means processed</span>
+      <a href="#numberOfMovedPalletsPerHourCapacity"
+         title="https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity">
+         <span>number of moved pallets per hour capacity</span>
       </a>
    </li>
    <li>
-      <a href="#numberOfTouches"
-         title="https://w3id.org/latuli/ontology/tcm#numberOfTouches">
-         <span>number of touches</span>
+      <a href="#outboundDoor"
+         title="https://w3id.org/latuli/ontology/tcm#outboundDoor">
+         <span>outbound door</span>
+      </a>
+   </li>
+   <li>
+      <a href="#outboundTransportMeansFillRate"
+         title="https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate">
+         <span>outbound transport means fill rate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#overallThroughput"
+         title="https://w3id.org/latuli/ontology/tcm#overallThroughput">
+         <span>overall throughput</span>
       </a>
    </li>
    <li>
@@ -480,39 +602,15 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
-      <a href="#planningHorizon"
-         title="https://w3id.org/latuli/ontology/tcm#planningHorizon">
-         <span>planning horizon</span>
-      </a>
-   </li>
-   <li>
       <a href="#productType"
          title="https://w3id.org/latuli/ontology/tcm#productType">
          <span>product type</span>
       </a>
    </li>
    <li>
-      <a href="#productsStayTime"
-         title="https://w3id.org/latuli/ontology/tcm#productsStayTime">
-         <span>products stay time</span>
-      </a>
-   </li>
-   <li>
-      <a href="#scheduleLength"
-         title="https://w3id.org/latuli/ontology/tcm#scheduleLength">
-         <span>schedule length</span>
-      </a>
-   </li>
-   <li>
-      <a href="#serviceMode"
-         title="https://w3id.org/latuli/ontology/tcm#serviceMode">
-         <span>service mode</span>
-      </a>
-   </li>
-   <li>
-      <a href="#stockedInventory"
-         title="https://w3id.org/latuli/ontology/tcm#stockedInventory">
-         <span>stocked inventory</span>
+      <a href="#splitShipmentHandlingIncidence"
+         title="https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence">
+         <span>split shipment handling incidence</span>
       </a>
    </li>
    <li>
@@ -552,6 +650,12 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
    </li>
    <li>
+      <a href="#temperatureControlledAreaSize"
+         title="https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize">
+         <span>temperature controlled area size</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.w3.org/2006/time#inTemporalPosition" title="http://www.w3.org/2006/time#inTemporalPosition">Temporal position</a>
    </li>
    <li>
@@ -585,9 +689,20 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#typeOfGate" title="https://w3id.org/latuli/ontology/tcm#typeOfGate">
+         <span>type of gate</span>
+      </a>
+   </li>
+   <li>
       <a href="#unloadingTime"
          title="https://w3id.org/latuli/ontology/tcm#unloadingTime">
          <span>unloading time</span>
+      </a>
+   </li>
+   <li>
+      <a href="#usedTerminalEquipment"
+         title="https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment">
+         <span>used terminal equipment</span>
       </a>
    </li>
    <li>
@@ -607,15 +722,36 @@ This ontology has the following classes and properties.</span>
    </li>
 </ul><h4>Data Properties</h4><ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" class="hlist">
    <li>
+      <a href="#amount" title="https://w3id.org/latuli/ontology/tcm#amount">
+         <span>amount</span>
+      </a>
+   </li>
+   <li>
       <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
    </li>
    <li>
       <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
    </li>
    <li>
+      <a href="#automatedAccessControl"
+         title="https://w3id.org/latuli/ontology/tcm#automatedAccessControl">
+         <span>automated access control</span>
+      </a>
+   </li>
+   <li>
       <a href="#averageNumberOfWorkingHours"
          title="https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours">
          <span>average number of working hours</span>
+      </a>
+   </li>
+   <li>
+      <a href="#bonded" title="https://w3id.org/latuli/ontology/tcm#bonded">
+         <span>bonded</span>
+      </a>
+   </li>
+   <li>
+      <a href="#city" title="https://w3id.org/latuli/ontology/tcm#city">
+         <span>city</span>
       </a>
    </li>
    <li>
@@ -633,6 +769,16 @@ This ontology has the following classes and properties.</span>
    <li>
       <a href="#http://www.opengis.net/ont/geosparql#coordinateDimension"
          title="http://www.opengis.net/ont/geosparql#coordinateDimension">coordinateDimension coordinateDimension</a>
+   </li>
+   <li>
+      <a href="#country" title="https://w3id.org/latuli/ontology/tcm#country">
+         <span>country</span>
+      </a>
+   </li>
+   <li>
+      <a href="#cutOffTime" title="https://w3id.org/latuli/ontology/tcm#cutOffTime">
+         <span>cut off time</span>
+      </a>
    </li>
    <li>
       <a href="#http://www.w3.org/2006/time#day" title="http://www.w3.org/2006/time#day">day</a>
@@ -656,6 +802,17 @@ This ontology has the following classes and properties.</span>
       <a href="#doorUtilisationRate"
          title="https://w3id.org/latuli/ontology/tcm#doorUtilisationRate">
          <span>door utilisation rate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#gateNumber" title="https://w3id.org/latuli/ontology/tcm#gateNumber">
+         <span>gate number</span>
+      </a>
+   </li>
+   <li>
+      <a href="#geographicalCoordinateSystem"
+         title="https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem">
+         <span>geographical coordinate system</span>
       </a>
    </li>
    <li>
@@ -711,9 +868,20 @@ This ontology has the following classes and properties.</span>
       <a href="#http://www.w3.org/2006/time#nominalPosition" title="http://www.w3.org/2006/time#nominalPosition">Name of temporal position</a>
    </li>
    <li>
+      <a href="#numDoors" title="https://w3id.org/latuli/ontology/tcm#numDoors">
+         <span>num doors</span>
+      </a>
+   </li>
+   <li>
       <a href="#numberOfInboundDoors"
          title="https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors">
          <span>number of inbound doors</span>
+      </a>
+   </li>
+   <li>
+      <a href="#numberOfLanes"
+         title="https://w3id.org/latuli/ontology/tcm#numberOfLanes">
+         <span>number of lanes</span>
       </a>
    </li>
    <li>
@@ -729,9 +897,15 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
-      <a href="#numberOfStockedProducts"
-         title="https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts">
-         <span>number of stocked products</span>
+      <a href="#numberOfReeferContainerParkingBays"
+         title="https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays">
+         <span>number of reefer container parking bays</span>
+      </a>
+   </li>
+   <li>
+      <a href="#numberOfShifts"
+         title="https://w3id.org/latuli/ontology/tcm#numberOfShifts">
+         <span>number of shifts</span>
       </a>
    </li>
    <li>
@@ -777,6 +951,11 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#postalCode" title="https://w3id.org/latuli/ontology/tcm#postalCode">
+         <span>postal code</span>
+      </a>
+   </li>
+   <li>
       <a href="#preemptionAllowed"
          title="https://w3id.org/latuli/ontology/tcm#preemptionAllowed">
          <span>preemption allowed</span>
@@ -791,6 +970,18 @@ This ontology has the following classes and properties.</span>
    <li>
       <a href="#http://www.opengis.net/ont/geosparql#spatialDimension"
          title="http://www.opengis.net/ont/geosparql#spatialDimension">spatialDimension spatialDimension</a>
+   </li>
+   <li>
+      <a href="#streetAddress"
+         title="https://w3id.org/latuli/ontology/tcm#streetAddress">
+         <span>street address</span>
+      </a>
+   </li>
+   <li>
+      <a href="#twentyFourHoursService"
+         title="https://w3id.org/latuli/ontology/tcm#twentyFourHoursService">
+         <span>twenty four hours service</span>
+      </a>
    </li>
    <li>
       <a href="#http://www.w3.org/2006/time#week" title="http://www.w3.org/2006/time#week">week</a>
@@ -881,11 +1072,17 @@ This ontology has the following classes and properties.</span>
    
 
 <!--CROSSREF SECTION-->
-   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for TCM Ontology classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for TCM Ontology classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 This section provides details for each class and property defined by TCM Ontology.
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
    <h3 id="classes-headline" class="list">Classes</h3>
    <ul class="hlist">
+      <li>
+         <a href="#Connectivity"
+            title="https://w3id.org/latuli/ontology/tcm#Connectivity">
+            <span>connectivity</span>
+         </a>
+      </li>
       <li>
          <a href="#http://www.w3.org/2006/time#DateTimeDescription" title="http://www.w3.org/2006/time#DateTimeDescription">Date-Time description</a>
       </li>
@@ -901,10 +1098,31 @@ This section provides details for each class and property defined by TCM Ontolog
          </a>
       </li>
       <li>
+         <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">
+            <span>door</span>
+         </a>
+      </li>
+      <li>
+         <a href="#DoorType" title="https://w3id.org/latuli/ontology/tcm#DoorType">
+            <span>door type</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.w3.org/2006/time#DurationDescription" title="http://www.w3.org/2006/time#DurationDescription">Duration description</a>
       </li>
       <li>
          <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+      </li>
+      <li>
+         <a href="#Gate" title="https://w3id.org/latuli/ontology/tcm#Gate">
+            <span>gate</span>
+         </a>
+      </li>
+      <li>
+         <a href="#GateCharacteristics"
+            title="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">
+            <span>gate characteristics</span>
+         </a>
       </li>
       <li>
          <a href="#http://www.w3.org/2006/time#GeneralDateTimeDescription"
@@ -923,8 +1141,9 @@ This section provides details for each class and property defined by TCM Ontolog
          </a>
       </li>
       <li>
-         <a href="#Inventory" title="https://w3id.org/latuli/ontology/tcm#Inventory">
-            <span>inventory</span>
+         <a href="#InternalTransportation"
+            title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">
+            <span>internal transportation</span>
          </a>
       </li>
       <li>
@@ -991,6 +1210,23 @@ This section provides details for each class and property defined by TCM Ontolog
          </a>
       </li>
       <li>
+         <a href="#TerminalEquipment"
+            title="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">
+            <span>terminal equipment</span>
+         </a>
+      </li>
+      <li>
+         <a href="#TerminalEquipmentType"
+            title="https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType">
+            <span>terminal equipment type</span>
+         </a>
+      </li>
+      <li>
+         <a href="#Throughput" title="https://w3id.org/latuli/ontology/tcm#Throughput">
+            <span>throughput</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.w3.org/2006/time#Duration" title="http://www.w3.org/2006/time#Duration">Time duration</a>
       </li>
       <li>
@@ -1021,6 +1257,31 @@ This section provides details for each class and property defined by TCM Ontolog
          <a href="#http://www.w3.org/2006/time#Year" title="http://www.w3.org/2006/time#Year">Year Year</a>
       </li>
    </ul>
+   <div class="entity" id="Connectivity">
+      <h3>connectivity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#Connectivity</p>
+      <div class="comment">
+         <span class="markdown">Describes how well-connected a terminal is, for example in terms of connectivity to main cities, main roads, etc.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#distanceToMainRoad"
+               title="https://w3id.org/latuli/ontology/tcm#distanceToMainRoad">distance to main road</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasNetworkConnectivity"
+               title="https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity">has network connectivity</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
    <div class="entity" id="http://www.w3.org/2006/time#DateTimeDescription">
       <h3>Date-Time description<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
@@ -1126,18 +1387,71 @@ This section provides details for each class and property defined by TCM Ontolog
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#handlingAreaSize"
+            <a href="#distanceToMainRoad"
+               title="https://w3id.org/latuli/ontology/tcm#distanceToMainRoad">distance to main road</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#handlingAreaSize"
                title="https://w3id.org/latuli/ontology/tcm#handlingAreaSize">handling area size</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#intermediatePalletStorageCapacity"
+               title="https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity">intermediate pallet storage capacity</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#internalResourceCapacity"
                title="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">internal resource capacity</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#internalTravelDistance"
-               title="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">internal travel distance</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#storageCapacity"
                title="https://w3id.org/latuli/ontology/tcm#storageCapacity">storage capacity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#temperatureControlledAreaSize"
+               title="https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize">temperature controlled area size</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#terminalTotalSize"
                title="https://w3id.org/latuli/ontology/tcm#terminalTotalSize">terminal total size</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#transitCenterSize"
                title="https://w3id.org/latuli/ontology/tcm#transitCenterSize">transit center size</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Door">
+      <h3>door<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#Door</p>
+      <div class="comment">
+         <span class="markdown">A Door, or a dock, which is used to receive unloaded goods from transport means and to load goods onto transport means.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasDoorType"
+               title="https://w3id.org/latuli/ontology/tcm#hasDoorType">has door type</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numDoors" title="https://w3id.org/latuli/ontology/tcm#numDoors">num doors</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#combinedDoor"
+               title="https://w3id.org/latuli/ontology/tcm#combinedDoor">combined door</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#inboundDoor"
+               title="https://w3id.org/latuli/ontology/tcm#inboundDoor">inbound door</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#outboundDoor"
+               title="https://w3id.org/latuli/ontology/tcm#outboundDoor">outbound door</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="DoorType">
+      <h3>door type<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#DoorType</p>
+      <div class="comment">
+         <span class="markdown">Describes a type of door or dock at the terminal.</span>
+      </div>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasDoorType"
+               title="https://w3id.org/latuli/ontology/tcm#hasDoorType">has door type</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -1230,6 +1544,11 @@ This section provides details for each class and property defined by TCM Ontolog
                title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
          <dt>is in domain of</dt>
          <dd>
             <a href="#http://www.opengis.net/ont/geosparql#defaultGeometry"
@@ -1241,6 +1560,57 @@ This section provides details for each class and property defined by TCM Ontolog
          <dd>
             <a href="#http://www.opengis.net/ont/geosparql#Geometry" title="http://www.opengis.net/ont/geosparql#Geometry">Geometry Geometry</a>
             <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Gate">
+      <h3>gate<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#Gate</p>
+      <div class="comment">
+         <span class="markdown">A Gate is a facility for performing access control at a terminal.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#gateNumber" title="https://w3id.org/latuli/ontology/tcm#gateNumber">gate number</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#hasGateCharacteristics"
+               title="https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics">has gate characteristics</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#typeOfGate" title="https://w3id.org/latuli/ontology/tcm#typeOfGate">type of gate</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="GateCharacteristics">
+      <h3>gate characteristics<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#GateCharacteristics</p>
+      <div class="comment">
+         <span class="markdown">Describes different types of characteristics for a gate.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#automatedAccessControl"
+               title="https://w3id.org/latuli/ontology/tcm#automatedAccessControl">automated access control</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#bonded" title="https://w3id.org/latuli/ontology/tcm#bonded">bonded</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasGateCharacteristics"
+               title="https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics">has gate characteristics</a>
+            <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
    </div>
@@ -1446,27 +1816,31 @@ This section provides details for each class and property defined by TCM Ontolog
          </dd>
       </dl>
    </div>
-   <div class="entity" id="Inventory">
-      <h3>inventory<sup class="type-c" title="class">c</sup>
+   <div class="entity" id="InternalTransportation">
+      <h3>internal transportation<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#Inventory</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#InternalTransportation</p>
       <div class="comment">
-         <span class="markdown">Describes the magnitude and type of inventory kept in a terminal.</span>
+         <span class="markdown">Describes how the internal transportation of goods is performed within a terminal.</span>
       </div>
       <dl class="description">
          <dt>is in domain of</dt>
          <dd>
-            <a href="#numberOfStockedProducts"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts">number of stocked products</a>
+            <a href="#combinedManualAndAutomatedInternalTransportation"
+               title="https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation">combined manual and automated internal transportation</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#onlyAutomatedInternalTransportation"
+               title="https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation">only automated internal transportation</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#onlyManualInternalTransportation"
+               title="https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation">only manual internal transportation</a>
             <sup class="type-dp" title="data property">dp</sup>
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#stockedInventory"
-               title="https://w3id.org/latuli/ontology/tcm#stockedInventory">stocked inventory</a>
+            <a href="#hasInternalTransportation"
+               title="https://w3id.org/latuli/ontology/tcm#hasInternalTransportation">has internal transportation</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -1617,32 +1991,31 @@ This section provides details for each class and property defined by TCM Ontolog
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#containerTransitTime"
-               title="https://w3id.org/latuli/ontology/tcm#containerTransitTime">container transit time</a>
+            <a href="#hasPeriodicMeasurement"
+               title="https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement">has periodic measurement</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#inboundTransportMeansFillRate"
+               title="https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate">inbound transport means fill rate</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#loadingTime"
                title="https://w3id.org/latuli/ontology/tcm#loadingTime">loading time</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#missedOrders"
-               title="https://w3id.org/latuli/ontology/tcm#missedOrders">missed orders</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#notFullyLoadedTransportMeans"
-               title="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">not fully loaded transport means</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfInboundTransportMeansProcessed"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">number of inbound transport means processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numInboundTransportMeansProcessed"
+               title="https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed">num inbound transport means processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numMissedOrders"
+               title="https://w3id.org/latuli/ontology/tcm#numMissedOrders">num missed orders</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numOutboundTransportMeansProcessed"
+               title="https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed">num outbound transport means processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numWorkers" title="https://w3id.org/latuli/ontology/tcm#numWorkers">num workers</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#numberOfLoadingUnitsProcessed"
                title="https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed">number of loading units processed</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfOutboundTransportMeansProcessed"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">number of outbound transport means processed</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfTouches"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfTouches">number of touches</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfMovedPalletsPerHourCapacity"
+               title="https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity">number of moved pallets per hour capacity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#outboundTransportMeansFillRate"
+               title="https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate">outbound transport means fill rate</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#percentTrailersDeclinedEntrance"
                title="https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance">percent trailers declined entrance</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#percentTransportMeansDeclinedEntrance"
                title="https://w3id.org/latuli/ontology/tcm#percentTransportMeansDeclinedEntrance">percent transport means declined entrance</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#planningHorizon"
-               title="https://w3id.org/latuli/ontology/tcm#planningHorizon">planning horizon</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#productsStayTime"
-               title="https://w3id.org/latuli/ontology/tcm#productsStayTime">products stay time</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#scheduleLength"
-               title="https://w3id.org/latuli/ontology/tcm#scheduleLength">schedule length</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#splitShipmentHandlingIncidence"
+               title="https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence">split shipment handling incidence</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#transhipmentTime"
                title="https://w3id.org/latuli/ontology/tcm#transhipmentTime">transhipment time</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#unloadingTime"
@@ -1739,8 +2112,8 @@ This section provides details for each class and property defined by TCM Ontolog
       <dl class="description">
          <dt>is in range of</dt>
          <dd>
-            <a href="#serviceMode"
-               title="https://w3id.org/latuli/ontology/tcm#serviceMode">service mode</a>
+            <a href="#doorServiceMode"
+               title="https://w3id.org/latuli/ontology/tcm#doorServiceMode">door service mode</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -2040,73 +2413,93 @@ This is a stub class, representing the set of all temporal reference systems.</s
          <span class="markdown">A freight terminal is a processing node for freight. They may include airports, seaports, railroad terminals, and trucking terminals.</span>
       </div>
       <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.opengis.net/ont/geosparql#Feature" title="http://www.opengis.net/ont/geosparql#Feature">Feature Feature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
          <dt>is in domain of</dt>
          <dd>
             <a href="#averageNumberOfWorkingHours"
                title="https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours">average number of working hours</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#city" title="https://w3id.org/latuli/ontology/tcm#city">city</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#closeAdherenceToSchedule"
                title="https://w3id.org/latuli/ontology/tcm#closeAdherenceToSchedule">close adherence to schedule</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#combinedManualAndAutomatedInternalTransportation"
-               title="https://w3id.org/latuli/ontology/tcm#combinedManualAndAutomatedInternalTransportation">combined manual and automated internal transportation</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#containerTransitTime"
-               title="https://w3id.org/latuli/ontology/tcm#containerTransitTime">container transit time</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#combinedDoor"
+               title="https://w3id.org/latuli/ontology/tcm#combinedDoor">combined door</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#country" title="https://w3id.org/latuli/ontology/tcm#country">country</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#cutOffTime" title="https://w3id.org/latuli/ontology/tcm#cutOffTime">cut off time</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#doorServiceMode"
+               title="https://w3id.org/latuli/ontology/tcm#doorServiceMode">door service mode</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#doorUtilisationRate"
                title="https://w3id.org/latuli/ontology/tcm#doorUtilisationRate">door utilisation rate</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#geographicalCoordinateSystem"
+               title="https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem">geographical coordinate system</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#handlingAreaSize"
                title="https://w3id.org/latuli/ontology/tcm#handlingAreaSize">handling area size</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasInternalTransportation"
+               title="https://w3id.org/latuli/ontology/tcm#hasInternalTransportation">has internal transportation</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasNetworkConnectivity"
+               title="https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity">has network connectivity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#inboundDoor"
+               title="https://w3id.org/latuli/ontology/tcm#inboundDoor">inbound door</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#inboundTransportMeansFillRate"
+               title="https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate">inbound transport means fill rate</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#intermediatePalletStorageCapacity"
+               title="https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity">intermediate pallet storage capacity</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#internalResourceCapacity"
                title="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">internal resource capacity</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#internalTravelDistance"
-               title="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">internal travel distance</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#loadingTime"
                title="https://w3id.org/latuli/ontology/tcm#loadingTime">loading time</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#missedOrders"
-               title="https://w3id.org/latuli/ontology/tcm#missedOrders">missed orders</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#notFullyLoadedTransportMeans"
-               title="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">not fully loaded transport means</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numInboundTransportMeansProcessed"
+               title="https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed">num inbound transport means processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numMissedOrders"
+               title="https://w3id.org/latuli/ontology/tcm#numMissedOrders">num missed orders</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numOutboundTransportMeansProcessed"
+               title="https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed">num outbound transport means processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numWorkers" title="https://w3id.org/latuli/ontology/tcm#numWorkers">num workers</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#numberOfInboundDoors"
                title="https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors">number of inbound doors</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfInboundTransportMeansProcessed"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">number of inbound transport means processed</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfLoadingUnitsProcessed"
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfLanes"
+               title="https://w3id.org/latuli/ontology/tcm#numberOfLanes">number of lanes</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfLoadingUnitsProcessed"
                title="https://w3id.org/latuli/ontology/tcm#numberOfLoadingUnitsProcessed">number of loading units processed</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfMovedPalletsPerHourCapacity"
+               title="https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity">number of moved pallets per hour capacity</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#numberOfOutboundDoors"
                title="https://w3id.org/latuli/ontology/tcm#numberOfOutboundDoors">number of outbound doors</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfOutboundTransportMeansProcessed"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">number of outbound transport means processed</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfParkingBaysInBuffer"
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfParkingBaysInBuffer"
                title="https://w3id.org/latuli/ontology/tcm#numberOfParkingBaysInBuffer">number of parking bays in buffer</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfReeferContainerParkingBays"
+               title="https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays">number of reefer container parking bays</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfShifts"
+               title="https://w3id.org/latuli/ontology/tcm#numberOfShifts">number of shifts</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfSwitchBays"
                title="https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays">number of switch bays</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfTouches"
-               title="https://w3id.org/latuli/ontology/tcm#numberOfTouches">number of touches</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#numberOfTrailerParkingBays"
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfTrailerParkingBays"
                title="https://w3id.org/latuli/ontology/tcm#numberOfTrailerParkingBays">number of trailer parking bays</a>
             <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfTransportMeansParkingBays"
                title="https://w3id.org/latuli/ontology/tcm#numberOfTransportMeansParkingBays">number of transport means parking bays</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#onlyAutomatedInternalTransportation"
-               title="https://w3id.org/latuli/ontology/tcm#onlyAutomatedInternalTransportation">only automated internal transportation</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#onlyManualInternalTransportation"
-               title="https://w3id.org/latuli/ontology/tcm#onlyManualInternalTransportation">only manual internal transportation</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#percentTrailersDeclinedEntrance"
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#outboundDoor"
+               title="https://w3id.org/latuli/ontology/tcm#outboundDoor">outbound door</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#outboundTransportMeansFillRate"
+               title="https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate">outbound transport means fill rate</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#overallThroughput"
+               title="https://w3id.org/latuli/ontology/tcm#overallThroughput">overall throughput</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#percentTrailersDeclinedEntrance"
                title="https://w3id.org/latuli/ontology/tcm#percentTrailersDeclinedEntrance">percent trailers declined entrance</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#percentTransportMeansDeclinedEntrance"
                title="https://w3id.org/latuli/ontology/tcm#percentTransportMeansDeclinedEntrance">percent transport means declined entrance</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#planningHorizon"
-               title="https://w3id.org/latuli/ontology/tcm#planningHorizon">planning horizon</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#preemptionAllowed"
+            <sup class="type-op" title="object property">op</sup>, <a href="#postalCode" title="https://w3id.org/latuli/ontology/tcm#postalCode">postal code</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#preemptionAllowed"
                title="https://w3id.org/latuli/ontology/tcm#preemptionAllowed">preemption allowed</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#productsStayTime"
-               title="https://w3id.org/latuli/ontology/tcm#productsStayTime">products stay time</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#scheduleLength"
-               title="https://w3id.org/latuli/ontology/tcm#scheduleLength">schedule length</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#serviceMode"
-               title="https://w3id.org/latuli/ontology/tcm#serviceMode">service mode</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#stockedInventory"
-               title="https://w3id.org/latuli/ontology/tcm#stockedInventory">stocked inventory</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#splitShipmentHandlingIncidence"
+               title="https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence">split shipment handling incidence</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#storageCapacity"
                title="https://w3id.org/latuli/ontology/tcm#storageCapacity">storage capacity</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#supportedGoodsType"
+            <sup class="type-op" title="object property">op</sup>, <a href="#streetAddress"
+               title="https://w3id.org/latuli/ontology/tcm#streetAddress">street address</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#supportedGoodsType"
                title="https://w3id.org/latuli/ontology/tcm#supportedGoodsType">supported goods type</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#supportedLogisticsUnitType"
                title="https://w3id.org/latuli/ontology/tcm#supportedLogisticsUnitType">supported logistics unit type</a>
@@ -2114,18 +2507,95 @@ This is a stub class, representing the set of all temporal reference systems.</s
                title="https://w3id.org/latuli/ontology/tcm#supportedTransportMeansType">supported transport means type</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#supportedTransportMode"
                title="https://w3id.org/latuli/ontology/tcm#supportedTransportMode">supported transport mode</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#temperatureControlledAreaSize"
+               title="https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize">temperature controlled area size</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#terminalTotalSize"
                title="https://w3id.org/latuli/ontology/tcm#terminalTotalSize">terminal total size</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#transhipmentTime"
                title="https://w3id.org/latuli/ontology/tcm#transhipmentTime">transhipment time</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#transitCenterSize"
                title="https://w3id.org/latuli/ontology/tcm#transitCenterSize">transit center size</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#twentyFourHoursService"
+               title="https://w3id.org/latuli/ontology/tcm#twentyFourHoursService">twenty four hours service</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#typeOfGate" title="https://w3id.org/latuli/ontology/tcm#typeOfGate">type of gate</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#unloadingTime"
                title="https://w3id.org/latuli/ontology/tcm#unloadingTime">unloading time</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#usedTerminalEquipment"
+               title="https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment">used terminal equipment</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#waitingTimeInboundTransportMeans"
                title="https://w3id.org/latuli/ontology/tcm#waitingTimeInboundTransportMeans">waiting time inbound transport means</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#waitingTimeOutboundTransportMeans"
                title="https://w3id.org/latuli/ontology/tcm#waitingTimeOutboundTransportMeans">waiting time outbound transport means</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="TerminalEquipment">
+      <h3>terminal equipment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#TerminalEquipment</p>
+      <div class="comment">
+         <span class="markdown">Terminal equipment used by the terminal.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#amount" title="https://w3id.org/latuli/ontology/tcm#amount">amount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#isTerminalEquipmentType"
+               title="https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType">is terminal equipment type</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#usedTerminalEquipment"
+               title="https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment">used terminal equipment</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="TerminalEquipmentType">
+      <h3>terminal equipment type<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType</p>
+      <div class="comment">
+         <span class="markdown">Type of terminal equipment, such as forklifts, conveyor belts, etc.</span>
+      </div>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#isTerminalEquipmentType"
+               title="https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType">is terminal equipment type</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Throughput">
+      <h3>throughput<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#Throughput</p>
+      <div class="comment">
+         <span class="markdown">Describes the throughput of goods at a terminal for a particular period of time.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasPeriodicMeasurement"
+               title="https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement">has periodic measurement</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#overallThroughput"
+               title="https://w3id.org/latuli/ontology/tcm#overallThroughput">overall throughput</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -2385,9 +2855,9 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#before" title="http://www.w3.org/2006/time#before">before</a>
       </li>
       <li>
-         <a href="#containerTransitTime"
-            title="https://w3id.org/latuli/ontology/tcm#containerTransitTime">
-            <span>container transit time</span>
+         <a href="#combinedDoor"
+            title="https://w3id.org/latuli/ontology/tcm#combinedDoor">
+            <span>combined door</span>
          </a>
       </li>
       <li>
@@ -2428,6 +2898,18 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.opengis.net/ont/geosparql#sfDisjoint" title="http://www.opengis.net/ont/geosparql#sfDisjoint">disjoint disjoint</a>
       </li>
       <li>
+         <a href="#distanceToMainRoad"
+            title="https://w3id.org/latuli/ontology/tcm#distanceToMainRoad">
+            <span>distance to main road</span>
+         </a>
+      </li>
+      <li>
+         <a href="#doorServiceMode"
+            title="https://w3id.org/latuli/ontology/tcm#doorServiceMode">
+            <span>door service mode</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.opengis.net/ont/geosparql#ehEquals" title="http://www.opengis.net/ont/geosparql#ehEquals">equals equals</a>
       </li>
       <li>
@@ -2453,6 +2935,12 @@ The region where it applies and the offset from UTC are specified by a locally r
             title="http://www.w3.org/2006/time#hasDateTimeDescription">has Date-Time description</a>
       </li>
       <li>
+         <a href="#hasDoorType"
+            title="https://w3id.org/latuli/ontology/tcm#hasDoorType">
+            <span>has door type</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.w3.org/2006/time#hasDuration" title="http://www.w3.org/2006/time#hasDuration">has duration</a>
       </li>
       <li>
@@ -2463,9 +2951,33 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#hasEnd" title="http://www.w3.org/2006/time#hasEnd">has end</a>
       </li>
       <li>
+         <a href="#hasGateCharacteristics"
+            title="https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics">
+            <span>has gate characteristics</span>
+         </a>
+      </li>
+      <li>
+         <a href="#hasInternalTransportation"
+            title="https://w3id.org/latuli/ontology/tcm#hasInternalTransportation">
+            <span>has internal transportation</span>
+         </a>
+      </li>
+      <li>
          <a href="#hasMeasurementLimit"
             title="https://w3id.org/latuli/ontology/tcm#hasMeasurementLimit">
             <span>has measurement limit</span>
+         </a>
+      </li>
+      <li>
+         <a href="#hasNetworkConnectivity"
+            title="https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity">
+            <span>has network connectivity</span>
+         </a>
+      </li>
+      <li>
+         <a href="#hasPeriodicMeasurement"
+            title="https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement">
+            <span>has periodic measurement</span>
          </a>
       </li>
       <li>
@@ -2487,18 +2999,30 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#timeZone" title="http://www.w3.org/2006/time#timeZone">in time zone</a>
       </li>
       <li>
+         <a href="#inboundDoor"
+            title="https://w3id.org/latuli/ontology/tcm#inboundDoor">
+            <span>inbound door</span>
+         </a>
+      </li>
+      <li>
+         <a href="#inboundTransportMeansFillRate"
+            title="https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate">
+            <span>inbound transport means fill rate</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.opengis.net/ont/geosparql#ehInside" title="http://www.opengis.net/ont/geosparql#ehInside">inside inside</a>
+      </li>
+      <li>
+         <a href="#intermediatePalletStorageCapacity"
+            title="https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity">
+            <span>intermediate pallet storage capacity</span>
+         </a>
       </li>
       <li>
          <a href="#internalResourceCapacity"
             title="https://w3id.org/latuli/ontology/tcm#internalResourceCapacity">
             <span>internal resource capacity</span>
-         </a>
-      </li>
-      <li>
-         <a href="#internalTravelDistance"
-            title="https://w3id.org/latuli/ontology/tcm#internalTravelDistance">
-            <span>internal travel distance</span>
          </a>
       </li>
       <li>
@@ -2552,6 +3076,12 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#intervalStarts" title="http://www.w3.org/2006/time#intervalStarts">interval starts</a>
       </li>
       <li>
+         <a href="#isTerminalEquipmentType"
+            title="https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType">
+            <span>is terminal equipment type</span>
+         </a>
+      </li>
+      <li>
          <a href="#loadingTime"
             title="https://w3id.org/latuli/ontology/tcm#loadingTime">
             <span>loading time</span>
@@ -2559,12 +3089,6 @@ The region where it applies and the offset from UTC are specified by a locally r
       </li>
       <li>
          <a href="#http://www.opengis.net/ont/geosparql#ehMeet" title="http://www.opengis.net/ont/geosparql#ehMeet">meet meet</a>
-      </li>
-      <li>
-         <a href="#missedOrders"
-            title="https://w3id.org/latuli/ontology/tcm#missedOrders">
-            <span>missed orders</span>
-         </a>
       </li>
       <li>
          <a href="#http://www.w3.org/2006/time#monthOfYear" title="http://www.w3.org/2006/time#monthOfYear">month of year</a>
@@ -2576,15 +3100,26 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.opengis.net/ont/geosparql#rcc8ntpp" title="http://www.opengis.net/ont/geosparql#rcc8ntpp">non-tangential proper part non-tangential proper part</a>
       </li>
       <li>
-         <a href="#notFullyLoadedTransportMeans"
-            title="https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans">
-            <span>not fully loaded transport means</span>
+         <a href="#numInboundTransportMeansProcessed"
+            title="https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed">
+            <span>num inbound transport means processed</span>
          </a>
       </li>
       <li>
-         <a href="#numberOfInboundTransportMeansProcessed"
-            title="https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed">
-            <span>number of inbound transport means processed</span>
+         <a href="#numMissedOrders"
+            title="https://w3id.org/latuli/ontology/tcm#numMissedOrders">
+            <span>num missed orders</span>
+         </a>
+      </li>
+      <li>
+         <a href="#numOutboundTransportMeansProcessed"
+            title="https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed">
+            <span>num outbound transport means processed</span>
+         </a>
+      </li>
+      <li>
+         <a href="#numWorkers" title="https://w3id.org/latuli/ontology/tcm#numWorkers">
+            <span>num workers</span>
          </a>
       </li>
       <li>
@@ -2594,15 +3129,27 @@ The region where it applies and the offset from UTC are specified by a locally r
          </a>
       </li>
       <li>
-         <a href="#numberOfOutboundTransportMeansProcessed"
-            title="https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed">
-            <span>number of outbound transport means processed</span>
+         <a href="#numberOfMovedPalletsPerHourCapacity"
+            title="https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity">
+            <span>number of moved pallets per hour capacity</span>
          </a>
       </li>
       <li>
-         <a href="#numberOfTouches"
-            title="https://w3id.org/latuli/ontology/tcm#numberOfTouches">
-            <span>number of touches</span>
+         <a href="#outboundDoor"
+            title="https://w3id.org/latuli/ontology/tcm#outboundDoor">
+            <span>outbound door</span>
+         </a>
+      </li>
+      <li>
+         <a href="#outboundTransportMeansFillRate"
+            title="https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate">
+            <span>outbound transport means fill rate</span>
+         </a>
+      </li>
+      <li>
+         <a href="#overallThroughput"
+            title="https://w3id.org/latuli/ontology/tcm#overallThroughput">
+            <span>overall throughput</span>
          </a>
       </li>
       <li>
@@ -2633,39 +3180,15 @@ The region where it applies and the offset from UTC are specified by a locally r
          </a>
       </li>
       <li>
-         <a href="#planningHorizon"
-            title="https://w3id.org/latuli/ontology/tcm#planningHorizon">
-            <span>planning horizon</span>
-         </a>
-      </li>
-      <li>
          <a href="#productType"
             title="https://w3id.org/latuli/ontology/tcm#productType">
             <span>product type</span>
          </a>
       </li>
       <li>
-         <a href="#productsStayTime"
-            title="https://w3id.org/latuli/ontology/tcm#productsStayTime">
-            <span>products stay time</span>
-         </a>
-      </li>
-      <li>
-         <a href="#scheduleLength"
-            title="https://w3id.org/latuli/ontology/tcm#scheduleLength">
-            <span>schedule length</span>
-         </a>
-      </li>
-      <li>
-         <a href="#serviceMode"
-            title="https://w3id.org/latuli/ontology/tcm#serviceMode">
-            <span>service mode</span>
-         </a>
-      </li>
-      <li>
-         <a href="#stockedInventory"
-            title="https://w3id.org/latuli/ontology/tcm#stockedInventory">
-            <span>stocked inventory</span>
+         <a href="#splitShipmentHandlingIncidence"
+            title="https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence">
+            <span>split shipment handling incidence</span>
          </a>
       </li>
       <li>
@@ -2705,6 +3228,12 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.opengis.net/ont/geosparql#rcc8tpp" title="http://www.opengis.net/ont/geosparql#rcc8tpp">tangential proper part tangential proper part</a>
       </li>
       <li>
+         <a href="#temperatureControlledAreaSize"
+            title="https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize">
+            <span>temperature controlled area size</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.w3.org/2006/time#inTemporalPosition" title="http://www.w3.org/2006/time#inTemporalPosition">Temporal position</a>
       </li>
       <li>
@@ -2738,9 +3267,20 @@ The region where it applies and the offset from UTC are specified by a locally r
          </a>
       </li>
       <li>
+         <a href="#typeOfGate" title="https://w3id.org/latuli/ontology/tcm#typeOfGate">
+            <span>type of gate</span>
+         </a>
+      </li>
+      <li>
          <a href="#unloadingTime"
             title="https://w3id.org/latuli/ontology/tcm#unloadingTime">
             <span>unloading time</span>
+         </a>
+      </li>
+      <li>
+         <a href="#usedTerminalEquipment"
+            title="https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment">
+            <span>used terminal equipment</span>
          </a>
       </li>
       <li>
@@ -2838,13 +3378,16 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="containerTransitTime">
-      <h3>container transit time<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="combinedDoor">
+      <h3>combined door<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#containerTransitTime</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#combinedDoor</p>
+      <div class="comment">
+         <span class="markdown">A door, or a dock, which can be used both for receiving unloaded goods and for sending goods to be loaded onto a transport means.</span>
+      </div>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -2854,8 +3397,7 @@ The region where it applies and the offset from UTC are specified by a locally r
             </dd>
             <dt>has range</dt>
             <dd>
-               <a href="#PeriodicMeasurement"
-                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">door</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -3531,6 +4073,58 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="distanceToMainRoad">
+      <h3>distance to main road<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#distanceToMainRoad</p>
+      <div class="comment">
+         <span class="markdown">Describes the distance to main roads, e.g. in terms of kilometres.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Connectivity"
+                  title="https://w3id.org/latuli/ontology/tcm#Connectivity">connectivity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Dimension" title="https://w3id.org/latuli/ontology/tcm#Dimension">dimension</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="doorServiceMode">
+      <h3>door service mode<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#doorServiceMode</p>
+      <div class="comment">
+         <span class="markdown">Relates a terminal to a ServiceMode.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#ServiceMode"
+                  title="https://w3id.org/latuli/ontology/tcm#ServiceMode">service mode</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="http://www.opengis.net/ont/geosparql#ehEquals">
       <h3>equals<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -3890,6 +4484,28 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="hasDoorType">
+      <h3>has door type<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#hasDoorType</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">door</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#DoorType" title="https://w3id.org/latuli/ontology/tcm#DoorType">door type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="http://www.w3.org/2006/time#hasDuration">
       <h3>has duration<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -3980,6 +4596,55 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="hasGateCharacteristics">
+      <h3>has gate characteristics<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#hasGateCharacteristics</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Gate" title="https://w3id.org/latuli/ontology/tcm#Gate">gate</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#GateCharacteristics"
+                  title="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">gate characteristics</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasInternalTransportation">
+      <h3>has internal transportation<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#hasInternalTransportation</p>
+      <div class="comment">
+         <span class="markdown">Describes what type of internal transportation a terminal uses for moving goods.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#InternalTransportation"
+                  title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">internal transportation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="hasMeasurementLimit">
       <h3>has measurement limit<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -4002,6 +4667,55 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#MeasurementLimit"
                   title="https://w3id.org/latuli/ontology/tcm#MeasurementLimit">measurement limit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasNetworkConnectivity">
+      <h3>has network connectivity<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#hasNetworkConnectivity</p>
+      <div class="comment">
+         <span class="markdown">Describes how well-connected a terminal is, e.g. to main roads, main cities, etc.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Connectivity"
+                  title="https://w3id.org/latuli/ontology/tcm#Connectivity">connectivity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasPeriodicMeasurement">
+      <h3>has periodic measurement<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#hasPeriodicMeasurement</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Throughput" title="https://w3id.org/latuli/ontology/tcm#Throughput">throughput</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PeriodicMeasurement"
+                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -4228,6 +4942,57 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="inboundDoor">
+      <h3>inbound door<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#inboundDoor</p>
+      <div class="comment">
+         <span class="markdown">A door, or a dock, which can be used for receiving unloaded goods from a transport means.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">door</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="inboundTransportMeansFillRate">
+      <h3>inbound transport means fill rate<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#inboundTransportMeansFillRate</p>
+      <div class="comment">
+         <span class="markdown">A ratio describing how often (on average) transport means depart from the terminal without full load</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PeriodicMeasurement"
+                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="http://www.opengis.net/ont/geosparql#ehInside">
       <h3>inside<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -4296,15 +5061,15 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="internalResourceCapacity">
-      <h3>internal resource capacity<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="intermediatePalletStorageCapacity">
+      <h3>intermediate pallet storage capacity<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#internalResourceCapacity</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#intermediatePalletStorageCapacity</p>
       <div class="comment">
-         <span class="markdown">The capacity of the conveyor belts network in an automated transportation mode, or the maximum number of workers available if the transportation is done manually, can be either considered limited or unlimited.</span>
+         <span class="markdown">Describes the capacity in terms of space (e.g. cubic or square meters) available for storing pallets intermediately.</span>
       </div>
       <div class="description">
          <dl>
@@ -4321,15 +5086,15 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="internalTravelDistance">
-      <h3>internal travel distance<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="internalResourceCapacity">
+      <h3>internal resource capacity<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#internalTravelDistance</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#internalResourceCapacity</p>
       <div class="comment">
-         <span class="markdown">Describes the distance from inbound docks to outbound docks including facilities used for processing the goods at a terminal.</span>
+         <span class="markdown">The capacity of the conveyor belts network in an automated transportation mode, or the maximum number of workers available if the transportation is done manually, can be either considered limited or unlimited.</span>
       </div>
       <div class="description">
          <dl>
@@ -4938,6 +5703,30 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="isTerminalEquipmentType">
+      <h3>is terminal equipment type<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#isTerminalEquipmentType</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#TerminalEquipment"
+                  title="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">terminal equipment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#TerminalEquipmentType"
+                  title="https://w3id.org/latuli/ontology/tcm#TerminalEquipmentType">terminal equipment type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="loadingTime">
       <h3>loading time<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -5030,32 +5819,6 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
                   title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
-   <div class="entity" id="missedOrders">
-      <h3>missed orders<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#missedOrders</p>
-      <div class="comment">
-         <span class="markdown">The number of products that could not be loaded, or the corresponding lost profit.</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#PeriodicMeasurement"
-                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -5226,15 +5989,15 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="notFullyLoadedTransportMeans">
-      <h3>not fully loaded transport means<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="numInboundTransportMeansProcessed">
+      <h3>num inbound transport means processed<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#notFullyLoadedTransportMeans</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numInboundTransportMeansProcessed</p>
       <div class="comment">
-         <span class="markdown">A ratio describing how often (on average) transport means depart from the terminal without full load</span>
+         <span class="markdown">The number of inbound transport means processed in a given period of time</span>
       </div>
       <div class="description">
          <dl>
@@ -5252,16 +6015,65 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="numberOfInboundTransportMeansProcessed">
-      <h3>number of inbound transport means processed<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="numMissedOrders">
+      <h3>num missed orders<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfInboundTransportMeansProcessed</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numMissedOrders</p>
       <div class="comment">
-         <span class="markdown">The number of inbound transport means processed in a given period of time</span>
+         <span class="markdown">The number of products that could not be loaded, or the corresponding lost profit.</span>
       </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PeriodicMeasurement"
+                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="numOutboundTransportMeansProcessed">
+      <h3>num outbound transport means processed<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numOutboundTransportMeansProcessed</p>
+      <div class="comment">
+         <span class="markdown">A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PeriodicMeasurement"
+                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="numWorkers">
+      <h3>num workers<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numWorkers</p>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -5304,16 +6116,13 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="numberOfOutboundTransportMeansProcessed">
-      <h3>number of outbound transport means processed<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="numberOfMovedPalletsPerHourCapacity">
+      <h3>number of moved pallets per hour capacity<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfOutboundTransportMeansProcessed</p>
-      <div class="comment">
-         <span class="markdown">A measure specifying the number of loaded transport means (e.g. Trucks) processed at a terminal in a given period of time</span>
-      </div>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfMovedPalletsPerHourCapacity</p>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -5330,16 +6139,38 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="numberOfTouches">
-      <h3>number of touches<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="outboundDoor">
+      <h3>outbound door<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfTouches</p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#outboundDoor</p>
       <div class="comment">
-         <span class="markdown">Number of operations on a handling unit between it is unloaded from an inbound transport means and until it is loaded onto an outbound transport means</span>
+         <span class="markdown">A door, or a dock, which can be used for sending goods to be loaded onto a transport means.</span>
       </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">door</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="outboundTransportMeansFillRate">
+      <h3>outbound transport means fill rate<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#outboundTransportMeansFillRate</p>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -5351,6 +6182,28 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#PeriodicMeasurement"
                   title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="overallThroughput">
+      <h3>overall throughput<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#overallThroughput</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Throughput" title="https://w3id.org/latuli/ontology/tcm#Throughput">throughput</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -5638,32 +6491,6 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="planningHorizon">
-      <h3>planning horizon<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#planningHorizon</p>
-      <div class="comment">
-         <span class="markdown">The planning horizon (in time) used at a terminal</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#PeriodicMeasurement"
-                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
    <div class="entity" id="productType">
       <h3>product type<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -5684,16 +6511,13 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
-   <div class="entity" id="productsStayTime">
-      <h3>products stay time<sup class="type-op" title="object property">op</sup>
+   <div class="entity" id="splitShipmentHandlingIncidence">
+      <h3>split shipment handling incidence<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#productsStayTime</p>
-      <div class="comment">
-         <span class="markdown">The (average)  time spent inside the cross-dock for all the products.</span>
-      </div>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#splitShipmentHandlingIncidence</p>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -5705,83 +6529,6 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#PeriodicMeasurement"
                   title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
-   <div class="entity" id="scheduleLength">
-      <h3>schedule length<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#scheduleLength</p>
-      <div class="comment">
-         <span class="markdown">The time between completed operation and the beginning of a new one</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#PeriodicMeasurement"
-                  title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
-   <div class="entity" id="serviceMode">
-      <h3>service mode<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#serviceMode</p>
-      <div class="comment">
-         <span class="markdown">Relates a terminal to a ServiceMode.</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#ServiceMode"
-                  title="https://w3id.org/latuli/ontology/tcm#ServiceMode">service mode</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
-   <div class="entity" id="stockedInventory">
-      <h3>stocked inventory<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#stockedInventory</p>
-      <div class="comment">
-         <span class="markdown">Describes the number and type of stocked products at a terminal, possibly for a particular period of time.</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#Inventory" title="https://w3id.org/latuli/ontology/tcm#Inventory">inventory</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -6046,6 +6793,31 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#http://www.opengis.net/ont/geosparql#SpatialObject"
                   title="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject SpatialObject</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="temperatureControlledAreaSize">
+      <h3>temperature controlled area size<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#temperatureControlledAreaSize</p>
+      <div class="comment">
+         <span class="markdown">Describes the size of area within the terminal used for storing temperature controlled goods.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Dimension" title="https://w3id.org/latuli/ontology/tcm#Dimension">dimension</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -6329,6 +7101,28 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="typeOfGate">
+      <h3>type of gate<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#typeOfGate</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Gate" title="https://w3id.org/latuli/ontology/tcm#Gate">gate</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="unloadingTime">
       <h3>unloading time<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -6350,6 +7144,32 @@ The region where it applies and the offset from UTC are specified by a locally r
             <dd>
                <a href="#PeriodicMeasurement"
                   title="https://w3id.org/latuli/ontology/tcm#PeriodicMeasurement">periodic measurement</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="usedTerminalEquipment">
+      <h3>used terminal equipment<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#usedTerminalEquipment</p>
+      <div class="comment">
+         <span class="markdown">Describes what type of terminal equipment is used by the terminal.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#TerminalEquipment"
+                  title="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">terminal equipment</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -6479,15 +7299,36 @@ The region where it applies and the offset from UTC are specified by a locally r
    <h3 id="dataproperties-headline" class="list">Data Properties</h3>
    <ul class="hlist">
       <li>
+         <a href="#amount" title="https://w3id.org/latuli/ontology/tcm#amount">
+            <span>amount</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.opengis.net/ont/geosparql#asGML" title="http://www.opengis.net/ont/geosparql#asGML">asGML asGML</a>
       </li>
       <li>
          <a href="#http://www.opengis.net/ont/geosparql#asWKT" title="http://www.opengis.net/ont/geosparql#asWKT">asWKT asWKT</a>
       </li>
       <li>
+         <a href="#automatedAccessControl"
+            title="https://w3id.org/latuli/ontology/tcm#automatedAccessControl">
+            <span>automated access control</span>
+         </a>
+      </li>
+      <li>
          <a href="#averageNumberOfWorkingHours"
             title="https://w3id.org/latuli/ontology/tcm#averageNumberOfWorkingHours">
             <span>average number of working hours</span>
+         </a>
+      </li>
+      <li>
+         <a href="#bonded" title="https://w3id.org/latuli/ontology/tcm#bonded">
+            <span>bonded</span>
+         </a>
+      </li>
+      <li>
+         <a href="#city" title="https://w3id.org/latuli/ontology/tcm#city">
+            <span>city</span>
          </a>
       </li>
       <li>
@@ -6505,6 +7346,16 @@ The region where it applies and the offset from UTC are specified by a locally r
       <li>
          <a href="#http://www.opengis.net/ont/geosparql#coordinateDimension"
             title="http://www.opengis.net/ont/geosparql#coordinateDimension">coordinateDimension coordinateDimension</a>
+      </li>
+      <li>
+         <a href="#country" title="https://w3id.org/latuli/ontology/tcm#country">
+            <span>country</span>
+         </a>
+      </li>
+      <li>
+         <a href="#cutOffTime" title="https://w3id.org/latuli/ontology/tcm#cutOffTime">
+            <span>cut off time</span>
+         </a>
       </li>
       <li>
          <a href="#http://www.w3.org/2006/time#day" title="http://www.w3.org/2006/time#day">day</a>
@@ -6528,6 +7379,17 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#doorUtilisationRate"
             title="https://w3id.org/latuli/ontology/tcm#doorUtilisationRate">
             <span>door utilisation rate</span>
+         </a>
+      </li>
+      <li>
+         <a href="#gateNumber" title="https://w3id.org/latuli/ontology/tcm#gateNumber">
+            <span>gate number</span>
+         </a>
+      </li>
+      <li>
+         <a href="#geographicalCoordinateSystem"
+            title="https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem">
+            <span>geographical coordinate system</span>
          </a>
       </li>
       <li>
@@ -6583,9 +7445,20 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#nominalPosition" title="http://www.w3.org/2006/time#nominalPosition">Name of temporal position</a>
       </li>
       <li>
+         <a href="#numDoors" title="https://w3id.org/latuli/ontology/tcm#numDoors">
+            <span>num doors</span>
+         </a>
+      </li>
+      <li>
          <a href="#numberOfInboundDoors"
             title="https://w3id.org/latuli/ontology/tcm#numberOfInboundDoors">
             <span>number of inbound doors</span>
+         </a>
+      </li>
+      <li>
+         <a href="#numberOfLanes"
+            title="https://w3id.org/latuli/ontology/tcm#numberOfLanes">
+            <span>number of lanes</span>
          </a>
       </li>
       <li>
@@ -6601,9 +7474,15 @@ The region where it applies and the offset from UTC are specified by a locally r
          </a>
       </li>
       <li>
-         <a href="#numberOfStockedProducts"
-            title="https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts">
-            <span>number of stocked products</span>
+         <a href="#numberOfReeferContainerParkingBays"
+            title="https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays">
+            <span>number of reefer container parking bays</span>
+         </a>
+      </li>
+      <li>
+         <a href="#numberOfShifts"
+            title="https://w3id.org/latuli/ontology/tcm#numberOfShifts">
+            <span>number of shifts</span>
          </a>
       </li>
       <li>
@@ -6649,6 +7528,11 @@ The region where it applies and the offset from UTC are specified by a locally r
          </a>
       </li>
       <li>
+         <a href="#postalCode" title="https://w3id.org/latuli/ontology/tcm#postalCode">
+            <span>postal code</span>
+         </a>
+      </li>
+      <li>
          <a href="#preemptionAllowed"
             title="https://w3id.org/latuli/ontology/tcm#preemptionAllowed">
             <span>preemption allowed</span>
@@ -6665,6 +7549,18 @@ The region where it applies and the offset from UTC are specified by a locally r
             title="http://www.opengis.net/ont/geosparql#spatialDimension">spatialDimension spatialDimension</a>
       </li>
       <li>
+         <a href="#streetAddress"
+            title="https://w3id.org/latuli/ontology/tcm#streetAddress">
+            <span>street address</span>
+         </a>
+      </li>
+      <li>
+         <a href="#twentyFourHoursService"
+            title="https://w3id.org/latuli/ontology/tcm#twentyFourHoursService">
+            <span>twenty four hours service</span>
+         </a>
+      </li>
+      <li>
          <a href="#http://www.w3.org/2006/time#week" title="http://www.w3.org/2006/time#week">week</a>
       </li>
       <li>
@@ -6677,6 +7573,30 @@ The region where it applies and the offset from UTC are specified by a locally r
          <a href="#http://www.w3.org/2006/time#years" title="http://www.w3.org/2006/time#years">years duration</a>
       </li>
    </ul>
+   <div class="entity" id="amount">
+      <h3>amount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#amount</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#TerminalEquipment"
+                  title="https://w3id.org/latuli/ontology/tcm#TerminalEquipment">terminal equipment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#int"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#int">int</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="http://www.opengis.net/ont/geosparql#asGML">
       <h3>asGML<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -6817,6 +7737,30 @@ The region where it applies and the offset from UTC are specified by a locally r
          </dl>
       </div>
    </div>
+   <div class="entity" id="automatedAccessControl">
+      <h3>automated access control<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#automatedAccessControl</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#GateCharacteristics"
+                  title="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">gate characteristics</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="averageNumberOfWorkingHours">
       <h3>average number of working hours<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -6845,6 +7789,53 @@ The region where it applies and the offset from UTC are specified by a locally r
                <a href="http://www.w3.org/2001/XMLSchema#decimal"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="bonded">
+      <h3>bonded<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#bonded</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#GateCharacteristics"
+                  title="https://w3id.org/latuli/ontology/tcm#GateCharacteristics">gate characteristics</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="city">
+      <h3>city<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#city</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
             </dd>
          </dl>
       </div>
@@ -6895,7 +7886,8 @@ The region where it applies and the offset from UTC are specified by a locally r
             </dd>
             <dt>has domain</dt>
             <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <a href="#InternalTransportation"
+                  title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">internal transportation</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -6970,6 +7962,52 @@ The region where it applies and the offset from UTC are specified by a locally r
                <a href="http://www.w3.org/2001/XMLSchema#integer"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="country">
+      <h3>country<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#country</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="cutOffTime">
+      <h3>cut off time<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#cutOffTime</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
             </dd>
          </dl>
       </div>
@@ -7183,6 +8221,52 @@ The range of this property is not specified, so can be replaced by any specific 
                <a href="http://www.w3.org/2001/XMLSchema#decimal"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="gateNumber">
+      <h3>gate number<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#gateNumber</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Gate" title="https://w3id.org/latuli/ontology/tcm#Gate">gate</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="geographicalCoordinateSystem">
+      <h3>geographical coordinate system<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#geographicalCoordinateSystem</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
             </dd>
          </dl>
       </div>
@@ -7809,6 +8893,29 @@ The range of this property is not specified, so can be replaced by any specific 
          </dl>
       </div>
    </div>
+   <div class="entity" id="numDoors">
+      <h3>num doors<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numDoors</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Door" title="https://w3id.org/latuli/ontology/tcm#Door">door</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#int"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#int">int</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="numberOfInboundDoors">
       <h3>number of inbound doors<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -7827,6 +8934,29 @@ The range of this property is not specified, so can be replaced by any specific 
                   target="_blank"
                   title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
             </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#int"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#int">int</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="numberOfLanes">
+      <h3>number of lanes<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfLanes</p>
+      <div class="description">
+         <dl>
             <dt>has domain</dt>
             <dd>
                <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
@@ -7905,28 +9035,48 @@ The range of this property is not specified, so can be replaced by any specific 
          </dl>
       </div>
    </div>
-   <div class="entity" id="numberOfStockedProducts">
-      <h3>number of stocked products<sup class="type-dp" title="data property">dp</sup>
+   <div class="entity" id="numberOfReeferContainerParkingBays">
+      <h3>number of reefer container parking bays<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfStockedProducts</p>
-      <div class="comment">
-         <span class="markdown">The number of stocked products at a terminal</span>
-      </div>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfReeferContainerParkingBays</p>
       <div class="description">
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#Inventory" title="https://w3id.org/latuli/ontology/tcm#Inventory">inventory</a>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
             <dd>
-               <a href="http://www.w3.org/2001/XMLSchema#decimal"
+               <a href="http://www.w3.org/2001/XMLSchema#int"
                   target="_blank"
-                  title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+                  title="http://www.w3.org/2001/XMLSchema#int">int</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="numberOfShifts">
+      <h3>number of shifts<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfShifts</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#int"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#int">int</a>
             </dd>
          </dl>
       </div>
@@ -7938,6 +9088,9 @@ The range of this property is not specified, so can be replaced by any specific 
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#numberOfSwitchBays</p>
+      <div class="comment">
+         <span class="markdown">A location where logistics units (e.g., containers) are transferred between different transport means (e.g., rail to road)</span>
+      </div>
       <div class="description">
          <dl>
             <dt>has super-properties</dt>
@@ -8102,7 +9255,8 @@ The range of this property is not specified, so can be replaced by any specific 
             </dd>
             <dt>has domain</dt>
             <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <a href="#InternalTransportation"
+                  title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">internal transportation</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -8134,7 +9288,8 @@ The range of this property is not specified, so can be replaced by any specific 
             </dd>
             <dt>has domain</dt>
             <dd>
-               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <a href="#InternalTransportation"
+                  title="https://w3id.org/latuli/ontology/tcm#InternalTransportation">internal transportation</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -8169,6 +9324,29 @@ The range of this property is not specified, so can be replaced by any specific 
                <a href="http://www.w3.org/2001/XMLSchema#int"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#int">int</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="postalCode">
+      <h3>postal code<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#postalCode</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
             </dd>
          </dl>
       </div>
@@ -8316,6 +9494,52 @@ The range of this property is not specified, so can be replaced by any specific 
                <a href="http://www.w3.org/2001/XMLSchema#integer"
                   target="_blank"
                   title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="streetAddress">
+      <h3>street address<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#streetAddress</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="twentyFourHoursService">
+      <h3>twenty four hours service<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/latuli/ontology/tcm#twentyFourHoursService</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Terminal" title="https://w3id.org/latuli/ontology/tcm#Terminal">terminal</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
             </dd>
          </dl>
       </div>
